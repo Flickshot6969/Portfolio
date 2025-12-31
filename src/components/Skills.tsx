@@ -22,7 +22,17 @@ import {
   GitBranch,
   Figma,
   Palette,
-  Sparkles
+  Sparkles,
+  Heart,
+  Clock,
+  Brain,
+  Award,
+  Mic,
+  Settings,
+  TrendingUp,
+  FileSpreadsheet,
+  PenTool,
+  Headphones
 } from 'lucide-react'
 import { TiltCard, StaggerContainer, StaggerItem } from './AnimationEffects'
 import { Card3D, SmoothCounter } from './EliteEffects'
@@ -43,70 +53,87 @@ import {
 const skillCategories = [
   {
     id: 'tech',
-    title: 'Technical Skills',
-    subtitle: 'Development & Cloud',
+    title: 'Technical & Tools',
+    subtitle: 'Development & Technology',
     icon: Code2,
     color: 'from-blue-500 to-cyan-500',
     skills: [
-      { name: 'React/Next.js', level: 90, icon: Monitor },
-      { name: 'Node.js/Express', level: 85, icon: Server },
-      { name: 'TypeScript/JavaScript', level: 88, icon: Code2 },
-      { name: 'Python/Django', level: 82, icon: Code2 },
-      { name: 'MongoDB/MySQL', level: 85, icon: Database },
-      { name: 'AWS Cloud Services', level: 80, icon: Cloud },
-      { name: 'Git/GitHub', level: 90, icon: GitBranch },
-      { name: 'HTML5/CSS3/Tailwind', level: 95, icon: Palette },
+      { name: 'Python', level: 85, icon: Code2 },
+      { name: 'C/C++', level: 80, icon: Server },
+      { name: 'AWS Cloud', level: 82, icon: Cloud },
+      { name: 'Cybersecurity', level: 78, icon: Shield },
+      { name: 'Data Analysis', level: 80, icon: LineChart },
+      { name: 'MS Office Suite', level: 95, icon: FileSpreadsheet },
+      { name: 'Google Workspace', level: 92, icon: Layers },
+      { name: 'Canva Design', level: 88, icon: PenTool },
     ]
   },
   {
     id: 'leadership',
     title: 'Leadership & Management',
-    subtitle: 'Governance & Team Leadership',
+    subtitle: 'Governance & Strategy',
     icon: Users,
     color: 'from-purple-500 to-pink-500',
     skills: [
-      { name: 'Student Governance', level: 95, icon: Target },
-      { name: 'Event Production', level: 95, icon: Zap },
-      { name: 'Team Coordination', level: 92, icon: Users },
-      { name: 'Stakeholder Management', level: 90, icon: MessageSquare },
-      { name: 'Strategic Planning', level: 88, icon: Lightbulb },
-      { name: 'Talent Management', level: 88, icon: Users },
-      { name: 'Budget Management', level: 85, icon: Target },
-      { name: 'Decision Making', level: 90, icon: Shield },
+      { name: 'Event Planning & Coordination', level: 95, icon: Zap },
+      { name: 'Creative Direction', level: 92, icon: Lightbulb },
+      { name: 'Leadership & Team Handling', level: 95, icon: Users },
+      { name: 'Strategic Planning', level: 90, icon: Target },
+      { name: 'Crisis Management', level: 88, icon: Shield },
+      { name: 'Budgeting & Resource Allocation', level: 85, icon: TrendingUp },
+      { name: 'Project & Committee Management', level: 92, icon: Briefcase },
+      { name: 'Team Motivation & Mentoring', level: 90, icon: Heart },
     ]
   },
   {
-    id: 'marketing',
-    title: 'Marketing & Customer Service',
-    subtitle: 'Digital Marketing & CX',
-    icon: Briefcase,
+    id: 'communication',
+    title: 'Communication & PR',
+    subtitle: 'Public Relations & Advocacy',
+    icon: Mic,
+    color: 'from-green-500 to-emerald-500',
+    skills: [
+      { name: 'Public Relations & Communication', level: 95, icon: Mic },
+      { name: 'Communication Mastery', level: 92, icon: MessageSquare },
+      { name: 'Conflict Resolution & Diplomacy', level: 88, icon: Shield },
+      { name: 'Representation & Advocacy', level: 90, icon: Award },
+      { name: 'Professional Ethics', level: 95, icon: Target },
+      { name: 'Marketing & Promotion', level: 88, icon: TrendingUp },
+      { name: 'Cultural Knowledge & Inclusivity', level: 90, icon: Heart },
+      { name: 'Stakeholder Management', level: 92, icon: Users },
+    ]
+  },
+  {
+    id: 'soft',
+    title: 'Soft Skills & Operations',
+    subtitle: 'Customer Service & Efficiency',
+    icon: Heart,
     color: 'from-orange-500 to-red-500',
     skills: [
-      { name: 'Digital Marketing (HubSpot)', level: 90, icon: LineChart },
-      { name: 'Social Media Marketing', level: 88, icon: MessageSquare },
-      { name: 'Campaign Management', level: 88, icon: Target },
-      { name: 'Customer Experience', level: 92, icon: Users },
-      { name: 'Content Strategy', level: 85, icon: Lightbulb },
-      { name: 'Brand Marketing', level: 85, icon: Zap },
-      { name: 'CRM & Sales Operations', level: 88, icon: Briefcase },
-      { name: 'Public Communication', level: 92, icon: MessageSquare },
+      { name: 'Customer Service Excellence', level: 95, icon: Headphones },
+      { name: 'Time Management', level: 90, icon: Clock },
+      { name: 'Multitasking', level: 92, icon: Layers },
+      { name: 'Problem-Solving', level: 90, icon: Brain },
+      { name: 'Attention to Detail', level: 88, icon: Target },
+      { name: 'Stress Handling', level: 85, icon: Shield },
+      { name: 'Team Collaboration', level: 95, icon: Users },
+      { name: 'Adaptability', level: 92, icon: Settings },
     ]
   }
 ]
 
 const techStack = [
-  { name: 'React', icon: '⚛️' },
-  { name: 'Next.js', icon: '▲' },
-  { name: 'Node.js', icon: '🟢' },
-  { name: 'TypeScript', icon: '💙' },
   { name: 'Python', icon: '🐍' },
+  { name: 'C/C++', icon: '⚡' },
   { name: 'AWS', icon: '☁️' },
-  { name: 'MongoDB', icon: '🍃' },
-  { name: 'MySQL', icon: '🐬' },
-  { name: 'Git', icon: '📦' },
-  { name: 'Figma', icon: '🎨' },
-  { name: 'Tailwind', icon: '💨' },
-  { name: 'HubSpot', icon: '🎯' },
+  { name: 'MS Office', icon: '📊' },
+  { name: 'Canva', icon: '🎨' },
+  { name: 'Google Workspace', icon: '📁' },
+  { name: 'Digital Marketing', icon: '📈' },
+  { name: 'Event Management', icon: '🎪' },
+  { name: 'Project Management', icon: '📋' },
+  { name: 'Leadership', icon: '👑' },
+  { name: 'Customer Service', icon: '🤝' },
+  { name: 'Team Building', icon: '💪' },
 ]
 
 export default function Skills() {
@@ -373,37 +400,47 @@ export default function Skills() {
               Why I&apos;m the <span className="gradient-text">Perfect Fit</span>
             </h3>
             <p className="text-body text-center max-w-2xl mx-auto mb-6 sm:mb-8 text-sm sm:text-base">
-              I bring a rare combination that most candidates can&apos;t offer
+              A rare combination of leadership, technical skills & customer excellence
             </p>
             
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
-              <div className="text-center p-4 sm:p-6">
-                <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 mx-auto mb-3 sm:mb-4 rounded-xl sm:rounded-2xl bg-gradient-to-r from-blue-500 to-cyan-500 flex items-center justify-center">
-                  <Code2 className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-white" />
-                </div>
-                <h4 className="font-semibold text-white mb-1.5 sm:mb-2 text-sm sm:text-base">Technical Depth</h4>
-                <p className="text-xs sm:text-sm text-dark-400">
-                  Strong hands-on experience with modern tech stacks and best practices
-                </p>
-              </div>
-              
+            <div className="grid grid-cols-1 sm:grid-cols-4 gap-4 sm:gap-6">
               <div className="text-center p-4 sm:p-6">
                 <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 mx-auto mb-3 sm:mb-4 rounded-xl sm:rounded-2xl bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center">
                   <Users className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-white" />
                 </div>
-                <h4 className="font-semibold text-white mb-1.5 sm:mb-2 text-sm sm:text-base">Leadership Ability</h4>
+                <h4 className="font-semibold text-white mb-1.5 sm:mb-2 text-sm sm:text-base">Leadership Excellence</h4>
                 <p className="text-xs sm:text-sm text-dark-400">
-                  Proven track record of building and leading high-performing teams
+                  General Secretary leading 5000+ students with strategic vision
+                </p>
+              </div>
+              
+              <div className="text-center p-4 sm:p-6">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 mx-auto mb-3 sm:mb-4 rounded-xl sm:rounded-2xl bg-gradient-to-r from-blue-500 to-cyan-500 flex items-center justify-center">
+                  <Zap className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-white" />
+                </div>
+                <h4 className="font-semibold text-white mb-1.5 sm:mb-2 text-sm sm:text-base">Event Production</h4>
+                <p className="text-xs sm:text-sm text-dark-400">
+                  50+ events managed with end-to-end planning & execution
+                </p>
+              </div>
+              
+              <div className="text-center p-4 sm:p-6">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 mx-auto mb-3 sm:mb-4 rounded-xl sm:rounded-2xl bg-gradient-to-r from-green-500 to-emerald-500 flex items-center justify-center">
+                  <MessageSquare className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-white" />
+                </div>
+                <h4 className="font-semibold text-white mb-1.5 sm:mb-2 text-sm sm:text-base">Communication Pro</h4>
+                <p className="text-xs sm:text-sm text-dark-400">
+                  Public relations, stakeholder management & team coordination
                 </p>
               </div>
               
               <div className="text-center p-4 sm:p-6">
                 <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 mx-auto mb-3 sm:mb-4 rounded-xl sm:rounded-2xl bg-gradient-to-r from-orange-500 to-red-500 flex items-center justify-center">
-                  <Briefcase className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-white" />
+                  <Headphones className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-white" />
                 </div>
-                <h4 className="font-semibold text-white mb-1.5 sm:mb-2 text-sm sm:text-base">Business Acumen</h4>
+                <h4 className="font-semibold text-white mb-1.5 sm:mb-2 text-sm sm:text-base">Customer Focus</h4>
                 <p className="text-xs sm:text-sm text-dark-400">
-                  Understanding of product strategy and delivering business value
+                  Starbucks-trained in customer service excellence & hospitality
                 </p>
               </div>
             </div>
