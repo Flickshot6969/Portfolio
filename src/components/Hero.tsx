@@ -423,6 +423,8 @@ export default function Hero() {
                         src={heroImages[currentImageIndex]}
                         alt="Dev Patel"
                         className="w-full h-full object-cover object-top"
+                        loading="eager"
+                        fetchPriority="high"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}

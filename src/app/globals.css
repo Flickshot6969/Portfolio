@@ -1012,14 +1012,12 @@ body {
 @keyframes aurora {
   0%, 100% {
     background-position: 0% 50%, 100% 50%, 50% 100%;
-    filter: hue-rotate(0deg);
   }
   25% {
     background-position: 100% 50%, 0% 50%, 50% 0%;
   }
   50% {
     background-position: 50% 100%, 50% 0%, 0% 50%;
-    filter: hue-rotate(45deg);
   }
   75% {
     background-position: 0% 0%, 100% 100%, 100% 50%;
@@ -1334,40 +1332,10 @@ body {
   }
 }
 
+/* Hologram effect disabled to keep images natural */
 .hologram {
   position: relative;
   overflow: hidden;
-}
-
-.hologram::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(
-    0deg,
-    transparent,
-    transparent 3px,
-    rgba(255, 255, 255, 0.01) 3px,
-    rgba(255, 255, 255, 0.01) 6px
-  );
-  pointer-events: none;
-  animation: hologram-scan 10s linear infinite;
-}
-
-.hologram::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 50%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.1),
-    transparent
-  );
-  animation: hologram-shine 5s ease-in-out infinite;
 }
 
 @keyframes hologram-shine {
@@ -1416,13 +1384,9 @@ body {
 /* ═════════════════════════════════════════════════════════════════════════════
    🌈 RAINBOW SHIFT - Smooth Color Transitions
 ═════════════════════════════════════════════════════════════════════════════ */
-@keyframes rainbow-shift {
-  0% { filter: hue-rotate(0deg); }
-  100% { filter: hue-rotate(360deg); }
-}
-
+/* Rainbow shift disabled to prevent color distortion on images */
 .rainbow-shift {
-  animation: rainbow-shift 10s linear infinite;
+  opacity: 1;
 }
 
 .rainbow-border {
@@ -2464,13 +2428,13 @@ body {
   opacity: 1;
 }
 
-/* Smooth Color Transition on Hover */
+/* Smooth Color Transition on Hover - hue-rotate disabled */
 .color-shift {
   transition: all 0.5s ease;
 }
 
 .color-shift:hover {
-  filter: hue-rotate(15deg) brightness(1.1);
+  filter: brightness(1.05);
 }
 
 /* Breathe Animation */
