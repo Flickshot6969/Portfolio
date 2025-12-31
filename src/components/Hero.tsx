@@ -436,7 +436,7 @@ export default function Hero() {
               </ProximityAware>
             </motion.div>
 
-            {/* Social Links - With Proximity Awareness */}
+            {/* Social Links */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -449,42 +449,21 @@ export default function Hero() {
                 { icon: Twitter, href: 'https://twitter.com/devpatel170521', label: 'Twitter' },
                 { icon: Instagram, href: 'https://instagram.com/devpatel170521', label: 'Instagram' },
               ].map((social, index) => (
-                <ProximityAware key={social.label} id={`social-${social.label}`} approachThreshold={80}>
-                  {({ phase, approachAngle }) => (
-                    <motion.a
-                      href={social.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="relative p-3 rounded-xl glass-premium neumorphic group"
-                      style={{
-                        boxShadow: phase === 'approaching' 
-                          ? `${Math.cos(approachAngle * Math.PI / 180) * -3}px ${Math.sin(approachAngle * Math.PI / 180) * -3}px 15px rgba(168, 85, 247, 0.2)`
-                          : 'none'
-                      }}
-                      whileHover={{ y: -5, rotate: 5 }}
-                      whileTap={{ scale: 0.9 }}
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      animate={{ 
-                        opacity: 1, 
-                        scale: phase === 'approaching' ? 1.05 : 1,
-                      }}
-                      transition={{ delay: 1 + index * 0.1, type: "spring", stiffness: 400 }}
-                      aria-label={social.label}
-                    >
-                      <social.icon size={20} className={`transition-colors duration-200 ${
-                        phase === 'hovering' ? 'text-primary-400' : 
-                        phase === 'approaching' ? 'text-dark-200' : 'text-dark-300'
-                      }`} />
-                      
-                      {/* Anticipatory glow */}
-                      <motion.div
-                        className="absolute inset-0 rounded-xl bg-primary-500/10 pointer-events-none"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: phase === 'approaching' ? 0.5 : phase === 'hovering' ? 1 : 0 }}
-                      />
-                    </motion.a>
-                  )}
-                </ProximityAware>
+                <motion.a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 rounded-xl glass-premium group hover:bg-primary-500/10 transition-all duration-300"
+                  whileHover={{ y: -5, scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 1 + index * 0.1, type: "spring", stiffness: 400 }}
+                  aria-label={social.label}
+                >
+                  <social.icon size={20} className="text-dark-300 group-hover:text-primary-400 transition-colors" />
+                </motion.a>
               ))}
             </motion.div>
           </motion.div>

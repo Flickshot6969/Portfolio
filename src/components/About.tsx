@@ -158,7 +158,7 @@ export default function About() {
               <div className="absolute -bottom-2 -right-2 sm:-bottom-4 sm:-right-4 w-16 h-16 sm:w-24 sm:h-24 border-r-2 border-b-2 border-accent-500/30 rounded-br-2xl sm:rounded-br-3xl" />
               
               {/* Main Image - Elite 3D Card */}
-              <Card3D className="relative rounded-2xl sm:rounded-3xl overflow-hidden glass-elite p-1.5 sm:p-2 elite-glow" intensity={15}>
+              <Card3D className="relative rounded-2xl sm:rounded-3xl overflow-hidden p-1.5 sm:p-2 bg-dark-900/50 border border-white/10" intensity={15}>
                 <div className="rounded-xl sm:rounded-2xl overflow-hidden relative">
                   <img
                     src="/media/Images/2.JPG"
