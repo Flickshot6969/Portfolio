@@ -1,5 +1,7 @@
 import type { Metadata } from 'next'
 import './globals.css'
+import { ScrollProgress } from '@/components/AnimationEffects'
+import CustomCursor from '@/components/CustomCursor'
 
 export const metadata: Metadata = {
   title: {
@@ -136,6 +138,10 @@ export default function RootLayout({
         />
       </head>
       <body className="antialiased">
+        {/* Elite UI Effects */}
+        <CustomCursor />
+        <ScrollProgress />
+        
         {/* Background Effects */}
         <div className="bg-animated">
           <div className="orb orb-1"></div>
