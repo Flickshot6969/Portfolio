@@ -3074,3 +3074,389 @@ body {
     0 0 30px rgba(99, 102, 241, 0.2),
     inset 0 0 0 1px rgba(99, 102, 241, 0.1);
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   🧠 INTERACTION INTELLIGENCE CSS SYSTEM
+   Multi-phase interactions & anticipatory motion support
+═══════════════════════════════════════════════════════════════════════════════ */
+
+/* Phase: Approach - Element knows cursor is near */
+.interaction-approach {
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+[data-interaction-phase="approach"] .interaction-approach {
+  transform: scale(1.01);
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.1);
+}
+
+/* Phase: Engage - Initial contact */
+[data-interaction-phase="engage"] {
+  transform: scale(1.02);
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Phase: Commit - Sustained interaction */
+[data-interaction-phase="commit"] {
+  transform: scale(1.03);
+  box-shadow: 0 10px 40px rgba(168, 85, 247, 0.2);
+}
+
+/* Phase: Release - Exit with memory */
+[data-interaction-phase="release"] {
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Anticipatory border glow */
+.anticipatory-border {
+  position: relative;
+}
+
+.anticipatory-border::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0), rgba(168, 85, 247, 0));
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+
+.anticipatory-border[data-proximity="near"]::before {
+  opacity: 0.5;
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(236, 72, 153, 0.2));
+  filter: blur(8px);
+}
+
+/* Scroll velocity-aware text */
+.velocity-text {
+  transition: letter-spacing 0.3s ease, opacity 0.3s ease;
+}
+
+[data-scroll-velocity="fast"] .velocity-text {
+  letter-spacing: 0.05em;
+  opacity: 0.9;
+}
+
+[data-scroll-velocity="slow"] .velocity-text {
+  letter-spacing: normal;
+  opacity: 1;
+}
+
+/* Direction-aware reveal */
+.directional-reveal {
+  opacity: 0;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+[data-scroll-direction="down"] .directional-reveal {
+  transform: translateY(30px);
+}
+
+[data-scroll-direction="up"] .directional-reveal {
+  transform: translateY(-30px);
+}
+
+.directional-reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Momentum-carry effect */
+.momentum-carry {
+  transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+[data-scroll-momentum="high"] .momentum-carry {
+  transform: translateY(calc(var(--scroll-direction, 1) * 15px));
+}
+
+/* Hesitation detection - subtle attention grab */
+@keyframes hesitationPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+}
+
+[data-user-hesitating="true"] .hesitation-aware {
+  animation: hesitationPulse 0.6s ease-in-out;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   📱 MOBILE-FIRST DOMINANCE SYSTEM
+   Touch optimizations & gesture support
+═══════════════════════════════════════════════════════════════════════════════ */
+
+/* Touch manipulation - prevent unwanted behaviors */
+.touch-manipulation {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  user-select: none;
+}
+
+/* Thumb zone optimization */
+.thumb-zone-easy {
+  padding: 12px 24px;
+}
+
+.thumb-zone-hard {
+  padding: 16px 28px;
+  margin-top: -4px; /* Slightly larger touch target */
+}
+
+/* Touch ripple container */
+.touch-ripple-container {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Mobile tap feedback */
+@media (hover: none) and (pointer: coarse) {
+  .mobile-tap-feedback {
+    transition: transform 0.1s ease, background-color 0.1s ease;
+  }
+  
+  .mobile-tap-feedback:active {
+    transform: scale(0.97);
+    background-color: rgba(168, 85, 247, 0.1);
+  }
+}
+
+/* Swipe hint animation */
+@keyframes swipeHint {
+  0%, 100% { transform: translateX(0); opacity: 0.3; }
+  50% { transform: translateX(10px); opacity: 0.7; }
+}
+
+.swipe-hint {
+  animation: swipeHint 2s ease-in-out infinite;
+}
+
+.swipe-hint-left {
+  animation: swipeHint 2s ease-in-out infinite reverse;
+}
+
+/* Gesture progress indicator */
+.gesture-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #6366f1, #d946ef);
+  transition: width 0.1s ease;
+}
+
+/* Pull-to-refresh visual */
+.pull-indicator {
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+[data-pull-progress] .pull-indicator {
+  transform: rotate(calc(var(--pull-progress, 0) * 360deg));
+  opacity: var(--pull-progress, 0);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   🎬 MOTION HIERARCHY LAYERS
+   Primary (Attention) → Secondary (Feedback) → Tertiary (Ambient)
+═══════════════════════════════════════════════════════════════════════════════ */
+
+/* Primary motion - Fast, decisive, attention-grabbing */
+.motion-primary {
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Secondary motion - Responsive, confirming */
+.motion-secondary {
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Tertiary motion - Slow, atmospheric */
+.motion-tertiary {
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Ambient float - Background life */
+@keyframes ambientFloat {
+  0%, 100% { 
+    transform: translateY(0) rotate(0deg); 
+  }
+  25% { 
+    transform: translateY(-5px) rotate(0.5deg); 
+  }
+  75% { 
+    transform: translateY(3px) rotate(-0.5deg); 
+  }
+}
+
+.ambient-float {
+  animation: ambientFloat 8s ease-in-out infinite;
+}
+
+.ambient-float-delayed {
+  animation: ambientFloat 8s ease-in-out infinite;
+  animation-delay: -4s;
+}
+
+/* Reduced motion - respect user preferences */
+@media (prefers-reduced-motion: reduce) {
+  .motion-primary,
+  .motion-secondary,
+  .motion-tertiary,
+  .ambient-float,
+  .ambient-float-delayed {
+    transition: none !important;
+    animation: none !important;
+  }
+  
+  .interaction-approach,
+  [data-interaction-phase],
+  .anticipatory-border::before,
+  .velocity-text,
+  .directional-reveal,
+  .momentum-carry,
+  .hesitation-aware {
+    transition: opacity 0.3s ease !important;
+    transform: none !important;
+    animation: none !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   ✨ MICRO-INTERACTION BELOW CONSCIOUSNESS
+   Subtle effects users feel but don't notice
+═══════════════════════════════════════════════════════════════════════════════ */
+
+/* Subtle hover lift - almost imperceptible */
+.micro-lift:hover {
+  transform: translateY(-1px);
+  transition: transform 0.2s ease;
+}
+
+/* Breathing opacity - alive but not distracting */
+@keyframes microBreath {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.97; }
+}
+
+.micro-breath {
+  animation: microBreath 4s ease-in-out infinite;
+}
+
+/* Focus shimmer - draws eye subtly */
+@keyframes microShimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.micro-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.02) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: microShimmer 8s linear infinite;
+}
+
+/* Entry angle glow - glow follows approach direction */
+.angle-glow {
+  position: relative;
+}
+
+.angle-glow::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    circle at var(--glow-x, 50%) var(--glow-y, 50%),
+    rgba(168, 85, 247, 0.15),
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.angle-glow:hover::after {
+  opacity: 1;
+}
+
+/* Dwell time reward - longer hover = more effect */
+.dwell-reward {
+  --dwell-scale: 1;
+  transform: scale(var(--dwell-scale));
+  transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Exit velocity memory - fast exit = different animation */
+.exit-memory {
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.exit-memory[data-exit-velocity="fast"] {
+  transition: all 0.2s ease-out;
+}
+
+/* Idle sparkle reward */
+@keyframes idleSparkle {
+  0%, 100% { opacity: 0; transform: scale(0); }
+  50% { opacity: 1; transform: scale(1); }
+}
+
+.idle-sparkle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #a855f7;
+  border-radius: 50%;
+  animation: idleSparkle 2s ease-in-out infinite;
+  box-shadow: 0 0 10px 2px rgba(168, 85, 247, 0.5);
+}
+
+/* Perceived performance - loading feels intentional */
+@keyframes intentionalLoad {
+  0% { 
+    opacity: 0;
+    filter: blur(10px);
+    transform: scale(0.95);
+  }
+  60% {
+    opacity: 1;
+    filter: blur(0);
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.intentional-load {
+  animation: intentionalLoad 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+/* Skeleton pulse - premium loading state */
+@keyframes premiumPulse {
+  0%, 100% {
+    background-position: -200% 0;
+  }
+  50% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton-premium {
+  background: linear-gradient(
+    90deg,
+    rgba(30, 27, 75, 0.3) 0%,
+    rgba(99, 102, 241, 0.1) 50%,
+    rgba(30, 27, 75, 0.3) 100%
+  );
+  background-size: 200% 100%;
+  animation: premiumPulse 2s ease-in-out infinite;
+  border-radius: 8px;
+}

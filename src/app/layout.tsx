@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 import { ScrollProgress } from '@/components/AnimationEffects'
 import CustomCursor from '@/components/CustomCursor'
+import { InteractionProvider } from '@/lib/InteractionIntelligence'
 
 export const metadata: Metadata = {
   title: {
@@ -138,20 +139,22 @@ export default function RootLayout({
         />
       </head>
       <body className="antialiased">
-        {/* Elite UI Effects */}
-        <CustomCursor />
-        <ScrollProgress />
-        
-        {/* Background Effects */}
-        <div className="bg-animated">
-          <div className="orb orb-1"></div>
-          <div className="orb orb-2"></div>
-          <div className="orb orb-3"></div>
-        </div>
-        <div className="grid-bg"></div>
-        <div className="noise"></div>
-        
-        {children}
+        <InteractionProvider>
+          {/* Elite UI Effects */}
+          <CustomCursor />
+          <ScrollProgress />
+          
+          {/* Background Effects */}
+          <div className="bg-animated">
+            <div className="orb orb-1"></div>
+            <div className="orb orb-2"></div>
+            <div className="orb orb-3"></div>
+          </div>
+          <div className="grid-bg"></div>
+          <div className="noise"></div>
+          
+          {children}
+        </InteractionProvider>
       </body>
     </html>
   )

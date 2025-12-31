@@ -1,7 +1,7 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
-import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
+import { useEffect, useRef, useState, useCallback } from 'react'
+import { motion, AnimatePresence, useScroll, useTransform, useSpring, useMotionValue } from 'framer-motion'
 import { TypeAnimation } from 'react-type-animation'
 import { 
   ChevronDown, 
@@ -25,6 +25,21 @@ import {
 } from 'lucide-react'
 import { MagneticButton, BlurReveal } from './AnimationEffects'
 import { Card3D, SmoothCounter } from './EliteEffects'
+import { useInteraction, ProximityAware } from '@/lib/InteractionIntelligence'
+import { 
+  AnticipatoryCTA, 
+  MultiPhaseCard, 
+  AmbientMotion,
+  SparkleOnIdle 
+} from './AdvancedInteractions'
+import { 
+  AttentionMagnet, 
+  CursorGradient, 
+  AmbientWave,
+  DirectionalReveal,
+  VelocityStagger,
+  MomentumCarry 
+} from './MotionHierarchy'
 
 // All images with numbers
 const heroImages = [
@@ -72,11 +87,49 @@ export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [isLoaded, setIsLoaded] = useState(false)
+  const { state } = useInteraction()
+  
+  // Interaction-aware state
+  const [interactionPhase, setInteractionPhase] = useState<'initial' | 'engaged' | 'exploring'>('initial')
+  const [heroFocusTime, setHeroFocusTime] = useState(0)
+  
+  // Spring physics for organic motion
+  const heroY = useSpring(0, { stiffness: 100, damping: 20 })
+  const heroBlur = useSpring(0, { stiffness: 150, damping: 25 })
+  const contentOpacity = useSpring(1, { stiffness: 200, damping: 30 })
 
   // Mark as loaded for animations
   useEffect(() => {
     setIsLoaded(true)
+    // Track time spent on hero
+    const interval = setInterval(() => {
+      setHeroFocusTime(prev => prev + 1)
+    }, 1000)
+    return () => clearInterval(interval)
   }, [])
+  
+  // Phase transition based on user behavior
+  useEffect(() => {
+    if (heroFocusTime > 3 && interactionPhase === 'initial') {
+      setInteractionPhase('engaged')
+    }
+    if (state.scroll.depth > 0.1) {
+      setInteractionPhase('exploring')
+    }
+  }, [heroFocusTime, state.scroll.depth, interactionPhase])
+  
+  // Scroll-reactive hero transformation
+  useEffect(() => {
+    // Parallax based on scroll
+    const offset = state.scroll.depth * 100
+    heroY.set(offset * 0.5)
+    
+    // Blur during fast scroll
+    heroBlur.set(state.scroll.velocity > 0.8 ? state.scroll.velocity * 3 : 0)
+    
+    // Fade content when scrolling away
+    contentOpacity.set(1 - state.scroll.depth * 0.5)
+  }, [state.scroll.depth, state.scroll.velocity, heroY, heroBlur, contentOpacity])
 
   // Auto-slide images every 4 seconds - seamless transition
   useEffect(() => {
@@ -109,9 +162,22 @@ export default function Hero() {
       ref={containerRef}
       className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 aurora-bg"
     >
-      {/* Aurora Glow Orbs */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary-500/20 rounded-full blur-3xl animate-pulse" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+      {/* Interaction-Aware Background Gradient */}
+      <CursorGradient intensity={0.8} />
+      
+      {/* Ambient Wave Layer - Tertiary Motion */}
+      <AmbientWave intensity={0.5} />
+      
+      {/* Sparkle Reward for Idle Users */}
+      <SparkleOnIdle />
+
+      {/* Aurora Glow Orbs - React to Scroll */}
+      <MomentumCarry sensitivity={0.3}>
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary-500/20 rounded-full blur-3xl animate-pulse" />
+      </MomentumCarry>
+      <MomentumCarry sensitivity={0.5}>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+      </MomentumCarry>
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-500/10 rounded-full blur-3xl vegas-glow" />
       
       {/* Matrix-like Code Rain Background */}
@@ -197,27 +263,45 @@ export default function Hero() {
       </div>
 
       <div className="container-custom px-4 md:px-8 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          {/* Content */}
+        <motion.div 
+          className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center"
+          style={{ 
+            y: heroY,
+            filter: useTransform(heroBlur, v => `blur(${v}px)`)
+          }}
+        >
+          {/* Content - With Interaction Awareness */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: [0.6, -0.05, 0.01, 0.99] }}
             className="text-center lg:text-left order-2 lg:order-1"
+            style={{ opacity: contentOpacity }}
           >
-            {/* Badge */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-ultra electric-border mb-6 hover-glow-intense"
-            >
-              <Sparkles className="w-4 h-4 text-primary-400" />
-              <span className="text-sm font-medium text-dark-200">
-                Gandhinagar Institute of Technology | General Secretary
-              </span>
-              <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-            </motion.div>
+            {/* Badge - Attention Magnet */}
+            <AttentionMagnet priority="high" pulseOnIdle>
+              <DirectionalReveal>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 }}
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-ultra electric-border mb-6 hover-glow-intense"
+                >
+                  <Sparkles className="w-4 h-4 text-primary-400" />
+                  <span className="text-sm font-medium text-dark-200">
+                    Gandhinagar Institute of Technology | General Secretary
+                  </span>
+                  <motion.span 
+                    className="w-2 h-2 rounded-full bg-green-500"
+                    animate={{ 
+                      scale: [1, 1.3, 1],
+                      opacity: [1, 0.7, 1]
+                    }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                  />
+                </motion.div>
+              </DirectionalReveal>
+            </AttentionMagnet>
 
             {/* Main Heading - Elite Text Reveal */}
             <motion.h1
@@ -312,35 +396,47 @@ export default function Hero() {
               </span>
             </motion.div>
 
-            {/* CTA Buttons */}
+            {/* CTA Buttons - Anticipatory with Multi-Phase */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8 }}
               className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12"
             >
-              <motion.a
-                href="#projects"
-                className="btn-primary btn-premium group ripple-effect"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <span className="flex items-center justify-center gap-2">
-                  View My Work
-                  <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                </span>
-              </motion.a>
-              <motion.a
-                href="#contact"
-                className="btn-outline btn-premium neumorphic-button"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                Get In Touch
-              </motion.a>
+              <ProximityAware id="hero-cta-primary" approachThreshold={150}>
+                {({ phase, proximity }) => (
+                  <AnticipatoryCTA 
+                    variant="primary"
+                    onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+                    className={`transition-all duration-300 ${phase === 'approaching' ? 'shadow-lg shadow-primary/20' : ''}`}
+                  >
+                    <span className="flex items-center justify-center gap-2">
+                      View My Work
+                      <motion.span
+                        animate={{ x: phase === 'hovering' ? 5 : 0 }}
+                        transition={{ type: 'spring', stiffness: 400 }}
+                      >
+                        <ArrowRight size={18} />
+                      </motion.span>
+                    </span>
+                  </AnticipatoryCTA>
+                )}
+              </ProximityAware>
+              
+              <ProximityAware id="hero-cta-secondary" approachThreshold={150}>
+                {({ phase }) => (
+                  <AnticipatoryCTA 
+                    variant="secondary"
+                    onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                    className={`transition-all duration-300 ${phase === 'approaching' ? 'border-primary/40' : ''}`}
+                  >
+                    Get In Touch
+                  </AnticipatoryCTA>
+                )}
+              </ProximityAware>
             </motion.div>
 
-            {/* Social Links */}
+            {/* Social Links - With Proximity Awareness */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -353,21 +449,42 @@ export default function Hero() {
                 { icon: Twitter, href: 'https://twitter.com/devpatel170521', label: 'Twitter' },
                 { icon: Instagram, href: 'https://instagram.com/devpatel170521', label: 'Instagram' },
               ].map((social, index) => (
-                <motion.a
-                  key={social.label}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-3 rounded-xl glass-premium neumorphic group jelly-hover"
-                  whileHover={{ y: -5, rotate: 5 }}
-                  whileTap={{ scale: 0.9 }}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 1 + index * 0.1, type: "spring", stiffness: 400 }}
-                  aria-label={social.label}
-                >
-                  <social.icon size={20} className="text-dark-300 group-hover:text-primary-400 transition-colors" />
-                </motion.a>
+                <ProximityAware key={social.label} id={`social-${social.label}`} approachThreshold={80}>
+                  {({ phase, approachAngle }) => (
+                    <motion.a
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="relative p-3 rounded-xl glass-premium neumorphic group"
+                      style={{
+                        boxShadow: phase === 'approaching' 
+                          ? `${Math.cos(approachAngle * Math.PI / 180) * -3}px ${Math.sin(approachAngle * Math.PI / 180) * -3}px 15px rgba(168, 85, 247, 0.2)`
+                          : 'none'
+                      }}
+                      whileHover={{ y: -5, rotate: 5 }}
+                      whileTap={{ scale: 0.9 }}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ 
+                        opacity: 1, 
+                        scale: phase === 'approaching' ? 1.05 : 1,
+                      }}
+                      transition={{ delay: 1 + index * 0.1, type: "spring", stiffness: 400 }}
+                      aria-label={social.label}
+                    >
+                      <social.icon size={20} className={`transition-colors duration-200 ${
+                        phase === 'hovering' ? 'text-primary-400' : 
+                        phase === 'approaching' ? 'text-dark-200' : 'text-dark-300'
+                      }`} />
+                      
+                      {/* Anticipatory glow */}
+                      <motion.div
+                        className="absolute inset-0 rounded-xl bg-primary-500/10 pointer-events-none"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: phase === 'approaching' ? 0.5 : phase === 'hovering' ? 1 : 0 }}
+                      />
+                    </motion.a>
+                  )}
+                </ProximityAware>
               ))}
             </motion.div>
           </motion.div>
@@ -499,54 +616,56 @@ export default function Hero() {
               </motion.div>
             </div>
           </motion.div>
-        </div>
-
-        {/* Stats Section - Elite 3D Cards */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.2 }}
-          className="mt-12 md:mt-20 grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6"
-        >
-          {stats.map((stat, index) => (
-            <motion.div
-              key={stat.label}
-              initial={{ opacity: 0, y: 30, scale: 0.9 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ delay: 1.3 + index * 0.15, type: 'spring', stiffness: 100 }}
-              className="relative text-center glass-elite neumorphic rounded-xl md:rounded-2xl p-4 md:p-6 group hover:border-primary-500/30 transition-all duration-500 overflow-hidden elite-float card-lift"
-              style={{ animationDelay: `${index * 0.5}s` }}
-              whileHover={{ scale: 1.08 }}
-              data-cursor-text="View"
-            >
-              {/* Background Icon */}
-              <div className="absolute -right-2 -top-2 opacity-10 group-hover:opacity-30 transition-opacity duration-500">
-                <stat.icon size={60} className="text-primary-500" />
-              </div>
-              
-              {/* Elite border beam */}
-              <div className="absolute inset-0 rounded-xl md:rounded-2xl border-beam-elite opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              
-              <div className="relative z-10">
-                <div className="flex items-center justify-center gap-2 mb-2">
-                  <motion.div
-                    whileHover={{ rotate: 360, scale: 1.2 }}
-                    transition={{ duration: 0.5 }}
-                  >
-                    <stat.icon size={18} className="text-primary-400" />
-                  </motion.div>
-                  <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold gradient-shimmer font-mono">
-                    <SmoothCounter target={parseInt(stat.value)} suffix="+" />
-                  </h3>
-                </div>
-                <p className="text-dark-400 text-xs md:text-sm group-hover:text-dark-300 transition-colors">{stat.label}</p>
-              </div>
-              
-              {/* Hover Shine Effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
-            </motion.div>
-          ))}
         </motion.div>
+
+        {/* Stats Section - Multi-Phase Cards with Velocity Stagger */}
+        <VelocityStagger baseDelay={0.15}>
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.2 }}
+            className="mt-12 md:mt-20 grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6"
+          >
+            {stats.map((stat, index) => (
+              <MultiPhaseCard 
+                key={stat.label}
+                className="text-center rounded-xl md:rounded-2xl p-4 md:p-6 glass-elite"
+                onPhaseChange={(phase) => {
+                  // Could track analytics here
+                }}
+              >
+                <motion.div
+                  initial={{ opacity: 0, y: 30, scale: 0.9 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  transition={{ delay: 1.3 + index * 0.15, type: 'spring', stiffness: 100 }}
+                  className="relative overflow-hidden"
+                >
+                  {/* Background Icon */}
+                  <AmbientMotion intensity="low">
+                    <div className="absolute -right-2 -top-2 opacity-10 group-hover:opacity-30 transition-opacity duration-500">
+                      <stat.icon size={60} className="text-primary-500" />
+                    </div>
+                  </AmbientMotion>
+                  
+                  <div className="relative z-10">
+                    <div className="flex items-center justify-center gap-2 mb-2">
+                      <motion.div
+                        whileHover={{ rotate: 360, scale: 1.2 }}
+                        transition={{ duration: 0.5 }}
+                      >
+                        <stat.icon size={18} className="text-primary-400" />
+                      </motion.div>
+                      <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold gradient-shimmer font-mono">
+                        <SmoothCounter target={parseInt(stat.value)} suffix="+" />
+                      </h3>
+                    </div>
+                    <p className="text-dark-400 text-xs md:text-sm group-hover:text-dark-300 transition-colors">{stat.label}</p>
+                  </div>
+                </motion.div>
+              </MultiPhaseCard>
+            ))}
+          </motion.div>
+        </VelocityStagger>
 
         {/* Terminal-style tagline - Enhanced */}
         <motion.div

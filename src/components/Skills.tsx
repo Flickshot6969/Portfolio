@@ -1,8 +1,8 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, useSpring, useTransform } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import {
   Code2,
   Server,
@@ -26,6 +26,19 @@ import {
 } from 'lucide-react'
 import { TiltCard, StaggerContainer, StaggerItem } from './AnimationEffects'
 import { Card3D, SmoothCounter } from './EliteEffects'
+import { useInteraction, ProximityAware, ScrollAware } from '@/lib/InteractionIntelligence'
+import { 
+  MultiPhaseCard, 
+  ScrollReactiveSection,
+  AmbientMotion 
+} from './AdvancedInteractions'
+import { 
+  AttentionMagnet, 
+  DirectionalReveal,
+  VelocityStagger,
+  SectionAwareness,
+  AmbientWave
+} from './MotionHierarchy'
 
 const skillCategories = [
   {
@@ -98,10 +111,26 @@ const techStack = [
 
 export default function Skills() {
   const [activeCategory, setActiveCategory] = useState('tech')
+  const { state } = useInteraction()
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   })
+  
+  // Scroll-reactive springs
+  const sectionScale = useSpring(1, { stiffness: 100, damping: 20 })
+  const sectionOpacity = useSpring(1, { stiffness: 150, damping: 25 })
+  
+  // React to scroll velocity
+  useEffect(() => {
+    if (state.scroll.velocity > 0.5) {
+      sectionScale.set(0.98)
+      sectionOpacity.set(0.9)
+    } else {
+      sectionScale.set(1)
+      sectionOpacity.set(1)
+    }
+  }, [state.scroll.velocity, sectionScale, sectionOpacity])
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -123,13 +152,36 @@ export default function Skills() {
   const activeSkills = skillCategories.find(cat => cat.id === activeCategory)
 
   return (
-    <section id="skills" className="section-padding relative overflow-hidden network-grid">
-      {/* Background Decoration */}
-      <div className="absolute top-1/2 left-0 w-64 sm:w-96 h-64 sm:h-96 bg-primary-500/20 rounded-full blur-3xl -translate-y-1/2 -translate-x-1/2 animate-pulse" />
-      <div className="absolute top-1/2 right-0 w-64 sm:w-96 h-64 sm:h-96 bg-accent-500/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 animate-pulse" style={{ animationDelay: '1.5s' }} />
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-3xl vegas-glow" />
+    <SectionAwareness className="relative">
+      {({ visibility, isEntering, isLeaving, position }) => (
+        <section id="skills" className="section-padding relative overflow-hidden network-grid">
+          {/* Ambient Wave - Tertiary Motion */}
+          <AmbientWave intensity={visibility * 0.5} />
+          
+          {/* Background Decoration - React to Visibility */}
+          <motion.div 
+            className="absolute top-1/2 left-0 w-64 sm:w-96 h-64 sm:h-96 bg-primary-500/20 rounded-full blur-3xl -translate-y-1/2 -translate-x-1/2"
+            animate={{ 
+              scale: isEntering ? [0.8, 1.1, 1] : 1,
+              opacity: visibility * 0.8
+            }}
+            transition={{ duration: 1 }}
+          />
+          <motion.div 
+            className="absolute top-1/2 right-0 w-64 sm:w-96 h-64 sm:h-96 bg-accent-500/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"
+            animate={{ 
+              scale: isEntering ? [0.8, 1.1, 1] : 1,
+              opacity: visibility * 0.8
+            }}
+            transition={{ duration: 1, delay: 0.2 }}
+          />
+          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-3xl vegas-glow" />
 
-      <div className="container-custom relative z-10" ref={ref}>
+          <motion.div 
+            className="container-custom relative z-10" 
+            ref={ref}
+            style={{ scale: sectionScale, opacity: sectionOpacity }}
+          >
         {/* Section Header - Elite */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -357,7 +409,9 @@ export default function Skills() {
             </div>
           </div>
         </motion.div>
-      </div>
-    </section>
+          </motion.div>
+        </section>
+      )}
+    </SectionAwareness>
   )
 }
