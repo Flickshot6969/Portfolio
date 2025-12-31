@@ -9,6 +9,8 @@
   --gradient-dark: linear-gradient(135deg, #0f172a, #1e1b4b, #312e81);
   --glass-bg: rgba(255, 255, 255, 0.05);
   --glass-border: rgba(255, 255, 255, 0.1);
+  --neumorphic-light: rgba(255, 255, 255, 0.05);
+  --neumorphic-dark: rgba(0, 0, 0, 0.5);
 }
 
 * {
@@ -27,6 +29,24 @@ body {
   color: #f1f5f9;
   font-family: 'Inter', system-ui, sans-serif;
   overflow-x: hidden;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   🎬 CINEMATIC PAGE LOAD ANIMATION
+═══════════════════════════════════════════════════════════════════════════════ */
+@keyframes pageReveal {
+  0% {
+    opacity: 0;
+    filter: blur(20px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+body {
+  animation: pageReveal 1s ease-out forwards;
 }
 
 /* Custom Scrollbar */
@@ -51,6 +71,45 @@ body {
 ::selection {
   background: rgba(99, 102, 241, 0.3);
   color: #fff;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   🔮 NEUMORPHISM EFFECTS - Premium Depth
+═══════════════════════════════════════════════════════════════════════════════ */
+.neumorphic {
+  background: linear-gradient(145deg, #0a0f1a, #0d1321);
+  box-shadow: 
+    8px 8px 20px rgba(0, 0, 0, 0.6),
+    -8px -8px 20px rgba(30, 41, 59, 0.2),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+  border: none;
+}
+
+.neumorphic-inset {
+  background: linear-gradient(145deg, #080c14, #0a1018);
+  box-shadow: 
+    inset 5px 5px 15px rgba(0, 0, 0, 0.5),
+    inset -5px -5px 15px rgba(30, 41, 59, 0.15);
+}
+
+.neumorphic-button {
+  background: linear-gradient(145deg, #1e293b, #0f172a);
+  box-shadow: 
+    5px 5px 15px rgba(0, 0, 0, 0.5),
+    -5px -5px 15px rgba(51, 65, 85, 0.1);
+  transition: all 0.3s ease;
+}
+
+.neumorphic-button:hover {
+  box-shadow: 
+    2px 2px 8px rgba(0, 0, 0, 0.5),
+    -2px -2px 8px rgba(51, 65, 85, 0.1);
+}
+
+.neumorphic-button:active {
+  box-shadow: 
+    inset 3px 3px 10px rgba(0, 0, 0, 0.5),
+    inset -3px -3px 10px rgba(51, 65, 85, 0.1);
 }
 
 /* Glass Effect */
@@ -620,3 +679,1911 @@ body {
     padding-bottom: 2rem !important;
   }
 }
+
+/* Technical Theme Enhancements */
+.tech-grid-bg {
+  background-image: 
+    linear-gradient(rgba(99, 102, 241, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(99, 102, 241, 0.03) 1px, transparent 1px),
+    radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.05) 0%, transparent 50%);
+  background-size: 40px 40px, 40px 40px, 100% 100%;
+}
+
+/* Animated spinning border */
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 8s linear infinite;
+}
+
+/* Scanline effect */
+@keyframes scan {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+.animate-scan {
+  animation: scan 3s linear infinite;
+}
+
+/* Terminal cursor blink */
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.animate-cursor {
+  animation: cursor-blink 1s step-end infinite;
+}
+
+/* Glitch effect for tech vibe */
+@keyframes glitch {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+  100% { transform: translate(0); }
+}
+
+.glitch-hover:hover {
+  animation: glitch 0.3s ease infinite;
+}
+
+/* Code block styling */
+.code-block {
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 27, 75, 0.9) 100%);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  border-radius: 0.75rem;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Neon text effect */
+.neon-text {
+  text-shadow: 
+    0 0 5px currentColor,
+    0 0 10px currentColor,
+    0 0 20px currentColor,
+    0 0 40px currentColor;
+}
+
+/* Holographic effect */
+@keyframes holographic {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.holographic {
+  background: linear-gradient(
+    90deg,
+    #6366f1,
+    #8b5cf6,
+    #d946ef,
+    #06b6d4,
+    #6366f1
+  );
+  background-size: 200% 200%;
+  animation: holographic 3s ease infinite;
+}
+
+/* Circuit pattern */
+.circuit-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0v30M0 30h60M30 30v30' stroke='%236366f1' stroke-opacity='0.1' fill='none'/%3E%3Ccircle cx='30' cy='30' r='3' fill='%236366f1' fill-opacity='0.1'/%3E%3C/svg%3E");
+}
+
+/* Data flow animation */
+@keyframes data-flow {
+  0% { stroke-dashoffset: 1000; }
+  100% { stroke-dashoffset: 0; }
+}
+
+.data-flow {
+  stroke-dasharray: 10 5;
+  animation: data-flow 20s linear infinite;
+}
+
+/* Resume Section Styles */
+.resume-section {
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 27, 75, 0.95) 100%);
+}
+
+.resume-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.3s ease;
+}
+
+.resume-card:hover {
+  border-color: rgba(99, 102, 241, 0.3);
+  transform: translateY(-2px);
+}
+
+.timeline-connector {
+  position: relative;
+}
+
+.timeline-connector::before {
+  content: '';
+  position: absolute;
+  left: 1.5rem;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, #6366f1, #d946ef);
+}
+
+.timeline-dot-resume {
+  width: 12px;
+  height: 12px;
+  background: linear-gradient(135deg, #6366f1, #d946ef);
+  border-radius: 50%;
+  position: relative;
+  z-index: 10;
+  box-shadow: 0 0 15px rgba(99, 102, 241, 0.5);
+}
+
+/* Pulse ring animation */
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.8);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+.pulse-ring::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border: 2px solid rgba(99, 102, 241, 0.5);
+  border-radius: 50%;
+  animation: pulse-ring 2s ease-out infinite;
+}
+
+/* Print Styles */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  
+  .glass-card {
+    background: white !important;
+    border: 1px solid #e5e7eb !important;
+    box-shadow: none !important;
+  }
+  
+  .gradient-text {
+    background: none !important;
+    -webkit-text-fill-color: #6366f1 !important;
+    color: #6366f1 !important;
+  }
+  
+  nav, .scroll-indicator, button {
+    display: none !important;
+  }
+}
+
+/* Impressive Hover Effects */
+.hover-lift {
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.hover-lift:hover {
+  transform: translateY(-10px) scale(1.02);
+}
+
+/* Spotlight Effect */
+.spotlight-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.spotlight-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.spotlight-card:hover::before {
+  left: 100%;
+}
+
+/* Magnetic Button Effect */
+.magnetic-btn {
+  transition: transform 0.3s ease;
+}
+
+/* Text Reveal Animation */
+@keyframes text-reveal {
+  0% {
+    clip-path: inset(0 100% 0 0);
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+.text-reveal {
+  animation: text-reveal 1s ease forwards;
+}
+
+/* Floating Animation */
+@keyframes float-smooth {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-10px) rotate(1deg);
+  }
+  75% {
+    transform: translateY(5px) rotate(-1deg);
+  }
+}
+
+.float-smooth {
+  animation: float-smooth 6s ease-in-out infinite;
+}
+
+/* Border Beam Animation */
+@keyframes border-beam {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.border-beam {
+  background: linear-gradient(90deg, #6366f1, #8b5cf6, #d946ef, #8b5cf6, #6366f1);
+  background-size: 200% 200%;
+  animation: border-beam 3s ease infinite;
+}
+
+/* Glow Pulse */
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(99, 102, 241, 0.8), 0 0 60px rgba(139, 92, 246, 0.4);
+  }
+}
+
+.glow-pulse {
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+/* Shake Animation for Attention */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px) rotate(-1deg); }
+  75% { transform: translateX(5px) rotate(1deg); }
+}
+
+.shake-hover:hover {
+  animation: shake 0.5s ease;
+}
+
+/* Morphing Background */
+@keyframes morph {
+  0%, 100% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+  50% {
+    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+  }
+}
+
+.morph-bg {
+  animation: morph 8s ease-in-out infinite;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   🚀 ULTRA PREMIUM UI/UX EFFECTS - WORLD CLASS ANIMATIONS
+   Beyond Senior Developer Imagination
+═══════════════════════════════════════════════════════════════════════════════ */
+
+/* ═════════════════════════════════════════════════════════════════════════════
+   🌌 AURORA BOREALIS EFFECT - Mesmerizing Northern Lights
+═════════════════════════════════════════════════════════════════════════════ */
+@keyframes aurora {
+  0%, 100% {
+    background-position: 0% 50%, 100% 50%, 50% 100%;
+    filter: hue-rotate(0deg);
+  }
+  25% {
+    background-position: 100% 50%, 0% 50%, 50% 0%;
+  }
+  50% {
+    background-position: 50% 100%, 50% 0%, 0% 50%;
+    filter: hue-rotate(45deg);
+  }
+  75% {
+    background-position: 0% 0%, 100% 100%, 100% 50%;
+  }
+}
+
+.aurora-bg {
+  background: 
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(99, 102, 241, 0.4), transparent),
+    radial-gradient(ellipse 60% 40% at 20% 60%, rgba(139, 92, 246, 0.3), transparent),
+    radial-gradient(ellipse 60% 40% at 80% 60%, rgba(6, 182, 212, 0.3), transparent),
+    radial-gradient(ellipse 50% 30% at 50% 100%, rgba(217, 70, 239, 0.2), transparent);
+  animation: aurora 15s ease-in-out infinite;
+}
+
+/* ═════════════════════════════════════════════════════════════════════════════
+   ✨ PARTICLE FIELD - Floating Cosmic Particles
+═════════════════════════════════════════════════════════════════════════════ */
+@keyframes particle-float {
+  0%, 100% {
+    transform: translateY(0) translateX(0) scale(1);
+    opacity: 0.3;
+  }
+  25% {
+    transform: translateY(-30px) translateX(15px) scale(1.1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateY(-50px) translateX(-10px) scale(0.9);
+    opacity: 0.5;
+  }
+  75% {
+    transform: translateY(-20px) translateX(-20px) scale(1.05);
+    opacity: 0.8;
+  }
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 1) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: particle-float 8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.particle:nth-child(2n) { animation-delay: -2s; animation-duration: 10s; }
+.particle:nth-child(3n) { animation-delay: -4s; animation-duration: 12s; }
+.particle:nth-child(5n) { animation-delay: -1s; animation-duration: 9s; }
+.particle:nth-child(7n) { animation-delay: -3s; animation-duration: 11s; }
+
+/* ═════════════════════════════════════════════════════════════════════════════
+   🎭 3D CARD TRANSFORMS - Premium Depth Effects
+═════════════════════════════════════════════════════════════════════════════ */
+.perspective-container {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+.card-3d {
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+.card-3d:hover {
+  transform: rotateY(5deg) rotateX(-5deg) translateZ(30px);
+  box-shadow: 
+    -20px 20px 60px rgba(0, 0, 0, 0.4),
+    inset 0 0 60px rgba(99, 102, 241, 0.1);
+}
+
+.card-3d::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.5), rgba(217, 70, 239, 0.5), rgba(6, 182, 212, 0.5));
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  filter: blur(15px);
+}
+
+.card-3d:hover::before {
+  opacity: 1;
+}
+
+/* ═════════════════════════════════════════════════════════════════════════════
+   🧲 MAGNETIC CURSOR EFFECT - Interactive Follow
+═════════════════════════════════════════════════════════════════════════════ */
+.magnetic-element {
+  transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  will-change: transform;
+}
+
+.magnetic-glow {
+  position: relative;
+}
+
+.magnetic-glow::after {
+  content: '';
+  position: absolute;
+  inset: -50%;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.magnetic-glow:hover::after {
+  opacity: 1;
+}
+
+/* ═════════════════════════════════════════════════════════════════════════════
+   🌊 LIQUID MORPHING BUTTON - Organic Shape Shifts
+═════════════════════════════════════════════════════════════════════════════ */
+@keyframes liquid-morph {
+  0%, 100% {
+    border-radius: 60% 40% 50% 50% / 50% 50% 40% 60%;
+  }
+  20% {
+    border-radius: 40% 60% 60% 40% / 60% 40% 60% 40%;
+  }
+  40% {
+    border-radius: 50% 50% 40% 60% / 40% 60% 50% 50%;
+  }
+  60% {
+    border-radius: 60% 40% 50% 50% / 50% 50% 60% 40%;
+  }
+  80% {
+    border-radius: 40% 60% 40% 60% / 60% 40% 50% 50%;
+  }
+}
+
+.liquid-btn {
+  position: relative;
+  overflow: hidden;
+  animation: liquid-morph 8s ease-in-out infinite;
+  transition: all 0.4s ease;
+}
+
+.liquid-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+}
+
+.liquid-btn:hover::before {
+  width: 300%;
+  height: 300%;
+}
+
+/* ═════════════════════════════════════════════════════════════════════════════
+   💎 GLASSMORPHISM ULTRA - Next-Gen Glass Effects
+═════════════════════════════════════════════════════════════════════════════ */
+.glass-ultra {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.05) 50%,
+    rgba(255, 255, 255, 0.025) 100%
+  );
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+}
+
+.glass-frost {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.15) 0%,
+    rgba(255, 255, 255, 0.08) 100%
+  );
+  backdrop-filter: blur(40px) brightness(1.1);
+  -webkit-backdrop-filter: blur(40px) brightness(1.1);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+/* ═════════════════════════════════════════════════════════════════════════════
+   ⚡ ELECTRIC BORDER - Animated Energy Border
+═════════════════════════════════════════════════════════════════════════════ */
+@keyframes electric-flow {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 200% 0%;
+  }
+}
+
+.electric-border {
+  position: relative;
+  isolation: isolate;
+}
+
+.electric-border::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #6366f1,
+    #8b5cf6,
+    #d946ef,
+    #06b6d4,
+    #6366f1,
+    transparent
+  );
+  background-size: 200% 100%;
+  border-radius: inherit;
+  z-index: -1;
+  animation: electric-flow 3s linear infinite;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.electric-border:hover::before {
+  opacity: 1;
+}
+
+.electric-border::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: inherit;
+  border-radius: inherit;
+  z-index: -1;
+}
+
+/* ═════════════════════════════════════════════════════════════════════════════
+   🎨 GRADIENT MESH - Complex Animated Gradients
+═════════════════════════════════════════════════════════════════════════════ */
+@keyframes gradient-mesh {
+  0%, 100% {
+    background-position: 0% 0%, 100% 100%, 0% 100%;
+  }
+  25% {
+    background-position: 100% 0%, 0% 100%, 100% 0%;
+  }
+  50% {
+    background-position: 100% 100%, 0% 0%, 50% 50%;
+  }
+  75% {
+    background-position: 0% 100%, 100% 0%, 0% 0%;
+  }
+}
+
+.gradient-mesh {
+  background: 
+    radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.3) 0%, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(217, 70, 239, 0.3) 0%, transparent 50%),
+    radial-gradient(at 0% 100%, rgba(6, 182, 212, 0.3) 0%, transparent 50%);
+  background-size: 100% 100%;
+  animation: gradient-mesh 15s ease infinite;
+}
+
+/* ═════════════════════════════════════════════════════════════════════════════
+   📜 TEXT SCRAMBLE EFFECT - Matrix-Style Text
+═════════════════════════════════════════════════════════════════════════════ */
+@keyframes text-flicker {
+  0%, 100% { opacity: 1; }
+  33% { opacity: 0.95; }
+  66% { opacity: 0.98; }
+}
+
+.text-scramble {
+  animation: text-flicker 0.1s infinite;
+}
+
+.typewriter {
+  overflow: hidden;
+  border-right: 3px solid rgba(99, 102, 241, 0.8);
+  white-space: nowrap;
+  animation: 
+    typing 3s steps(40, end) forwards,
+    blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: rgba(99, 102, 241, 0.8); }
+}
+
+/* ═════════════════════════════════════════════════════════════════════════════
+   🔮 HOLOGRAM EFFECT - Futuristic Holographic Display
+═════════════════════════════════════════════════════════════════════════════ */
+@keyframes hologram-scan {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 0% 100%;
+  }
+}
+
+.hologram {
+  position: relative;
+  overflow: hidden;
+}
+
+.hologram::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(255, 255, 255, 0.01) 3px,
+    rgba(255, 255, 255, 0.01) 6px
+  );
+  pointer-events: none;
+  animation: hologram-scan 10s linear infinite;
+}
+
+.hologram::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  animation: hologram-shine 5s ease-in-out infinite;
+}
+
+@keyframes hologram-shine {
+  0%, 100% { left: -100%; }
+  50% { left: 150%; }
+}
+
+/* ═════════════════════════════════════════════════════════════════════════════
+   🎪 CIRCUS LIGHTS - Vegas-Style Animated Glow
+═════════════════════════════════════════════════════════════════════════════ */
+@keyframes vegas-glow {
+  0%, 100% {
+    box-shadow: 
+      0 0 5px rgba(99, 102, 241, 0.8),
+      0 0 10px rgba(99, 102, 241, 0.6),
+      0 0 20px rgba(99, 102, 241, 0.4),
+      0 0 40px rgba(99, 102, 241, 0.2);
+  }
+  25% {
+    box-shadow: 
+      0 0 5px rgba(217, 70, 239, 0.8),
+      0 0 10px rgba(217, 70, 239, 0.6),
+      0 0 20px rgba(217, 70, 239, 0.4),
+      0 0 40px rgba(217, 70, 239, 0.2);
+  }
+  50% {
+    box-shadow: 
+      0 0 5px rgba(6, 182, 212, 0.8),
+      0 0 10px rgba(6, 182, 212, 0.6),
+      0 0 20px rgba(6, 182, 212, 0.4),
+      0 0 40px rgba(6, 182, 212, 0.2);
+  }
+  75% {
+    box-shadow: 
+      0 0 5px rgba(139, 92, 246, 0.8),
+      0 0 10px rgba(139, 92, 246, 0.6),
+      0 0 20px rgba(139, 92, 246, 0.4),
+      0 0 40px rgba(139, 92, 246, 0.2);
+  }
+}
+
+.vegas-glow {
+  animation: vegas-glow 4s ease-in-out infinite;
+}
+
+/* ═════════════════════════════════════════════════════════════════════════════
+   🌈 RAINBOW SHIFT - Smooth Color Transitions
+═════════════════════════════════════════════════════════════════════════════ */
+@keyframes rainbow-shift {
+  0% { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(360deg); }
+}
+
+.rainbow-shift {
+  animation: rainbow-shift 10s linear infinite;
+}
+
+.rainbow-border {
+  background: linear-gradient(white, white) padding-box,
+              linear-gradient(90deg, #6366f1, #8b5cf6, #d946ef, #06b6d4, #6366f1) border-box;
+  border: 3px solid transparent;
+  background-size: 100% 100%, 200% 100%;
+  animation: border-beam 3s linear infinite;
+}
+
+/* ═════════════════════════════════════════════════════════════════════════════
+   🎯 FOCUS RING - Accessibility with Style
+═════════════════════════════════════════════════════════════════════════════ */
+.focus-ring-premium:focus-visible {
+  outline: none;
+  box-shadow: 
+    0 0 0 3px rgba(99, 102, 241, 0.4),
+    0 0 0 6px rgba(99, 102, 241, 0.2),
+    0 0 20px rgba(99, 102, 241, 0.3);
+  transition: box-shadow 0.2s ease;
+}
+
+/* ═════════════════════════════════════════════════════════════════════════════
+   🚀 ROCKET LAUNCH - Dramatic Entry Animations
+═════════════════════════════════════════════════════════════════════════════ */
+@keyframes rocket-launch {
+  0% {
+    opacity: 0;
+    transform: translateY(100px) scale(0.8);
+    filter: blur(10px);
+  }
+  50% {
+    opacity: 1;
+    filter: blur(0);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+.rocket-launch {
+  animation: rocket-launch 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes fade-up-blur {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+    filter: blur(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.fade-up-blur {
+  animation: fade-up-blur 0.8s ease-out forwards;
+}
+
+/* ═════════════════════════════════════════════════════════════════════════════
+   💫 SPARKLE EFFECT - Magical Twinkling Stars
+═════════════════════════════════════════════════════════════════════════════ */
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1) rotate(180deg);
+  }
+}
+
+.sparkle-container {
+  position: relative;
+}
+
+.sparkle {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: radial-gradient(circle, #fff 0%, transparent 70%);
+  border-radius: 50%;
+  animation: sparkle 2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.sparkle:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+.sparkle:nth-child(2) { top: 20%; right: 15%; animation-delay: 0.4s; }
+.sparkle:nth-child(3) { bottom: 15%; left: 20%; animation-delay: 0.8s; }
+.sparkle:nth-child(4) { bottom: 25%; right: 10%; animation-delay: 1.2s; }
+.sparkle:nth-child(5) { top: 50%; left: 5%; animation-delay: 1.6s; }
+
+/* ═════════════════════════════════════════════════════════════════════════════
+   🌙 DARK MODE OPTIMIZED - Perfect Contrast
+═════════════════════════════════════════════════════════════════════════════ */
+.dark-optimized {
+  --shadow-color: rgba(0, 0, 0, 0.5);
+  --glow-color: rgba(99, 102, 241, 0.3);
+  --surface-color: rgba(255, 255, 255, 0.05);
+}
+
+/* ═════════════════════════════════════════════════════════════════════════════
+   🎬 CINEMATIC TRANSITIONS - Movie-Quality Animations
+═════════════════════════════════════════════════════════════════════════════ */
+@keyframes cinematic-reveal {
+  0% {
+    clip-path: polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%);
+    opacity: 0;
+  }
+  100% {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+    opacity: 1;
+  }
+}
+
+.cinematic-reveal {
+  animation: cinematic-reveal 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+}
+
+@keyframes wipe-in {
+  0% {
+    clip-path: inset(0 100% 0 0);
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+.wipe-in {
+  animation: wipe-in 0.8s ease-out forwards;
+}
+
+/* ═════════════════════════════════════════════════════════════════════════════
+   🏆 ACHIEVEMENT BADGE - Premium Badge Styling
+═════════════════════════════════════════════════════════════════════════════ */
+.badge-premium {
+  position: relative;
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #d946ef 100%);
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  box-shadow: 
+    0 4px 15px rgba(99, 102, 241, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.badge-premium::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.3), transparent, rgba(255,255,255,0.1));
+  border-radius: inherit;
+  z-index: -1;
+}
+
+/* ═════════════════════════════════════════════════════════════════════════════
+   📊 PROGRESS INDICATORS - Smooth Fill Animations
+═════════════════════════════════════════════════════════════════════════════ */
+@keyframes progress-fill {
+  0% {
+    width: 0%;
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.progress-animated {
+  animation: progress-fill 1.5s ease-out forwards;
+}
+
+.progress-glow {
+  box-shadow: 
+    0 0 10px currentColor,
+    0 0 20px currentColor;
+}
+
+/* ═════════════════════════════════════════════════════════════════════════════
+   🌐 NETWORK GRID - Tech Background Pattern
+═════════════════════════════════════════════════════════════════════════════ */
+.network-grid {
+  background-image:
+    radial-gradient(circle at 25% 25%, rgba(99, 102, 241, 0.1) 2px, transparent 2px),
+    radial-gradient(circle at 75% 75%, rgba(139, 92, 246, 0.1) 2px, transparent 2px),
+    linear-gradient(rgba(99, 102, 241, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(99, 102, 241, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px, 50px 50px, 25px 25px, 25px 25px;
+}
+
+/* ═════════════════════════════════════════════════════════════════════════════
+   🎭 MASK REVEAL - Creative Clip Animations  
+═════════════════════════════════════════════════════════════════════════════ */
+@keyframes mask-reveal-circle {
+  0% {
+    clip-path: circle(0% at 50% 50%);
+  }
+  100% {
+    clip-path: circle(100% at 50% 50%);
+  }
+}
+
+.mask-reveal-circle {
+  animation: mask-reveal-circle 1s ease-out forwards;
+}
+
+@keyframes mask-reveal-diamond {
+  0% {
+    clip-path: polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%);
+  }
+  100% {
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  }
+}
+
+.mask-reveal-diamond {
+  animation: mask-reveal-diamond 0.8s ease-out forwards;
+}
+
+/* ═════════════════════════════════════════════════════════════════════════════
+   🔄 INFINITE SCROLL INDICATOR - Loading States
+═════════════════════════════════════════════════════════════════════════════ */
+@keyframes infinite-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.infinite-scroll {
+  animation: infinite-scroll 20s linear infinite;
+}
+
+/* ═════════════════════════════════════════════════════════════════════════════
+   🎪 CAROUSEL 3D - Premium Slider Effects
+═════════════════════════════════════════════════════════════════════════════ */
+.carousel-3d {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.carousel-item {
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.carousel-item.active {
+  transform: translateZ(100px) scale(1.1);
+  z-index: 10;
+}
+
+.carousel-item.prev,
+.carousel-item.next {
+  transform: translateZ(-100px) rotateY(45deg) scale(0.8);
+  opacity: 0.5;
+}
+
+/* ═════════════════════════════════════════════════════════════════════════════
+   💡 INTERACTIVE HOVER STATES - Micro-Interactions
+═════════════════════════════════════════════════════════════════════════════ */
+.hover-expand {
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.hover-expand:hover {
+  transform: scale(1.05);
+  z-index: 10;
+}
+
+.hover-glow-intense:hover {
+  box-shadow: 
+    0 0 30px rgba(99, 102, 241, 0.6),
+    0 0 60px rgba(139, 92, 246, 0.4),
+    0 0 90px rgba(217, 70, 239, 0.2);
+}
+
+.hover-float:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* ═════════════════════════════════════════════════════════════════════════════
+   🎨 GRADIENT ANIMATIONS - Living Colors
+═════════════════════════════════════════════════════════════════════════════ */
+@keyframes gradient-wave {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.gradient-wave {
+  background: linear-gradient(
+    -45deg,
+    #6366f1,
+    #8b5cf6,
+    #d946ef,
+    #06b6d4,
+    #6366f1
+  );
+  background-size: 400% 400%;
+  animation: gradient-wave 8s ease infinite;
+}
+
+.gradient-text-animated {
+  background: linear-gradient(
+    90deg,
+    #6366f1,
+    #8b5cf6,
+    #d946ef,
+    #06b6d4,
+    #6366f1
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-wave 4s ease infinite;
+}
+
+/* ═════════════════════════════════════════════════════════════════════════════
+   ⚙️ PERFORMANCE OPTIMIZATIONS
+═════════════════════════════════════════════════════════════════════════════ */
+.gpu-accelerated {
+  transform: translateZ(0);
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ═════════════════════════════════════════════════════════════════════════════
+   📱 RESPONSIVE ANIMATIONS - Mobile Optimized
+═════════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .card-3d:hover {
+    transform: none;
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-5px);
+  }
+  
+  .aurora-bg {
+    animation-duration: 20s;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   🎬 CINEMATIC HERO EFFECTS - Jaw-Dropping First Impression
+═══════════════════════════════════════════════════════════════════════════════ */
+
+/* Epic Text Reveal */
+@keyframes epic-reveal {
+  0% {
+    opacity: 0;
+    transform: translateY(100px) rotateX(-90deg);
+    filter: blur(20px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-10px) rotateX(10deg);
+    filter: blur(0);
+  }
+  100% {
+    transform: translateY(0) rotateX(0);
+  }
+}
+
+.epic-reveal {
+  animation: epic-reveal 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Cinematic Fade Up */
+@keyframes cinematic-fade {
+  0% {
+    opacity: 0;
+    transform: translateY(60px) scale(0.95);
+    filter: blur(10px) brightness(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0) brightness(1);
+  }
+}
+
+.cinematic-fade {
+  animation: cinematic-fade 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+/* Staggered Entrance */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+.stagger-5 { animation-delay: 0.5s; }
+.stagger-6 { animation-delay: 0.6s; }
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   ✨ SATISFYING MICRO-INTERACTIONS
+═══════════════════════════════════════════════════════════════════════════════ */
+
+/* Bouncy Click */
+@keyframes bouncy-press {
+  0% { transform: scale(1); }
+  50% { transform: scale(0.92); }
+  100% { transform: scale(1); }
+}
+
+.bouncy-click:active {
+  animation: bouncy-press 0.2s ease;
+}
+
+/* Satisfying Pop */
+@keyframes satisfying-pop {
+  0% { transform: scale(0); opacity: 0; }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.satisfying-pop {
+  animation: satisfying-pop 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+/* Jelly Wobble */
+@keyframes jelly {
+  0%, 100% { transform: scale(1, 1); }
+  25% { transform: scale(0.95, 1.05); }
+  50% { transform: scale(1.05, 0.95); }
+  75% { transform: scale(0.98, 1.02); }
+}
+
+.jelly-hover:hover {
+  animation: jelly 0.5s ease;
+}
+
+/* Magnetic Pull Effect */
+@keyframes magnetic-pull {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(var(--magnet-x, 0), var(--magnet-y, 0)); }
+}
+
+.magnetic-hover {
+  transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Ripple Effect */
+.ripple-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple-effect::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+}
+
+.ripple-effect:active::after {
+  width: 300%;
+  height: 300%;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   🌊 SMOOTH LOADING ANIMATIONS
+═══════════════════════════════════════════════════════════════════════════════ */
+
+/* Skeleton Loading */
+@keyframes skeleton-pulse {
+  0%, 100% {
+    background-position: 200% 0;
+  }
+  50% {
+    background-position: -200% 0;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.03) 25%,
+    rgba(255, 255, 255, 0.08) 50%,
+    rgba(255, 255, 255, 0.03) 75%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-pulse 2s ease-in-out infinite;
+  border-radius: 8px;
+}
+
+/* Progress Bar Glow */
+@keyframes progress-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px currentColor, 0 0 10px currentColor;
+  }
+  50% {
+    box-shadow: 0 0 20px currentColor, 0 0 30px currentColor, 0 0 40px currentColor;
+  }
+}
+
+.progress-bar-glow {
+  animation: progress-glow 1.5s ease-in-out infinite;
+}
+
+/* Counter Animation */
+@keyframes count-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.count-up {
+  animation: count-up 0.5s ease-out forwards;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   💎 PREMIUM GLASSMORPHISM 2.0
+═══════════════════════════════════════════════════════════════════════════════ */
+
+.glass-premium {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.05) 50%,
+    rgba(255, 255, 255, 0.02) 100%
+  );
+  backdrop-filter: blur(40px) saturate(200%);
+  -webkit-backdrop-filter: blur(40px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.1) inset,
+    0 32px 64px -32px rgba(99, 102, 241, 0.2);
+}
+
+.glass-dark-premium {
+  background: linear-gradient(
+    135deg,
+    rgba(15, 23, 42, 0.9) 0%,
+    rgba(30, 27, 75, 0.8) 100%
+  );
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  box-shadow:
+    0 25px 50px -12px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(99, 102, 241, 0.1) inset;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   🎯 FOCUS STATES - Accessibility with Style
+═══════════════════════════════════════════════════════════════════════════════ */
+
+.focus-glow:focus {
+  outline: none;
+  box-shadow: 
+    0 0 0 3px rgba(99, 102, 241, 0.4),
+    0 0 20px rgba(99, 102, 241, 0.3),
+    0 0 40px rgba(99, 102, 241, 0.1);
+  border-color: rgba(99, 102, 241, 0.5);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   🔄 INFINITE MARQUEE - Smooth Tech Stack Display
+═══════════════════════════════════════════════════════════════════════════════ */
+
+@keyframes marquee-smooth {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.marquee-smooth {
+  animation: marquee-smooth 30s linear infinite;
+}
+
+.marquee-smooth:hover {
+  animation-play-state: paused;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   ⚡ BUTTON STATES - Premium Interactions
+═══════════════════════════════════════════════════════════════════════════════ */
+
+.btn-premium {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.btn-premium::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.btn-premium:hover::before {
+  left: 100%;
+}
+
+.btn-premium:hover {
+  transform: translateY(-3px);
+  box-shadow: 
+    0 10px 40px rgba(99, 102, 241, 0.4),
+    0 0 0 1px rgba(99, 102, 241, 0.2);
+}
+
+.btn-premium:active {
+  transform: translateY(-1px);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   🌟 STAT CARD COUNTER EFFECT
+═══════════════════════════════════════════════════════════════════════════════ */
+
+.stat-number {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+@keyframes number-glow {
+  0%, 100% {
+    text-shadow: 0 0 10px currentColor;
+  }
+  50% {
+    text-shadow: 0 0 20px currentColor, 0 0 40px currentColor;
+  }
+}
+
+.stat-glow {
+  animation: number-glow 2s ease-in-out infinite;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   📱 MOBILE-FIRST ENHANCED UX
+═══════════════════════════════════════════════════════════════════════════════ */
+
+/* Touch Friendly Targets */
+@media (max-width: 768px) {
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Disable heavy animations on mobile for performance */
+  .vegas-glow,
+  .aurora-bg {
+    animation: none;
+  }
+  
+  .glass-ultra {
+    backdrop-filter: blur(10px);
+  }
+  
+  /* Simpler hover states on touch devices */
+  .hover-lift:hover,
+  .hover-expand:hover {
+    transform: none;
+  }
+  
+  /* Faster transitions on mobile */
+  .glass-card-hover {
+    transition-duration: 0.2s;
+  }
+}
+
+/* Smooth Scroll Snap for Mobile */
+@media (max-width: 640px) {
+  .scroll-snap-container {
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .scroll-snap-item {
+    scroll-snap-align: center;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   🎭 MASK ANIMATIONS
+═══════════════════════════════════════════════════════════════════════════════ */
+
+@keyframes reveal-mask {
+  0% {
+    -webkit-mask-position: 0% 0%;
+    mask-position: 0% 0%;
+  }
+  100% {
+    -webkit-mask-position: 100% 100%;
+    mask-position: 100% 100%;
+  }
+}
+
+.mask-reveal {
+  -webkit-mask-image: linear-gradient(
+    -75deg,
+    rgba(0, 0, 0, 0.6) 30%,
+    #000 50%,
+    rgba(0, 0, 0, 0.6) 70%
+  );
+  mask-image: linear-gradient(
+    -75deg,
+    rgba(0, 0, 0, 0.6) 30%,
+    #000 50%,
+    rgba(0, 0, 0, 0.6) 70%
+  );
+  -webkit-mask-size: 200%;
+  mask-size: 200%;
+  animation: reveal-mask 2s linear infinite;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   🔮 FLOATING ELEMENTS
+═══════════════════════════════════════════════════════════════════════════════ */
+
+@keyframes float-gentle {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-15px) rotate(2deg);
+  }
+  66% {
+    transform: translateY(-8px) rotate(-1deg);
+  }
+}
+
+.float-gentle {
+  animation: float-gentle 6s ease-in-out infinite;
+}
+
+@keyframes float-delayed {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.float-delayed-1 { animation: float-delayed 4s ease-in-out infinite; }
+.float-delayed-2 { animation: float-delayed 4s ease-in-out infinite 0.5s; }
+.float-delayed-3 { animation: float-delayed 4s ease-in-out infinite 1s; }
+.float-delayed-4 { animation: float-delayed 4s ease-in-out infinite 1.5s; }
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   💫 SHINE EFFECT - Premium Polish
+═══════════════════════════════════════════════════════════════════════════════ */
+
+@keyframes shine-sweep {
+  0% {
+    left: -100%;
+  }
+  50%, 100% {
+    left: 100%;
+  }
+}
+
+.shine-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.shine-effect::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  animation: shine-sweep 3s ease-in-out infinite;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   🎪 CARD FLIP EFFECT
+═══════════════════════════════════════════════════════════════════════════════ */
+
+.flip-card {
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  backface-visibility: hidden;
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+}
+/* ═══════════════════════════════════════════════════════════════════════════════
+   🌟 ULTRA PREMIUM GLOW EFFECTS
+═══════════════════════════════════════════════════════════════════════════════ */
+
+@keyframes text-shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.text-shimmer {
+  background: linear-gradient(
+    90deg,
+    #6366f1 0%,
+    #a78bfa 25%,
+    #d946ef 50%,
+    #a78bfa 75%,
+    #6366f1 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: text-shimmer 4s linear infinite;
+}
+
+/* Pulsating Glow Ring */
+@keyframes pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 20px rgba(99, 102, 241, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(99, 102, 241, 0);
+  }
+}
+
+.pulse-ring {
+  animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Electric Border Animation */
+@keyframes electric-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.electric-glow {
+  background: linear-gradient(90deg, #6366f1, #8b5cf6, #d946ef, #8b5cf6, #6366f1);
+  background-size: 300% 100%;
+  animation: electric-flow 3s ease infinite;
+}
+
+/* Morphing Blob Background */
+@keyframes morph-blob {
+  0%, 100% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+  25% {
+    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+  }
+  50% {
+    border-radius: 50% 60% 30% 60% / 30% 60% 70% 40%;
+  }
+  75% {
+    border-radius: 60% 40% 60% 30% / 70% 30% 50% 60%;
+  }
+}
+
+.morph-blob {
+  animation: morph-blob 8s ease-in-out infinite;
+}
+
+/* Gradient Border Animation */
+@keyframes border-dance {
+  0% {
+    border-image-source: linear-gradient(0deg, #6366f1, #d946ef);
+  }
+  25% {
+    border-image-source: linear-gradient(90deg, #6366f1, #d946ef);
+  }
+  50% {
+    border-image-source: linear-gradient(180deg, #6366f1, #d946ef);
+  }
+  75% {
+    border-image-source: linear-gradient(270deg, #6366f1, #d946ef);
+  }
+  100% {
+    border-image-source: linear-gradient(360deg, #6366f1, #d946ef);
+  }
+}
+
+/* Smooth Slide Up Reveal */
+@keyframes slide-up-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(60px);
+    filter: blur(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.slide-up-reveal {
+  animation: slide-up-reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Stagger children animation delays */
+.stagger-children > *:nth-child(1) { animation-delay: 0.1s; }
+.stagger-children > *:nth-child(2) { animation-delay: 0.2s; }
+.stagger-children > *:nth-child(3) { animation-delay: 0.3s; }
+.stagger-children > *:nth-child(4) { animation-delay: 0.4s; }
+.stagger-children > *:nth-child(5) { animation-delay: 0.5s; }
+.stagger-children > *:nth-child(6) { animation-delay: 0.6s; }
+
+/* 3D Tilt Effect Enhancement */
+.tilt-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.tilt-3d:hover {
+  transform: perspective(1000px) rotateX(5deg) rotateY(-5deg) translateZ(20px);
+}
+
+/* Neon Text Effect */
+.neon-text {
+  text-shadow:
+    0 0 5px #6366f1,
+    0 0 10px #6366f1,
+    0 0 20px #8b5cf6,
+    0 0 40px #8b5cf6,
+    0 0 80px #d946ef;
+}
+
+/* Glassmorphism with better depth */
+.glass-depth {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.05) 50%,
+    rgba(255, 255, 255, 0.02) 100%
+  );
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow:
+    0 4px 30px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Hover Lift with Shadow */
+.hover-lift-shadow {
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.hover-lift-shadow:hover {
+  transform: translateY(-8px);
+  box-shadow:
+    0 20px 40px rgba(99, 102, 241, 0.3),
+    0 10px 20px rgba(139, 92, 246, 0.2);
+}
+
+/* Magnetic Hover Effect */
+.magnetic {
+  transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Spotlight Effect on Cards */
+.spotlight-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.spotlight-card::before {
+  content: '';
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.3) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+
+.spotlight-card:hover::before {
+  opacity: 1;
+}
+
+/* Smooth Color Transition on Hover */
+.color-shift {
+  transition: all 0.5s ease;
+}
+
+.color-shift:hover {
+  filter: hue-rotate(15deg) brightness(1.1);
+}
+
+/* Breathe Animation */
+@keyframes breathe {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+}
+
+.breathe {
+  animation: breathe 4s ease-in-out infinite;
+}
+
+/* Rainbow Border Glow */
+@keyframes rainbow-border {
+  0% { border-color: #6366f1; box-shadow: 0 0 20px #6366f1; }
+  25% { border-color: #8b5cf6; box-shadow: 0 0 20px #8b5cf6; }
+  50% { border-color: #d946ef; box-shadow: 0 0 20px #d946ef; }
+  75% { border-color: #f472b6; box-shadow: 0 0 20px #f472b6; }
+  100% { border-color: #6366f1; box-shadow: 0 0 20px #6366f1; }
+}
+
+.rainbow-border {
+  border: 2px solid;
+  animation: rainbow-border 4s linear infinite;
+}
+
+/* Typewriter cursor */
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.cursor-blink::after {
+  content: '|';
+  animation: cursor-blink 1s step-end infinite;
+  color: #6366f1;
+}
+
+/* Smooth entrance from left/right */
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.slide-in-left {
+  animation: slide-in-left 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.slide-in-right {
+  animation: slide-in-right 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Focus Glow on Interactive Elements */
+.focus-glow:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 3px rgba(99, 102, 241, 0.5),
+    0 0 20px rgba(99, 102, 241, 0.3);
+}
+
+/* Smooth Button Press */
+.press-effect {
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.press-effect:active {
+  transform: scale(0.95) translateY(2px);
+  box-shadow: none;
+}
+
+/* Loading Dots */
+@keyframes loading-dots {
+  0%, 20% {
+    opacity: 0.2;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  80%, 100% {
+    opacity: 0.2;
+    transform: scale(0.8);
+  }
+}
+
+.loading-dot {
+  animation: loading-dots 1.4s infinite ease-in-out both;
+}
+
+.loading-dot:nth-child(1) { animation-delay: -0.32s; }
+.loading-dot:nth-child(2) { animation-delay: -0.16s; }
+.loading-dot:nth-child(3) { animation-delay: 0; }

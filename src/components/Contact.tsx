@@ -105,9 +105,10 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="section-padding relative overflow-hidden">
+    <section id="contact" className="section-padding relative overflow-hidden aurora-bg">
       {/* Background Effects */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-gradient-to-r from-primary-500/10 to-accent-500/10 rounded-full blur-3xl opacity-50" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-gradient-to-r from-primary-500/15 to-accent-500/15 rounded-full blur-3xl opacity-50 vegas-glow" />
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl animate-pulse" />
       
       <div className="container-custom relative z-10" ref={ref}>
         {/* Section Header */}
@@ -144,8 +145,9 @@ export default function Contact() {
                   key={info.label}
                   href={info.href}
                   variants={itemVariants}
-                  className="flex items-center gap-3 sm:gap-4 glass-card glass-card-hover rounded-lg sm:rounded-xl p-3 sm:p-4 group"
-                  whileHover={{ x: 10 }}
+                  className="flex items-center gap-3 sm:gap-4 glass-premium rounded-lg sm:rounded-xl p-3 sm:p-4 group hover-lift neumorphic jelly-hover"
+                  whileHover={{ x: 10, scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
                 >
                   <div className="p-2 sm:p-3 rounded-lg sm:rounded-xl bg-gradient-to-r from-primary-500/10 to-accent-500/10 group-hover:from-primary-500/20 group-hover:to-accent-500/20 transition-colors">
                     <info.icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary-400" />
@@ -161,7 +163,7 @@ export default function Contact() {
             {/* Quick Message */}
             <motion.div
               variants={itemVariants}
-              className="glass-card rounded-xl sm:rounded-2xl p-4 sm:p-6"
+              className="glass-premium rounded-xl sm:rounded-2xl p-4 sm:p-6 neumorphic shine-effect"
             >
               <h4 className="font-semibold text-white mb-2 sm:mb-3 text-sm sm:text-base">Prefer Quick Communication?</h4>
               <p className="text-dark-400 text-xs sm:text-sm mb-3 sm:mb-4">
@@ -169,8 +171,8 @@ export default function Contact() {
               </p>
               <motion.a
                 href="mailto:devpatel170521@gmail.com"
-                className="inline-flex items-center gap-1.5 sm:gap-2 text-primary-400 font-medium text-xs sm:text-sm"
-                whileHover={{ x: 5 }}
+                className="inline-flex items-center gap-1.5 sm:gap-2 text-primary-400 font-medium text-xs sm:text-sm btn-premium"
+                whileHover={{ x: 5, scale: 1.05 }}
               >
                 Send Direct Email
                 <Send size={12} className="sm:w-[14px] sm:h-[14px]" />
@@ -201,7 +203,7 @@ export default function Contact() {
           >
             <motion.div
               variants={itemVariants}
-              className="glass-card rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8"
+              className="glass-premium rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 neumorphic"
             >
               <h3 className="text-lg sm:text-xl font-bold text-white mb-4 sm:mb-6">Send a Message</h3>
               
@@ -301,9 +303,9 @@ export default function Contact() {
                 <motion.button
                   type="submit"
                   disabled={status === 'loading'}
-                  className="btn-primary w-full flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base py-3 sm:py-4"
-                  whileHover={{ scale: status === 'loading' ? 1 : 1.02 }}
-                  whileTap={{ scale: status === 'loading' ? 1 : 0.98 }}
+                  className="btn-primary btn-premium w-full flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base py-3 sm:py-4 ripple-effect"
+                  whileHover={{ scale: status === 'loading' ? 1 : 1.03 }}
+                  whileTap={{ scale: status === 'loading' ? 1 : 0.95 }}
                 >
                   {status === 'loading' ? (
                     <>

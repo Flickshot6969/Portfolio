@@ -2,44 +2,42 @@
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, Download, ChevronRight } from 'lucide-react'
+import { Menu, X, Download, ChevronRight, FileText } from 'lucide-react'
+import { ActiveSection } from '@/app/page'
 
 const navLinks = [
-  { name: 'Home', href: '#home' },
-  { name: 'About', href: '#about' },
-  { name: 'Skills', href: '#skills' },
-  { name: 'Experience', href: '#experience' },
-  { name: 'Projects', href: '#projects' },
-  { name: 'Certifications', href: '#certifications' },
-  { name: 'Contact', href: '#contact' },
+  { name: 'Home', href: 'home' },
+  { name: 'About', href: 'about' },
+  { name: 'Skills', href: 'skills' },
+  { name: 'Experience', href: 'experience' },
+  { name: 'Resume', href: 'resume' },
+  { name: 'Certifications', href: 'certifications' },
+  { name: 'Contact', href: 'contact' },
 ]
 
-export default function Navbar() {
+interface NavbarProps {
+  activeSection: ActiveSection
+  setActiveSection: (section: ActiveSection) => void
+}
+
+export default function Navbar({ activeSection, setActiveSection }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const [activeSection, setActiveSection] = useState('home')
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50)
-
-      // Update active section based on scroll position
-      const sections = navLinks.map(link => link.href.slice(1))
-      for (const section of sections.reverse()) {
-        const element = document.getElementById(section)
-        if (element) {
-          const rect = element.getBoundingClientRect()
-          if (rect.top <= 150) {
-            setActiveSection(section)
-            break
-          }
-        }
-      }
     }
 
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  const handleNavClick = (href: string) => {
+    setActiveSection(href as ActiveSection)
+    setIsMobileMenuOpen(false)
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
 
   return (
     <>
@@ -49,14 +47,14 @@ export default function Navbar() {
         transition={{ duration: 0.6, ease: [0.6, -0.05, 0.01, 0.99] }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           isScrolled
-            ? 'py-3 glass border-b border-white/5'
+            ? 'py-3 glass-ultra border-b border-white/10'
             : 'py-5 bg-transparent'
         }`}
       >
         <nav className="container-custom flex items-center justify-between px-4 md:px-8">
           {/* Logo */}
-          <motion.a
-            href="#home"
+          <motion.button
+            onClick={() => handleNavClick('home')}
             className="relative group"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -71,32 +69,32 @@ export default function Navbar() {
               whileHover={{ width: '100%' }}
               transition={{ duration: 0.3 }}
             />
-          </motion.a>
+          </motion.button>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-1">
             {navLinks.map((link, index) => (
-              <motion.a
+              <motion.button
                 key={link.name}
-                href={link.href}
+                onClick={() => handleNavClick(link.href)}
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1, duration: 0.5 }}
                 className={`relative px-4 py-2 text-sm font-medium transition-colors duration-300 ${
-                  activeSection === link.href.slice(1)
+                  activeSection === link.href
                     ? 'text-white'
                     : 'text-dark-300 hover:text-white'
                 }`}
               >
                 {link.name}
-                {activeSection === link.href.slice(1) && (
+                {activeSection === link.href && (
                   <motion.div
                     layoutId="activeNav"
                     className="absolute inset-0 rounded-full bg-white/5 -z-10"
                     transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
                   />
                 )}
-              </motion.a>
+              </motion.button>
             ))}
           </div>
 
@@ -105,22 +103,22 @@ export default function Navbar() {
             <motion.a
               href="/Dev_Patel_Resume.pdf"
               download
-              className="flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium text-white border border-white/10 hover:border-primary-500/50 hover:bg-primary-500/10 transition-all duration-300"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium text-white border border-white/10 hover:border-primary-500/50 hover:bg-primary-500/10 transition-all duration-300 btn-premium jelly-hover"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
               <Download size={16} />
-              Resume
+              Download CV
             </motion.a>
-            <motion.a
-              href="#contact"
-              className="flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium text-white bg-gradient-to-r from-primary-600 to-accent-600 hover:from-primary-500 hover:to-accent-500 shadow-lg shadow-primary-500/25 transition-all duration-300"
-              whileHover={{ scale: 1.05 }}
+            <motion.button
+              onClick={() => handleNavClick('contact')}
+              className="flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium text-white bg-gradient-to-r from-primary-600 to-accent-600 hover:from-primary-500 hover:to-accent-500 shadow-lg shadow-primary-500/25 transition-all duration-300 electric-border glow-pulse btn-premium pulse-ring"
+              whileHover={{ scale: 1.05, rotate: 1 }}
               whileTap={{ scale: 0.95 }}
             >
               Let&apos;s Talk
               <ChevronRight size={16} />
-            </motion.a>
+            </motion.button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -154,22 +152,21 @@ export default function Navbar() {
             >
               <div className="flex flex-col gap-1 sm:gap-2">
                 {navLinks.map((link, index) => (
-                  <motion.a
+                  <motion.button
                     key={link.name}
-                    href={link.href}
-                    onClick={() => setIsMobileMenuOpen(false)}
+                    onClick={() => handleNavClick(link.href)}
                     initial={{ opacity: 0, x: 50 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1 }}
-                    className={`flex items-center justify-between px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl text-base sm:text-lg font-medium transition-all duration-300 ${
-                      activeSection === link.href.slice(1)
+                    className={`flex items-center justify-between px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl text-base sm:text-lg font-medium transition-all duration-300 text-left ${
+                      activeSection === link.href
                         ? 'text-white bg-white/5'
                         : 'text-dark-300 hover:text-white hover:bg-white/5'
                     }`}
                   >
                     {link.name}
-                    <ChevronRight size={16} className={`sm:w-[18px] sm:h-[18px] ${activeSection === link.href.slice(1) ? 'text-primary-500' : ''}`} />
-                  </motion.a>
+                    <ChevronRight size={16} className={`sm:w-[18px] sm:h-[18px] ${activeSection === link.href ? 'text-primary-500' : ''}`} />
+                  </motion.button>
                 ))}
               </div>
 
@@ -183,15 +180,14 @@ export default function Navbar() {
                   <Download size={16} className="sm:w-[18px] sm:h-[18px]" />
                   Download Resume
                 </motion.a>
-                <motion.a
-                  href="#contact"
-                  onClick={() => setIsMobileMenuOpen(false)}
+                <motion.button
+                  onClick={() => handleNavClick('contact')}
                   className="flex items-center justify-center gap-2 w-full px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg sm:rounded-xl text-white text-sm sm:text-base bg-gradient-to-r from-primary-600 to-accent-600 shadow-lg shadow-primary-500/25"
                   whileTap={{ scale: 0.95 }}
                 >
                   Let&apos;s Talk
                   <ChevronRight size={16} className="sm:w-[18px] sm:h-[18px]" />
-                </motion.a>
+                </motion.button>
               </div>
             </motion.div>
           </motion.div>

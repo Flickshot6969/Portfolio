@@ -28,48 +28,52 @@ const skillCategories = [
   {
     id: 'tech',
     title: 'Technical Skills',
-    subtitle: 'Development & Engineering',
+    subtitle: 'Development & Cloud',
     icon: Code2,
     color: 'from-blue-500 to-cyan-500',
     skills: [
-      { name: 'React/Next.js', level: 95, icon: Monitor },
-      { name: 'Node.js/Express', level: 90, icon: Server },
-      { name: 'TypeScript', level: 88, icon: Code2 },
-      { name: 'Python', level: 85, icon: Code2 },
-      { name: 'MongoDB/PostgreSQL', level: 85, icon: Database },
-      { name: 'AWS/Cloud Services', level: 82, icon: Cloud },
-      { name: 'Docker/Kubernetes', level: 78, icon: Layers },
-      { name: 'Cybersecurity', level: 80, icon: Shield },
+      { name: 'React/Next.js', level: 90, icon: Monitor },
+      { name: 'Node.js/Express', level: 85, icon: Server },
+      { name: 'TypeScript/JavaScript', level: 88, icon: Code2 },
+      { name: 'Python/Django', level: 82, icon: Code2 },
+      { name: 'MongoDB/MySQL', level: 85, icon: Database },
+      { name: 'AWS Cloud Services', level: 80, icon: Cloud },
+      { name: 'Git/GitHub', level: 90, icon: GitBranch },
+      { name: 'HTML5/CSS3/Tailwind', level: 95, icon: Palette },
     ]
   },
   {
     id: 'leadership',
-    title: 'Leadership Skills',
-    subtitle: 'Team & People Management',
+    title: 'Leadership & Management',
+    subtitle: 'Governance & Team Leadership',
     icon: Users,
     color: 'from-purple-500 to-pink-500',
     skills: [
-      { name: 'Team Building', level: 92, icon: Users },
-      { name: 'Mentorship', level: 90, icon: Lightbulb },
-      { name: 'Strategic Planning', level: 88, icon: Target },
-      { name: 'Communication', level: 95, icon: MessageSquare },
-      { name: 'Decision Making', level: 88, icon: Zap },
-      { name: 'Conflict Resolution', level: 85, icon: Shield },
+      { name: 'Student Governance', level: 95, icon: Target },
+      { name: 'Event Production', level: 95, icon: Zap },
+      { name: 'Team Coordination', level: 92, icon: Users },
+      { name: 'Stakeholder Management', level: 90, icon: MessageSquare },
+      { name: 'Strategic Planning', level: 88, icon: Lightbulb },
+      { name: 'Talent Management', level: 88, icon: Users },
+      { name: 'Budget Management', level: 85, icon: Target },
+      { name: 'Decision Making', level: 90, icon: Shield },
     ]
   },
   {
-    id: 'management',
-    title: 'Product & Project Management',
-    subtitle: 'Delivery & Strategy',
+    id: 'marketing',
+    title: 'Marketing & Customer Service',
+    subtitle: 'Digital Marketing & CX',
     icon: Briefcase,
     color: 'from-orange-500 to-red-500',
     skills: [
-      { name: 'Agile/Scrum', level: 92, icon: GitBranch },
-      { name: 'Product Strategy', level: 88, icon: LineChart },
-      { name: 'Stakeholder Management', level: 90, icon: Users },
-      { name: 'Risk Assessment', level: 85, icon: Shield },
-      { name: 'Resource Planning', level: 87, icon: Target },
-      { name: 'Roadmap Planning', level: 90, icon: Briefcase },
+      { name: 'Digital Marketing (HubSpot)', level: 90, icon: LineChart },
+      { name: 'Social Media Marketing', level: 88, icon: MessageSquare },
+      { name: 'Campaign Management', level: 88, icon: Target },
+      { name: 'Customer Experience', level: 92, icon: Users },
+      { name: 'Content Strategy', level: 85, icon: Lightbulb },
+      { name: 'Brand Marketing', level: 85, icon: Zap },
+      { name: 'CRM & Sales Operations', level: 88, icon: Briefcase },
+      { name: 'Public Communication', level: 92, icon: MessageSquare },
     ]
   }
 ]
@@ -82,11 +86,11 @@ const techStack = [
   { name: 'Python', icon: '🐍' },
   { name: 'AWS', icon: '☁️' },
   { name: 'MongoDB', icon: '🍃' },
-  { name: 'PostgreSQL', icon: '🐘' },
-  { name: 'Docker', icon: '🐳' },
+  { name: 'MySQL', icon: '🐬' },
   { name: 'Git', icon: '📦' },
   { name: 'Figma', icon: '🎨' },
   { name: 'Tailwind', icon: '💨' },
+  { name: 'HubSpot', icon: '🎯' },
 ]
 
 export default function Skills() {
@@ -116,10 +120,11 @@ export default function Skills() {
   const activeSkills = skillCategories.find(cat => cat.id === activeCategory)
 
   return (
-    <section id="skills" className="section-padding relative overflow-hidden">
+    <section id="skills" className="section-padding relative overflow-hidden network-grid">
       {/* Background Decoration */}
-      <div className="absolute top-1/2 left-0 w-64 sm:w-96 h-64 sm:h-96 bg-primary-500/10 rounded-full blur-3xl -translate-y-1/2 -translate-x-1/2" />
-      <div className="absolute top-1/2 right-0 w-64 sm:w-96 h-64 sm:h-96 bg-accent-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+      <div className="absolute top-1/2 left-0 w-64 sm:w-96 h-64 sm:h-96 bg-primary-500/20 rounded-full blur-3xl -translate-y-1/2 -translate-x-1/2 animate-pulse" />
+      <div className="absolute top-1/2 right-0 w-64 sm:w-96 h-64 sm:h-96 bg-accent-500/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 animate-pulse" style={{ animationDelay: '1.5s' }} />
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-3xl vegas-glow" />
 
       <div className="container-custom relative z-10" ref={ref}>
         {/* Section Header */}
@@ -136,8 +141,8 @@ export default function Skills() {
             Skills & <span className="gradient-text">Competencies</span>
           </h2>
           <p className="text-body max-w-2xl mx-auto text-sm sm:text-base px-4 sm:px-0">
-            A comprehensive skill set spanning technical development, team leadership, and product management – 
-            the perfect trifecta for delivering exceptional results.
+            A comprehensive skill set spanning technical development, strategic leadership, and digital marketing – 
+            the perfect combination for delivering exceptional results.
           </p>
         </motion.div>
 
@@ -153,13 +158,13 @@ export default function Skills() {
               key={category.id}
               variants={itemVariants}
               onClick={() => setActiveCategory(category.id)}
-              className={`relative flex items-center gap-2 sm:gap-3 px-3 py-2 sm:px-6 sm:py-4 rounded-xl sm:rounded-2xl transition-all duration-500 ${
+              className={`relative flex items-center gap-2 sm:gap-3 px-3 py-2 sm:px-6 sm:py-4 rounded-xl sm:rounded-2xl transition-all duration-500 bouncy-click ${
                 activeCategory === category.id
-                  ? 'glass-card border-primary-500/50 shadow-lg shadow-primary-500/20'
-                  : 'glass hover:border-white/20'
+                  ? 'glass-premium border-primary-500/50 shadow-lg shadow-primary-500/20 vegas-glow neumorphic'
+                  : 'glass-frost hover:border-white/20 hover-lift jelly-hover'
               }`}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.95 }}
             >
               <div className={`p-1.5 sm:p-2 rounded-lg sm:rounded-xl bg-gradient-to-r ${category.color} ${
                 activeCategory === category.id ? 'opacity-100' : 'opacity-50'
@@ -199,7 +204,8 @@ export default function Skills() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
-              className="glass-card glass-card-hover rounded-xl sm:rounded-2xl p-4 sm:p-6 group"
+              className="glass-premium rounded-xl sm:rounded-2xl p-4 sm:p-6 group card-3d hover-glow-intense perspective-container neumorphic shine-effect"
+              whileHover={{ scale: 1.02, y: -5 }}
             >
               <div className="flex items-center justify-between mb-3 sm:mb-4">
                 <div className="flex items-center gap-2 sm:gap-3">
@@ -208,11 +214,11 @@ export default function Skills() {
                   </div>
                   <h4 className="font-semibold text-white text-sm sm:text-base">{skill.name}</h4>
                 </div>
-                <span className="text-lg sm:text-2xl font-bold gradient-text">{skill.level}%</span>
+                <span className="text-lg sm:text-2xl font-bold gradient-text stat-glow">{skill.level}%</span>
               </div>
               
               {/* Progress Bar */}
-              <div className="h-1.5 sm:h-2 bg-dark-800 rounded-full overflow-hidden">
+              <div className="h-1.5 sm:h-2 bg-dark-800 rounded-full overflow-hidden progress-bar-glow">
                 <motion.div
                   initial={{ width: 0 }}
                   animate={{ width: `${skill.level}%` }}

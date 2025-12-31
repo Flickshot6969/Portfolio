@@ -18,31 +18,31 @@ import {
 const highlights = [
   {
     icon: Target,
-    title: 'Vision-Driven',
-    description: 'Turning ambitious ideas into reality through strategic planning and execution'
+    title: 'General Secretary',
+    description: 'Spearheading student governance at Gandhinagar University, representing 5000+ students'
   },
   {
     icon: Lightbulb,
-    title: 'Innovation Focus',
-    description: 'Constantly exploring new technologies and methodologies to stay ahead'
+    title: 'Event Production Head',
+    description: 'Leading end-to-end execution of dynamic campus events and cultural festivals'
   },
   {
     icon: Users,
-    title: 'Team Leadership',
-    description: 'Building and mentoring high-performing teams to achieve exceptional results'
+    title: 'Marketing Strategist',
+    description: 'Driving brand visibility and digital marketing campaigns with data-driven insights'
   },
   {
     icon: Rocket,
-    title: 'Results Oriented',
-    description: 'Delivering measurable impact through data-driven decision making'
+    title: 'Tech & Leadership',
+    description: 'Pursuing B.Tech at GIT while building web applications with modern technologies'
   }
 ]
 
 const personalInfo = [
   { icon: User, label: 'Name', value: 'Dev Patel' },
-  { icon: MapPin, label: 'Location', value: 'India' },
+  { icon: MapPin, label: 'Location', value: 'Ahmedabad, Gujarat' },
   { icon: Mail, label: 'Email', value: 'devpatel170521@gmail.com' },
-  { icon: Calendar, label: 'Experience', value: '3+ Years' },
+  { icon: Calendar, label: 'Expected Graduation', value: '2027' },
 ]
 
 export default function About() {
@@ -71,9 +71,11 @@ export default function About() {
   }
 
   return (
-    <section id="about" className="section-padding relative overflow-hidden">
+    <section id="about" className="section-padding relative overflow-hidden gradient-mesh">
       {/* Section Background Effect */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary-950/5 to-transparent pointer-events-none" />
+      <div className="absolute top-0 right-0 w-96 h-96 bg-primary-500/10 rounded-full blur-3xl animate-pulse" />
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-accent-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
       
       <div className="container-custom relative z-10" ref={ref}>
         {/* Section Header */}
@@ -112,25 +114,25 @@ export default function About() {
               <div className="absolute -bottom-2 -right-2 sm:-bottom-4 sm:-right-4 w-16 h-16 sm:w-24 sm:h-24 border-r-2 border-b-2 border-accent-500/30 rounded-br-2xl sm:rounded-br-3xl" />
               
               {/* Main Image */}
-              <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden glass-card p-1.5 sm:p-2">
+              <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden glass-premium p-1.5 sm:p-2 card-3d hover-glow-intense neumorphic">
                 <div className="rounded-xl sm:rounded-2xl overflow-hidden">
                   <img
                     src="/media/Images/2.JPG"
                     alt="Dev Patel - Professional"
-                    className="w-full aspect-[4/5] object-cover"
+                    className="w-full aspect-[4/5] object-cover object-top"
+                    style={{ objectPosition: 'center 20%' }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-dark-950/80 via-transparent to-transparent" />
                 </div>
                 
                 {/* Overlay Info Card */}
-                <div className="absolute bottom-3 left-3 right-3 sm:bottom-6 sm:left-6 sm:right-6 glass-card rounded-lg sm:rounded-xl p-3 sm:p-4">
+                <div className="absolute bottom-3 left-3 right-3 sm:bottom-6 sm:left-6 sm:right-6 glass-premium rounded-lg sm:rounded-xl p-3 sm:p-4 bouncy-click">
                   <div className="flex items-center gap-2 sm:gap-3">
                     <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-r from-primary-500 to-accent-500 flex items-center justify-center">
                       <Award className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                     </div>
                     <div>
                       <h4 className="font-semibold text-white text-sm sm:text-base">Dev Patel</h4>
-                      <p className="text-xs sm:text-sm text-dark-300">Technical Leader & Developer</p>
+                      <p className="text-xs sm:text-sm text-dark-300">General Secretary & Tech Leader</p>
                     </div>
                   </div>
                 </div>
@@ -144,7 +146,7 @@ export default function About() {
               >
                 <div className="flex items-center gap-1.5 sm:gap-2">
                   <Heart className="w-4 h-4 sm:w-5 sm:h-5 text-red-500" />
-                  <span className="text-xs sm:text-sm font-medium text-white">Passionate Coder</span>
+                  <span className="text-xs sm:text-sm font-medium text-white">Strategic Leader</span>
                 </div>
               </motion.div>
             </motion.div>
@@ -158,7 +160,8 @@ export default function About() {
                 <motion.div
                   key={info.label}
                   variants={itemVariants}
-                  className="glass-card rounded-lg sm:rounded-xl p-3 sm:p-4 group hover:border-primary-500/30 transition-all duration-300"
+                  className="glass-premium rounded-lg sm:rounded-xl p-3 sm:p-4 group hover:border-primary-500/30 transition-all duration-300 hover-lift neumorphic jelly-hover"
+                  whileHover={{ scale: 1.02 }}
                 >
                   <div className="flex items-start gap-2 sm:gap-3">
                     <div className="p-1.5 sm:p-2 rounded-md sm:rounded-lg bg-primary-500/10 group-hover:bg-primary-500/20 transition-colors">
@@ -188,19 +191,35 @@ export default function About() {
               </h3>
               <div className="space-y-4 text-body">
                 <p>
-                  I&apos;m Dev Patel, a passionate technologist who believes in the power of combining 
-                  <span className="text-primary-400 font-medium"> cutting-edge development skills</span> with 
-                  <span className="text-accent-400 font-medium"> strategic leadership abilities</span>. 
+                  I&apos;m Dev Patel — a{' '}
+                  <span className="text-primary-400 font-medium">visionary student leader</span> and{' '}
+                  <span className="text-accent-400 font-medium">aspiring technologist</span> who believes 
+                  in the transformative power of combining cutting-edge development skills with strategic 
+                  leadership abilities. My journey began with a deep curiosity for technology that evolved 
+                  into a passion for creating real impact.
                 </p>
                 <p>
-                  My journey began with a deep curiosity for technology, which evolved into expertise 
-                  spanning Full Stack Development, Cloud Architecture, and Cybersecurity. But I didn&apos;t 
-                  stop at technical proficiency – I recognized that creating real impact requires 
-                  understanding both the code and the business.
+                  Currently serving as{' '}
+                  <span className="text-primary-400 font-medium">General Secretary</span> at Gandhinagar University, 
+                  I spearhead student governance while concurrently leading{' '}
+                  <span className="text-accent-400 font-medium">Event Production</span> and{' '}
+                  <span className="text-cyan-400 font-medium">Campaign & Marketing</span> divisions. 
+                  As Jazba Head, I orchestrated our flagship cultural festival with 50+ events and 100+ volunteers — 
+                  proving that meticulous planning meets creative execution.
                 </p>
                 <p>
-                  Today, I lead projects from conception to delivery, bridging the gap between 
-                  technical teams and stakeholders, ensuring that innovative solutions meet real-world needs.
+                  My stint as a{' '}
+                  <span className="text-green-400 font-medium">Starbucks Barista</span> wasn&apos;t just about 
+                  crafting beverages — it was a masterclass in customer experience, operational excellence, 
+                  and thriving under pressure. These skills now fuel my approach to both code and leadership.
+                </p>
+                <p>
+                  Pursuing <span className="text-primary-400 font-medium">B.Tech in Computer Science</span> at 
+                  Gandhinagar Institute of Technology (2023-2027), I bridge technical expertise with strategic 
+                  thinking. Certified in <span className="text-cyan-400 font-medium">Cloud Computing (IBM)</span>,{' '}
+                  <span className="text-accent-400 font-medium">Digital Marketing (HubSpot)</span>, and{' '}
+                  <span className="text-primary-400 font-medium">AWS Solutions Architecture</span> — I lead projects 
+                  from conception to delivery, ensuring innovative solutions meet real-world needs.
                 </p>
               </div>
             </motion.div>
@@ -213,8 +232,9 @@ export default function About() {
                   <motion.div
                     key={item.title}
                     variants={itemVariants}
-                    className="glass-card rounded-lg sm:rounded-xl p-3 sm:p-4 group hover:border-primary-500/30 transition-all duration-300"
-                    whileHover={{ scale: 1.02 }}
+                    className="glass-premium rounded-lg sm:rounded-xl p-3 sm:p-4 group hover:border-primary-500/30 transition-all duration-300 neumorphic shine-effect"
+                    whileHover={{ scale: 1.03, y: -3 }}
+                    whileTap={{ scale: 0.98 }}
                   >
                     <div className="flex items-start gap-2 sm:gap-3">
                       <div className="p-1.5 sm:p-2 rounded-md sm:rounded-lg bg-gradient-to-r from-primary-500/10 to-accent-500/10 group-hover:from-primary-500/20 group-hover:to-accent-500/20 transition-colors">
@@ -234,18 +254,18 @@ export default function About() {
             <motion.div variants={itemVariants} className="flex flex-wrap gap-3 sm:gap-4">
               <motion.a
                 href="#skills"
-                className="btn-primary text-sm sm:text-base"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+                className="btn-primary btn-premium text-sm sm:text-base ripple-effect"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
                 <span>Explore My Skills</span>
               </motion.a>
               <motion.a
                 href="/Dev_Patel_Resume.pdf"
                 download
-                className="btn-outline text-sm sm:text-base"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+                className="btn-outline btn-premium neumorphic-button text-sm sm:text-base"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
                 Download Resume
               </motion.a>

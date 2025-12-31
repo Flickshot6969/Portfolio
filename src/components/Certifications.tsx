@@ -16,53 +16,57 @@ import {
 const technicalCertifications = [
   {
     id: 1,
-    title: 'AWS Cloud Practitioner',
-    issuer: 'Amazon Web Services',
-    date: '2023',
+    title: 'Cloud Computing Fundamentals',
+    issuer: 'IBM',
+    date: 'December 2025',
     category: 'Cloud Computing',
-    image: '/media/Certifications/Technical and soft skill certificates/AWS.pdf',
-    description: 'Foundational understanding of AWS Cloud services and architecture.',
-    skills: ['AWS', 'Cloud Architecture', 'Security', 'Networking']
+    image: '/media/Certifications/Technical and soft skill certificates/cloud computing fundamentals ibm.pdf',
+    description: 'Comprehensive understanding of cloud computing principles, services, and IBM Cloud architecture.',
+    skills: ['Cloud Services', 'IBM Cloud', 'Virtualization', 'Cloud Architecture']
   },
   {
     id: 2,
-    title: 'Cloud Computing Fundamentals',
-    issuer: 'IBM',
-    date: '2023',
-    category: 'Cloud Computing',
-    image: '/media/Certifications/Technical and soft skill certificates/cloud computing fundamentals ibm.pdf',
-    description: 'Comprehensive understanding of cloud computing principles and services.',
-    skills: ['Cloud Services', 'IBM Cloud', 'Virtualization', 'DevOps']
+    title: 'Digital Marketing Certification',
+    issuer: 'HubSpot Academy',
+    date: 'December 2025',
+    category: 'Digital Marketing',
+    credentialId: '8268d9048f3b4ff5a4705726ea0376bd',
+    image: '/media/Certifications/Technical and soft skill certificates/digital marketing hubspot.png',
+    description: 'Strategic digital marketing and inbound methodology certification with hands-on campaign management expertise.',
+    skills: ['SEO', 'Content Marketing', 'Social Media Marketing', 'Analytics', 'Campaign Management']
   },
   {
     id: 3,
-    title: 'Cybersecurity Certification',
-    issuer: 'Professional Institute',
-    date: '2023',
-    category: 'Security',
-    image: '/media/Certifications/Technical and soft skill certificates/cyber certification.pdf',
-    description: 'Expertise in cybersecurity practices and threat management.',
-    skills: ['Security', 'Threat Analysis', 'Network Security', 'Compliance']
+    title: 'AWS Solutions Architecture Job Simulation',
+    issuer: 'Forage',
+    date: 'July 2025',
+    category: 'Cloud & AWS',
+    credentialId: 'ftTNijFvh63WZw3CY',
+    image: '/media/Certifications/Technical and soft skill certificates/AWS.pdf',
+    description: 'Practical AWS solutions architecture experience through real-world simulation scenarios.',
+    skills: ['AWS', 'Cloud Architecture', 'Solutions Design', 'Infrastructure']
   },
   {
     id: 4,
-    title: 'Digital Marketing',
-    issuer: 'HubSpot',
-    date: '2023',
-    category: 'Marketing',
-    image: '/media/Certifications/Technical and soft skill certificates/digital marketing hubspot.png',
-    description: 'Strategic digital marketing and inbound methodology.',
-    skills: ['SEO', 'Content Marketing', 'Social Media', 'Analytics']
+    title: 'Deloitte Cyber Security Job Simulation',
+    issuer: 'Forage (Deloitte Australia)',
+    date: 'July 2025',
+    category: 'Cybersecurity',
+    credentialId: 'ZtiKmGKFkQPPuQXnp',
+    image: '/media/Certifications/Technical and soft skill certificates/cyber certification.pdf',
+    description: 'Hands-on cybersecurity experience with threat analysis and security compliance.',
+    skills: ['Cyber Security', 'Threat Analysis', 'Security Compliance', 'Risk Assessment']
   },
   {
     id: 5,
-    title: 'Tech Job Simulation',
-    issuer: 'Professional Program',
-    date: '2023',
-    category: 'Professional Development',
+    title: 'Deloitte Technology Job Simulation',
+    issuer: 'Forage (Deloitte Australia)',
+    date: 'July 2025',
+    category: 'Technology Consulting',
+    credentialId: 'B9kbwjNiMAHWr2rjn',
     image: '/media/Certifications/Technical and soft skill certificates/Tech job simulation.pdf',
-    description: 'Real-world technical job experience and problem-solving.',
-    skills: ['Problem Solving', 'Technical Skills', 'Communication', 'Teamwork']
+    description: 'Real-world technology consulting experience and enterprise problem-solving.',
+    skills: ['Technology Consulting', 'Problem Solving', 'Technical Analysis', 'Enterprise Solutions']
   }
 ]
 
@@ -151,9 +155,11 @@ export default function Certifications() {
   }
 
   return (
-    <section id="certifications" className="section-padding relative overflow-hidden">
+    <section id="certifications" className="section-padding relative overflow-hidden gradient-mesh network-grid">
       {/* Background Effect */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-accent-950/5 to-transparent pointer-events-none" />
+      <div className="absolute top-1/4 left-0 w-72 h-72 bg-primary-500/10 rounded-full blur-3xl animate-pulse" />
+      <div className="absolute bottom-1/4 right-0 w-72 h-72 bg-accent-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1.5s' }} />
 
       <div className="container-custom relative z-10" ref={ref}>
         {/* Section Header */}
@@ -183,20 +189,20 @@ export default function Certifications() {
         >
           <button
             onClick={() => setActiveTab('technical')}
-            className={`px-4 py-3 sm:px-8 sm:py-4 rounded-xl sm:rounded-2xl font-medium transition-all duration-300 text-sm sm:text-base ${
+            className={`px-4 py-3 sm:px-8 sm:py-4 rounded-xl sm:rounded-2xl font-medium transition-all duration-300 text-sm sm:text-base bouncy-click ${
               activeTab === 'technical'
-                ? 'bg-gradient-to-r from-primary-500 to-accent-500 text-white shadow-lg shadow-primary-500/30'
-                : 'glass text-dark-300 hover:text-white'
+                ? 'bg-gradient-to-r from-primary-500 to-accent-500 text-white shadow-lg shadow-primary-500/30 vegas-glow neumorphic'
+                : 'glass-frost text-dark-300 hover:text-white hover-lift jelly-hover'
             }`}
           >
             Technical & Professional
           </button>
           <button
             onClick={() => setActiveTab('starbucks')}
-            className={`px-4 py-3 sm:px-8 sm:py-4 rounded-xl sm:rounded-2xl font-medium transition-all duration-300 text-sm sm:text-base ${
+            className={`px-4 py-3 sm:px-8 sm:py-4 rounded-xl sm:rounded-2xl font-medium transition-all duration-300 text-sm sm:text-base bouncy-click ${
               activeTab === 'starbucks'
-                ? 'bg-gradient-to-r from-green-500 to-emerald-500 text-white shadow-lg shadow-green-500/30'
-                : 'glass text-dark-300 hover:text-white'
+                ? 'bg-gradient-to-r from-green-500 to-emerald-500 text-white shadow-lg shadow-green-500/30 neumorphic'
+                : 'glass text-dark-300 hover:text-white jelly-hover'
             }`}
           >
             Starbucks Training
@@ -218,8 +224,10 @@ export default function Certifications() {
                 variants={itemVariants}
                 className="group cursor-pointer"
                 onClick={() => setSelectedCert(cert)}
+                whileHover={{ scale: 1.02, y: -5 }}
+                whileTap={{ scale: 0.98 }}
               >
-                <div className="glass-card glass-card-hover rounded-xl sm:rounded-2xl p-4 sm:p-6 h-full">
+                <div className="glass-premium neumorphic rounded-xl sm:rounded-2xl p-4 sm:p-6 h-full shine-effect">
                   {/* Header */}
                   <div className="flex items-start justify-between mb-3 sm:mb-4">
                     <div className="p-2 sm:p-3 rounded-lg sm:rounded-xl bg-gradient-to-r from-primary-500/10 to-accent-500/10 group-hover:from-primary-500/20 group-hover:to-accent-500/20 transition-colors">

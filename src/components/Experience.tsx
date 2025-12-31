@@ -15,92 +15,130 @@ import {
 const experiences = [
   {
     id: 1,
-    role: 'Technical Lead / Full Stack Developer',
-    company: 'Freelance & Projects',
-    location: 'Remote',
-    period: '2022 - Present',
+    role: 'General Secretary',
+    company: 'Gandhinagar University',
+    location: 'Ahmedabad, Gujarat',
+    period: 'Aug 2025 - Present',
     type: 'Full-time',
-    description: 'Leading development projects and teams, architecting scalable solutions, and delivering high-impact products.',
+    description: 'Spearheading student governance as the primary liaison between 5000+ students and university administration.',
     achievements: [
-      'Led cross-functional teams of 5+ developers across multiple projects',
-      'Architected and deployed 10+ production applications using modern tech stack',
-      'Implemented CI/CD pipelines reducing deployment time by 60%',
-      'Mentored junior developers and established coding standards'
+      'Leading student governance and representing student body to university administration',
+      'Orchestrating university-wide academic, cultural, and professional initiatives',
+      'Driving policy execution and institutional compliance across all student organizations',
+      'Delivering structured, high-impact outcomes through decisive decision-making'
     ],
-    technologies: ['React', 'Next.js', 'Node.js', 'AWS', 'MongoDB', 'TypeScript']
+    technologies: ['Governance', 'Leadership', 'Policy Execution', 'Stakeholder Management']
   },
   {
     id: 2,
-    role: 'Barista & Team Lead',
-    company: 'Starbucks',
-    location: 'India',
-    period: '2021 - 2022',
+    role: 'Head of Event Production & Campaign Marketing',
+    company: 'Gandhinagar University',
+    location: 'Ahmedabad, Gujarat',
+    period: 'Aug 2025 - Present',
     type: 'Full-time',
-    description: 'Demonstrated leadership in a fast-paced customer service environment while mastering operational excellence.',
+    description: 'Leading end-to-end execution of dynamic campus events and comprehensive marketing campaigns.',
     achievements: [
-      'Trained and mentored new team members on company standards',
-      'Achieved 100% completion on all certification programs',
-      'Maintained highest customer satisfaction scores in the team',
-      'Managed inventory and point-of-sale operations efficiently'
+      'Managing cross-functional volunteer teams and multi-stakeholder collaboration',
+      'Architecting marketing campaigns from strategy and positioning to execution',
+      'Overseeing budget planning, resource allocation, and vendor coordination',
+      'Driving brand visibility and audience engagement across digital channels'
     ],
-    technologies: ['Customer Service', 'Team Leadership', 'Operations', 'Training']
+    technologies: ['Event Management', 'Digital Marketing', 'Campaign Strategy', 'Team Leadership']
+  },
+  {
+    id: 3,
+    role: 'Jazba Head & Cultural Secretary',
+    company: 'Gandhinagar University',
+    location: 'Ahmedabad, Gujarat',
+    period: 'Sep 2024 - Oct 2025',
+    type: 'Leadership Role',
+    description: 'Led the flagship annual cultural festival and directed all university-level cultural events.',
+    achievements: [
+      'Managed Jazba festival with 50+ events and coordination of 100+ volunteers',
+      'Directed planning, coordination, and execution of university cultural programs',
+      'Strengthened leadership, event production, and strategic problem-solving skills',
+      'Fostered talent development across student cultural organizations'
+    ],
+    technologies: ['Event Production', 'Team Coordination', 'Talent Management', 'Strategic Planning']
+  },
+  {
+    id: 4,
+    role: 'Barista',
+    company: 'Starbucks India',
+    location: 'Ahmedabad, Gujarat',
+    period: 'Feb 2025 - Sep 2025',
+    type: 'Part-time',
+    description: 'Delivered exceptional customer experiences in high-volume, fast-paced retail environment.',
+    achievements: [
+      'Mastered espresso crafting, beverage preparation, and food safety compliance',
+      'Built expertise in CRM, customer engagement, and sales operations excellence',
+      'Developed advanced interpersonal, multitasking, and real-time problem-solving skills',
+      'Recognized for outstanding service quality and professional growth mindset'
+    ],
+    technologies: ['Customer Service', 'CRM', 'Food Safety', 'Sales Operations']
   }
 ]
 
 const projects = [
   {
     id: 1,
-    title: 'E-Commerce Platform',
-    category: 'Full Stack',
-    description: 'Built a complete e-commerce solution with payment integration, inventory management, and admin dashboard.',
-    image: '/media/Images/3.JPG',
-    technologies: ['Next.js', 'Node.js', 'MongoDB', 'Stripe'],
-    links: { live: '#', github: '#' }
+    title: 'Personal Portfolio Website',
+    category: 'Full Stack Development',
+    description: 'A modern, responsive portfolio showcasing advanced web development skills with seamless animations and dark theme.',
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80',
+    technologies: ['Next.js', 'React', 'Tailwind CSS', 'Framer Motion'],
+    links: { live: '#', github: '#' },
+    gradient: 'from-blue-500 to-cyan-500'
   },
   {
     id: 2,
-    title: 'Project Management Tool',
-    category: 'SaaS Application',
-    description: 'Developed a comprehensive project management platform with real-time collaboration features.',
-    image: '/media/Images/4.JPG',
-    technologies: ['React', 'Express', 'PostgreSQL', 'Socket.io'],
-    links: { live: '#', github: '#' }
+    title: 'Event Management System',
+    category: 'Leadership Project',
+    description: 'Comprehensive event orchestration for university festivals, managing 50+ events with 100+ volunteer coordination.',
+    image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80',
+    technologies: ['Event Planning', 'Team Management', 'Budget Control', 'Vendor Coordination'],
+    links: { live: '#', github: '#' },
+    gradient: 'from-purple-500 to-pink-500'
   },
   {
     id: 3,
-    title: 'AI-Powered Analytics Dashboard',
-    category: 'Data Visualization',
-    description: 'Created an intelligent analytics platform with ML-powered insights and interactive visualizations.',
-    image: '/media/Images/5.jpg',
-    technologies: ['Python', 'TensorFlow', 'React', 'D3.js'],
-    links: { live: '#', github: '#' }
+    title: 'Digital Marketing Campaign',
+    category: 'Marketing & Branding',
+    description: 'Data-driven marketing campaigns achieving significant reach and engagement through strategic content and analytics.',
+    image: 'https://images.unsplash.com/photo-1432888622747-4eb9a8f5a70d?w=800&q=80',
+    technologies: ['Social Media', 'Content Strategy', 'Analytics', 'SEO'],
+    links: { live: '#', github: '#' },
+    gradient: 'from-orange-500 to-red-500'
   },
   {
     id: 4,
-    title: 'Cloud Infrastructure Setup',
-    category: 'DevOps',
-    description: 'Designed and implemented scalable cloud infrastructure with auto-scaling and monitoring.',
-    image: '/media/Images/6.JPG',
-    technologies: ['AWS', 'Docker', 'Kubernetes', 'Terraform'],
-    links: { live: '#', github: '#' }
+    title: 'Student Council Platform',
+    category: 'Web Application',
+    description: 'A governance platform concept enabling seamless communication between administration and 5000+ students.',
+    image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80',
+    technologies: ['React', 'Node.js', 'MongoDB', 'REST API'],
+    links: { live: '#', github: '#' },
+    gradient: 'from-green-500 to-emerald-500'
   },
   {
     id: 5,
-    title: 'Mobile Banking App',
-    category: 'Mobile Development',
-    description: 'Built a secure mobile banking application with biometric authentication and real-time transactions.',
-    image: '/media/Images/7.jpg',
-    technologies: ['React Native', 'Node.js', 'PostgreSQL', 'AWS'],
-    links: { live: '#', github: '#' }
+    title: 'Cloud Architecture Solutions',
+    category: 'Cloud Computing',
+    description: 'Enterprise-grade cloud infrastructure design and implementation using AWS and IBM Cloud best practices.',
+    image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80',
+    technologies: ['AWS', 'IBM Cloud', 'Docker', 'CI/CD'],
+    links: { live: '#', github: '#' },
+    gradient: 'from-indigo-500 to-violet-500'
   },
   {
     id: 6,
-    title: 'Portfolio Website',
-    category: 'Web Design',
-    description: 'Designed and developed this stunning portfolio with advanced animations and SEO optimization.',
-    image: '/media/Images/8.JPG',
-    technologies: ['Next.js', 'Tailwind CSS', 'Framer Motion'],
-    links: { live: '#', github: '#' }
+    title: 'Customer Experience System',
+    category: 'Service Excellence',
+    description: 'Operational excellence framework implementing world-class customer service standards in high-volume retail.',
+    image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80',
+    technologies: ['Customer Service', 'CRM', 'Operations', 'Quality Assurance'],
+    links: { live: '#', github: '#' },
+    gradient: 'from-rose-500 to-pink-500'
   }
 ]
 
@@ -130,7 +168,11 @@ export default function Experience() {
   return (
     <>
       {/* Experience Section */}
-      <section id="experience" className="section-padding relative overflow-hidden">
+      <section id="experience" className="section-padding relative overflow-hidden aurora-bg">
+        {/* Floating Orbs */}
+        <div className="absolute top-1/4 right-1/4 w-72 h-72 bg-primary-500/15 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-1/4 left-1/4 w-72 h-72 bg-accent-500/15 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
+        
         <div className="container-custom relative z-10" ref={ref}>
           {/* Section Header */}
           <motion.div
@@ -158,7 +200,7 @@ export default function Experience() {
             className="relative max-w-4xl mx-auto"
           >
             {/* Timeline Line */}
-            <div className="absolute left-6 sm:left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary-500 via-accent-500 to-primary-500 transform md:-translate-x-1/2" />
+            <div className="absolute left-6 sm:left-8 md:left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-primary-500 via-accent-500 to-cyan-500 to-primary-500 transform md:-translate-x-1/2 glow-pulse" />
 
             {experiences.map((exp, index) => (
               <motion.div
@@ -174,8 +216,9 @@ export default function Experience() {
                 {/* Content Card */}
                 <div className={`flex-1 ml-12 sm:ml-16 md:ml-0 ${index % 2 === 0 ? 'md:pr-12' : 'md:pl-12'}`}>
                   <motion.div
-                    className="glass-card glass-card-hover rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8"
-                    whileHover={{ scale: 1.02 }}
+                    className="glass-premium rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 card-3d neumorphic shine-effect"
+                    whileHover={{ scale: 1.02, rotateY: 2, rotateX: -2, y: -5 }}
+                    whileTap={{ scale: 0.98 }}
                   >
                     {/* Header */}
                     <div className="flex flex-wrap items-start justify-between gap-2 sm:gap-4 mb-3 sm:mb-4">
@@ -239,7 +282,10 @@ export default function Experience() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="section-padding relative overflow-hidden bg-gradient-to-b from-transparent via-primary-950/5 to-transparent">
+      <section id="projects" className="section-padding relative overflow-hidden gradient-mesh">
+        {/* Glow Effects */}
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl" />
         <div className="container-custom relative z-10">
           {/* Section Header */}
           <motion.div
@@ -271,7 +317,7 @@ export default function Experience() {
                 transition={{ delay: index * 0.1 }}
                 className="group"
               >
-                <div className="glass-card rounded-xl sm:rounded-2xl overflow-hidden h-full flex flex-col">
+                <div className="glass-premium rounded-xl sm:rounded-2xl overflow-hidden h-full flex flex-col hover-lift-shadow spotlight-card neumorphic">
                   {/* Image */}
                   <div className="relative aspect-video overflow-hidden">
                     <img
@@ -282,7 +328,7 @@ export default function Experience() {
                     <div className="absolute inset-0 bg-gradient-to-t from-dark-950 via-dark-950/50 to-transparent opacity-60" />
                     
                     {/* Category Badge */}
-                    <span className="absolute top-2 left-2 sm:top-4 sm:left-4 px-2 py-0.5 sm:px-3 sm:py-1 rounded-full text-[10px] sm:text-xs font-medium glass text-white">
+                    <span className="absolute top-2 left-2 sm:top-4 sm:left-4 px-2 py-0.5 sm:px-3 sm:py-1 rounded-full text-[10px] sm:text-xs font-medium glass-premium text-white">
                       {project.category}
                     </span>
 
@@ -291,8 +337,8 @@ export default function Experience() {
                       <div className="flex gap-4">
                         <motion.a
                           href={project.links.live}
-                          className="p-2 sm:p-3 rounded-full glass text-white hover:bg-white/20 transition-colors"
-                          whileHover={{ scale: 1.1 }}
+                          className="p-2 sm:p-3 rounded-full glass-premium text-white hover:bg-white/20 transition-colors jelly-hover"
+                          whileHover={{ scale: 1.2, rotate: 10 }}
                           whileTap={{ scale: 0.9 }}
                         >
                           <ExternalLink size={18} className="sm:w-5 sm:h-5" />
@@ -345,9 +391,9 @@ export default function Experience() {
           >
             <motion.a
               href="#"
-              className="btn-outline inline-flex items-center gap-2 text-sm sm:text-base"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
+              className="btn-outline btn-premium inline-flex items-center gap-2 text-sm sm:text-base neumorphic-button"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
               View All Projects
               <ArrowRight size={16} className="sm:w-[18px] sm:h-[18px]" />
