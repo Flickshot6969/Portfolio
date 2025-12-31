@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://devpatel.dev'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://portfolio-one-delta-15.vercel.app'),
   title: {
     default: 'Dev Patel | Full Stack Developer & Technical Leader',
     template: '%s | Dev Patel Portfolio'
@@ -75,7 +75,7 @@ export const metadata: Metadata = {
     google: 'your-google-verification-code',
   },
   alternates: {
-    canonical: 'https://devpatel.dev',
+    canonical: '/',
   },
   category: 'technology',
 }
