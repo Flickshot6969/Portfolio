@@ -412,31 +412,24 @@ export default function Hero() {
                   repeat: Infinity,
                   ease: 'easeInOut',
                 }}
-                style={{
-                  transform: 'translate(var(--mouse-x, 0), var(--mouse-y, 0))',
-                }}
               >
-                {/* Animated Border */}
-                <div className="absolute inset-0 rounded-full p-1 bg-gradient-to-r from-primary-500 via-accent-500 to-cyan-500 animate-spin-slow z-0" style={{ animationDuration: '8s' }}>
-                  <div className="w-full h-full rounded-full bg-dark-900" />
-                </div>
-                
-                {/* Image Container - CLEAN, NO OVERLAYS */}
-                <div className="absolute inset-[4px] rounded-full overflow-hidden z-10">
-                  {/* Image Slideshow - Pure natural photos */}
-                  <AnimatePresence mode="wait">
-                    <motion.img
-                      key={currentImageIndex}
-                      src={heroImages[currentImageIndex]}
-                      alt={`Dev Patel - Professional`}
-                      className="w-full h-full object-cover"
-                      style={{ objectPosition: 'center 20%' }}
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      transition={{ duration: 0.8 }}
-                    />
-                  </AnimatePresence>
+                {/* Gradient Border Ring */}
+                <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary-500 via-accent-500 to-cyan-500 p-[3px]">
+                  <div className="w-full h-full rounded-full overflow-hidden bg-dark-900">
+                    {/* Image Slideshow */}
+                    <AnimatePresence mode="wait">
+                      <motion.img
+                        key={currentImageIndex}
+                        src={heroImages[currentImageIndex]}
+                        alt="Dev Patel"
+                        className="w-full h-full object-cover object-top"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.5 }}
+                      />
+                    </AnimatePresence>
+                  </div>
                 </div>
               </motion.div>
 
