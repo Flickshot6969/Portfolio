@@ -417,12 +417,12 @@ export default function Hero() {
                 }}
               >
                 {/* Animated Border */}
-                <div className="absolute inset-0 rounded-full p-1 bg-gradient-to-r from-primary-500 via-accent-500 to-cyan-500 animate-spin-slow" style={{ animationDuration: '8s' }}>
+                <div className="absolute inset-0 rounded-full p-1 bg-gradient-to-r from-primary-500 via-accent-500 to-cyan-500 animate-spin-slow z-0" style={{ animationDuration: '8s' }}>
                   <div className="w-full h-full rounded-full bg-dark-900" />
                 </div>
                 
                 {/* Image Container - CLEAN, NO OVERLAYS */}
-                <div className="absolute inset-1 rounded-full overflow-hidden bg-dark-900">
+                <div className="absolute inset-[4px] rounded-full overflow-hidden z-10">
                   {/* Image Slideshow - Pure natural photos */}
                   <AnimatePresence mode="wait">
                     <motion.img
