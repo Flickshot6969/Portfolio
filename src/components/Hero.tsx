@@ -26,6 +26,8 @@ import {
 import { MagneticButton, BlurReveal } from './AnimationEffects'
 import { Card3D, SmoothCounter } from './EliteEffects'
 import { useInteraction, ProximityAware } from '@/lib/InteractionIntelligence'
+import { useScrollPhase, PhaseElement, VelocityText, HesitationAware } from '@/lib/ScrollPhaseEngine'
+import { CinematicButton, CinematicCard, AmbientParticles, VelocityGradientText } from '@/lib/CinematicMotion'
 import { 
   AnticipatoryCTA, 
   MultiPhaseCard, 
