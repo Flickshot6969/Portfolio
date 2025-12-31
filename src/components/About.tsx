@@ -12,7 +12,8 @@ import {
   Lightbulb,
   Users,
   Rocket,
-  Heart
+  Heart,
+  Code2
 } from 'lucide-react'
 
 const highlights = [
@@ -138,7 +139,7 @@ export default function About() {
                 </div>
               </div>
 
-              {/* Floating Badge */}
+              {/* Floating Badge - Strategic Leader */}
               <motion.div
                 className="absolute -right-2 sm:-right-4 top-1/4 glass-card px-2 py-1.5 sm:px-4 sm:py-2 rounded-lg sm:rounded-xl hidden sm:block"
                 animate={{ y: [0, -10, 0] }}
@@ -147,6 +148,18 @@ export default function About() {
                 <div className="flex items-center gap-1.5 sm:gap-2">
                   <Heart className="w-4 h-4 sm:w-5 sm:h-5 text-red-500" />
                   <span className="text-xs sm:text-sm font-medium text-white">Strategic Leader</span>
+                </div>
+              </motion.div>
+
+              {/* Floating Badge - Passionate Coder */}
+              <motion.div
+                className="absolute -left-2 sm:-left-4 bottom-1/3 glass-card px-2 py-1.5 sm:px-4 sm:py-2 rounded-lg sm:rounded-xl hidden sm:block"
+                animate={{ y: [0, 10, 0] }}
+                transition={{ duration: 3.5, repeat: Infinity, delay: 0.5 }}
+              >
+                <div className="flex items-center gap-1.5 sm:gap-2">
+                  <Code2 className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-400" />
+                  <span className="text-xs sm:text-sm font-medium text-white">Passionate Coder</span>
                 </div>
               </motion.div>
             </motion.div>
