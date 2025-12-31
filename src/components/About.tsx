@@ -170,25 +170,38 @@ export default function About() {
                   <div className="absolute inset-0 bg-gradient-to-t from-dark-950/60 via-transparent to-transparent pointer-events-none" />
                 </div>
                 
-                {/* Overlay Info Card - Elite */}
+                {/* Overlay Info Card - HARDCORE Elite */}
                 <motion.div 
-                  className="absolute bottom-3 left-3 right-3 sm:bottom-6 sm:left-6 sm:right-6 glass-elite rounded-lg sm:rounded-xl p-3 sm:p-4 border-beam-elite"
+                  className="absolute bottom-3 left-3 right-3 sm:bottom-6 sm:left-6 sm:right-6 rounded-lg sm:rounded-xl p-3 sm:p-4 overflow-hidden"
+                  style={{
+                    background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.9) 0%, rgba(168, 85, 247, 0.85) 50%, rgba(6, 182, 212, 0.9) 100%)',
+                    backdropFilter: 'blur(20px)',
+                    border: '1px solid rgba(255, 255, 255, 0.3)',
+                    boxShadow: '0 8px 32px rgba(99, 102, 241, 0.4), inset 0 0 0 1px rgba(255, 255, 255, 0.1)'
+                  }}
                   initial={{ opacity: 0, y: 20 }}
                   animate={inView ? { opacity: 1, y: 0 } : {}}
                   transition={{ delay: 0.8 }}
-                  whileHover={{ scale: 1.02 }}
+                  whileHover={{ scale: 1.02, boxShadow: '0 12px 40px rgba(99, 102, 241, 0.6)' }}
                 >
-                  <div className="flex items-center gap-2 sm:gap-3">
+                  {/* Animated shine effect */}
+                  <motion.div 
+                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
+                    animate={{ x: ['-100%', '100%'] }}
+                    transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
+                  />
+                  
+                  <div className="relative z-10 flex items-center gap-2 sm:gap-3">
                     <motion.div 
-                      className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-r from-primary-500 to-accent-500 flex items-center justify-center supreme-glow"
-                      whileHover={{ rotate: 360 }}
+                      className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center border border-white/30"
+                      whileHover={{ rotate: 360, scale: 1.1 }}
                       transition={{ duration: 0.5 }}
                     >
-                      <Award className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                      <Award className="w-5 h-5 sm:w-6 sm:h-6 text-white drop-shadow-lg" />
                     </motion.div>
                     <div>
-                      <h4 className="font-semibold text-white text-sm sm:text-base">Dev Patel</h4>
-                      <p className="text-xs sm:text-sm text-dark-300">General Secretary & Tech Leader</p>
+                      <h4 className="font-bold text-white text-sm sm:text-base drop-shadow-md tracking-wide">DEV PATEL</h4>
+                      <p className="text-xs sm:text-sm text-white/90 font-medium">🚀 General Secretary & Tech Leader</p>
                     </div>
                   </div>
                 </motion.div>
