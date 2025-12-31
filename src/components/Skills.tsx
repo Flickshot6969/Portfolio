@@ -21,8 +21,11 @@ import {
   Smartphone,
   GitBranch,
   Figma,
-  Palette
+  Palette,
+  Sparkles
 } from 'lucide-react'
+import { TiltCard, StaggerContainer, StaggerItem } from './AnimationEffects'
+import { Card3D, SmoothCounter } from './EliteEffects'
 
 const skillCategories = [
   {
@@ -127,23 +130,49 @@ export default function Skills() {
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-3xl vegas-glow" />
 
       <div className="container-custom relative z-10" ref={ref}>
-        {/* Section Header */}
+        {/* Section Header - Elite */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
           className="text-center mb-8 md:mb-16"
         >
-          <span className="inline-block px-3 py-1.5 sm:px-4 sm:py-2 rounded-full glass-card text-primary-400 text-xs sm:text-sm font-medium mb-3 sm:mb-4">
+          <motion.span 
+            className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full glass-elite text-primary-400 text-xs sm:text-sm font-medium mb-3 sm:mb-4 magnetic-glow"
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={inView ? { scale: 1, opacity: 1 } : {}}
+            transition={{ delay: 0.2, type: 'spring' }}
+            whileHover={{ scale: 1.05 }}
+          >
+            <Sparkles className="w-4 h-4" />
             My Expertise
-          </span>
+          </motion.span>
           <h2 className="heading-lg mb-3 sm:mb-4 text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
-            Skills & <span className="gradient-text">Competencies</span>
+            <motion.span
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.3 }}
+            >
+              Skills &{' '}
+            </motion.span>
+            <motion.span 
+              className="gradient-shimmer"
+              initial={{ opacity: 0, rotateX: -40 }}
+              animate={inView ? { opacity: 1, rotateX: 0 } : {}}
+              transition={{ delay: 0.4, type: 'spring', stiffness: 100 }}
+            >
+              Competencies
+            </motion.span>
           </h2>
-          <p className="text-body max-w-2xl mx-auto text-sm sm:text-base px-4 sm:px-0">
+          <motion.p 
+            className="text-body max-w-2xl mx-auto text-sm sm:text-base px-4 sm:px-0"
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.5 }}
+          >
             A comprehensive skill set spanning technical development, strategic leadership, and digital marketing – 
             the perfect combination for delivering exceptional results.
-          </p>
+          </motion.p>
         </motion.div>
 
         {/* Category Tabs */}
@@ -190,7 +219,7 @@ export default function Skills() {
           ))}
         </motion.div>
 
-        {/* Skills Grid */}
+        {/* Skills Grid - Elite 3D Cards */}
         <motion.div
           key={activeCategory}
           initial={{ opacity: 0, y: 20 }}
@@ -201,31 +230,43 @@ export default function Skills() {
           {activeSkills?.skills.map((skill, index) => (
             <motion.div
               key={skill.name}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-              className="glass-premium rounded-xl sm:rounded-2xl p-4 sm:p-6 group card-3d hover-glow-intense perspective-container neumorphic shine-effect"
-              whileHover={{ scale: 1.02, y: -5 }}
+              initial={{ opacity: 0, y: 30, scale: 0.9 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ delay: index * 0.1, type: 'spring', stiffness: 100 }}
             >
-              <div className="flex items-center justify-between mb-3 sm:mb-4">
-                <div className="flex items-center gap-2 sm:gap-3">
-                  <div className={`p-1.5 sm:p-2 rounded-lg sm:rounded-xl bg-gradient-to-r ${activeSkills.color} opacity-80 group-hover:opacity-100 transition-opacity`}>
-                    <skill.icon className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+              <Card3D 
+                className="glass-elite rounded-xl sm:rounded-2xl p-4 sm:p-6 group premium-card-hover h-full"
+                intensity={12}
+              >
+                <div className="flex items-center justify-between mb-3 sm:mb-4">
+                  <div className="flex items-center gap-2 sm:gap-3">
+                    <motion.div 
+                      className={`p-1.5 sm:p-2 rounded-lg sm:rounded-xl bg-gradient-to-r ${activeSkills.color} opacity-80 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110`}
+                      whileHover={{ rotate: 360 }}
+                      transition={{ duration: 0.5 }}
+                    >
+                      <skill.icon className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+                    </motion.div>
+                    <h4 className="font-semibold text-white text-sm sm:text-base group-hover:text-primary-300 transition-colors">{skill.name}</h4>
                   </div>
-                  <h4 className="font-semibold text-white text-sm sm:text-base">{skill.name}</h4>
+                  <span className="text-lg sm:text-2xl font-bold gradient-shimmer">
+                    <SmoothCounter target={skill.level} suffix="%" duration={1.5} />
+                  </span>
                 </div>
-                <span className="text-lg sm:text-2xl font-bold gradient-text stat-glow">{skill.level}%</span>
-              </div>
-              
-              {/* Progress Bar */}
-              <div className="h-1.5 sm:h-2 bg-dark-800 rounded-full overflow-hidden progress-bar-glow">
-                <motion.div
-                  initial={{ width: 0 }}
-                  animate={{ width: `${skill.level}%` }}
-                  transition={{ duration: 1, delay: index * 0.1 + 0.3, ease: 'easeOut' }}
-                  className={`h-full rounded-full bg-gradient-to-r ${activeSkills.color}`}
-                />
-              </div>
+                
+                {/* Progress Bar - Elite */}
+                <div className="h-1.5 sm:h-2 bg-dark-800/80 rounded-full overflow-hidden relative">
+                  <motion.div
+                    initial={{ width: 0, opacity: 0 }}
+                    animate={{ width: `${skill.level}%`, opacity: 1 }}
+                    transition={{ duration: 1.2, delay: index * 0.1 + 0.3, ease: [0.16, 1, 0.3, 1] }}
+                    className={`h-full rounded-full bg-gradient-to-r ${activeSkills.color} relative overflow-hidden`}
+                  >
+                    {/* Shine effect on progress bar */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-shine" />
+                  </motion.div>
+                </div>
+              </Card3D>
             </motion.div>
           ))}
         </motion.div>

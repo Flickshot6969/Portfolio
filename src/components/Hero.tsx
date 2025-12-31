@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
 import { TypeAnimation } from 'react-type-animation'
 import { 
   ChevronDown, 
@@ -20,8 +20,11 @@ import {
   GitBranch,
   Zap,
   Server,
-  Shield
+  Shield,
+  MousePointer
 } from 'lucide-react'
+import { MagneticButton, BlurReveal } from './AnimationEffects'
+import { Card3D, SmoothCounter } from './EliteEffects'
 
 // All images with numbers
 const heroImages = [
@@ -216,15 +219,29 @@ export default function Hero() {
               <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
             </motion.div>
 
-            {/* Main Heading */}
+            {/* Main Heading - Elite Text Reveal */}
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.8 }}
               className="heading-xl mb-6 rocket-launch"
             >
-              <span className="text-dark-100">Hi, I&apos;m </span>
-              <span className="gradient-text-animated holographic">Dev Patel</span>
+              <motion.span 
+                className="text-dark-100 inline-block"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.4, duration: 0.6 }}
+              >
+                Hi, I&apos;m{' '}
+              </motion.span>
+              <motion.span 
+                className="gradient-shimmer inline-block"
+                initial={{ opacity: 0, scale: 0.8, rotateX: -40 }}
+                animate={{ opacity: 1, scale: 1, rotateX: 0 }}
+                transition={{ delay: 0.6, duration: 0.8, type: 'spring', stiffness: 100 }}
+              >
+                Dev Patel
+              </motion.span>
             </motion.h1>
 
             {/* Typing Animation */}
@@ -484,7 +501,7 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* Stats Section - Enhanced with icons */}
+        {/* Stats Section - Elite 3D Cards */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
@@ -494,52 +511,91 @@ export default function Hero() {
           {stats.map((stat, index) => (
             <motion.div
               key={stat.label}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.3 + index * 0.1 }}
-              className="relative text-center glass-premium neumorphic rounded-xl md:rounded-2xl p-4 md:p-6 group hover:border-primary-500/30 transition-all duration-500 overflow-hidden shine-effect"
-              whileHover={{ scale: 1.05, y: -5 }}
+              initial={{ opacity: 0, y: 30, scale: 0.9 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ delay: 1.3 + index * 0.15, type: 'spring', stiffness: 100 }}
+              className="relative text-center glass-elite neumorphic rounded-xl md:rounded-2xl p-4 md:p-6 group hover:border-primary-500/30 transition-all duration-500 overflow-hidden elite-float card-lift"
+              style={{ animationDelay: `${index * 0.5}s` }}
+              whileHover={{ scale: 1.08 }}
+              data-cursor-text="View"
             >
               {/* Background Icon */}
-              <div className="absolute -right-2 -top-2 opacity-10 group-hover:opacity-20 transition-opacity">
+              <div className="absolute -right-2 -top-2 opacity-10 group-hover:opacity-30 transition-opacity duration-500">
                 <stat.icon size={60} className="text-primary-500" />
               </div>
               
+              {/* Elite border beam */}
+              <div className="absolute inset-0 rounded-xl md:rounded-2xl border-beam-elite opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              
               <div className="relative z-10">
                 <div className="flex items-center justify-center gap-2 mb-2">
-                  <stat.icon size={18} className="text-primary-400" />
-                  <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold gradient-text font-mono stat-number stat-glow">
-                    {stat.value}
+                  <motion.div
+                    whileHover={{ rotate: 360, scale: 1.2 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <stat.icon size={18} className="text-primary-400" />
+                  </motion.div>
+                  <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold gradient-shimmer font-mono">
+                    <SmoothCounter target={parseInt(stat.value)} suffix="+" />
                   </h3>
                 </div>
-                <p className="text-dark-400 text-xs md:text-sm">{stat.label}</p>
+                <p className="text-dark-400 text-xs md:text-sm group-hover:text-dark-300 transition-colors">{stat.label}</p>
               </div>
               
-              {/* Hover Glow */}
-              <div className="absolute inset-0 bg-gradient-to-r from-primary-500/0 via-primary-500/5 to-primary-500/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
+              {/* Hover Shine Effect */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
             </motion.div>
           ))}
         </motion.div>
 
-        {/* Terminal-style tagline */}
+        {/* Terminal-style tagline - Enhanced */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.6 }}
           className="mt-8 md:mt-12 flex justify-center"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-dark-800/50 border border-dark-700 font-mono text-xs md:text-sm">
-            <span className="text-green-400">$</span>
+          <motion.div 
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg glass-elite border border-dark-700/50 font-mono text-xs md:text-sm magnetic-glow"
+            whileHover={{ scale: 1.05 }}
+          >
+            <span className="text-green-400 neon-text">$</span>
             <span className="text-dark-300">building</span>
-            <span className="text-primary-400">innovative_solutions</span>
+            <span className="text-primary-400 gradient-shimmer">innovative_solutions</span>
             <span className="text-dark-400">--with</span>
             <span className="text-accent-400">passion</span>
             <motion.span
-              className="w-2 h-4 bg-primary-500"
+              className="w-2 h-4 bg-primary-500 rounded-sm"
               animate={{ opacity: [1, 0, 1] }}
-              transition={{ duration: 1, repeat: Infinity }}
+              transition={{ duration: 0.8, repeat: Infinity }}
             />
-          </div>
+          </motion.div>
+        </motion.div>
+
+        {/* Scroll Indicator - Elite */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 2 }}
+          className="mt-12 flex justify-center"
+        >
+          <motion.a
+            href="#about"
+            className="flex flex-col items-center gap-2 text-dark-400 hover:text-primary-400 transition-colors group"
+            animate={{ y: [0, 10, 0] }}
+            transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+          >
+            <span className="text-xs uppercase tracking-widest">Scroll to explore</span>
+            <motion.div
+              className="w-6 h-10 rounded-full border-2 border-dark-600 group-hover:border-primary-500/50 flex justify-center pt-2 transition-colors"
+            >
+              <motion.div
+                className="w-1.5 h-1.5 rounded-full bg-primary-500"
+                animate={{ y: [0, 12, 0], opacity: [1, 0.3, 1] }}
+                transition={{ duration: 1.5, repeat: Infinity }}
+              />
+            </motion.div>
+          </motion.a>
         </motion.div>
       </div>
     </section>

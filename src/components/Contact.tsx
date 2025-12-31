@@ -12,8 +12,12 @@ import {
   CheckCircle,
   AlertCircle,
   Loader2,
-  MessageSquare
+  MessageSquare,
+  Sparkles,
+  ArrowRight
 } from 'lucide-react'
+import { MagneticButton, BlurReveal } from './AnimationEffects'
+import { Card3D, SectionReveal } from './EliteEffects'
 
 const contactInfo = [
   {
@@ -111,23 +115,48 @@ export default function Contact() {
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl animate-pulse" />
       
       <div className="container-custom relative z-10" ref={ref}>
-        {/* Section Header */}
+        {/* Section Header - Elite */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
           className="text-center mb-8 md:mb-16"
         >
-          <span className="inline-block px-3 py-1.5 sm:px-4 sm:py-2 rounded-full glass-card text-primary-400 text-xs sm:text-sm font-medium mb-3 sm:mb-4">
+          <motion.span 
+            className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full glass-elite text-primary-400 text-xs sm:text-sm font-medium mb-3 sm:mb-4 magnetic-glow"
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={inView ? { scale: 1, opacity: 1 } : {}}
+            transition={{ delay: 0.2, type: 'spring' }}
+          >
+            <Sparkles className="w-4 h-4" />
             Get In Touch
-          </span>
+          </motion.span>
           <h2 className="heading-lg mb-3 sm:mb-4 text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
-            Let&apos;s <span className="gradient-text">Connect</span>
+            <motion.span
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.3 }}
+            >
+              Let&apos;s{' '}
+            </motion.span>
+            <motion.span 
+              className="gradient-shimmer"
+              initial={{ opacity: 0, rotateX: -40 }}
+              animate={inView ? { opacity: 1, rotateX: 0 } : {}}
+              transition={{ delay: 0.4, type: 'spring', stiffness: 100 }}
+            >
+              Connect
+            </motion.span>
           </h2>
-          <p className="text-body max-w-2xl mx-auto text-sm sm:text-base px-4 sm:px-0">
+          <motion.p 
+            className="text-body max-w-2xl mx-auto text-sm sm:text-base px-4 sm:px-0"
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.5 }}
+          >
             Have a project in mind or want to discuss opportunities? I&apos;d love to hear from you. 
             Let&apos;s create something amazing together!
-          </p>
+          </motion.p>
         </motion.div>
 
         <div className="grid lg:grid-cols-5 gap-6 md:gap-8 lg:gap-12">
@@ -138,24 +167,32 @@ export default function Contact() {
             animate={inView ? 'visible' : 'hidden'}
             className="lg:col-span-2 space-y-4 sm:space-y-8"
           >
-            {/* Info Cards */}
+            {/* Info Cards - Elite */}
             <div className="space-y-3 sm:space-y-4">
               {contactInfo.map((info, index) => (
                 <motion.a
                   key={info.label}
                   href={info.href}
                   variants={itemVariants}
-                  className="flex items-center gap-3 sm:gap-4 glass-premium rounded-lg sm:rounded-xl p-3 sm:p-4 group hover-lift neumorphic jelly-hover"
+                  className="flex items-center gap-3 sm:gap-4 glass-elite rounded-lg sm:rounded-xl p-3 sm:p-4 group premium-card-hover"
                   whileHover={{ x: 10, scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
+                  initial={{ opacity: 0, x: -30 }}
+                  animate={inView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ delay: 0.3 + index * 0.1 }}
                 >
-                  <div className="p-2 sm:p-3 rounded-lg sm:rounded-xl bg-gradient-to-r from-primary-500/10 to-accent-500/10 group-hover:from-primary-500/20 group-hover:to-accent-500/20 transition-colors">
-                    <info.icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary-400" />
-                  </div>
+                  <motion.div 
+                    className="p-2 sm:p-3 rounded-lg sm:rounded-xl bg-gradient-to-r from-primary-500/20 to-accent-500/20 group-hover:from-primary-500/30 group-hover:to-accent-500/30 transition-all duration-300"
+                    whileHover={{ rotate: 360 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <info.icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary-400 group-hover:text-primary-300 transition-colors" />
+                  </motion.div>
                   <div>
-                    <p className="text-xs sm:text-sm text-dark-400">{info.label}</p>
+                    <p className="text-xs sm:text-sm text-dark-400 group-hover:text-dark-300 transition-colors">{info.label}</p>
                     <p className="text-white font-medium text-sm sm:text-base">{info.value}</p>
                   </div>
+                  <ArrowRight className="w-4 h-4 ml-auto text-dark-600 group-hover:text-primary-400 group-hover:translate-x-1 transition-all duration-300 opacity-0 group-hover:opacity-100" />
                 </motion.a>
               ))}
             </div>
@@ -194,22 +231,29 @@ export default function Contact() {
             </motion.div>
           </motion.div>
 
-          {/* Contact Form */}
+          {/* Contact Form - Elite */}
           <motion.div
             variants={containerVariants}
             initial="hidden"
             animate={inView ? 'visible' : 'hidden'}
             className="lg:col-span-3"
           >
-            <motion.div
-              variants={itemVariants}
-              className="glass-premium rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 neumorphic"
+            <Card3D
+              className="glass-elite rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 border-beam-elite"
+              intensity={5}
             >
-              <h3 className="text-lg sm:text-xl font-bold text-white mb-4 sm:mb-6">Send a Message</h3>
+              <h3 className="text-lg sm:text-xl font-bold text-white mb-4 sm:mb-6 flex items-center gap-2">
+                <MessageSquare className="w-5 h-5 text-primary-400" />
+                Send a Message
+              </h3>
               
               <form ref={formRef} onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
                 <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
-                  <div>
+                  <motion.div
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={inView ? { opacity: 1, x: 0 } : {}}
+                    transition={{ delay: 0.5 }}
+                  >
                     <label htmlFor="name" className="block text-xs sm:text-sm font-medium text-dark-300 mb-1.5 sm:mb-2">
                       Your Name
                     </label>
@@ -220,11 +264,15 @@ export default function Contact() {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="input-field text-sm sm:text-base"
+                      className="input-field text-sm sm:text-base focus-ring-elite"
                       placeholder="John Doe"
                     />
-                  </div>
-                  <div>
+                  </motion.div>
+                  <motion.div
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={inView ? { opacity: 1, x: 0 } : {}}
+                    transition={{ delay: 0.6 }}
+                  >
                     <label htmlFor="email" className="block text-xs sm:text-sm font-medium text-dark-300 mb-1.5 sm:mb-2">
                       Email Address
                     </label>
@@ -235,10 +283,10 @@ export default function Contact() {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="input-field text-sm sm:text-base"
+                      className="input-field text-sm sm:text-base focus-ring-elite"
                       placeholder="john@example.com"
                     />
-                  </div>
+                  </motion.div>
                 </div>
 
                 <div>
@@ -320,7 +368,7 @@ export default function Contact() {
                   )}
                 </motion.button>
               </form>
-            </motion.div>
+            </Card3D>
           </motion.div>
         </div>
       </div>

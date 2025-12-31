@@ -13,8 +13,12 @@ import {
   Users,
   Rocket,
   Heart,
-  Code2
+  Code2,
+  Download,
+  ArrowRight
 } from 'lucide-react'
+import { TiltCard, BlurReveal } from './AnimationEffects'
+import { Card3D, RevealMask, SectionReveal } from './EliteEffects'
 
 const highlights = [
   {
@@ -79,22 +83,61 @@ export default function About() {
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-accent-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
       
       <div className="container-custom relative z-10" ref={ref}>
-        {/* Section Header */}
+        {/* Section Header - Elite Reveal */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
           className="text-center mb-8 md:mb-16"
         >
-          <span className="inline-block px-3 py-1.5 sm:px-4 sm:py-2 rounded-full glass-card text-primary-400 text-xs sm:text-sm font-medium mb-3 sm:mb-4">
+          <motion.span 
+            className="inline-block px-3 py-1.5 sm:px-4 sm:py-2 rounded-full glass-elite text-primary-400 text-xs sm:text-sm font-medium mb-3 sm:mb-4 magnetic-glow"
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={inView ? { scale: 1, opacity: 1 } : {}}
+            transition={{ delay: 0.2 }}
+          >
             About Me
-          </span>
+          </motion.span>
           <h2 className="heading-lg mb-3 sm:mb-4 text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
-            Bridging <span className="gradient-text">Technology</span> & <span className="gradient-text">Leadership</span>
+            <motion.span
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.3 }}
+            >
+              Bridging{' '}
+            </motion.span>
+            <motion.span 
+              className="gradient-shimmer"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={inView ? { opacity: 1, scale: 1 } : {}}
+              transition={{ delay: 0.4, type: 'spring' }}
+            >
+              Technology
+            </motion.span>
+            <motion.span
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.5 }}
+            >
+              {' '}& {' '}
+            </motion.span>
+            <motion.span 
+              className="gradient-shimmer"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={inView ? { opacity: 1, scale: 1 } : {}}
+              transition={{ delay: 0.6, type: 'spring' }}
+            >
+              Leadership
+            </motion.span>
           </h2>
-          <p className="text-body max-w-2xl mx-auto text-sm sm:text-base px-4 sm:px-0">
+          <motion.p 
+            className="text-body max-w-2xl mx-auto text-sm sm:text-base px-4 sm:px-0"
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.7 }}
+          >
             A unique blend of technical expertise and management acumen, driving innovation while leading teams to success.
-          </p>
+          </motion.p>
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center">
@@ -114,30 +157,42 @@ export default function About() {
               <div className="absolute -top-2 -left-2 sm:-top-4 sm:-left-4 w-16 h-16 sm:w-24 sm:h-24 border-l-2 border-t-2 border-primary-500/30 rounded-tl-2xl sm:rounded-tl-3xl" />
               <div className="absolute -bottom-2 -right-2 sm:-bottom-4 sm:-right-4 w-16 h-16 sm:w-24 sm:h-24 border-r-2 border-b-2 border-accent-500/30 rounded-br-2xl sm:rounded-br-3xl" />
               
-              {/* Main Image */}
-              <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden glass-premium p-1.5 sm:p-2 card-3d hover-glow-intense neumorphic">
-                <div className="rounded-xl sm:rounded-2xl overflow-hidden">
+              {/* Main Image - Elite 3D Card */}
+              <Card3D className="relative rounded-2xl sm:rounded-3xl overflow-hidden glass-elite p-1.5 sm:p-2 elite-glow" intensity={15}>
+                <div className="rounded-xl sm:rounded-2xl overflow-hidden relative">
                   <img
                     src="/media/Images/2.JPG"
                     alt="Dev Patel - Professional"
-                    className="w-full aspect-[4/5] object-cover object-top"
+                    className="w-full aspect-[4/5] object-cover object-top transition-transform duration-700 hover:scale-105"
                     style={{ objectPosition: 'center 20%' }}
                   />
+                  {/* Overlay gradient for depth */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-dark-950/60 via-transparent to-transparent pointer-events-none" />
                 </div>
                 
-                {/* Overlay Info Card */}
-                <div className="absolute bottom-3 left-3 right-3 sm:bottom-6 sm:left-6 sm:right-6 glass-premium rounded-lg sm:rounded-xl p-3 sm:p-4 bouncy-click">
+                {/* Overlay Info Card - Elite */}
+                <motion.div 
+                  className="absolute bottom-3 left-3 right-3 sm:bottom-6 sm:left-6 sm:right-6 glass-elite rounded-lg sm:rounded-xl p-3 sm:p-4 border-beam-elite"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={inView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ delay: 0.8 }}
+                  whileHover={{ scale: 1.02 }}
+                >
                   <div className="flex items-center gap-2 sm:gap-3">
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-r from-primary-500 to-accent-500 flex items-center justify-center">
+                    <motion.div 
+                      className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-r from-primary-500 to-accent-500 flex items-center justify-center supreme-glow"
+                      whileHover={{ rotate: 360 }}
+                      transition={{ duration: 0.5 }}
+                    >
                       <Award className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
-                    </div>
+                    </motion.div>
                     <div>
                       <h4 className="font-semibold text-white text-sm sm:text-base">Dev Patel</h4>
                       <p className="text-xs sm:text-sm text-dark-300">General Secretary & Tech Leader</p>
                     </div>
                   </div>
-                </div>
-              </div>
+                </motion.div>
+              </Card3D>
 
               {/* Floating Badge - Strategic Leader */}
               <motion.div
@@ -263,24 +318,31 @@ export default function About() {
               </div>
             </motion.div>
 
-            {/* CTA */}
+            {/* CTA - Elite Buttons */}
             <motion.div variants={itemVariants} className="flex flex-wrap gap-3 sm:gap-4">
               <motion.a
                 href="#skills"
-                className="btn-primary btn-premium text-sm sm:text-base ripple-effect"
-                whileHover={{ scale: 1.05 }}
+                className="group relative overflow-hidden px-6 py-3 rounded-full bg-gradient-to-r from-primary-500 to-accent-500 text-white font-semibold text-sm sm:text-base elite-button magnetic-glow"
+                whileHover={{ scale: 1.05, boxShadow: '0 20px 40px rgba(99, 102, 241, 0.4)' }}
                 whileTap={{ scale: 0.95 }}
               >
-                <span>Explore My Skills</span>
+                <span className="relative z-10 flex items-center gap-2">
+                  Explore My Skills
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </span>
+                <div className="absolute inset-0 bg-gradient-to-r from-accent-500 to-primary-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </motion.a>
               <motion.a
                 href="/Dev_Patel_Resume.pdf"
                 download
-                className="btn-outline btn-premium neumorphic-button text-sm sm:text-base"
+                className="group relative px-6 py-3 rounded-full glass-elite border border-primary-500/30 text-white font-semibold text-sm sm:text-base hover:border-primary-500/60 transition-all duration-300"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                Download Resume
+                <span className="flex items-center gap-2">
+                  <Download className="w-4 h-4 group-hover:animate-bounce" />
+                  Download Resume
+                </span>
               </motion.a>
             </motion.div>
           </motion.div>

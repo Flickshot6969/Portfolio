@@ -9,8 +9,12 @@ import {
   ExternalLink,
   ArrowRight,
   Building,
-  Star
+  Star,
+  Sparkles,
+  Award
 } from 'lucide-react'
+import { BlurReveal, TiltCard } from './AnimationEffects'
+import { Card3D, SectionReveal } from './EliteEffects'
 
 const experiences = [
   {
@@ -174,33 +178,66 @@ export default function Experience() {
         <div className="absolute bottom-1/4 left-1/4 w-72 h-72 bg-accent-500/15 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
         
         <div className="container-custom relative z-10" ref={ref}>
-          {/* Section Header */}
+          {/* Section Header - Elite */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
             className="text-center mb-8 md:mb-16"
           >
-            <span className="inline-block px-3 py-1.5 sm:px-4 sm:py-2 rounded-full glass-card text-primary-400 text-xs sm:text-sm font-medium mb-3 sm:mb-4">
+            <motion.span 
+              className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full glass-elite text-primary-400 text-xs sm:text-sm font-medium mb-3 sm:mb-4 magnetic-glow"
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={inView ? { scale: 1, opacity: 1 } : {}}
+              transition={{ delay: 0.2, type: 'spring' }}
+            >
+              <Award className="w-4 h-4" />
               Career Journey
-            </span>
+            </motion.span>
             <h2 className="heading-lg mb-3 sm:mb-4 text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
-              Work <span className="gradient-text">Experience</span>
+              <motion.span
+                initial={{ opacity: 0, y: 20 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: 0.3 }}
+              >
+                Work{' '}
+              </motion.span>
+              <motion.span 
+                className="gradient-shimmer"
+                initial={{ opacity: 0, rotateX: -40 }}
+                animate={inView ? { opacity: 1, rotateX: 0 } : {}}
+                transition={{ delay: 0.4, type: 'spring', stiffness: 100 }}
+              >
+                Experience
+              </motion.span>
             </h2>
-            <p className="text-body max-w-2xl mx-auto text-sm sm:text-base px-4 sm:px-0">
+            <motion.p 
+              className="text-body max-w-2xl mx-auto text-sm sm:text-base px-4 sm:px-0"
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.5 }}
+            >
               A track record of delivering results across technical and leadership roles.
-            </p>
+            </motion.p>
           </motion.div>
 
-          {/* Timeline */}
+          {/* Timeline - Elite */}
           <motion.div
             variants={containerVariants}
             initial="hidden"
             animate={inView ? 'visible' : 'hidden'}
             className="relative max-w-4xl mx-auto"
           >
-            {/* Timeline Line */}
-            <div className="absolute left-6 sm:left-8 md:left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-primary-500 via-accent-500 to-cyan-500 to-primary-500 transform md:-translate-x-1/2 glow-pulse" />
+            {/* Timeline Line - Elite Gradient */}
+            <motion.div 
+              className="absolute left-6 sm:left-8 md:left-1/2 top-0 bottom-0 w-1 transform md:-translate-x-1/2"
+              initial={{ scaleY: 0, opacity: 0 }}
+              animate={inView ? { scaleY: 1, opacity: 1 } : {}}
+              transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+              style={{ transformOrigin: 'top' }}
+            >
+              <div className="w-full h-full bg-gradient-to-b from-primary-500 via-accent-500 to-cyan-500 rounded-full shadow-lg shadow-primary-500/30" />
+            </motion.div>
 
             {experiences.map((exp, index) => (
               <motion.div
@@ -210,15 +247,19 @@ export default function Experience() {
                   index % 2 === 0 ? 'md:flex-row-reverse' : ''
                 }`}
               >
-                {/* Timeline Dot */}
-                <div className="absolute left-6 sm:left-8 md:left-1/2 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-gradient-to-r from-primary-500 to-accent-500 transform -translate-x-1/2 mt-8 z-10 shadow-lg shadow-primary-500/50" />
+                {/* Timeline Dot - Elite Glow */}
+                <motion.div 
+                  className="absolute left-6 sm:left-8 md:left-1/2 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-gradient-to-r from-primary-500 to-accent-500 transform -translate-x-1/2 mt-8 z-10 supreme-glow"
+                  initial={{ scale: 0 }}
+                  animate={inView ? { scale: 1 } : {}}
+                  transition={{ delay: 0.5 + index * 0.2, type: 'spring' }}
+                />
 
-                {/* Content Card */}
+                {/* Content Card - Elite 3D */}
                 <div className={`flex-1 ml-12 sm:ml-16 md:ml-0 ${index % 2 === 0 ? 'md:pr-12' : 'md:pl-12'}`}>
-                  <motion.div
-                    className="glass-premium rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 card-3d neumorphic shine-effect"
-                    whileHover={{ scale: 1.02, rotateY: 2, rotateX: -2, y: -5 }}
-                    whileTap={{ scale: 0.98 }}
+                  <Card3D 
+                    className="glass-elite rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 premium-card-hover"
+                    intensity={8}
                   >
                     {/* Header */}
                     <div className="flex flex-wrap items-start justify-between gap-2 sm:gap-4 mb-3 sm:mb-4">
@@ -259,18 +300,22 @@ export default function Experience() {
                       ))}
                     </div>
 
-                    {/* Technologies */}
+                    {/* Technologies - Elite Tags */}
                     <div className="flex flex-wrap gap-1.5 sm:gap-2">
-                      {exp.technologies.map((tech) => (
-                        <span
+                      {exp.technologies.map((tech, techIndex) => (
+                        <motion.span
                           key={tech}
-                          className="px-2 py-0.5 sm:px-3 sm:py-1 rounded-full text-[10px] sm:text-xs bg-dark-800 text-dark-300 border border-dark-700"
+                          initial={{ opacity: 0, scale: 0.8 }}
+                          animate={inView ? { opacity: 1, scale: 1 } : {}}
+                          transition={{ delay: 0.8 + techIndex * 0.05 }}
+                          className="px-2 py-0.5 sm:px-3 sm:py-1 rounded-full text-[10px] sm:text-xs bg-dark-800/80 text-dark-300 border border-dark-700 hover:border-primary-500/50 hover:text-primary-300 transition-all duration-300 cursor-default"
+                          whileHover={{ scale: 1.1 }}
                         >
                           {tech}
-                        </span>
+                        </motion.span>
                       ))}
                     </div>
-                  </motion.div>
+                  </Card3D>
                 </div>
 
                 {/* Empty space for timeline alignment */}
