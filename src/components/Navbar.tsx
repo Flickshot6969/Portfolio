@@ -61,7 +61,7 @@ export default function Navbar() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <span className="text-2xl font-bold font-display">
+            <span className="text-xl sm:text-2xl font-bold font-display">
               <span className="gradient-text">Dev</span>
               <span className="text-white">Patel</span>
             </span>
@@ -150,9 +150,9 @@ export default function Navbar() {
               onClick={() => setIsMobileMenuOpen(false)}
             />
             <motion.div 
-              className="absolute right-0 top-0 bottom-0 w-80 bg-dark-900/95 backdrop-blur-xl border-l border-white/10 p-6 pt-24"
+              className="absolute right-0 top-0 bottom-0 w-[280px] sm:w-80 bg-dark-900/95 backdrop-blur-xl border-l border-white/10 p-4 sm:p-6 pt-20 sm:pt-24"
             >
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-col gap-1 sm:gap-2">
                 {navLinks.map((link, index) => (
                   <motion.a
                     key={link.name}
@@ -161,36 +161,36 @@ export default function Navbar() {
                     initial={{ opacity: 0, x: 50 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1 }}
-                    className={`flex items-center justify-between px-4 py-3 rounded-xl text-lg font-medium transition-all duration-300 ${
+                    className={`flex items-center justify-between px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl text-base sm:text-lg font-medium transition-all duration-300 ${
                       activeSection === link.href.slice(1)
                         ? 'text-white bg-white/5'
                         : 'text-dark-300 hover:text-white hover:bg-white/5'
                     }`}
                   >
                     {link.name}
-                    <ChevronRight size={18} className={activeSection === link.href.slice(1) ? 'text-primary-500' : ''} />
+                    <ChevronRight size={16} className={`sm:w-[18px] sm:h-[18px] ${activeSection === link.href.slice(1) ? 'text-primary-500' : ''}`} />
                   </motion.a>
                 ))}
               </div>
 
-              <div className="mt-8 pt-8 border-t border-white/10 space-y-4">
+              <div className="mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-white/10 space-y-3 sm:space-y-4">
                 <motion.a
                   href="/Dev_Patel_Resume.pdf"
                   download
-                  className="flex items-center justify-center gap-2 w-full px-6 py-3 rounded-xl text-white border border-white/10 hover:border-primary-500/50 hover:bg-primary-500/10 transition-all duration-300"
+                  className="flex items-center justify-center gap-2 w-full px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg sm:rounded-xl text-white text-sm sm:text-base border border-white/10 hover:border-primary-500/50 hover:bg-primary-500/10 transition-all duration-300"
                   whileTap={{ scale: 0.95 }}
                 >
-                  <Download size={18} />
+                  <Download size={16} className="sm:w-[18px] sm:h-[18px]" />
                   Download Resume
                 </motion.a>
                 <motion.a
                   href="#contact"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="flex items-center justify-center gap-2 w-full px-6 py-3 rounded-xl text-white bg-gradient-to-r from-primary-600 to-accent-600 shadow-lg shadow-primary-500/25"
+                  className="flex items-center justify-center gap-2 w-full px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg sm:rounded-xl text-white text-sm sm:text-base bg-gradient-to-r from-primary-600 to-accent-600 shadow-lg shadow-primary-500/25"
                   whileTap={{ scale: 0.95 }}
                 >
                   Let&apos;s Talk
-                  <ChevronRight size={18} />
+                  <ChevronRight size={16} className="sm:w-[18px] sm:h-[18px]" />
                 </motion.a>
               </div>
             </motion.div>

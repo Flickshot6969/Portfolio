@@ -81,20 +81,20 @@ export default function About() {
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-8 md:mb-16"
         >
-          <span className="inline-block px-4 py-2 rounded-full glass-card text-primary-400 text-sm font-medium mb-4">
+          <span className="inline-block px-3 py-1.5 sm:px-4 sm:py-2 rounded-full glass-card text-primary-400 text-xs sm:text-sm font-medium mb-3 sm:mb-4">
             About Me
           </span>
-          <h2 className="heading-lg mb-4">
+          <h2 className="heading-lg mb-3 sm:mb-4 text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
             Bridging <span className="gradient-text">Technology</span> & <span className="gradient-text">Leadership</span>
           </h2>
-          <p className="text-body max-w-2xl mx-auto">
+          <p className="text-body max-w-2xl mx-auto text-sm sm:text-base px-4 sm:px-0">
             A unique blend of technical expertise and management acumen, driving innovation while leading teams to success.
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center">
           {/* Left Side - Image & Personal Info */}
           <motion.div
             variants={containerVariants}
@@ -105,15 +105,15 @@ export default function About() {
             {/* Image Container */}
             <motion.div 
               variants={itemVariants}
-              className="relative max-w-md mx-auto"
+              className="relative max-w-xs sm:max-w-md mx-auto"
             >
               {/* Decorative Elements */}
-              <div className="absolute -top-4 -left-4 w-24 h-24 border-l-2 border-t-2 border-primary-500/30 rounded-tl-3xl" />
-              <div className="absolute -bottom-4 -right-4 w-24 h-24 border-r-2 border-b-2 border-accent-500/30 rounded-br-3xl" />
+              <div className="absolute -top-2 -left-2 sm:-top-4 sm:-left-4 w-16 h-16 sm:w-24 sm:h-24 border-l-2 border-t-2 border-primary-500/30 rounded-tl-2xl sm:rounded-tl-3xl" />
+              <div className="absolute -bottom-2 -right-2 sm:-bottom-4 sm:-right-4 w-16 h-16 sm:w-24 sm:h-24 border-r-2 border-b-2 border-accent-500/30 rounded-br-2xl sm:rounded-br-3xl" />
               
               {/* Main Image */}
-              <div className="relative rounded-3xl overflow-hidden glass-card p-2">
-                <div className="rounded-2xl overflow-hidden">
+              <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden glass-card p-1.5 sm:p-2">
+                <div className="rounded-xl sm:rounded-2xl overflow-hidden">
                   <img
                     src="/media/Images/2.JPG"
                     alt="Dev Patel - Professional"
@@ -123,14 +123,14 @@ export default function About() {
                 </div>
                 
                 {/* Overlay Info Card */}
-                <div className="absolute bottom-6 left-6 right-6 glass-card rounded-xl p-4">
-                  <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-r from-primary-500 to-accent-500 flex items-center justify-center">
-                      <Award className="w-6 h-6 text-white" />
+                <div className="absolute bottom-3 left-3 right-3 sm:bottom-6 sm:left-6 sm:right-6 glass-card rounded-lg sm:rounded-xl p-3 sm:p-4">
+                  <div className="flex items-center gap-2 sm:gap-3">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-r from-primary-500 to-accent-500 flex items-center justify-center">
+                      <Award className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-white">Dev Patel</h4>
-                      <p className="text-sm text-dark-300">Technical Leader & Developer</p>
+                      <h4 className="font-semibold text-white text-sm sm:text-base">Dev Patel</h4>
+                      <p className="text-xs sm:text-sm text-dark-300">Technical Leader & Developer</p>
                     </div>
                   </div>
                 </div>
@@ -138,13 +138,13 @@ export default function About() {
 
               {/* Floating Badge */}
               <motion.div
-                className="absolute -right-4 top-1/4 glass-card px-4 py-2 rounded-xl"
+                className="absolute -right-2 sm:-right-4 top-1/4 glass-card px-2 py-1.5 sm:px-4 sm:py-2 rounded-lg sm:rounded-xl hidden sm:block"
                 animate={{ y: [0, -10, 0] }}
                 transition={{ duration: 3, repeat: Infinity }}
               >
-                <div className="flex items-center gap-2">
-                  <Heart className="w-5 h-5 text-red-500" />
-                  <span className="text-sm font-medium text-white">Passionate Coder</span>
+                <div className="flex items-center gap-1.5 sm:gap-2">
+                  <Heart className="w-4 h-4 sm:w-5 sm:h-5 text-red-500" />
+                  <span className="text-xs sm:text-sm font-medium text-white">Passionate Coder</span>
                 </div>
               </motion.div>
             </motion.div>
@@ -152,21 +152,21 @@ export default function About() {
             {/* Personal Info Cards */}
             <motion.div
               variants={containerVariants}
-              className="grid grid-cols-2 gap-4 mt-8"
+              className="grid grid-cols-2 gap-2 sm:gap-4 mt-6 sm:mt-8"
             >
               {personalInfo.map((info, index) => (
                 <motion.div
                   key={info.label}
                   variants={itemVariants}
-                  className="glass-card rounded-xl p-4 group hover:border-primary-500/30 transition-all duration-300"
+                  className="glass-card rounded-lg sm:rounded-xl p-3 sm:p-4 group hover:border-primary-500/30 transition-all duration-300"
                 >
-                  <div className="flex items-start gap-3">
-                    <div className="p-2 rounded-lg bg-primary-500/10 group-hover:bg-primary-500/20 transition-colors">
-                      <info.icon className="w-5 h-5 text-primary-400" />
+                  <div className="flex items-start gap-2 sm:gap-3">
+                    <div className="p-1.5 sm:p-2 rounded-md sm:rounded-lg bg-primary-500/10 group-hover:bg-primary-500/20 transition-colors">
+                      <info.icon className="w-4 h-4 sm:w-5 sm:h-5 text-primary-400" />
                     </div>
-                    <div>
-                      <p className="text-xs text-dark-400">{info.label}</p>
-                      <p className="text-sm font-medium text-white truncate">{info.value}</p>
+                    <div className="min-w-0">
+                      <p className="text-[10px] sm:text-xs text-dark-400">{info.label}</p>
+                      <p className="text-xs sm:text-sm font-medium text-white truncate">{info.value}</p>
                     </div>
                   </div>
                 </motion.div>
@@ -207,22 +207,22 @@ export default function About() {
 
             {/* Value Propositions */}
             <motion.div variants={itemVariants}>
-              <h4 className="text-lg font-semibold text-white mb-4">What I Bring to the Table</h4>
-              <div className="grid sm:grid-cols-2 gap-4">
+              <h4 className="text-base sm:text-lg font-semibold text-white mb-3 sm:mb-4">What I Bring to the Table</h4>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 {highlights.map((item, index) => (
                   <motion.div
                     key={item.title}
                     variants={itemVariants}
-                    className="glass-card rounded-xl p-4 group hover:border-primary-500/30 transition-all duration-300"
+                    className="glass-card rounded-lg sm:rounded-xl p-3 sm:p-4 group hover:border-primary-500/30 transition-all duration-300"
                     whileHover={{ scale: 1.02 }}
                   >
-                    <div className="flex items-start gap-3">
-                      <div className="p-2 rounded-lg bg-gradient-to-r from-primary-500/10 to-accent-500/10 group-hover:from-primary-500/20 group-hover:to-accent-500/20 transition-colors">
-                        <item.icon className="w-5 h-5 text-primary-400" />
+                    <div className="flex items-start gap-2 sm:gap-3">
+                      <div className="p-1.5 sm:p-2 rounded-md sm:rounded-lg bg-gradient-to-r from-primary-500/10 to-accent-500/10 group-hover:from-primary-500/20 group-hover:to-accent-500/20 transition-colors">
+                        <item.icon className="w-4 h-4 sm:w-5 sm:h-5 text-primary-400" />
                       </div>
                       <div>
-                        <h5 className="font-semibold text-white mb-1">{item.title}</h5>
-                        <p className="text-sm text-dark-400">{item.description}</p>
+                        <h5 className="font-semibold text-white mb-0.5 sm:mb-1 text-sm sm:text-base">{item.title}</h5>
+                        <p className="text-xs sm:text-sm text-dark-400">{item.description}</p>
                       </div>
                     </div>
                   </motion.div>
@@ -231,10 +231,10 @@ export default function About() {
             </motion.div>
 
             {/* CTA */}
-            <motion.div variants={itemVariants} className="flex flex-wrap gap-4">
+            <motion.div variants={itemVariants} className="flex flex-wrap gap-3 sm:gap-4">
               <motion.a
                 href="#skills"
-                className="btn-primary"
+                className="btn-primary text-sm sm:text-base"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
@@ -243,7 +243,7 @@ export default function About() {
               <motion.a
                 href="/Dev_Patel_Resume.pdf"
                 download
-                className="btn-outline"
+                className="btn-outline text-sm sm:text-base"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >

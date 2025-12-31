@@ -115,44 +115,44 @@ export default function Contact() {
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-8 md:mb-16"
         >
-          <span className="inline-block px-4 py-2 rounded-full glass-card text-primary-400 text-sm font-medium mb-4">
+          <span className="inline-block px-3 py-1.5 sm:px-4 sm:py-2 rounded-full glass-card text-primary-400 text-xs sm:text-sm font-medium mb-3 sm:mb-4">
             Get In Touch
           </span>
-          <h2 className="heading-lg mb-4">
+          <h2 className="heading-lg mb-3 sm:mb-4 text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
             Let&apos;s <span className="gradient-text">Connect</span>
           </h2>
-          <p className="text-body max-w-2xl mx-auto">
+          <p className="text-body max-w-2xl mx-auto text-sm sm:text-base px-4 sm:px-0">
             Have a project in mind or want to discuss opportunities? I&apos;d love to hear from you. 
             Let&apos;s create something amazing together!
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-5 gap-12">
+        <div className="grid lg:grid-cols-5 gap-6 md:gap-8 lg:gap-12">
           {/* Contact Info */}
           <motion.div
             variants={containerVariants}
             initial="hidden"
             animate={inView ? 'visible' : 'hidden'}
-            className="lg:col-span-2 space-y-8"
+            className="lg:col-span-2 space-y-4 sm:space-y-8"
           >
             {/* Info Cards */}
-            <div className="space-y-4">
+            <div className="space-y-3 sm:space-y-4">
               {contactInfo.map((info, index) => (
                 <motion.a
                   key={info.label}
                   href={info.href}
                   variants={itemVariants}
-                  className="flex items-center gap-4 glass-card glass-card-hover rounded-xl p-4 group"
+                  className="flex items-center gap-3 sm:gap-4 glass-card glass-card-hover rounded-lg sm:rounded-xl p-3 sm:p-4 group"
                   whileHover={{ x: 10 }}
                 >
-                  <div className="p-3 rounded-xl bg-gradient-to-r from-primary-500/10 to-accent-500/10 group-hover:from-primary-500/20 group-hover:to-accent-500/20 transition-colors">
-                    <info.icon className="w-6 h-6 text-primary-400" />
+                  <div className="p-2 sm:p-3 rounded-lg sm:rounded-xl bg-gradient-to-r from-primary-500/10 to-accent-500/10 group-hover:from-primary-500/20 group-hover:to-accent-500/20 transition-colors">
+                    <info.icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary-400" />
                   </div>
                   <div>
-                    <p className="text-sm text-dark-400">{info.label}</p>
-                    <p className="text-white font-medium">{info.value}</p>
+                    <p className="text-xs sm:text-sm text-dark-400">{info.label}</p>
+                    <p className="text-white font-medium text-sm sm:text-base">{info.value}</p>
                   </div>
                 </motion.a>
               ))}
@@ -161,32 +161,32 @@ export default function Contact() {
             {/* Quick Message */}
             <motion.div
               variants={itemVariants}
-              className="glass-card rounded-2xl p-6"
+              className="glass-card rounded-xl sm:rounded-2xl p-4 sm:p-6"
             >
-              <h4 className="font-semibold text-white mb-3">Prefer Quick Communication?</h4>
-              <p className="text-dark-400 text-sm mb-4">
+              <h4 className="font-semibold text-white mb-2 sm:mb-3 text-sm sm:text-base">Prefer Quick Communication?</h4>
+              <p className="text-dark-400 text-xs sm:text-sm mb-3 sm:mb-4">
                 Feel free to reach out directly via email or connect with me on social media platforms.
               </p>
               <motion.a
                 href="mailto:devpatel170521@gmail.com"
-                className="inline-flex items-center gap-2 text-primary-400 font-medium text-sm"
+                className="inline-flex items-center gap-1.5 sm:gap-2 text-primary-400 font-medium text-xs sm:text-sm"
                 whileHover={{ x: 5 }}
               >
                 Send Direct Email
-                <Send size={14} />
+                <Send size={12} className="sm:w-[14px] sm:h-[14px]" />
               </motion.a>
             </motion.div>
 
             {/* Map/Location Image Placeholder */}
             <motion.div
               variants={itemVariants}
-              className="glass-card rounded-2xl p-2 overflow-hidden"
+              className="glass-card rounded-xl sm:rounded-2xl p-1.5 sm:p-2 overflow-hidden hidden lg:block"
             >
-              <div className="aspect-video rounded-xl bg-dark-800/50 flex items-center justify-center">
+              <div className="aspect-video rounded-lg sm:rounded-xl bg-dark-800/50 flex items-center justify-center">
                 <div className="text-center">
-                  <MapPin className="w-12 h-12 text-primary-400 mx-auto mb-2" />
-                  <p className="text-dark-400">Based in India</p>
-                  <p className="text-sm text-dark-500">Available for Remote Work</p>
+                  <MapPin className="w-8 h-8 sm:w-12 sm:h-12 text-primary-400 mx-auto mb-1.5 sm:mb-2" />
+                  <p className="text-dark-400 text-sm sm:text-base">Based in India</p>
+                  <p className="text-xs sm:text-sm text-dark-500">Available for Remote Work</p>
                 </div>
               </div>
             </motion.div>
@@ -201,14 +201,14 @@ export default function Contact() {
           >
             <motion.div
               variants={itemVariants}
-              className="glass-card rounded-2xl p-8"
+              className="glass-card rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8"
             >
-              <h3 className="text-xl font-bold text-white mb-6">Send a Message</h3>
+              <h3 className="text-lg sm:text-xl font-bold text-white mb-4 sm:mb-6">Send a Message</h3>
               
-              <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid sm:grid-cols-2 gap-6">
+              <form ref={formRef} onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+                <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-dark-300 mb-2">
+                    <label htmlFor="name" className="block text-xs sm:text-sm font-medium text-dark-300 mb-1.5 sm:mb-2">
                       Your Name
                     </label>
                     <input
@@ -218,12 +218,12 @@ export default function Contact() {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="input-field"
+                      className="input-field text-sm sm:text-base"
                       placeholder="John Doe"
                     />
                   </div>
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-dark-300 mb-2">
+                    <label htmlFor="email" className="block text-xs sm:text-sm font-medium text-dark-300 mb-1.5 sm:mb-2">
                       Email Address
                     </label>
                     <input
@@ -233,14 +233,14 @@ export default function Contact() {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="input-field"
+                      className="input-field text-sm sm:text-base"
                       placeholder="john@example.com"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label htmlFor="subject" className="block text-sm font-medium text-dark-300 mb-2">
+                  <label htmlFor="subject" className="block text-xs sm:text-sm font-medium text-dark-300 mb-1.5 sm:mb-2">
                     Subject
                   </label>
                   <input
@@ -250,13 +250,13 @@ export default function Contact() {
                     value={formData.subject}
                     onChange={handleChange}
                     required
-                    className="input-field"
-                    placeholder="Project Inquiry / Job Opportunity / Collaboration"
+                    className="input-field text-sm sm:text-base"
+                    placeholder="Project Inquiry / Job Opportunity"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-dark-300 mb-2">
+                  <label htmlFor="message" className="block text-xs sm:text-sm font-medium text-dark-300 mb-1.5 sm:mb-2">
                     Message
                   </label>
                   <textarea
@@ -265,9 +265,9 @@ export default function Contact() {
                     value={formData.message}
                     onChange={handleChange}
                     required
-                    rows={5}
-                    className="input-field resize-none"
-                    placeholder="Tell me about your project, goals, or how we can work together..."
+                    rows={4}
+                    className="input-field resize-none text-sm sm:text-base"
+                    placeholder="Tell me about your project..."
                   />
                 </div>
 
@@ -279,9 +279,9 @@ export default function Contact() {
                   <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="flex items-center gap-2 p-4 rounded-xl bg-green-500/10 border border-green-500/20 text-green-400"
+                    className="flex items-center gap-2 p-3 sm:p-4 rounded-lg sm:rounded-xl bg-green-500/10 border border-green-500/20 text-green-400 text-xs sm:text-sm"
                   >
-                    <CheckCircle size={20} />
+                    <CheckCircle size={16} className="sm:w-5 sm:h-5 flex-shrink-0" />
                     <span>Message sent successfully! I&apos;ll get back to you soon.</span>
                   </motion.div>
                 )}
@@ -290,9 +290,9 @@ export default function Contact() {
                   <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="flex items-center gap-2 p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400"
+                    className="flex items-center gap-2 p-3 sm:p-4 rounded-lg sm:rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-xs sm:text-sm"
                   >
-                    <AlertCircle size={20} />
+                    <AlertCircle size={16} className="sm:w-5 sm:h-5 flex-shrink-0" />
                     <span>{errorMessage}</span>
                   </motion.div>
                 )}
@@ -301,19 +301,19 @@ export default function Contact() {
                 <motion.button
                   type="submit"
                   disabled={status === 'loading'}
-                  className="btn-primary w-full flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="btn-primary w-full flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base py-3 sm:py-4"
                   whileHover={{ scale: status === 'loading' ? 1 : 1.02 }}
                   whileTap={{ scale: status === 'loading' ? 1 : 0.98 }}
                 >
                   {status === 'loading' ? (
                     <>
-                      <Loader2 size={20} className="animate-spin" />
+                      <Loader2 size={18} className="animate-spin sm:w-5 sm:h-5" />
                       <span>Sending...</span>
                     </>
                   ) : (
                     <>
                       <span>Send Message</span>
-                      <Send size={18} />
+                      <Send size={16} className="sm:w-[18px] sm:h-[18px]" />
                     </>
                   )}
                 </motion.button>

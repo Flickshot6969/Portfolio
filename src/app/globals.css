@@ -133,7 +133,7 @@ body {
   }
 
   .btn-primary {
-    @apply relative overflow-hidden px-8 py-4 rounded-full font-semibold text-white;
+    @apply relative overflow-hidden px-5 py-3 sm:px-8 sm:py-4 rounded-full font-semibold text-white;
     background: linear-gradient(135deg, #6366f1, #8b5cf6);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
@@ -162,7 +162,7 @@ body {
   }
 
   .btn-outline {
-    @apply relative overflow-hidden px-8 py-4 rounded-full font-semibold text-white border-2;
+    @apply relative overflow-hidden px-5 py-3 sm:px-8 sm:py-4 rounded-full font-semibold text-white border-2;
     border-color: rgba(99, 102, 241, 0.5);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
@@ -175,7 +175,7 @@ body {
   }
 
   .section-padding {
-    @apply py-24 md:py-32 px-4 md:px-8;
+    @apply py-16 sm:py-20 md:py-24 lg:py-32 px-4 md:px-8;
   }
 
   .container-custom {
@@ -183,19 +183,19 @@ body {
   }
 
   .heading-xl {
-    @apply text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold font-display leading-tight;
+    @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold font-display leading-tight;
   }
 
   .heading-lg {
-    @apply text-3xl md:text-4xl lg:text-5xl font-bold font-display leading-tight;
+    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold font-display leading-tight;
   }
 
   .heading-md {
-    @apply text-2xl md:text-3xl font-bold font-display;
+    @apply text-xl sm:text-2xl md:text-3xl font-bold font-display;
   }
 
   .text-body {
-    @apply text-dark-300 text-lg leading-relaxed;
+    @apply text-dark-300 text-base sm:text-lg leading-relaxed;
   }
 }
 
@@ -544,5 +544,79 @@ body {
   
   .no-print {
     display: none;
+  }
+}
+
+/* Enhanced Mobile Responsiveness */
+@media (max-width: 640px) {
+  .heading-xl {
+    font-size: 2rem !important;
+    line-height: 1.2 !important;
+  }
+  
+  .heading-lg {
+    font-size: 1.75rem !important;
+  }
+  
+  .heading-md {
+    font-size: 1.5rem !important;
+  }
+  
+  .section-padding {
+    padding-top: 4rem !important;
+    padding-bottom: 4rem !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+  
+  .glass-card {
+    padding: 1rem !important;
+  }
+  
+  .btn-primary,
+  .btn-outline {
+    padding: 0.75rem 1.5rem !important;
+    font-size: 0.875rem !important;
+  }
+  
+  .text-body {
+    font-size: 1rem !important;
+  }
+}
+
+/* Tablet Responsiveness */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .heading-xl {
+    font-size: 3rem !important;
+  }
+  
+  .section-padding {
+    padding-top: 5rem !important;
+    padding-bottom: 5rem !important;
+  }
+}
+
+/* Very small screens */
+@media (max-width: 380px) {
+  .heading-xl {
+    font-size: 1.75rem !important;
+  }
+  
+  .heading-lg {
+    font-size: 1.5rem !important;
+  }
+  
+  .container-custom {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+  }
+}
+
+/* Landscape mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+  .min-h-screen {
+    min-height: auto !important;
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
   }
 }

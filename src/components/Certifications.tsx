@@ -161,15 +161,15 @@ export default function Certifications() {
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-8 md:mb-16"
         >
-          <span className="inline-block px-4 py-2 rounded-full glass-card text-primary-400 text-sm font-medium mb-4">
+          <span className="inline-block px-3 py-1.5 sm:px-4 sm:py-2 rounded-full glass-card text-primary-400 text-xs sm:text-sm font-medium mb-3 sm:mb-4">
             Credentials
           </span>
-          <h2 className="heading-lg mb-4">
+          <h2 className="heading-lg mb-3 sm:mb-4 text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
             Certifications & <span className="gradient-text">Achievements</span>
           </h2>
-          <p className="text-body max-w-2xl mx-auto">
+          <p className="text-body max-w-2xl mx-auto text-sm sm:text-base px-4 sm:px-0">
             Continuous learning and professional development across technical and soft skills domains.
           </p>
         </motion.div>
@@ -179,11 +179,11 @@ export default function Certifications() {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.2 }}
-          className="flex justify-center gap-4 mb-12"
+          className="flex flex-col sm:flex-row justify-center gap-2 sm:gap-4 mb-8 md:mb-12 px-4 sm:px-0"
         >
           <button
             onClick={() => setActiveTab('technical')}
-            className={`px-8 py-4 rounded-2xl font-medium transition-all duration-300 ${
+            className={`px-4 py-3 sm:px-8 sm:py-4 rounded-xl sm:rounded-2xl font-medium transition-all duration-300 text-sm sm:text-base ${
               activeTab === 'technical'
                 ? 'bg-gradient-to-r from-primary-500 to-accent-500 text-white shadow-lg shadow-primary-500/30'
                 : 'glass text-dark-300 hover:text-white'
@@ -193,7 +193,7 @@ export default function Certifications() {
           </button>
           <button
             onClick={() => setActiveTab('starbucks')}
-            className={`px-8 py-4 rounded-2xl font-medium transition-all duration-300 ${
+            className={`px-4 py-3 sm:px-8 sm:py-4 rounded-xl sm:rounded-2xl font-medium transition-all duration-300 text-sm sm:text-base ${
               activeTab === 'starbucks'
                 ? 'bg-gradient-to-r from-green-500 to-emerald-500 text-white shadow-lg shadow-green-500/30'
                 : 'glass text-dark-300 hover:text-white'
@@ -210,7 +210,7 @@ export default function Certifications() {
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
           >
             {technicalCertifications.map((cert, index) => (
               <motion.div
@@ -219,38 +219,38 @@ export default function Certifications() {
                 className="group cursor-pointer"
                 onClick={() => setSelectedCert(cert)}
               >
-                <div className="glass-card glass-card-hover rounded-2xl p-6 h-full">
+                <div className="glass-card glass-card-hover rounded-xl sm:rounded-2xl p-4 sm:p-6 h-full">
                   {/* Header */}
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="p-3 rounded-xl bg-gradient-to-r from-primary-500/10 to-accent-500/10 group-hover:from-primary-500/20 group-hover:to-accent-500/20 transition-colors">
-                      <Award className="w-6 h-6 text-primary-400" />
+                  <div className="flex items-start justify-between mb-3 sm:mb-4">
+                    <div className="p-2 sm:p-3 rounded-lg sm:rounded-xl bg-gradient-to-r from-primary-500/10 to-accent-500/10 group-hover:from-primary-500/20 group-hover:to-accent-500/20 transition-colors">
+                      <Award className="w-5 h-5 sm:w-6 sm:h-6 text-primary-400" />
                     </div>
-                    <span className="px-3 py-1 rounded-full text-xs font-medium bg-primary-500/10 text-primary-400 border border-primary-500/20">
+                    <span className="px-2 py-0.5 sm:px-3 sm:py-1 rounded-full text-[10px] sm:text-xs font-medium bg-primary-500/10 text-primary-400 border border-primary-500/20">
                       {cert.category}
                     </span>
                   </div>
 
                   {/* Content */}
-                  <h3 className="text-lg font-bold text-white mb-2 group-hover:text-primary-400 transition-colors">
+                  <h3 className="text-base sm:text-lg font-bold text-white mb-1.5 sm:mb-2 group-hover:text-primary-400 transition-colors">
                     {cert.title}
                   </h3>
                   
-                  <div className="flex items-center gap-2 text-dark-400 text-sm mb-3">
-                    <Building size={14} />
+                  <div className="flex items-center gap-2 text-dark-400 text-xs sm:text-sm mb-2 sm:mb-3">
+                    <Building size={12} className="sm:w-[14px] sm:h-[14px]" />
                     <span>{cert.issuer}</span>
                     <span className="text-dark-600">•</span>
-                    <Calendar size={14} />
+                    <Calendar size={12} className="sm:w-[14px] sm:h-[14px]" />
                     <span>{cert.date}</span>
                   </div>
 
-                  <p className="text-dark-400 text-sm mb-4">{cert.description}</p>
+                  <p className="text-dark-400 text-xs sm:text-sm mb-3 sm:mb-4">{cert.description}</p>
 
                   {/* Skills Tags */}
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-1.5 sm:gap-2">
                     {cert.skills.map((skill) => (
                       <span
                         key={skill}
-                        className="px-2 py-1 rounded text-xs bg-dark-800/50 text-dark-300"
+                        className="px-1.5 py-0.5 sm:px-2 sm:py-1 rounded text-[10px] sm:text-xs bg-dark-800/50 text-dark-300"
                       >
                         {skill}
                       </span>
@@ -258,10 +258,10 @@ export default function Certifications() {
                   </div>
 
                   {/* View Certificate Link */}
-                  <div className="mt-4 pt-4 border-t border-dark-800">
-                    <span className="inline-flex items-center gap-2 text-primary-400 text-sm font-medium">
+                  <div className="mt-3 sm:mt-4 pt-3 sm:pt-4 border-t border-dark-800">
+                    <span className="inline-flex items-center gap-1.5 sm:gap-2 text-primary-400 text-xs sm:text-sm font-medium">
                       View Certificate
-                      <ExternalLink size={14} />
+                      <ExternalLink size={12} className="sm:w-[14px] sm:h-[14px]" />
                     </span>
                   </div>
                 </div>
@@ -281,13 +281,13 @@ export default function Certifications() {
             {/* Starbucks Intro */}
             <motion.div
               variants={itemVariants}
-              className="glass-card rounded-2xl p-8 mb-8 text-center"
+              className="glass-card rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 mb-6 sm:mb-8 text-center"
             >
-              <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-gradient-to-r from-green-500 to-emerald-500 flex items-center justify-center">
-                <span className="text-3xl">☕</span>
+              <div className="w-14 h-14 sm:w-20 sm:h-20 mx-auto mb-3 sm:mb-4 rounded-full bg-gradient-to-r from-green-500 to-emerald-500 flex items-center justify-center">
+                <span className="text-2xl sm:text-3xl">☕</span>
               </div>
-              <h3 className="text-xl font-bold text-white mb-2">Starbucks Certified Partner</h3>
-              <p className="text-dark-400 max-w-2xl mx-auto">
+              <h3 className="text-base sm:text-xl font-bold text-white mb-1.5 sm:mb-2">Starbucks Certified Partner</h3>
+              <p className="text-dark-400 max-w-2xl mx-auto text-xs sm:text-sm md:text-base px-2 sm:px-0">
                 Completed comprehensive training programs demonstrating excellence in customer service, 
                 product knowledge, and operational skills. These certifications reflect my commitment 
                 to quality and continuous learning in every role.
@@ -295,23 +295,23 @@ export default function Certifications() {
             </motion.div>
 
             {/* Starbucks Certificates Grid */}
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
               {starbucksCertifications.map((cert, index) => (
                 <motion.div
                   key={cert.id}
                   variants={itemVariants}
-                  className="glass-card rounded-xl p-4 group hover:border-green-500/30 transition-all duration-300"
+                  className="glass-card rounded-lg sm:rounded-xl p-3 sm:p-4 group hover:border-green-500/30 transition-all duration-300"
                 >
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-green-500/10 to-emerald-500/10 flex items-center justify-center group-hover:from-green-500/20 group-hover:to-emerald-500/20 transition-colors">
-                      <Award className="w-5 h-5 text-green-400" />
+                  <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
+                    <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-md sm:rounded-lg bg-gradient-to-r from-green-500/10 to-emerald-500/10 flex items-center justify-center group-hover:from-green-500/20 group-hover:to-emerald-500/20 transition-colors">
+                      <Award className="w-4 h-4 sm:w-5 sm:h-5 text-green-400" />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <h4 className="text-sm font-semibold text-white truncate">{cert.title}</h4>
-                      <p className="text-xs text-dark-400">{cert.issuer}</p>
+                      <h4 className="text-xs sm:text-sm font-semibold text-white truncate">{cert.title}</h4>
+                      <p className="text-[10px] sm:text-xs text-dark-400">{cert.issuer}</p>
                     </div>
                   </div>
-                  <p className="text-xs text-dark-400 line-clamp-2">{cert.description}</p>
+                  <p className="text-[10px] sm:text-xs text-dark-400 line-clamp-2">{cert.description}</p>
                 </motion.div>
               ))}
             </div>

@@ -235,7 +235,7 @@ export default function Hero() {
               
               {/* Main Image Container */}
               <motion.div
-                className="relative w-72 h-72 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-white/10 shadow-2xl"
+                className="relative w-56 h-56 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-4 border-white/10 shadow-2xl"
                 animate={{
                   y: [0, -10, 0],
                 }}
@@ -259,35 +259,35 @@ export default function Hero() {
                 <div className="absolute inset-0 bg-gradient-to-t from-dark-950/50 to-transparent" />
               </motion.div>
 
-              {/* Floating Cards */}
+              {/* Floating Cards - Hidden on small mobile */}
               <motion.div
-                className="absolute -right-4 top-10 glass-card px-4 py-3 rounded-xl"
+                className="absolute -right-4 top-10 glass-card px-3 py-2 md:px-4 md:py-3 rounded-xl hidden sm:block"
                 animate={{ y: [0, -10, 0], rotate: [0, 2, 0] }}
                 transition={{ duration: 3, repeat: Infinity }}
               >
                 <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-lg bg-gradient-to-r from-primary-500 to-accent-500 flex items-center justify-center">
-                    <Code2 size={16} className="text-white" />
+                  <div className="w-7 h-7 md:w-8 md:h-8 rounded-lg bg-gradient-to-r from-primary-500 to-accent-500 flex items-center justify-center">
+                    <Code2 size={14} className="text-white" />
                   </div>
                   <div>
                     <p className="text-xs text-dark-400">Stack</p>
-                    <p className="text-sm font-semibold text-white">Full Stack</p>
+                    <p className="text-xs md:text-sm font-semibold text-white">Full Stack</p>
                   </div>
                 </div>
               </motion.div>
 
               <motion.div
-                className="absolute -left-4 bottom-20 glass-card px-4 py-3 rounded-xl"
+                className="absolute -left-4 bottom-20 glass-card px-3 py-2 md:px-4 md:py-3 rounded-xl hidden sm:block"
                 animate={{ y: [0, 10, 0], rotate: [0, -2, 0] }}
                 transition={{ duration: 4, repeat: Infinity, delay: 0.5 }}
               >
                 <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-lg bg-gradient-to-r from-accent-500 to-pink-500 flex items-center justify-center">
-                    <Briefcase size={16} className="text-white" />
+                  <div className="w-7 h-7 md:w-8 md:h-8 rounded-lg bg-gradient-to-r from-accent-500 to-pink-500 flex items-center justify-center">
+                    <Briefcase size={14} className="text-white" />
                   </div>
                   <div>
                     <p className="text-xs text-dark-400">Role</p>
-                    <p className="text-sm font-semibold text-white">Tech Lead</p>
+                    <p className="text-xs md:text-sm font-semibold text-white">Tech Lead</p>
                   </div>
                 </div>
               </motion.div>
@@ -300,7 +300,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.2 }}
-          className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6"
+          className="mt-12 md:mt-20 grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6"
         >
           {stats.map((stat, index) => (
             <motion.div
@@ -308,12 +308,12 @@ export default function Hero() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.3 + index * 0.1 }}
-              className="text-center glass-card rounded-2xl p-6 group hover:border-primary-500/30 transition-all duration-500"
+              className="text-center glass-card rounded-xl md:rounded-2xl p-4 md:p-6 group hover:border-primary-500/30 transition-all duration-500"
             >
-              <h3 className="text-3xl md:text-4xl font-bold gradient-text mb-2">
+              <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-1 md:mb-2">
                 {stat.value}
               </h3>
-              <p className="text-dark-400 text-sm">{stat.label}</p>
+              <p className="text-dark-400 text-xs md:text-sm">{stat.label}</p>
             </motion.div>
           ))}
         </motion.div>

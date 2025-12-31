@@ -137,15 +137,15 @@ export default function Experience() {
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
-            className="text-center mb-16"
+            className="text-center mb-8 md:mb-16"
           >
-            <span className="inline-block px-4 py-2 rounded-full glass-card text-primary-400 text-sm font-medium mb-4">
+            <span className="inline-block px-3 py-1.5 sm:px-4 sm:py-2 rounded-full glass-card text-primary-400 text-xs sm:text-sm font-medium mb-3 sm:mb-4">
               Career Journey
             </span>
-            <h2 className="heading-lg mb-4">
+            <h2 className="heading-lg mb-3 sm:mb-4 text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
               Work <span className="gradient-text">Experience</span>
             </h2>
-            <p className="text-body max-w-2xl mx-auto">
+            <p className="text-body max-w-2xl mx-auto text-sm sm:text-base px-4 sm:px-0">
               A track record of delivering results across technical and leadership roles.
             </p>
           </motion.div>
@@ -158,70 +158,70 @@ export default function Experience() {
             className="relative max-w-4xl mx-auto"
           >
             {/* Timeline Line */}
-            <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary-500 via-accent-500 to-primary-500 transform md:-translate-x-1/2" />
+            <div className="absolute left-6 sm:left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary-500 via-accent-500 to-primary-500 transform md:-translate-x-1/2" />
 
             {experiences.map((exp, index) => (
               <motion.div
                 key={exp.id}
                 variants={itemVariants}
-                className={`relative flex flex-col md:flex-row gap-8 mb-12 ${
+                className={`relative flex flex-col md:flex-row gap-4 sm:gap-8 mb-8 sm:mb-12 ${
                   index % 2 === 0 ? 'md:flex-row-reverse' : ''
                 }`}
               >
                 {/* Timeline Dot */}
-                <div className="absolute left-8 md:left-1/2 w-4 h-4 rounded-full bg-gradient-to-r from-primary-500 to-accent-500 transform -translate-x-1/2 mt-8 z-10 shadow-lg shadow-primary-500/50" />
+                <div className="absolute left-6 sm:left-8 md:left-1/2 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-gradient-to-r from-primary-500 to-accent-500 transform -translate-x-1/2 mt-8 z-10 shadow-lg shadow-primary-500/50" />
 
                 {/* Content Card */}
-                <div className={`flex-1 ml-16 md:ml-0 ${index % 2 === 0 ? 'md:pr-12' : 'md:pl-12'}`}>
+                <div className={`flex-1 ml-12 sm:ml-16 md:ml-0 ${index % 2 === 0 ? 'md:pr-12' : 'md:pl-12'}`}>
                   <motion.div
-                    className="glass-card glass-card-hover rounded-2xl p-6 md:p-8"
+                    className="glass-card glass-card-hover rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8"
                     whileHover={{ scale: 1.02 }}
                   >
                     {/* Header */}
-                    <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
+                    <div className="flex flex-wrap items-start justify-between gap-2 sm:gap-4 mb-3 sm:mb-4">
                       <div>
-                        <h3 className="text-xl font-bold text-white mb-1">{exp.role}</h3>
+                        <h3 className="text-base sm:text-xl font-bold text-white mb-1">{exp.role}</h3>
                         <div className="flex items-center gap-2 text-primary-400">
-                          <Building size={16} />
-                          <span className="font-medium">{exp.company}</span>
+                          <Building size={14} className="sm:w-4 sm:h-4" />
+                          <span className="font-medium text-sm sm:text-base">{exp.company}</span>
                         </div>
                       </div>
-                      <span className="px-3 py-1 rounded-full text-xs font-medium bg-primary-500/10 text-primary-400 border border-primary-500/20">
+                      <span className="px-2 py-1 sm:px-3 rounded-full text-[10px] sm:text-xs font-medium bg-primary-500/10 text-primary-400 border border-primary-500/20">
                         {exp.type}
                       </span>
                     </div>
 
                     {/* Meta Info */}
-                    <div className="flex flex-wrap gap-4 text-sm text-dark-400 mb-4">
+                    <div className="flex flex-wrap gap-2 sm:gap-4 text-xs sm:text-sm text-dark-400 mb-3 sm:mb-4">
                       <span className="flex items-center gap-1">
-                        <Calendar size={14} />
+                        <Calendar size={12} className="sm:w-[14px] sm:h-[14px]" />
                         {exp.period}
                       </span>
                       <span className="flex items-center gap-1">
-                        <MapPin size={14} />
+                        <MapPin size={12} className="sm:w-[14px] sm:h-[14px]" />
                         {exp.location}
                       </span>
                     </div>
 
                     {/* Description */}
-                    <p className="text-dark-300 mb-4">{exp.description}</p>
+                    <p className="text-dark-300 mb-3 sm:mb-4 text-sm sm:text-base">{exp.description}</p>
 
                     {/* Achievements */}
-                    <div className="space-y-2 mb-4">
+                    <div className="space-y-1.5 sm:space-y-2 mb-3 sm:mb-4">
                       {exp.achievements.map((achievement, i) => (
                         <div key={i} className="flex items-start gap-2">
-                          <Star size={14} className="text-accent-400 mt-1 flex-shrink-0" />
-                          <span className="text-sm text-dark-300">{achievement}</span>
+                          <Star size={12} className="sm:w-[14px] sm:h-[14px] text-accent-400 mt-0.5 sm:mt-1 flex-shrink-0" />
+                          <span className="text-xs sm:text-sm text-dark-300">{achievement}</span>
                         </div>
                       ))}
                     </div>
 
                     {/* Technologies */}
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-1.5 sm:gap-2">
                       {exp.technologies.map((tech) => (
                         <span
                           key={tech}
-                          className="px-3 py-1 rounded-full text-xs bg-dark-800 text-dark-300 border border-dark-700"
+                          className="px-2 py-0.5 sm:px-3 sm:py-1 rounded-full text-[10px] sm:text-xs bg-dark-800 text-dark-300 border border-dark-700"
                         >
                           {tech}
                         </span>
@@ -247,21 +247,21 @@ export default function Experience() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-16"
+            className="text-center mb-8 md:mb-16"
           >
-            <span className="inline-block px-4 py-2 rounded-full glass-card text-primary-400 text-sm font-medium mb-4">
+            <span className="inline-block px-3 py-1.5 sm:px-4 sm:py-2 rounded-full glass-card text-primary-400 text-xs sm:text-sm font-medium mb-3 sm:mb-4">
               Featured Work
             </span>
-            <h2 className="heading-lg mb-4">
+            <h2 className="heading-lg mb-3 sm:mb-4 text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
               My <span className="gradient-text">Projects</span>
             </h2>
-            <p className="text-body max-w-2xl mx-auto">
+            <p className="text-body max-w-2xl mx-auto text-sm sm:text-base px-4 sm:px-0">
               A showcase of projects demonstrating technical excellence and creative problem-solving.
             </p>
           </motion.div>
 
           {/* Projects Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
             {projects.map((project, index) => (
               <motion.div
                 key={project.id}
@@ -271,7 +271,7 @@ export default function Experience() {
                 transition={{ delay: index * 0.1 }}
                 className="group"
               >
-                <div className="glass-card rounded-2xl overflow-hidden h-full flex flex-col">
+                <div className="glass-card rounded-xl sm:rounded-2xl overflow-hidden h-full flex flex-col">
                   {/* Image */}
                   <div className="relative aspect-video overflow-hidden">
                     <img
@@ -282,7 +282,7 @@ export default function Experience() {
                     <div className="absolute inset-0 bg-gradient-to-t from-dark-950 via-dark-950/50 to-transparent opacity-60" />
                     
                     {/* Category Badge */}
-                    <span className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-medium glass text-white">
+                    <span className="absolute top-2 left-2 sm:top-4 sm:left-4 px-2 py-0.5 sm:px-3 sm:py-1 rounded-full text-[10px] sm:text-xs font-medium glass text-white">
                       {project.category}
                     </span>
 
@@ -291,31 +291,31 @@ export default function Experience() {
                       <div className="flex gap-4">
                         <motion.a
                           href={project.links.live}
-                          className="p-3 rounded-full glass text-white hover:bg-white/20 transition-colors"
+                          className="p-2 sm:p-3 rounded-full glass text-white hover:bg-white/20 transition-colors"
                           whileHover={{ scale: 1.1 }}
                           whileTap={{ scale: 0.9 }}
                         >
-                          <ExternalLink size={20} />
+                          <ExternalLink size={18} className="sm:w-5 sm:h-5" />
                         </motion.a>
                       </div>
                     </div>
                   </div>
 
                   {/* Content */}
-                  <div className="p-6 flex-1 flex flex-col">
-                    <h3 className="text-lg font-bold text-white mb-2 group-hover:text-primary-400 transition-colors">
+                  <div className="p-4 sm:p-6 flex-1 flex flex-col">
+                    <h3 className="text-base sm:text-lg font-bold text-white mb-1.5 sm:mb-2 group-hover:text-primary-400 transition-colors">
                       {project.title}
                     </h3>
-                    <p className="text-dark-400 text-sm mb-4 flex-1">
+                    <p className="text-dark-400 text-xs sm:text-sm mb-3 sm:mb-4 flex-1">
                       {project.description}
                     </p>
 
                     {/* Technologies */}
-                    <div className="flex flex-wrap gap-2 mb-4">
+                    <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-3 sm:mb-4">
                       {project.technologies.map((tech) => (
                         <span
                           key={tech}
-                          className="px-2 py-1 rounded text-xs bg-dark-800/50 text-dark-300"
+                          className="px-1.5 py-0.5 sm:px-2 sm:py-1 rounded text-[10px] sm:text-xs bg-dark-800/50 text-dark-300"
                         >
                           {tech}
                         </span>
@@ -325,10 +325,10 @@ export default function Experience() {
                     {/* View Project Link */}
                     <a
                       href={project.links.live}
-                      className="inline-flex items-center gap-2 text-primary-400 text-sm font-medium group-hover:gap-3 transition-all"
+                      className="inline-flex items-center gap-1.5 sm:gap-2 text-primary-400 text-xs sm:text-sm font-medium group-hover:gap-2 sm:group-hover:gap-3 transition-all"
                     >
                       View Project
-                      <ArrowRight size={16} />
+                      <ArrowRight size={14} className="sm:w-4 sm:h-4" />
                     </a>
                   </div>
                 </div>
@@ -341,16 +341,16 @@ export default function Experience() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mt-12"
+            className="text-center mt-8 sm:mt-12"
           >
             <motion.a
               href="#"
-              className="btn-outline inline-flex items-center gap-2"
+              className="btn-outline inline-flex items-center gap-2 text-sm sm:text-base"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
               View All Projects
-              <ArrowRight size={18} />
+              <ArrowRight size={16} className="sm:w-[18px] sm:h-[18px]" />
             </motion.a>
           </motion.div>
         </div>
