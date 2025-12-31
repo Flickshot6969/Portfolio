@@ -1,7 +1,7 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
-import { motion } from 'framer-motion'
+import { useEffect, useRef, useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import { TypeAnimation } from 'react-type-animation'
 import { 
   ChevronDown, 
@@ -15,6 +15,20 @@ import {
   Briefcase
 } from 'lucide-react'
 
+// All images with numbers
+const heroImages = [
+  '/media/Images/1.jpg',
+  '/media/Images/2.JPG',
+  '/media/Images/3.JPG',
+  '/media/Images/4.JPG',
+  '/media/Images/5.jpg',
+  '/media/Images/6.JPG',
+  '/media/Images/7.jpg',
+  '/media/Images/8.JPG',
+  '/media/Images/9.jpg',
+  '/media/Images/11.JPG',
+]
+
 const stats = [
   { label: 'Years Experience', value: '3+' },
   { label: 'Projects Delivered', value: '25+' },
@@ -24,6 +38,16 @@ const stats = [
 
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null)
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
+
+  // Auto-slide images every 6 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % heroImages.length)
+    }, 6000) // 6 seconds
+
+    return () => clearInterval(interval)
+  }, [])
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -248,15 +272,40 @@ export default function Hero() {
                   transform: 'translate(var(--mouse-x, 0), var(--mouse-y, 0))',
                 }}
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-primary-600/20 to-accent-600/20" />
-                <img
-                  src="/media/Images/1.jpg"
-                  alt="Dev Patel"
-                  className="w-full h-full object-cover"
-                />
+                <div className="absolute inset-0 bg-gradient-to-br from-primary-600/20 to-accent-600/20 z-10" />
+                
+                {/* Image Slideshow */}
+                <AnimatePresence mode="wait">
+                  <motion.img
+                    key={currentImageIndex}
+                    src={heroImages[currentImageIndex]}
+                    alt={`Dev Patel - Image ${currentImageIndex + 1}`}
+                    className="w-full h-full object-cover absolute inset-0"
+                    initial={{ opacity: 0, scale: 1.1 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
+                    transition={{ duration: 0.8, ease: 'easeInOut' }}
+                  />
+                </AnimatePresence>
+                
+                {/* Image Indicator Dots */}
+                <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-20">
+                  {heroImages.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentImageIndex(index)}
+                      className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                        index === currentImageIndex 
+                          ? 'bg-white w-6' 
+                          : 'bg-white/40 hover:bg-white/60'
+                      }`}
+                      aria-label={`Go to image ${index + 1}`}
+                    />
+                  ))}
+                </div>
                 
                 {/* Overlay Gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-dark-950/50 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-dark-950/50 to-transparent z-10" />
               </motion.div>
 
               {/* Floating Cards - Hidden on small mobile */}
