@@ -189,23 +189,25 @@ export default function Certifications() {
         >
           <button
             onClick={() => setActiveTab('technical')}
-            className={`px-4 py-3 sm:px-8 sm:py-4 rounded-xl sm:rounded-2xl font-medium transition-all duration-300 text-sm sm:text-base bouncy-click ${
+            style={{ cursor: 'pointer' }}
+            className={`px-4 py-3 sm:px-8 sm:py-4 rounded-xl sm:rounded-2xl font-medium transition-all duration-300 text-sm sm:text-base ${
               activeTab === 'technical'
-                ? 'bg-gradient-to-r from-primary-500 to-accent-500 text-white shadow-lg shadow-primary-500/30 vegas-glow neumorphic'
-                : 'glass-frost text-dark-300 hover:text-white hover-lift jelly-hover'
+                ? 'bg-gradient-to-r from-primary-500 to-accent-500 text-white shadow-lg shadow-primary-500/30'
+                : 'bg-dark-800/50 border border-dark-700 text-dark-300 hover:text-white hover:border-primary-500/50'
             }`}
           >
-            Technical & Professional
+            💼 Technical & Professional
           </button>
           <button
             onClick={() => setActiveTab('starbucks')}
-            className={`px-4 py-3 sm:px-8 sm:py-4 rounded-xl sm:rounded-2xl font-medium transition-all duration-300 text-sm sm:text-base bouncy-click ${
+            style={{ cursor: 'pointer' }}
+            className={`px-4 py-3 sm:px-8 sm:py-4 rounded-xl sm:rounded-2xl font-medium transition-all duration-300 text-sm sm:text-base ${
               activeTab === 'starbucks'
-                ? 'bg-gradient-to-r from-green-500 to-emerald-500 text-white shadow-lg shadow-green-500/30 neumorphic'
-                : 'glass text-dark-300 hover:text-white jelly-hover'
+                ? 'bg-gradient-to-r from-green-500 to-emerald-500 text-white shadow-lg shadow-green-500/30'
+                : 'bg-dark-800/50 border border-dark-700 text-dark-300 hover:text-white hover:border-green-500/50'
             }`}
           >
-            Starbucks Training
+            ☕ Starbucks Training
           </button>
         </motion.div>
 
@@ -222,12 +224,13 @@ export default function Certifications() {
               <motion.div
                 key={cert.id}
                 variants={itemVariants}
-                className="group cursor-pointer"
+                className="group"
+                style={{ cursor: 'pointer' }}
                 onClick={() => setSelectedCert(cert)}
                 whileHover={{ scale: 1.02, y: -5 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <div className="glass-premium neumorphic rounded-xl sm:rounded-2xl p-4 sm:p-6 h-full shine-effect">
+                <div className="bg-dark-800/30 border border-dark-700 hover:border-primary-500/50 rounded-xl sm:rounded-2xl p-4 sm:p-6 h-full transition-all duration-300">
                   {/* Header */}
                   <div className="flex items-start justify-between mb-3 sm:mb-4">
                     <div className="p-2 sm:p-3 rounded-lg sm:rounded-xl bg-gradient-to-r from-primary-500/10 to-accent-500/10 group-hover:from-primary-500/20 group-hover:to-accent-500/20 transition-colors">

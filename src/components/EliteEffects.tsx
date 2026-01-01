@@ -160,6 +160,11 @@ export function Card3D({ children, className = '', intensity = 10 }: Card3DProps
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!ref.current) return
+    // Don't apply 3D effect when hovering over form inputs
+    const target = e.target as HTMLElement
+    if (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.tagName === 'BUTTON') {
+      return
+    }
     const rect = ref.current.getBoundingClientRect()
     const x = (e.clientX - rect.left) / rect.width
     const y = (e.clientY - rect.top) / rect.height

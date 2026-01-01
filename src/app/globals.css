@@ -815,13 +815,16 @@ body {
 
 /* Form Styles */
 .input-field {
-  @apply w-full px-6 py-4 rounded-xl bg-dark-800/50 border border-dark-700 text-white placeholder-dark-400;
+  @apply w-full px-4 py-3 sm:px-6 sm:py-4 rounded-xl bg-dark-800/80 border border-dark-600 text-white placeholder-dark-400;
   @apply focus:outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20;
   transition: all 0.3s ease;
+  position: relative;
+  z-index: 10;
 }
 
 .input-field:focus {
-  background: rgba(99, 102, 241, 0.05);
+  background: rgba(15, 23, 42, 0.9);
+  border-color: #6366f1;
 }
 
 /* Loading Animation */

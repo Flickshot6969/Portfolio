@@ -264,22 +264,23 @@ export default function Contact() {
             animate={inView ? 'visible' : 'hidden'}
             className="lg:col-span-3"
           >
-            <Card3D
-              className="glass-elite rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 border-beam-elite"
-              intensity={5}
-            >
-              <h3 className="text-lg sm:text-xl font-bold text-white mb-4 sm:mb-6 flex items-center gap-2">
-                <MessageSquare className="w-5 h-5 text-primary-400" />
-                Send a Message
-              </h3>
+            <div className="glass-elite rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 border border-primary-500/20 relative overflow-hidden">
+              {/* Gradient background */}
+              <div className="absolute inset-0 bg-gradient-to-br from-primary-500/10 via-accent-500/5 to-cyan-500/10 pointer-events-none" />
               
-              <form ref={formRef} onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
-                <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
-                  <motion.div
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={inView ? { opacity: 1, x: 0 } : {}}
-                    transition={{ delay: 0.5 }}
-                  >
+              <div className="relative z-10">
+                <h3 className="text-lg sm:text-xl font-bold text-white mb-4 sm:mb-6 flex items-center gap-2">
+                  <MessageSquare className="w-5 h-5 text-primary-400" />
+                  Send a Message
+                </h3>
+                
+                <form ref={formRef} onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+                  <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
+                    <motion.div
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={inView ? { opacity: 1, x: 0 } : {}}
+                      transition={{ delay: 0.5 }}
+                    >
                     <label htmlFor="name" className="block text-xs sm:text-sm font-medium text-dark-300 mb-1.5 sm:mb-2">
                       Your Name
                     </label>
@@ -394,7 +395,8 @@ export default function Contact() {
                   )}
                 </motion.button>
               </form>
-            </Card3D>
+              </div>
+            </div>
           </motion.div>
         </div>
       </div>
