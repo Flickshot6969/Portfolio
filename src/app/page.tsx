@@ -15,6 +15,9 @@ import { TheatricalLoader } from '@/components/TheatricalLoader'
 import { EliteCursorProvider } from '@/components/EliteCursor'
 import { AmbientBackground } from '@/components/AmbientParticles'
 import { ScrollDramaProvider } from '@/lib/ScrollDramaEngine'
+import { ViewportProvider } from '@/lib/UltraResponsive'
+import { NarrativeProvider, ScrollIndicator } from '@/lib/NarrativeScroll'
+import { EmotionalProvider } from '@/lib/PsychologicalMotion'
 
 export type ActiveSection = 'home' | 'about' | 'skills' | 'experience' | 'resume' | 'projects' | 'certifications' | 'contact'
 
@@ -117,56 +120,72 @@ export default function Home() {
   }
 
   return (
-    <EliteCursorProvider enableParticles={true} enableMagnetic={true}>
-      <ScrollDramaProvider>
-        {/* Theatrical Loader - Only shows on first visit */}
-        <AnimatePresence>
-          {isLoading && (
-            <TheatricalLoader 
-              onComplete={handleLoaderComplete}
-              brandName="Dev Patel"
-              tagline="Crafting Digital Excellence"
-            />
-          )}
-        </AnimatePresence>
+    <ViewportProvider>
+      <EmotionalProvider>
+        <EliteCursorProvider enableParticles={true} enableMagnetic={true}>
+          <ScrollDramaProvider>
+            <NarrativeProvider chapters={['prologue', 'introduction', 'rising', 'climax', 'falling', 'resolution', 'epilogue']}>
+              {/* Theatrical Loader - Only shows on first visit */}
+              <AnimatePresence>
+                {isLoading && (
+                  <TheatricalLoader 
+                    onComplete={handleLoaderComplete}
+                    brandName="Dev Patel"
+                    tagline="Crafting Digital Excellence"
+                  />
+                )}
+              </AnimatePresence>
 
-        {/* Main Content - Fades in after loader */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: hasLoaded ? 1 : 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
-          {/* Global Ambient Background */}
-          <div className="fixed inset-0 z-0 pointer-events-none">
-            <AmbientBackground 
-              particles={true}
-              aurora={true}
-              noise={true}
-              orbs={true}
-              constellation={false}
-            />
-          </div>
-
-          <Navbar activeSection={activeSection} setActiveSection={setActiveSection} />
-          
-          <main className="min-h-screen relative z-10" style={{ perspective: '1200px' }}>
-            <AnimatePresence mode="wait">
+              {/* Main Content - Fades in after loader */}
               <motion.div
-                key={activeSection}
-                variants={cinematicVariants}
-                initial="hidden"
-                animate="visible"
-                exit="exit"
-                style={{ transformStyle: 'preserve-3d' }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: hasLoaded ? 1 : 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
               >
-                {renderSection()}
+                {/* Scroll Progress Indicator */}
+                {hasLoaded && (
+                  <ScrollIndicator 
+                    position="right"
+                    showPercentage={false}
+                    showChapters={true}
+                    chapters={['Hero', 'About', 'Skills', 'Experience', 'Certifications', 'Contact']}
+                  />
+                )}
+
+                {/* Global Ambient Background */}
+                <div className="fixed inset-0 z-0 pointer-events-none">
+                  <AmbientBackground 
+                    particles={true}
+                    aurora={true}
+                    noise={true}
+                    orbs={true}
+                    constellation={false}
+                  />
+                </div>
+
+                <Navbar activeSection={activeSection} setActiveSection={setActiveSection} />
+                
+                <main className="min-h-screen relative z-10" style={{ perspective: '1200px' }}>
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={activeSection}
+                      variants={cinematicVariants}
+                      initial="hidden"
+                      animate="visible"
+                      exit="exit"
+                      style={{ transformStyle: 'preserve-3d' }}
+                    >
+                      {renderSection()}
+                    </motion.div>
+                  </AnimatePresence>
+                </main>
+                
+                <Footer />
               </motion.div>
-            </AnimatePresence>
-          </main>
-          
-          <Footer />
-        </motion.div>
-      </ScrollDramaProvider>
-    </EliteCursorProvider>
+            </NarrativeProvider>
+          </ScrollDramaProvider>
+        </EliteCursorProvider>
+      </EmotionalProvider>
+    </ViewportProvider>
   )
 }
