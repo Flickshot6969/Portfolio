@@ -494,7 +494,7 @@ export default function Hero() {
               </motion.div>
             </DramaticReveal>
 
-            {/* Social Links - Magnetic & Tactile */}
+            {/* Social Links */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -507,22 +507,21 @@ export default function Hero() {
                 { icon: Twitter, href: 'https://twitter.com/devpatel170521', label: 'Twitter' },
                 { icon: Instagram, href: 'https://instagram.com/devpatel170521', label: 'Instagram' },
               ].map((social, index) => (
-                <MagneticElement key={social.label} strength={0.3} radius={50}>
-                  <motion.a
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-3 rounded-xl glass-card border border-white/10 group hover:bg-primary-500/20 hover:border-primary-500/30 transition-all duration-300"
-                    whileHover={{ y: -5, scale: 1.1 }}
-                    whileTap={{ scale: 0.95 }}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 1 + index * 0.1, type: "spring", stiffness: 400 }}
-                    aria-label={social.label}
-                  >
-                    <social.icon size={20} className="text-dark-300 group-hover:text-primary-400 transition-colors" />
-                  </motion.a>
-                </MagneticElement>
+                <motion.a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 rounded-xl bg-dark-800/50 border border-white/10 group hover:bg-primary-500/20 hover:border-primary-500/40 transition-all duration-300"
+                  whileHover={{ y: -5, scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 1 + index * 0.1, type: "spring", stiffness: 400 }}
+                  aria-label={social.label}
+                >
+                  <social.icon size={20} className="text-dark-300 group-hover:text-primary-400 transition-colors" />
+                </motion.a>
               ))}
             </motion.div>
           </motion.div>
