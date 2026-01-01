@@ -13,10 +13,11 @@ import {
 
 const navLinks = [
   { name: 'Home', href: 'home' },
+  { name: 'Projects', href: 'projects' },
+  { name: 'Process', href: 'process' },
   { name: 'About', href: 'about' },
   { name: 'Skills', href: 'skills' },
   { name: 'Experience', href: 'experience' },
-  { name: 'Resume', href: 'resume' },
   { name: 'Certifications', href: 'certifications' },
   { name: 'Contact', href: 'contact' },
 ]
@@ -40,9 +41,13 @@ export default function Navbar({ activeSection, setActiveSection }: NavbarProps)
   }, [])
 
   const handleNavClick = (href: string) => {
+    // Scroll to section smoothly
+    const element = document.getElementById(href)
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
     setActiveSection(href as ActiveSection)
     setIsMobileMenuOpen(false)
-    window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
   return (

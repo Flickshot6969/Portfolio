@@ -337,12 +337,12 @@ export default function Hero() {
                 className="heading-xl mb-6 rocket-launch"
               >
                 <motion.span 
-                  className="text-dark-100 inline-block"
+                  className="text-dark-100 inline-block text-xl md:text-2xl font-medium mb-2"
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.4, duration: 0.6 }}
                 >
-                  Hi, I&apos;m{' '}
+                  I'm{' '}
                 </motion.span>
                 <FocusPull intensity={1.2}>
                   <motion.span 
@@ -357,91 +357,67 @@ export default function Hero() {
               </motion.h1>
             </AweReveal>
 
-            {/* Typing Animation */}
+            {/* Value Proposition - NOT just typing animation */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
-              className="text-xl md:text-2xl lg:text-3xl font-medium text-dark-300 mb-6 h-12"
+              className="mb-6"
             >
+              <p className="text-2xl md:text-3xl lg:text-4xl font-semibold text-white mb-4">
+                I turn <span className="text-primary-400">chaos into clarity</span>
+              </p>
+              <p className="text-lg md:text-xl text-dark-300">
+                Whether it's leading <span className="text-accent-400 font-medium">5,000+ students</span> or 
+                orchestrating <span className="text-cyan-400 font-medium">50+ events</span>, I deliver results.
+              </p>
+            </motion.div>
+            
+            {/* Quick Proof - SHOW DON'T TELL */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 }}
+              className="flex flex-wrap justify-center lg:justify-start gap-6 mb-8 py-4 border-y border-dark-700/50"
+            >
+              <div className="text-center">
+                <div className="text-3xl md:text-4xl font-bold text-white">5,000+</div>
+                <div className="text-sm text-dark-400">Students Led</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl md:text-4xl font-bold text-primary-400">50+</div>
+                <div className="text-sm text-dark-400">Events Delivered</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl md:text-4xl font-bold text-accent-400">4.9/5</div>
+                <div className="text-sm text-dark-400">Service Rating</div>
+              </div>
+            </motion.div>
+
+            {/* Typing Animation - Now Secondary */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.7 }}
+              className="text-lg md:text-xl font-medium text-dark-300 mb-6 h-8"
+            >
+              <span className="text-dark-500">Currently: </span>
               <TypeAnimation
                 sequence={[
-                  'General Secretary @ GU',
+                  'General Secretary @ Gandhinagar University',
                   2000,
-                  'Event Production Head',
+                  'Event Production Head @ GIT',
                   2000,
-                  'Campaign & Marketing Head',
+                  'Marketing & Campaign Strategist',
                   2000,
                   'Jazba Festival Head',
-                  2000,
-                  'Cultural Secretary',
-                  2000,
-                  'Starbucks Barista',
-                  2000,
-                  'Full Stack Developer',
                   2000,
                 ]}
                 wrapper="span"
                 speed={50}
                 repeat={Infinity}
-                className="gradient-text"
+                className="text-primary-400"
               />
-            </motion.div>
-
-            {/* Description - SEO-Rich Content */}
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
-              className="text-body max-w-xl mx-auto lg:mx-0 mb-4"
-            >
-              Results-driven{' '}
-              <span className="text-primary-400 font-semibold">Student Leader</span>{' '}
-              at Gandhinagar University with 1+ years of progressive leadership. Currently serving as{' '}
-              <span className="text-accent-400 font-semibold">General Secretary</span>{' '}
-              while heading{' '}
-              <span className="text-cyan-400 font-semibold">Event Production & Marketing</span>. 
-              Pursuing B.Tech at GIT with expertise in governance, digital marketing, and web development.
-            </motion.p>
-            
-            {/* SEO H2/H3 Subheadings */}
-            <motion.h2 
-              className="sr-only"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-            >
-              Leadership & Professional Excellence
-            </motion.h2>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.65 }}
-              className="text-sm text-dark-400 max-w-xl mx-auto lg:mx-0 mb-8"
-            >
-              With hands-on experience in <span className="text-primary-300">IBM Cloud Computing</span> and leadership roles, 
-              Dev Patel demonstrates skills from strategic decision-making to technical mastery. 
-              Former <span className="text-accent-300">Starbucks barista</span> bringing customer excellence to every project.
-            </motion.p>
-
-            {/* Role Tags */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.7 }}
-              className="flex flex-wrap justify-center lg:justify-start gap-3 mb-8"
-            >
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-500/10 border border-primary-500/20 text-primary-300 text-sm">
-                <Code2 size={14} />
-                General Secretary
-              </span>
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent-500/10 border border-accent-500/20 text-accent-300 text-sm">
-                <Briefcase size={14} />
-                Event Production Head
-              </span>
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-300 text-sm">
-                <Sparkles size={14} />
-                Marketing Strategist
-              </span>
             </motion.div>
 
             {/* CTA Buttons - Tactile with Dopamine Hit */}

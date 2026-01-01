@@ -1,9 +1,11 @@
 'use client'
 
 import { useState, useEffect, useCallback } from 'react'
-import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import Navbar from '@/components/Navbar'
 import Hero from '@/components/Hero'
+import FeaturedProjects from '@/components/FeaturedProjects'
+import HowIThink from '@/components/HowIThink'
 import About from '@/components/About'
 import Skills from '@/components/Skills'
 import Experience from '@/components/Experience'
@@ -20,44 +22,6 @@ import { NarrativeProvider, ScrollIndicator } from '@/lib/NarrativeScroll'
 import { EmotionalProvider } from '@/lib/PsychologicalMotion'
 
 export type ActiveSection = 'home' | 'about' | 'skills' | 'experience' | 'resume' | 'projects' | 'certifications' | 'contact'
-
-// ═══════════════════════════════════════════════════════════════════════════════
-// 🎬 CINEMATIC SECTION TRANSITIONS
-// Over-engineered transitions that make visitors freeze
-// ═══════════════════════════════════════════════════════════════════════════════
-
-const cinematicVariants = {
-  hidden: { 
-    opacity: 0, 
-    y: 80,
-    scale: 0.92,
-    filter: 'blur(20px)',
-    rotateX: 10
-  },
-  visible: { 
-    opacity: 1, 
-    y: 0,
-    scale: 1,
-    filter: 'blur(0px)',
-    rotateX: 0,
-    transition: {
-      duration: 0.9,
-      ease: [0.16, 1, 0.3, 1], // Dramatic ease-out
-      staggerChildren: 0.1
-    }
-  },
-  exit: { 
-    opacity: 0, 
-    y: -60,
-    scale: 0.95,
-    filter: 'blur(15px)',
-    rotateX: -5,
-    transition: {
-      duration: 0.5,
-      ease: [0.4, 0, 0.2, 1]
-    }
-  }
-}
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState<ActiveSection>('home')
@@ -78,46 +42,6 @@ export default function Home() {
     setHasLoaded(true)
     sessionStorage.setItem('portfolio-loaded', 'true')
   }, [])
-
-  // Handle hash changes for direct linking
-  useEffect(() => {
-    const handleHashChange = () => {
-      const hash = window.location.hash.slice(1) as ActiveSection
-      if (hash && ['home', 'about', 'skills', 'experience', 'resume', 'projects', 'certifications', 'contact'].includes(hash)) {
-        setActiveSection(hash)
-      }
-    }
-
-    handleHashChange()
-    window.addEventListener('hashchange', handleHashChange)
-    return () => window.removeEventListener('hashchange', handleHashChange)
-  }, [])
-
-  // Update URL hash when section changes
-  useEffect(() => {
-    window.history.replaceState(null, '', `#${activeSection}`)
-  }, [activeSection])
-
-  const renderSection = () => {
-    switch (activeSection) {
-      case 'home':
-        return <Hero key="hero" />
-      case 'about':
-        return <About key="about" />
-      case 'skills':
-        return <Skills key="skills" />
-      case 'experience':
-        return <Experience key="experience" />
-      case 'resume':
-        return <Resume key="resume" />
-      case 'certifications':
-        return <Certifications key="certifications" />
-      case 'contact':
-        return <Contact key="contact" />
-      default:
-        return <Hero key="hero" />
-    }
-  }
 
   return (
     <ViewportProvider>
@@ -148,7 +72,7 @@ export default function Home() {
                     position="right"
                     showPercentage={false}
                     showChapters={true}
-                    chapters={['Hero', 'About', 'Skills', 'Experience', 'Certifications', 'Contact']}
+                    chapters={['Hero', 'Projects', 'Process', 'About', 'Skills', 'Experience', 'Certifications', 'Contact']}
                   />
                 )}
 
@@ -165,19 +89,47 @@ export default function Home() {
 
                 <Navbar activeSection={activeSection} setActiveSection={setActiveSection} />
                 
-                <main className="min-h-screen relative z-10" style={{ perspective: '1200px' }}>
-                  <AnimatePresence mode="wait">
-                    <motion.div
-                      key={activeSection}
-                      variants={cinematicVariants}
-                      initial="hidden"
-                      animate="visible"
-                      exit="exit"
-                      style={{ transformStyle: 'preserve-3d' }}
-                    >
-                      {renderSection()}
-                    </motion.div>
-                  </AnimatePresence>
+                {/* FULL SCROLLING LAYOUT - Project-First Flow */}
+                <main className="relative z-10">
+                  {/* 1. Hero - First Impression */}
+                  <section id="home">
+                    <Hero />
+                  </section>
+                  
+                  {/* 2. Featured Projects - PROOF FIRST */}
+                  <section id="projects">
+                    <FeaturedProjects />
+                  </section>
+                  
+                  {/* 3. How I Think - SIGNATURE SECTION */}
+                  <section id="process">
+                    <HowIThink />
+                  </section>
+                  
+                  {/* 4. About - Build Trust */}
+                  <section id="about">
+                    <About />
+                  </section>
+                  
+                  {/* 5. Skills - Technical Proof */}
+                  <section id="skills">
+                    <Skills />
+                  </section>
+                  
+                  {/* 6. Experience - Authority */}
+                  <section id="experience">
+                    <Experience />
+                  </section>
+                  
+                  {/* 7. Certifications - Credentials */}
+                  <section id="certifications">
+                    <Certifications />
+                  </section>
+                  
+                  {/* 8. Contact - CTA */}
+                  <section id="contact">
+                    <Contact />
+                  </section>
                 </main>
                 
                 <Footer />
