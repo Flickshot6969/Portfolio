@@ -111,15 +111,16 @@ export default function About() {
               animate={inView ? { scale: 1, opacity: 1 } : {}}
               transition={{ delay: 0.2 }}
             >
-              About Me
+              About Dev Patel
             </motion.span>
-            <h2 className="heading-lg mb-3 sm:mb-4 text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
+            {/* H1 for About section - SEO */}
+            <h1 className="heading-lg mb-3 sm:mb-4 text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
               <motion.span
                 initial={{ opacity: 0, y: 20 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.3 }}
               >
-                Bridging{' '}
+                Leadership Journey{' '}
               </motion.span>
               <FocusPull intensity={1.1}>
                 <motion.span 
@@ -128,34 +129,21 @@ export default function About() {
                   animate={inView ? { opacity: 1, scale: 1 } : {}}
                   transition={{ delay: 0.4, type: 'spring' }}
                 >
-                  Technology
+                  & Achievements
                 </motion.span>
               </FocusPull>
-              <motion.span
-                initial={{ opacity: 0, y: 20 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: 0.5 }}
-              >
-                {' '}& {' '}
-              </motion.span>
-              <FocusPull intensity={1.1}>
-                <motion.span 
-                  className="gradient-shimmer"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={inView ? { opacity: 1, scale: 1 } : {}}
-                  transition={{ delay: 0.6, type: 'spring' }}
-                >
-                  Leadership
-                </motion.span>
-              </FocusPull>
-            </h2>
+            </h1>
+            {/* H2 for SEO */}
+            <h2 className="sr-only">Technical Skills & Professional Experience</h2>
             <motion.p 
               className="text-body max-w-2xl mx-auto text-sm sm:text-base px-4 sm:px-0"
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.7 }}
             >
-              A unique blend of technical expertise and management acumen, driving innovation while leading teams to success.
+              Combining strategic leadership with hands-on technical skills, Dev Patel bridges the gap between 
+              organizational excellence and IBM cloud computing expertise. From student governance as General Secretary 
+              to professional barista experience at Starbucks.
             </motion.p>
           </motion.div>
         </GrandEntrance>
@@ -182,7 +170,7 @@ export default function About() {
                 <div className="rounded-xl sm:rounded-2xl overflow-hidden relative">
                   <img
                     src="/media/Images/2.JPG"
-                    alt="Dev Patel - Professional"
+                    alt="Dev Patel - General Secretary and Student Leader at Gandhinagar Institute of Technology"
                     className="w-full aspect-[4/5] object-cover object-top transition-transform duration-700 hover:scale-105"
                     style={{ objectPosition: 'center 20%' }}
                   />

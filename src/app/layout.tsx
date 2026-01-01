@@ -6,31 +6,36 @@ import { InteractionProvider } from '@/lib/InteractionIntelligence'
 import { ScrollPhaseProvider } from '@/lib/ScrollPhaseEngine'
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://devpatel.dev'),
   title: {
-    default: 'Dev Patel | Full Stack Developer & Technical Leader',
+    default: 'Dev Patel – Elite Portfolio | Leadership, IBM Cloud, Professional Excellence',
     template: '%s | Dev Patel Portfolio'
   },
-  description: 'Portfolio of Dev Patel - A dynamic Full Stack Developer and Technical Leader with expertise in Web Development, Cloud Computing, Cybersecurity, and Product Management. Combining technical excellence with strategic leadership to deliver innovative solutions.',
+  description: 'Explore Dev Patel\'s elite portfolio showcasing leadership as General Secretary, IBM Cloud Computing expertise, Starbucks barista experience, and unmatched professional skills. Student leadership meets technical mastery.',
   keywords: [
     'Dev Patel',
+    'Dev Patel Portfolio',
+    'General Secretary',
+    'Student Leadership',
+    'IBM Cloud Computing',
+    'IBM Cloud Projects',
+    'Cloud Computing Expert',
+    'Starbucks Barista',
     'Full Stack Developer',
     'Technical Leader',
-    'Product Manager',
-    'Project Manager',
-    'Web Developer',
-    'Software Engineer',
-    'React Developer',
-    'Next.js Developer',
-    'Node.js Developer',
+    'Gandhinagar University',
+    'GIT General Secretary',
+    'Event Management',
+    'Leadership Excellence',
+    'Professional Portfolio',
+    'Cloud Architecture',
     'AWS Certified',
-    'Cloud Computing',
-    'Cybersecurity',
     'Digital Marketing',
     'Team Leadership',
-    'Agile',
-    'Scrum',
-    'India',
-    'Portfolio'
+    'Student Achievements',
+    'Campus Leadership',
+    'Technical Expertise',
+    'India'
   ],
   authors: [{ name: 'Dev Patel', url: 'https://devpatel.dev' }],
   creator: 'Dev Patel',
@@ -44,22 +49,22 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: 'https://devpatel.dev',
-    siteName: 'Dev Patel Portfolio',
-    title: 'Dev Patel | Full Stack Developer & Technical Leader',
-    description: 'Portfolio showcasing technical expertise in Full Stack Development, Cloud Computing, and leadership in Product & Project Management.',
+    siteName: 'Dev Patel Elite Portfolio',
+    title: 'Dev Patel – Elite Portfolio | Leadership, IBM Cloud, Professional Excellence',
+    description: 'Explore Dev Patel\'s elite portfolio showcasing leadership as General Secretary, IBM Cloud Computing expertise, Starbucks barista experience, and unmatched professional skills.',
     images: [
       {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Dev Patel - Full Stack Developer & Technical Leader',
+        alt: 'Dev Patel - General Secretary, IBM Cloud Expert, Leadership Portfolio',
       }
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Dev Patel | Full Stack Developer & Technical Leader',
-    description: 'Portfolio showcasing technical expertise in Full Stack Development, Cloud Computing, and leadership in Product & Project Management.',
+    title: 'Dev Patel – Elite Portfolio | Leadership, IBM Cloud, Professional Excellence',
+    description: 'Student leadership, IBM Cloud Computing projects, and Starbucks barista experience. Explore Dev Patel\'s elite professional portfolio.',
     images: ['/og-image.jpg'],
     creator: '@devpatel',
   },
@@ -95,29 +100,72 @@ const jsonLd = {
     'https://twitter.com/devpatel',
     'https://instagram.com/devpatel',
   ],
-  jobTitle: 'Full Stack Developer & Technical Leader',
+  jobTitle: 'General Secretary & IBM Cloud Computing Specialist',
   worksFor: {
     '@type': 'Organization',
-    name: 'Freelance / Available for Opportunities'
+    name: 'Gandhinagar Institute of Technology'
   },
   knowsAbout: [
+    'Student Leadership',
+    'General Secretary Responsibilities',
+    'IBM Cloud Computing',
+    'Cloud Architecture',
+    'AWS Cloud Services',
     'Full Stack Development',
     'React',
     'Next.js',
-    'Node.js',
-    'AWS',
-    'Cloud Computing',
-    'Cybersecurity',
-    'Product Management',
-    'Project Management',
+    'Event Management',
+    'Campaign Marketing',
+    'Digital Marketing',
     'Team Leadership',
-    'Digital Marketing'
+    'Customer Service Excellence'
   ],
   alumniOf: {
     '@type': 'EducationalOrganization',
-    name: 'University'
+    name: 'Gandhinagar Institute of Technology (GIT)',
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Ahmedabad',
+      addressRegion: 'Gujarat',
+      addressCountry: 'India'
+    }
   },
-  description: 'A dynamic Full Stack Developer and Technical Leader combining technical excellence with strategic leadership to deliver innovative solutions.'
+  hasCredential: [
+    {
+      '@type': 'EducationalOccupationalCredential',
+      credentialCategory: 'certification',
+      name: 'IBM Cloud Computing Certification'
+    }
+  ],
+  description: 'Dev Patel is the General Secretary at Gandhinagar Institute of Technology, combining student leadership excellence with IBM Cloud Computing expertise and professional experience as a Starbucks barista. Bridging organizational leadership with technical mastery.'
+}
+
+// Portfolio structured data for projects
+const portfolioJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Dev Patel\'s Portfolio Projects',
+  description: 'Elite portfolio showcasing IBM Cloud Computing projects, student leadership initiatives, and professional work',
+  itemListElement: [
+    {
+      '@type': 'CreativeWork',
+      position: 1,
+      name: 'IBM Cloud Architecture Solutions',
+      description: 'Enterprise-grade cloud infrastructure using IBM Cloud and AWS best practices'
+    },
+    {
+      '@type': 'CreativeWork',
+      position: 2,
+      name: 'Student Governance Platform',
+      description: 'Leadership project as General Secretary managing 5000+ students'
+    },
+    {
+      '@type': 'CreativeWork',
+      position: 3,
+      name: 'Event Management System',
+      description: 'Comprehensive event orchestration for university cultural festivals'
+    }
+  ]
 }
 
 export default function RootLayout({
@@ -134,9 +182,15 @@ export default function RootLayout({
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#6366f1" />
         <meta name="color-scheme" content="dark" />
+        {/* Person Schema - Dev Patel Profile */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        {/* Portfolio Schema - Projects & Work */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(portfolioJsonLd) }}
         />
       </head>
       <body className="antialiased">

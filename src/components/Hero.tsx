@@ -388,12 +388,12 @@ export default function Hero() {
               />
             </motion.div>
 
-            {/* Description */}
+            {/* Description - SEO-Rich Content */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 }}
-              className="text-body max-w-xl mx-auto lg:mx-0 mb-8"
+              className="text-body max-w-xl mx-auto lg:mx-0 mb-4"
             >
               Results-driven{' '}
               <span className="text-primary-400 font-semibold">Student Leader</span>{' '}
@@ -402,6 +402,25 @@ export default function Hero() {
               while heading{' '}
               <span className="text-cyan-400 font-semibold">Event Production & Marketing</span>. 
               Pursuing B.Tech at GIT with expertise in governance, digital marketing, and web development.
+            </motion.p>
+            
+            {/* SEO H2/H3 Subheadings */}
+            <motion.h2 
+              className="sr-only"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+            >
+              Leadership & Professional Excellence
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.65 }}
+              className="text-sm text-dark-400 max-w-xl mx-auto lg:mx-0 mb-8"
+            >
+              With hands-on experience in <span className="text-primary-300">IBM Cloud Computing</span> and leadership roles, 
+              Dev Patel demonstrates skills from strategic decision-making to technical mastery. 
+              Former <span className="text-accent-300">Starbucks barista</span> bringing customer excellence to every project.
             </motion.p>
 
             {/* Role Tags */}
@@ -576,7 +595,7 @@ export default function Hero() {
                       <motion.img
                         key={currentImageIndex}
                         src={heroImages[currentImageIndex]}
-                        alt="Dev Patel"
+                        alt="Dev Patel - General Secretary at Gandhinagar Institute of Technology showcasing student leadership and IBM Cloud Computing expertise"
                         className="w-full h-full object-cover object-top"
                         loading="eager"
                         fetchPriority="high"

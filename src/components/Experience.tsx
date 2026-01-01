@@ -136,21 +136,21 @@ const projects = [
   },
   {
     id: 4,
-    title: 'Student Council Platform',
-    category: 'Web Application',
-    description: 'A governance platform concept enabling seamless communication between administration and 5000+ students.',
+    title: 'Student Governance Platform',
+    category: 'Leadership Project as General Secretary',
+    description: 'A governance platform enabling seamless communication between administration and 5000+ students, built during tenure as General Secretary.',
     image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80',
-    technologies: ['React', 'Node.js', 'MongoDB', 'REST API'],
+    technologies: ['React', 'Node.js', 'MongoDB', 'REST API', 'Student Leadership'],
     links: { live: '#', github: '#' },
     gradient: 'from-green-500 to-emerald-500'
   },
   {
     id: 5,
-    title: 'Cloud Architecture Solutions',
+    title: 'IBM Cloud Architecture Solutions',
     category: 'Cloud Computing',
-    description: 'Enterprise-grade cloud infrastructure design and implementation using AWS and IBM Cloud best practices.',
+    description: 'Enterprise-grade IBM Cloud infrastructure design and deployment featuring cloud automation, containerization, and CI/CD best practices.',
     image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80',
-    technologies: ['AWS', 'IBM Cloud', 'Docker', 'CI/CD'],
+    technologies: ['IBM Cloud', 'AWS', 'Docker', 'CI/CD', 'Cloud Automation'],
     links: { live: '#', github: '#' },
     gradient: 'from-indigo-500 to-violet-500'
   },
@@ -221,13 +221,14 @@ export default function Experience() {
                   Career Journey
                 </motion.span>
               </HeartbeatElement>
-              <h2 className="heading-lg mb-3 sm:mb-4 text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
+              {/* H1 for Portfolio/Experience - SEO */}
+              <h1 className="heading-lg mb-3 sm:mb-4 text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
                 <motion.span
                   initial={{ opacity: 0, y: 20 }}
                   animate={inView ? { opacity: 1, y: 0 } : {}}
                   transition={{ delay: 0.3 }}
                 >
-                  Work{' '}
+                  Technical Projects{' '}
                 </motion.span>
                 <FocusPull intensity={1.2}>
                   <motion.span 
@@ -236,17 +237,20 @@ export default function Experience() {
                     animate={inView ? { opacity: 1, rotateX: 0 } : {}}
                     transition={{ delay: 0.4, type: 'spring', stiffness: 100 }}
                   >
-                    Experience
+                    & Leadership Work
                   </motion.span>
                 </FocusPull>
-              </h2>
+              </h1>
+              {/* H2 for SEO */}
+              <h2 className="sr-only">Cloud Computing | Student Leadership | Professional Experience</h2>
               <motion.p 
                 className="text-body max-w-2xl mx-auto text-sm sm:text-base px-4 sm:px-0"
                 initial={{ opacity: 0, y: 20 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.5 }}
               >
-                A track record of delivering results across technical and leadership roles.
+                Each portfolio item demonstrates high-class execution, from IBM Cloud Computing deployment 
+                to organizational leadership excellence as General Secretary and Starbucks barista professional experience.
               </motion.p>
             </motion.div>
           </GrandEntrance>

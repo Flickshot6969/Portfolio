@@ -3,45 +3,52 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+  <!-- Home Page - Dev Patel Elite Portfolio -->
   <url>
     <loc>https://devpatel.dev/</loc>
-    <lastmod>2024-12-30</lastmod>
+    <lastmod>2024-12-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
+  <!-- About Section - Leadership & Technical Expertise -->
   <url>
     <loc>https://devpatel.dev/#about</loc>
-    <lastmod>2024-12-30</lastmod>
+    <lastmod>2024-12-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
+  <!-- Skills Section - IBM Cloud & Technical Skills -->
   <url>
     <loc>https://devpatel.dev/#skills</loc>
-    <lastmod>2024-12-30</lastmod>
+    <lastmod>2024-12-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
+  <!-- Experience Section - General Secretary & Starbucks -->
   <url>
     <loc>https://devpatel.dev/#experience</loc>
-    <lastmod>2024-12-30</lastmod>
+    <lastmod>2024-12-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
+  <!-- Projects Section - IBM Cloud Projects & Leadership Work -->
   <url>
     <loc>https://devpatel.dev/#projects</loc>
-    <lastmod>2024-12-30</lastmod>
+    <lastmod>2024-12-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
+  <!-- Certifications Section -->
   <url>
     <loc>https://devpatel.dev/#certifications</loc>
-    <lastmod>2024-12-30</lastmod>
+    <lastmod>2024-12-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <!-- Contact Section - Professional Collaboration -->
   <url>
     <loc>https://devpatel.dev/#contact</loc>
-    <lastmod>2024-12-30</lastmod>
+    <lastmod>2024-12-31</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>

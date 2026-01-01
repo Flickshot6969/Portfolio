@@ -153,13 +153,14 @@ export default function Contact() {
                 Get In Touch
               </motion.span>
             </HeartbeatElement>
-            <h2 className="heading-lg mb-3 sm:mb-4 text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
+            {/* H1 for Contact - SEO */}
+            <h1 className="heading-lg mb-3 sm:mb-4 text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
               <motion.span
                 initial={{ opacity: 0, y: 20 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.3 }}
               >
-                Let&apos;s{' '}
+                Collaboration{' '}
               </motion.span>
               <FocusPull intensity={1.2}>
                 <motion.span 
@@ -168,18 +169,18 @@ export default function Contact() {
                   animate={inView ? { opacity: 1, rotateX: 0 } : {}}
                   transition={{ delay: 0.4, type: 'spring', stiffness: 100 }}
                 >
-                  Connect
+                  & Opportunities
                 </motion.span>
               </FocusPull>
-            </h2>
+            </h1>
           <motion.p 
             className="text-body max-w-2xl mx-auto text-sm sm:text-base px-4 sm:px-0"
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.5 }}
           >
-            Have a project in mind or want to discuss opportunities? I&apos;d love to hear from you. 
-            Let&apos;s create something amazing together!
+            Connect with Dev Patel, a General Secretary and IBM Cloud professional, for portfolio projects, 
+            mentorship, or collaboration opportunities. Let&apos;s create something amazing together!
           </motion.p>
         </motion.div>
         </GrandEntrance>
