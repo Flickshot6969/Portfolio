@@ -49,6 +49,21 @@ import {
   SectionAwareness,
   AmbientWave
 } from './MotionHierarchy'
+// ⚡ NEW: Psychological Motion & Tactile Systems
+import { 
+  AweReveal, 
+  GrandEntrance,
+  HeartbeatElement,
+  FocusPull,
+  BreathingContainer
+} from '@/lib/PsychologicalMotion'
+import { 
+  TactileCard, 
+  MagneticElement,
+  TactileRipple,
+  TactileButton
+} from '@/lib/TactileSystem'
+import { DramaticReveal, ScrollSpotlight, FocusScroll } from '@/lib/NarrativeScroll'
 
 const skillCategories = [
   {
@@ -209,50 +224,56 @@ export default function Skills() {
             ref={ref}
             style={{ scale: sectionScale, opacity: sectionOpacity }}
           >
-        {/* Section Header - Elite */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-8 md:mb-16"
-        >
-          <motion.span 
-            className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full glass-elite text-primary-400 text-xs sm:text-sm font-medium mb-3 sm:mb-4 magnetic-glow"
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={inView ? { scale: 1, opacity: 1 } : {}}
-            transition={{ delay: 0.2, type: 'spring' }}
-            whileHover={{ scale: 1.05 }}
+        {/* Section Header - Elite with Grand Entrance */}
+        <GrandEntrance delay={0.1}>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-8 md:mb-16"
           >
-            <Sparkles className="w-4 h-4" />
-            My Expertise
-          </motion.span>
-          <h2 className="heading-lg mb-3 sm:mb-4 text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
-            <motion.span
+            <HeartbeatElement intensity={0.5}>
+              <motion.span 
+                className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full glass-elite text-primary-400 text-xs sm:text-sm font-medium mb-3 sm:mb-4 magnetic-glow breathing-glow"
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={inView ? { scale: 1, opacity: 1 } : {}}
+                transition={{ delay: 0.2, type: 'spring' }}
+                whileHover={{ scale: 1.05 }}
+              >
+                <Sparkles className="w-4 h-4" />
+                My Expertise
+              </motion.span>
+            </HeartbeatElement>
+            <h2 className="heading-lg mb-3 sm:mb-4 text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
+              <motion.span
+                initial={{ opacity: 0, y: 20 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: 0.3 }}
+              >
+                Skills &{' '}
+              </motion.span>
+              <FocusPull intensity={1.2}>
+                <motion.span 
+                  className="gradient-shimmer"
+                  initial={{ opacity: 0, rotateX: -40 }}
+                  animate={inView ? { opacity: 1, rotateX: 0 } : {}}
+                  transition={{ delay: 0.4, type: 'spring', stiffness: 100 }}
+                >
+                  Competencies
+                </motion.span>
+              </FocusPull>
+            </h2>
+            <motion.p 
+              className="text-body max-w-2xl mx-auto text-sm sm:text-base px-4 sm:px-0"
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.3 }}
+              transition={{ delay: 0.5 }}
             >
-              Skills &{' '}
-            </motion.span>
-            <motion.span 
-              className="gradient-shimmer"
-              initial={{ opacity: 0, rotateX: -40 }}
-              animate={inView ? { opacity: 1, rotateX: 0 } : {}}
-              transition={{ delay: 0.4, type: 'spring', stiffness: 100 }}
-            >
-              Competencies
-            </motion.span>
-          </h2>
-          <motion.p 
-            className="text-body max-w-2xl mx-auto text-sm sm:text-base px-4 sm:px-0"
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.5 }}
-          >
-            A comprehensive skill set spanning technical development, strategic leadership, and digital marketing – 
-            the perfect combination for delivering exceptional results.
-          </motion.p>
-        </motion.div>
+              A comprehensive skill set spanning technical development, strategic leadership, and digital marketing – 
+              the perfect combination for delivering exceptional results.
+            </motion.p>
+          </motion.div>
+        </GrandEntrance>
 
         {/* Category Tabs */}
         <motion.div

@@ -4,6 +4,12 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Download, ChevronRight, FileText } from 'lucide-react'
 import { ActiveSection } from '@/app/page'
+// ⚡ NEW: Tactile Systems for Premium Navigation
+import { 
+  TactileButton,
+  MagneticElement,
+  TactileRipple
+} from '@/lib/TactileSystem'
 
 const navLinks = [
   { name: 'Home', href: 'home' },
@@ -71,54 +77,63 @@ export default function Navbar({ activeSection, setActiveSection }: NavbarProps)
             />
           </motion.button>
 
-          {/* Desktop Navigation */}
+          {/* Desktop Navigation with Magnetic Elements */}
           <div className="hidden lg:flex items-center gap-1">
             {navLinks.map((link, index) => (
-              <motion.button
-                key={link.name}
-                onClick={() => handleNavClick(link.href)}
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1, duration: 0.5 }}
-                className={`relative px-4 py-2 text-sm font-medium transition-colors duration-300 ${
-                  activeSection === link.href
-                    ? 'text-white'
-                    : 'text-dark-300 hover:text-white'
-                }`}
-              >
-                {link.name}
-                {activeSection === link.href && (
-                  <motion.div
-                    layoutId="activeNav"
-                    className="absolute inset-0 rounded-full bg-white/5 -z-10"
-                    transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
-                  />
-                )}
-              </motion.button>
+              <MagneticElement key={link.name} strength={0.15} radius={40}>
+                <motion.button
+                  onClick={() => handleNavClick(link.href)}
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1, duration: 0.5 }}
+                  className={`relative px-4 py-2 text-sm font-medium transition-colors duration-300 ${
+                    activeSection === link.href
+                      ? 'text-white'
+                      : 'text-dark-300 hover:text-white'
+                  }`}
+                >
+                  {link.name}
+                  {activeSection === link.href && (
+                    <motion.div
+                      layoutId="activeNav"
+                      className="absolute inset-0 rounded-full bg-white/5 -z-10"
+                      transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
+                    />
+                  )}
+                </motion.button>
+              </MagneticElement>
             ))}
           </div>
 
-          {/* CTA Buttons */}
+          {/* CTA Buttons with Tactile Feedback */}
           <div className="hidden lg:flex items-center gap-4">
-            <motion.a
-              href="/Dev_Patel_Resume.pdf"
-              download
-              className="flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium text-white border border-white/10 hover:border-primary-500/50 hover:bg-primary-500/10 transition-all duration-300 btn-premium jelly-hover"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Download size={16} />
-              Download CV
-            </motion.a>
-            <motion.button
-              onClick={() => handleNavClick('contact')}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium text-white bg-gradient-to-r from-primary-600 to-accent-600 hover:from-primary-500 hover:to-accent-500 shadow-lg shadow-primary-500/25 transition-all duration-300 electric-border glow-pulse btn-premium pulse-ring"
-              whileHover={{ scale: 1.05, rotate: 1 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Let&apos;s Talk
-              <ChevronRight size={16} />
-            </motion.button>
+            <MagneticElement strength={0.2} radius={50}>
+              <TactileRipple rippleColor="rgba(139, 92, 246, 0.3)">
+                <motion.a
+                  href="/Dev_Patel_Resume.pdf"
+                  download
+                  className="flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium text-white border border-white/10 hover:border-primary-500/50 hover:bg-primary-500/10 transition-all duration-300 btn-premium jelly-hover tactile-hover"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Download size={16} />
+                  Download CV
+                </motion.a>
+              </TactileRipple>
+            </MagneticElement>
+            <MagneticElement strength={0.25} radius={60}>
+              <TactileRipple rippleColor="rgba(139, 92, 246, 0.4)">
+                <motion.button
+                  onClick={() => handleNavClick('contact')}
+                  className="flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium text-white bg-gradient-to-r from-primary-600 to-accent-600 hover:from-primary-500 hover:to-accent-500 shadow-lg shadow-primary-500/25 transition-all duration-300 electric-border glow-pulse btn-premium pulse-ring tactile-press"
+                  whileHover={{ scale: 1.05, rotate: 1 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Let&apos;s Talk
+                  <ChevronRight size={16} />
+                </motion.button>
+              </TactileRipple>
+            </MagneticElement>
           </div>
 
           {/* Mobile Menu Button */}

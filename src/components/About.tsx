@@ -19,6 +19,20 @@ import {
 } from 'lucide-react'
 import { TiltCard, BlurReveal } from './AnimationEffects'
 import { Card3D, RevealMask, SectionReveal } from './EliteEffects'
+// ⚡ NEW: Psychological Motion & Tactile Systems
+import { 
+  AweReveal, 
+  GrandEntrance, 
+  BreathingContainer,
+  HeartbeatElement,
+  FocusPull
+} from '@/lib/PsychologicalMotion'
+import { 
+  TactileCard, 
+  MagneticElement,
+  TactileRipple
+} from '@/lib/TactileSystem'
+import { DramaticReveal, ScrollSpotlight, ScrollSequence } from '@/lib/NarrativeScroll'
 
 const highlights = [
   {
@@ -83,62 +97,68 @@ export default function About() {
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-accent-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
       
       <div className="container-custom relative z-10" ref={ref}>
-        {/* Section Header - Elite Reveal */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-8 md:mb-16"
-        >
-          <motion.span 
-            className="inline-block px-3 py-1.5 sm:px-4 sm:py-2 rounded-full glass-elite text-primary-400 text-xs sm:text-sm font-medium mb-3 sm:mb-4 magnetic-glow"
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={inView ? { scale: 1, opacity: 1 } : {}}
-            transition={{ delay: 0.2 }}
-          >
-            About Me
-          </motion.span>
-          <h2 className="heading-lg mb-3 sm:mb-4 text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
-            <motion.span
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.3 }}
-            >
-              Bridging{' '}
-            </motion.span>
-            <motion.span 
-              className="gradient-shimmer"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={inView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ delay: 0.4, type: 'spring' }}
-            >
-              Technology
-            </motion.span>
-            <motion.span
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.5 }}
-            >
-              {' '}& {' '}
-            </motion.span>
-            <motion.span 
-              className="gradient-shimmer"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={inView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ delay: 0.6, type: 'spring' }}
-            >
-              Leadership
-            </motion.span>
-          </h2>
-          <motion.p 
-            className="text-body max-w-2xl mx-auto text-sm sm:text-base px-4 sm:px-0"
-            initial={{ opacity: 0, y: 20 }}
+        {/* Section Header - Elite Reveal with Awe */}
+        <GrandEntrance delay={0.1}>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.7 }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-8 md:mb-16"
           >
-            A unique blend of technical expertise and management acumen, driving innovation while leading teams to success.
-          </motion.p>
-        </motion.div>
+            <motion.span 
+              className="inline-block px-3 py-1.5 sm:px-4 sm:py-2 rounded-full glass-elite text-primary-400 text-xs sm:text-sm font-medium mb-3 sm:mb-4 magnetic-glow breathing-glow"
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={inView ? { scale: 1, opacity: 1 } : {}}
+              transition={{ delay: 0.2 }}
+            >
+              About Me
+            </motion.span>
+            <h2 className="heading-lg mb-3 sm:mb-4 text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
+              <motion.span
+                initial={{ opacity: 0, y: 20 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: 0.3 }}
+              >
+                Bridging{' '}
+              </motion.span>
+              <FocusPull intensity={1.1}>
+                <motion.span 
+                  className="gradient-shimmer"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={inView ? { opacity: 1, scale: 1 } : {}}
+                  transition={{ delay: 0.4, type: 'spring' }}
+                >
+                  Technology
+                </motion.span>
+              </FocusPull>
+              <motion.span
+                initial={{ opacity: 0, y: 20 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: 0.5 }}
+              >
+                {' '}& {' '}
+              </motion.span>
+              <FocusPull intensity={1.1}>
+                <motion.span 
+                  className="gradient-shimmer"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={inView ? { opacity: 1, scale: 1 } : {}}
+                  transition={{ delay: 0.6, type: 'spring' }}
+                >
+                  Leadership
+                </motion.span>
+              </FocusPull>
+            </h2>
+            <motion.p 
+              className="text-body max-w-2xl mx-auto text-sm sm:text-base px-4 sm:px-0"
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.7 }}
+            >
+              A unique blend of technical expertise and management acumen, driving innovation while leading teams to success.
+            </motion.p>
+          </motion.div>
+        </GrandEntrance>
 
         <div className="grid lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center">
           {/* Left Side - Image & Personal Info */}

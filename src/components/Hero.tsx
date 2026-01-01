@@ -42,6 +42,29 @@ import {
   VelocityStagger,
   MomentumCarry 
 } from './MotionHierarchy'
+// ⚡ NEW: Psychological Motion & Tactile Systems
+import { 
+  useEmotionalState, 
+  AweReveal, 
+  GrandEntrance, 
+  DopamineHit,
+  HeartbeatElement,
+  PresenceIndicator,
+  FocusPull
+} from '@/lib/PsychologicalMotion'
+import { 
+  TactileButton, 
+  TactileCard, 
+  MagneticElement,
+  TactileRipple
+} from '@/lib/TactileSystem'
+import { 
+  useViewport, 
+  ResponsiveText, 
+  DeviceAwareAnimation,
+  TouchOptimizedButton
+} from '@/lib/UltraResponsive'
+import { DramaticReveal, ScrollSpotlight } from '@/lib/NarrativeScroll'
 
 // All images with numbers
 const heroImages = [
@@ -280,55 +303,59 @@ export default function Hero() {
             className="text-center lg:text-left order-2 lg:order-1"
             style={{ opacity: contentOpacity }}
           >
-            {/* Badge - Attention Magnet */}
-            <AttentionMagnet priority="high" pulseOnIdle>
-              <DirectionalReveal>
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2 }}
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-ultra electric-border mb-6 hover-glow-intense"
-                >
-                  <Sparkles className="w-4 h-4 text-primary-400" />
-                  <span className="text-sm font-medium text-dark-200">
-                    Gandhinagar Institute of Technology | General Secretary
-                  </span>
-                  <motion.span 
-                    className="w-2 h-2 rounded-full bg-green-500"
-                    animate={{ 
-                      scale: [1, 1.3, 1],
-                      opacity: [1, 0.7, 1]
-                    }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                  />
-                </motion.div>
-              </DirectionalReveal>
-            </AttentionMagnet>
+            {/* Badge - Attention Magnet with Grand Entrance */}
+            <GrandEntrance delay={0.2}>
+              <AttentionMagnet priority="high" pulseOnIdle>
+                <DirectionalReveal>
+                  <motion.div
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-ultra electric-border mb-6 hover-glow-intense breathing-glow"
+                  >
+                    <HeartbeatElement intensity={0.8}>
+                      <Sparkles className="w-4 h-4 text-primary-400" />
+                    </HeartbeatElement>
+                    <span className="text-sm font-medium text-dark-200">
+                      Gandhinagar Institute of Technology | General Secretary
+                    </span>
+                    <PresenceIndicator importance="high">
+                      <motion.span 
+                        className="w-2 h-2 rounded-full bg-green-500"
+                        animate={{ 
+                          scale: [1, 1.3, 1],
+                          opacity: [1, 0.7, 1]
+                        }}
+                        transition={{ duration: 2, repeat: Infinity }}
+                      />
+                    </PresenceIndicator>
+                  </motion.div>
+                </DirectionalReveal>
+              </AttentionMagnet>
+            </GrandEntrance>
 
-            {/* Main Heading - Elite Text Reveal */}
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.8 }}
-              className="heading-xl mb-6 rocket-launch"
-            >
-              <motion.span 
-                className="text-dark-100 inline-block"
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.4, duration: 0.6 }}
+            {/* Main Heading - Elite Text Reveal with Awe */}
+            <AweReveal delay={0.3} intensity="dramatic">
+              <motion.h1
+                className="heading-xl mb-6 rocket-launch"
               >
-                Hi, I&apos;m{' '}
-              </motion.span>
-              <motion.span 
-                className="gradient-shimmer inline-block"
-                initial={{ opacity: 0, scale: 0.8, rotateX: -40 }}
-                animate={{ opacity: 1, scale: 1, rotateX: 0 }}
-                transition={{ delay: 0.6, duration: 0.8, type: 'spring', stiffness: 100 }}
-              >
-                Dev Patel
-              </motion.span>
-            </motion.h1>
+                <motion.span 
+                  className="text-dark-100 inline-block"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.4, duration: 0.6 }}
+                >
+                  Hi, I&apos;m{' '}
+                </motion.span>
+                <FocusPull intensity={1.2}>
+                  <motion.span 
+                    className="gradient-shimmer inline-block focus-pull"
+                    initial={{ opacity: 0, scale: 0.8, rotateX: -40 }}
+                    animate={{ opacity: 1, scale: 1, rotateX: 0 }}
+                    transition={{ delay: 0.6, duration: 0.8, type: 'spring', stiffness: 100 }}
+                  >
+                    Dev Patel
+                  </motion.span>
+                </FocusPull>
+              </motion.h1>
+            </AweReveal>
 
             {/* Typing Animation */}
             <motion.div
@@ -398,47 +425,57 @@ export default function Hero() {
               </span>
             </motion.div>
 
-            {/* CTA Buttons - Anticipatory with Multi-Phase */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12"
-            >
-              <ProximityAware id="hero-cta-primary" approachThreshold={150}>
-                {({ phase, proximity }) => (
-                  <AnticipatoryCTA 
-                    variant="primary"
-                    onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
-                    className={`transition-all duration-300 ${phase === 'approaching' ? 'shadow-lg shadow-primary/20' : ''}`}
-                  >
-                    <span className="flex items-center justify-center gap-2">
-                      View My Work
-                      <motion.span
-                        animate={{ x: phase === 'hovering' ? 5 : 0 }}
-                        transition={{ type: 'spring', stiffness: 400 }}
+            {/* CTA Buttons - Tactile with Dopamine Hit */}
+            <DramaticReveal direction="up" intensity="normal">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.8 }}
+                className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12"
+              >
+                <ProximityAware id="hero-cta-primary" approachThreshold={150}>
+                  {({ phase, proximity }) => (
+                    <DopamineHit trigger={phase === 'hovering'}>
+                      <TactileRipple rippleColor="rgba(139, 92, 246, 0.4)">
+                        <TactileButton
+                          variant="floating"
+                          haptic="medium"
+                          onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+                          className={`px-8 py-4 bg-gradient-to-r from-violet-600 to-purple-600 text-white rounded-xl font-semibold transition-all duration-300 ${phase === 'approaching' ? 'shadow-lg shadow-primary/30' : ''}`}
+                        >
+                          <span className="flex items-center justify-center gap-2">
+                            View My Work
+                            <motion.span
+                              animate={{ x: phase === 'hovering' ? 5 : 0 }}
+                              transition={{ type: 'spring', stiffness: 400 }}
+                            >
+                              <ArrowRight size={18} />
+                            </motion.span>
+                          </span>
+                        </TactileButton>
+                      </TactileRipple>
+                    </DopamineHit>
+                  )}
+                </ProximityAware>
+                
+                <ProximityAware id="hero-cta-secondary" approachThreshold={150}>
+                  {({ phase }) => (
+                    <MagneticElement strength={0.2} radius={80}>
+                      <TactileButton
+                        variant="glass"
+                        haptic="light"
+                        onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                        className={`px-8 py-4 glass-ultra border border-white/20 rounded-xl font-semibold transition-all duration-300 ${phase === 'approaching' ? 'border-primary/40' : ''}`}
                       >
-                        <ArrowRight size={18} />
-                      </motion.span>
-                    </span>
-                  </AnticipatoryCTA>
-                )}
-              </ProximityAware>
-              
-              <ProximityAware id="hero-cta-secondary" approachThreshold={150}>
-                {({ phase }) => (
-                  <AnticipatoryCTA 
-                    variant="secondary"
-                    onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                    className={`transition-all duration-300 ${phase === 'approaching' ? 'border-primary/40' : ''}`}
-                  >
-                    Get In Touch
-                  </AnticipatoryCTA>
-                )}
-              </ProximityAware>
-            </motion.div>
+                        Get In Touch
+                      </TactileButton>
+                    </MagneticElement>
+                  )}
+                </ProximityAware>
+              </motion.div>
+            </DramaticReveal>
 
-            {/* Social Links */}
+            {/* Social Links - Magnetic & Tactile */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -451,21 +488,24 @@ export default function Hero() {
                 { icon: Twitter, href: 'https://twitter.com/devpatel170521', label: 'Twitter' },
                 { icon: Instagram, href: 'https://instagram.com/devpatel170521', label: 'Instagram' },
               ].map((social, index) => (
-                <motion.a
-                  key={social.label}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-3 rounded-xl glass-premium group hover:bg-primary-500/10 transition-all duration-300"
-                  whileHover={{ y: -5, scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 1 + index * 0.1, type: "spring", stiffness: 400 }}
-                  aria-label={social.label}
-                >
-                  <social.icon size={20} className="text-dark-300 group-hover:text-primary-400 transition-colors" />
-                </motion.a>
+                <MagneticElement key={social.label} strength={0.4} radius={60}>
+                  <TactileRipple rippleColor="rgba(139, 92, 246, 0.3)" duration={400}>
+                    <motion.a
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-3 rounded-xl glass-premium group hover:bg-primary-500/10 transition-all duration-300 tactile-press"
+                      whileHover={{ y: -5, scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: 1 + index * 0.1, type: "spring", stiffness: 400 }}
+                      aria-label={social.label}
+                    >
+                      <social.icon size={20} className="text-dark-300 group-hover:text-primary-400 transition-colors" />
+                    </motion.a>
+                  </TactileRipple>
+                </MagneticElement>
               ))}
             </motion.div>
           </motion.div>

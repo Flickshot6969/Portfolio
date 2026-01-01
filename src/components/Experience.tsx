@@ -15,6 +15,26 @@ import {
 } from 'lucide-react'
 import { BlurReveal, TiltCard } from './AnimationEffects'
 import { Card3D, SectionReveal } from './EliteEffects'
+// ⚡ NEW: Psychological Motion & Narrative Systems
+import { 
+  AweReveal, 
+  GrandEntrance,
+  HeartbeatElement,
+  FocusPull,
+  BreathingContainer
+} from '@/lib/PsychologicalMotion'
+import { 
+  TactileCard, 
+  MagneticElement,
+  TactileRipple
+} from '@/lib/TactileSystem'
+import { 
+  DramaticReveal, 
+  ScrollTimeline, 
+  ScrollSpotlight,
+  ScrollSequence,
+  FocusScroll
+} from '@/lib/NarrativeScroll'
 
 const experiences = [
   {
@@ -173,61 +193,72 @@ export default function Experience() {
     <>
       {/* Experience Section */}
       <section id="experience" className="section-padding relative overflow-hidden aurora-bg">
-        {/* Floating Orbs */}
-        <div className="absolute top-1/4 right-1/4 w-72 h-72 bg-primary-500/15 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-1/4 left-1/4 w-72 h-72 bg-accent-500/15 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
+        {/* Floating Orbs with Breathing */}
+        <BreathingContainer breathIntensity={0.3}>
+          <div className="absolute top-1/4 right-1/4 w-72 h-72 bg-primary-500/15 rounded-full blur-3xl animate-pulse" />
+        </BreathingContainer>
+        <BreathingContainer breathIntensity={0.4}>
+          <div className="absolute bottom-1/4 left-1/4 w-72 h-72 bg-accent-500/15 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
+        </BreathingContainer>
         
         <div className="container-custom relative z-10" ref={ref}>
-          {/* Section Header - Elite */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-8 md:mb-16"
-          >
-            <motion.span 
-              className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full glass-elite text-primary-400 text-xs sm:text-sm font-medium mb-3 sm:mb-4 magnetic-glow"
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={inView ? { scale: 1, opacity: 1 } : {}}
-              transition={{ delay: 0.2, type: 'spring' }}
+          {/* Section Header - Elite with Grand Entrance */}
+          <GrandEntrance delay={0.1}>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6 }}
+              className="text-center mb-8 md:mb-16"
             >
-              <Award className="w-4 h-4" />
-              Career Journey
-            </motion.span>
-            <h2 className="heading-lg mb-3 sm:mb-4 text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
-              <motion.span
+              <HeartbeatElement intensity={0.6}>
+                <motion.span 
+                  className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full glass-elite text-primary-400 text-xs sm:text-sm font-medium mb-3 sm:mb-4 magnetic-glow breathing-glow"
+                  initial={{ scale: 0.8, opacity: 0 }}
+                  animate={inView ? { scale: 1, opacity: 1 } : {}}
+                  transition={{ delay: 0.2, type: 'spring' }}
+                >
+                  <Award className="w-4 h-4" />
+                  Career Journey
+                </motion.span>
+              </HeartbeatElement>
+              <h2 className="heading-lg mb-3 sm:mb-4 text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
+                <motion.span
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={inView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ delay: 0.3 }}
+                >
+                  Work{' '}
+                </motion.span>
+                <FocusPull intensity={1.2}>
+                  <motion.span 
+                    className="gradient-shimmer"
+                    initial={{ opacity: 0, rotateX: -40 }}
+                    animate={inView ? { opacity: 1, rotateX: 0 } : {}}
+                    transition={{ delay: 0.4, type: 'spring', stiffness: 100 }}
+                  >
+                    Experience
+                  </motion.span>
+                </FocusPull>
+              </h2>
+              <motion.p 
+                className="text-body max-w-2xl mx-auto text-sm sm:text-base px-4 sm:px-0"
                 initial={{ opacity: 0, y: 20 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: 0.3 }}
+                transition={{ delay: 0.5 }}
               >
-                Work{' '}
-              </motion.span>
-              <motion.span 
-                className="gradient-shimmer"
-                initial={{ opacity: 0, rotateX: -40 }}
-                animate={inView ? { opacity: 1, rotateX: 0 } : {}}
-                transition={{ delay: 0.4, type: 'spring', stiffness: 100 }}
-              >
-                Experience
-              </motion.span>
-            </h2>
-            <motion.p 
-              className="text-body max-w-2xl mx-auto text-sm sm:text-base px-4 sm:px-0"
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.5 }}
-            >
-              A track record of delivering results across technical and leadership roles.
-            </motion.p>
-          </motion.div>
+                A track record of delivering results across technical and leadership roles.
+              </motion.p>
+            </motion.div>
+          </GrandEntrance>
 
-          {/* Timeline - Elite */}
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate={inView ? 'visible' : 'hidden'}
-            className="relative max-w-4xl mx-auto"
-          >
+          {/* Timeline - Elite with Scroll Spotlight */}
+          <ScrollSpotlight spotlightColor="rgba(139, 92, 246, 0.1)">
+            <motion.div
+              variants={containerVariants}
+              initial="hidden"
+              animate={inView ? 'visible' : 'hidden'}
+              className="relative max-w-4xl mx-auto"
+            >
             {/* Timeline Line - Elite Gradient */}
             <motion.div 
               className="absolute left-6 sm:left-8 md:left-1/2 top-0 bottom-0 w-1 transform md:-translate-x-1/2"
@@ -323,6 +354,7 @@ export default function Experience() {
               </motion.div>
             ))}
           </motion.div>
+          </ScrollSpotlight>
         </div>
       </section>
 

@@ -18,6 +18,23 @@ import {
 } from 'lucide-react'
 import { MagneticButton, BlurReveal } from './AnimationEffects'
 import { Card3D, SectionReveal } from './EliteEffects'
+// ⚡ NEW: Psychological Motion & Tactile Systems
+import { 
+  AweReveal, 
+  GrandEntrance,
+  HeartbeatElement,
+  FocusPull,
+  BreathingContainer,
+  DopamineHit
+} from '@/lib/PsychologicalMotion'
+import { 
+  TactileCard, 
+  TactileButton,
+  MagneticElement,
+  TactileRipple,
+  PressureSensitive
+} from '@/lib/TactileSystem'
+import { DramaticReveal, ScrollSpotlight } from '@/lib/NarrativeScroll'
 
 const contactInfo = [
   {
@@ -110,44 +127,51 @@ export default function Contact() {
 
   return (
     <section id="contact" className="section-padding relative overflow-hidden aurora-bg">
-      {/* Background Effects */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-gradient-to-r from-primary-500/15 to-accent-500/15 rounded-full blur-3xl opacity-50 vegas-glow" />
+      {/* Background Effects with Breathing */}
+      <BreathingContainer breathIntensity={0.4}>
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-gradient-to-r from-primary-500/15 to-accent-500/15 rounded-full blur-3xl opacity-50 vegas-glow" />
+      </BreathingContainer>
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl animate-pulse" />
       
       <div className="container-custom relative z-10" ref={ref}>
-        {/* Section Header - Elite */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-8 md:mb-16"
-        >
-          <motion.span 
-            className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full glass-elite text-primary-400 text-xs sm:text-sm font-medium mb-3 sm:mb-4 magnetic-glow"
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={inView ? { scale: 1, opacity: 1 } : {}}
-            transition={{ delay: 0.2, type: 'spring' }}
+        {/* Section Header - Elite with Grand Entrance */}
+        <GrandEntrance delay={0.1}>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-8 md:mb-16"
           >
-            <Sparkles className="w-4 h-4" />
-            Get In Touch
-          </motion.span>
-          <h2 className="heading-lg mb-3 sm:mb-4 text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
-            <motion.span
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.3 }}
-            >
-              Let&apos;s{' '}
-            </motion.span>
-            <motion.span 
-              className="gradient-shimmer"
-              initial={{ opacity: 0, rotateX: -40 }}
-              animate={inView ? { opacity: 1, rotateX: 0 } : {}}
-              transition={{ delay: 0.4, type: 'spring', stiffness: 100 }}
-            >
-              Connect
-            </motion.span>
-          </h2>
+            <HeartbeatElement intensity={0.6}>
+              <motion.span 
+                className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full glass-elite text-primary-400 text-xs sm:text-sm font-medium mb-3 sm:mb-4 magnetic-glow breathing-glow"
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={inView ? { scale: 1, opacity: 1 } : {}}
+                transition={{ delay: 0.2, type: 'spring' }}
+              >
+                <Sparkles className="w-4 h-4" />
+                Get In Touch
+              </motion.span>
+            </HeartbeatElement>
+            <h2 className="heading-lg mb-3 sm:mb-4 text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
+              <motion.span
+                initial={{ opacity: 0, y: 20 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: 0.3 }}
+              >
+                Let&apos;s{' '}
+              </motion.span>
+              <FocusPull intensity={1.2}>
+                <motion.span 
+                  className="gradient-shimmer"
+                  initial={{ opacity: 0, rotateX: -40 }}
+                  animate={inView ? { opacity: 1, rotateX: 0 } : {}}
+                  transition={{ delay: 0.4, type: 'spring', stiffness: 100 }}
+                >
+                  Connect
+                </motion.span>
+              </FocusPull>
+            </h2>
           <motion.p 
             className="text-body max-w-2xl mx-auto text-sm sm:text-base px-4 sm:px-0"
             initial={{ opacity: 0, y: 20 }}
@@ -158,6 +182,7 @@ export default function Contact() {
             Let&apos;s create something amazing together!
           </motion.p>
         </motion.div>
+        </GrandEntrance>
 
         <div className="grid lg:grid-cols-5 gap-6 md:gap-8 lg:gap-12">
           {/* Contact Info */}

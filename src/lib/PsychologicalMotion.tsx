@@ -250,29 +250,35 @@ interface HeartbeatElementProps {
   className?: string
   baseScale?: number
   pulseScale?: number
+  intensity?: number // 0-1, higher = more dramatic pulse
 }
 
 export function HeartbeatElement({ 
   children, 
   className = '',
   baseScale = 1,
-  pulseScale = 1.02
+  pulseScale = 1.02,
+  intensity = 0.5
 }: HeartbeatElementProps) {
   const emotional = useEmotionalState()
   const scale = useSpring(baseScale, { stiffness: 300, damping: 20 })
   
+  // Apply intensity to pulse scale
+  const effectivePulseScale = baseScale + ((pulseScale - baseScale) * (1 + intensity))
+  
   // Pulse rate based on emotional intensity
   useEffect(() => {
-    const intensity = emotional?.intensity ?? 0.5
-    const interval = 2000 - (intensity * 1000) // Faster when more engaged
+    const emotionalIntensity = emotional?.intensity ?? 0.5
+    const combinedIntensity = (emotionalIntensity + intensity) / 2
+    const interval = 2000 - (combinedIntensity * 1000) // Faster when more engaged
     
     const pulse = setInterval(() => {
-      scale.set(pulseScale)
+      scale.set(effectivePulseScale)
       setTimeout(() => scale.set(baseScale), 200)
     }, interval)
     
     return () => clearInterval(pulse)
-  }, [emotional?.intensity, scale, baseScale, pulseScale])
+  }, [emotional?.intensity, scale, baseScale, effectivePulseScale, intensity])
 
   return (
     <motion.div className={className} style={{ scale }}>
@@ -321,15 +327,17 @@ interface DopamineHitProps {
   children: React.ReactNode
   className?: string
   onTrigger?: () => void
+  trigger?: boolean // External trigger control
 }
 
-export function DopamineHit({ children, className = '', onTrigger }: DopamineHitProps) {
+export function DopamineHit({ children, className = '', onTrigger, trigger: externalTrigger }: DopamineHitProps) {
   const [isTriggered, setIsTriggered] = useState(false)
   const scale = useSpring(1, { stiffness: 600, damping: 15 })
   const rotate = useSpring(0, { stiffness: 400, damping: 20 })
   const emotional = useEmotionalState()
 
-  const trigger = useCallback(() => {
+  const performTrigger = useCallback(() => {
+    if (isTriggered) return
     setIsTriggered(true)
     scale.set(1.15)
     rotate.set(3)
@@ -347,13 +355,20 @@ export function DopamineHit({ children, className = '', onTrigger }: DopamineHit
     
     emotional?.triggerDelight()
     onTrigger?.()
-  }, [scale, rotate, emotional, onTrigger])
+  }, [scale, rotate, emotional, onTrigger, isTriggered])
+
+  // React to external trigger
+  useEffect(() => {
+    if (externalTrigger) {
+      performTrigger()
+    }
+  }, [externalTrigger, performTrigger])
 
   return (
     <motion.div
       className={`cursor-pointer ${className}`}
       style={{ scale, rotate }}
-      onClick={trigger}
+      onClick={performTrigger}
       whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 0.98 }}
     >
@@ -494,16 +509,19 @@ interface GrandEntranceProps {
   className?: string
   stages?: number
   staggerDelay?: number
+  delay?: number // Initial delay before animation starts
 }
 
 export function GrandEntrance({ 
   children, 
   className = '',
   stages = 3,
-  staggerDelay = 0.15
+  staggerDelay = 0.15,
+  delay = 0
 }: GrandEntranceProps) {
   const [currentStage, setCurrentStage] = useState(0)
   const [isInView, setIsInView] = useState(false)
+  const [delayComplete, setDelayComplete] = useState(delay === 0)
   const ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -520,8 +538,19 @@ export function GrandEntrance({
     return () => observer.disconnect()
   }, [currentStage])
 
+  // Handle initial delay before starting animation
   useEffect(() => {
-    if (!isInView) return
+    if (!isInView || delayComplete) return
+    
+    const delayTimer = setTimeout(() => {
+      setDelayComplete(true)
+    }, delay * 1000)
+
+    return () => clearTimeout(delayTimer)
+  }, [isInView, delay, delayComplete])
+
+  useEffect(() => {
+    if (!isInView || !delayComplete) return
     
     const advanceStage = () => {
       setCurrentStage(prev => {
@@ -536,7 +565,7 @@ export function GrandEntrance({
     }
 
     return () => timers.forEach(clearTimeout)
-  }, [isInView, stages, staggerDelay])
+  }, [isInView, stages, staggerDelay, delayComplete])
 
   const stageStyles = {
     0: { opacity: 0, y: 100, scale: 0.8, filter: 'blur(20px)' },
