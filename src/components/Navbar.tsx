@@ -13,12 +13,10 @@ import {
 
 const navLinks = [
   { name: 'Home', href: 'home' },
-  { name: 'Projects', href: 'projects' },
+  { name: 'Work', href: 'projects' },
   { name: 'Process', href: 'process' },
-  { name: 'About', href: 'about' },
+  { name: 'Trust', href: 'authority' },
   { name: 'Skills', href: 'skills' },
-  { name: 'Experience', href: 'experience' },
-  { name: 'Certifications', href: 'certifications' },
   { name: 'Contact', href: 'contact' },
 ]
 
