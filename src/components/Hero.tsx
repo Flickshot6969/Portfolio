@@ -471,7 +471,7 @@ export default function Hero() {
                 {/* Primary CTA */}
                 <motion.button
                   onClick={() => document.getElementById('experience')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="group relative px-8 py-4 bg-gradient-to-r from-primary-600 via-accent-600 to-primary-600 bg-[length:200%_100%] text-white rounded-2xl font-semibold text-lg overflow-hidden"
+                  className="group relative px-6 py-3.5 sm:px-8 sm:py-4 bg-gradient-to-r from-primary-600 via-accent-600 to-primary-600 bg-[length:200%_100%] text-white rounded-xl sm:rounded-2xl font-semibold text-base sm:text-lg overflow-hidden"
                   whileHover={{ 
                     scale: 1.02, 
                     backgroundPosition: '100% 0',
@@ -502,7 +502,7 @@ export default function Hero() {
                 {/* Secondary CTA */}
                 <motion.button
                   onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="group relative px-8 py-4 bg-dark-800/50 border-2 border-dark-600 hover:border-primary-500/50 rounded-2xl font-semibold text-lg text-dark-200 hover:text-white overflow-hidden backdrop-blur-sm"
+                  className="group relative px-6 py-3.5 sm:px-8 sm:py-4 bg-dark-800/50 border-2 border-dark-600 hover:border-primary-500/50 rounded-xl sm:rounded-2xl font-semibold text-base sm:text-lg text-dark-200 hover:text-white overflow-hidden backdrop-blur-sm"
                   whileHover={{ 
                     scale: 1.02,
                     boxShadow: '0 15px 30px -10px rgba(0, 0, 0, 0.3), inset 0 0 30px rgba(99, 102, 241, 0.1)'
@@ -595,9 +595,9 @@ export default function Hero() {
               
               {/* Main Image Container */}
               <motion.div
-                className="relative w-56 h-56 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden shadow-2xl"
+                className="relative w-52 h-52 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden shadow-2xl"
                 animate={{
-                  y: [0, -10, 0],
+                  y: [0, -8, 0],
                 }}
                 transition={{
                   duration: 4,

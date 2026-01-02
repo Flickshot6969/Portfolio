@@ -215,27 +215,29 @@ export default function About() {
                 </motion.div>
               </Card3D>
 
-              {/* Floating Badge - Strategic Leader */}
+              {/* Floating Badge - Strategic Leader - Visible on Mobile */}
               <motion.div
-                className="absolute -right-2 sm:-right-4 top-1/4 glass-card px-2 py-1.5 sm:px-4 sm:py-2 rounded-lg sm:rounded-xl hidden sm:block"
-                animate={{ y: [0, -10, 0] }}
+                className="absolute -right-1 sm:-right-4 -top-3 sm:top-1/4 glass-card px-2 py-1.5 sm:px-4 sm:py-2 rounded-lg sm:rounded-xl z-20"
+                animate={{ y: [0, -6, 0] }}
                 transition={{ duration: 3, repeat: Infinity }}
+                style={{ boxShadow: '0 8px 32px rgba(239, 68, 68, 0.2)' }}
               >
                 <div className="flex items-center gap-1.5 sm:gap-2">
-                  <Heart className="w-4 h-4 sm:w-5 sm:h-5 text-red-500" />
-                  <span className="text-xs sm:text-sm font-medium text-white">Strategic Leader</span>
+                  <Heart className="w-3.5 h-3.5 sm:w-5 sm:h-5 text-red-500" />
+                  <span className="text-[10px] sm:text-sm font-semibold text-white">Strategic Leader</span>
                 </div>
               </motion.div>
 
-              {/* Floating Badge - Passionate Coder */}
+              {/* Floating Badge - Passionate Coder - Visible on Mobile */}
               <motion.div
-                className="absolute -left-2 sm:-left-4 bottom-1/3 glass-card px-2 py-1.5 sm:px-4 sm:py-2 rounded-lg sm:rounded-xl hidden sm:block"
-                animate={{ y: [0, 10, 0] }}
+                className="absolute -left-1 sm:-left-4 -top-3 sm:bottom-1/3 sm:top-auto glass-card px-2 py-1.5 sm:px-4 sm:py-2 rounded-lg sm:rounded-xl z-20"
+                animate={{ y: [0, 6, 0] }}
                 transition={{ duration: 3.5, repeat: Infinity, delay: 0.5 }}
+                style={{ boxShadow: '0 8px 32px rgba(34, 211, 238, 0.2)' }}
               >
                 <div className="flex items-center gap-1.5 sm:gap-2">
-                  <Code2 className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-400" />
-                  <span className="text-xs sm:text-sm font-medium text-white">Passionate Coder</span>
+                  <Code2 className="w-3.5 h-3.5 sm:w-5 sm:h-5 text-cyan-400" />
+                  <span className="text-[10px] sm:text-sm font-semibold text-white">Passionate Coder</span>
                 </div>
               </motion.div>
             </motion.div>
