@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect, useRef, useState } from 'react'
-import { motion, useSpring, useTransform, useMotionValue, AnimatePresence } from 'framer-motion'
+import { motion, useSpring, useTransform, AnimatePresence } from 'framer-motion'
 import { useInteraction } from '@/lib/InteractionIntelligence'
 
 // ═══════════════════════════════════════════════════════════════════════════════
@@ -401,6 +401,12 @@ export function CursorGradient({
   const gradientX = useSpring(50, { stiffness: 50, damping: 30 })
   const gradientY = useSpring(50, { stiffness: 50, damping: 30 })
   const gradientSize = useSpring(30, { stiffness: 100, damping: 20 })
+  
+  // useTransform must be called unconditionally (React hooks rule)
+  const backgroundGradient = useTransform(
+    [gradientX, gradientY, gradientSize],
+    ([x, y, size]) => `radial-gradient(circle at ${x}% ${y}%, ${color}, transparent ${size}%)`
+  )
 
   // Follow cursor with lag
   useEffect(() => {
@@ -424,10 +430,7 @@ export function CursorGradient({
     <motion.div
       className={`absolute inset-0 pointer-events-none ${className}`}
       style={{
-        background: useTransform(
-          [gradientX, gradientY, gradientSize],
-          ([x, y, size]) => `radial-gradient(circle at ${x}% ${y}%, ${color}, transparent ${size}%)`
-        )
+        background: backgroundGradient
       }}
     />
   )

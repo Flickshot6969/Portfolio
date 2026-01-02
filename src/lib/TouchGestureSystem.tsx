@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect, useRef, useState, useCallback } from 'react'
-import { motion, useSpring, useMotionValue, useTransform, AnimatePresence } from 'framer-motion'
+import { motion, useSpring, useTransform, AnimatePresence } from 'framer-motion'
 
 // ═══════════════════════════════════════════════════════════════════════════════
 // 🖐️ TOUCH GESTURE INTELLIGENCE

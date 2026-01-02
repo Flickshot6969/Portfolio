@@ -4,7 +4,6 @@ import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import {
   Mail,
-  Phone,
   MapPin,
   Linkedin,
   Github,
@@ -16,19 +15,16 @@ import {
   Target,
   Download,
   ExternalLink,
-  Calendar,
   Building,
   BookOpen,
   Lightbulb,
   TrendingUp,
-  Shield,
   Cloud,
   Database,
   Terminal,
   Rocket,
   Star,
   CheckCircle2,
-  FileText,
   Printer
 } from 'lucide-react'
 

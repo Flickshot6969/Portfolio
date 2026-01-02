@@ -1,7 +1,7 @@
 'use client'
 
-import React, { useEffect, useState, useRef, useCallback, createContext, useContext } from 'react'
-import { motion, useSpring, useMotionValue, useTransform, AnimatePresence } from 'framer-motion'
+import React, { useEffect, useState, useRef, createContext, useContext } from 'react'
+import { motion } from 'framer-motion'
 
 // ═══════════════════════════════════════════════════════════════════════════════
 // 📱 ULTRA-RESPONSIVE MASTERY SYSTEM

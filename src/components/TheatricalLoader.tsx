@@ -1,7 +1,7 @@
 'use client'
 
-import React, { useEffect, useState, useRef } from 'react'
-import { motion, AnimatePresence, useMotionValue, useSpring, useTransform, useAnimationFrame } from 'framer-motion'
+import React, { useEffect, useState } from 'react'
+import { motion, AnimatePresence, useMotionValue, useSpring, useAnimationFrame } from 'framer-motion'
 
 // ═══════════════════════════════════════════════════════════════════════════════
 // 🎬 THEATRICAL PAGE LOADER
@@ -29,7 +29,7 @@ function AnimatedLetter({
 }) {
   const delay = index * 0.08
   const midPoint = totalLetters / 2
-  const distanceFromCenter = Math.abs(index - midPoint)
+  const _distanceFromCenter = Math.abs(index - midPoint)
   
   return (
     <motion.span

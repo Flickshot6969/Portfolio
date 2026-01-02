@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect, useRef, useState, createContext, useContext } from 'react'
-import { motion, useScroll, useTransform, useSpring, useMotionValue, useAnimationFrame, MotionValue } from 'framer-motion'
+import { motion, useScroll, useTransform, useSpring, useMotionValue, MotionValue } from 'framer-motion'
 
 // ═══════════════════════════════════════════════════════════════════════════════
 // 🎬 SCROLL DRAMA ENGINE

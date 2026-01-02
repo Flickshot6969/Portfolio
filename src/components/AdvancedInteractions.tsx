@@ -1,7 +1,7 @@
 'use client'
 
-import React, { useEffect, useRef, useState, useCallback } from 'react'
-import { motion, useSpring, useTransform, useMotionValue, AnimatePresence } from 'framer-motion'
+import React, { useEffect, useRef, useState } from 'react'
+import { motion, useSpring, useTransform, AnimatePresence } from 'framer-motion'
 import { useInteraction } from '@/lib/InteractionIntelligence'
 
 // ═══════════════════════════════════════════════════════════════════════════════

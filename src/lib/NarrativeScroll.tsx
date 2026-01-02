@@ -1,7 +1,7 @@
 'use client'
 
-import React, { useEffect, useState, useRef, useCallback, createContext, useContext } from 'react'
-import { motion, useScroll, useSpring, useMotionValue, useTransform, AnimatePresence, useInView } from 'framer-motion'
+import React, { useEffect, useState, useRef, createContext, useContext } from 'react'
+import { motion, useScroll, useSpring, useTransform, useInView } from 'framer-motion'
 
 // ═══════════════════════════════════════════════════════════════════════════════
 // 📖 NARRATIVE SCROLL SYSTEM

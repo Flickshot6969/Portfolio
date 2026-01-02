@@ -1,7 +1,7 @@
 'use client'
 
-import React, { useEffect, useRef, useState, useCallback, useMemo } from 'react'
-import { motion, useMotionValue, useSpring, useAnimationFrame, AnimatePresence } from 'framer-motion'
+import React, { useEffect, useRef, useState, useMemo } from 'react'
+import { motion, useMotionValue, useAnimationFrame } from 'framer-motion'
 
 // ═══════════════════════════════════════════════════════════════════════════════
 // ✨ AMBIENT PARTICLE SYSTEMS

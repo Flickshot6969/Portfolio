@@ -17,22 +17,14 @@ import {
   Download,
   ArrowRight
 } from 'lucide-react'
-import { TiltCard, BlurReveal } from './AnimationEffects'
-import { Card3D, RevealMask, SectionReveal } from './EliteEffects'
+import { Card3D } from './EliteEffects'
 // ⚡ NEW: Psychological Motion & Tactile Systems
 import { 
-  AweReveal, 
-  GrandEntrance, 
-  BreathingContainer,
-  HeartbeatElement,
+  GrandEntrance,
   FocusPull
 } from '@/lib/PsychologicalMotion'
-import { 
-  TactileCard, 
-  MagneticElement,
-  TactileRipple
-} from '@/lib/TactileSystem'
-import { DramaticReveal, ScrollSpotlight, ScrollSequence } from '@/lib/NarrativeScroll'
+
+
 
 const highlights = [
   {
@@ -247,7 +239,7 @@ export default function About() {
               variants={containerVariants}
               className="grid grid-cols-2 gap-2 sm:gap-4 mt-6 sm:mt-8"
             >
-              {personalInfo.map((info, index) => (
+              {personalInfo.map((info, _index) => (
                 <motion.div
                   key={info.label}
                   variants={itemVariants}
@@ -289,7 +281,7 @@ export default function About() {
                 transition={{ delay: 0.5 }}
               >
                 <p className="text-lg sm:text-xl font-medium text-white/90 italic leading-relaxed">
-                  "Bridging the gap between <span className="text-primary-400">strategic leadership</span> and <span className="text-accent-400">technical innovation</span> — that's where I thrive."
+                  &ldquo;Bridging the gap between <span className="text-primary-400">strategic leadership</span> and <span className="text-accent-400">technical innovation</span> — that&apos;s where I thrive.&rdquo;
                 </p>
               </motion.blockquote>
               
@@ -331,7 +323,7 @@ export default function About() {
             <motion.div variants={itemVariants}>
               <h4 className="text-base sm:text-lg font-semibold text-white mb-3 sm:mb-4">What I Bring to the Table</h4>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-                {highlights.map((item, index) => (
+                {highlights.map((item, _index) => (
                   <motion.div
                     key={item.title}
                     variants={itemVariants}

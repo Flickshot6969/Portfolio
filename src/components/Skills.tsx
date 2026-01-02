@@ -1,12 +1,11 @@
 'use client'
 
-import { motion, useSpring, useTransform } from 'framer-motion'
+import { motion, useSpring } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { useState, useEffect } from 'react'
 import {
   Code2,
   Server,
-  Database,
   Cloud,
   Shield,
   Users,
@@ -17,11 +16,6 @@ import {
   MessageSquare,
   Zap,
   Layers,
-  Monitor,
-  Smartphone,
-  GitBranch,
-  Figma,
-  Palette,
   Sparkles,
   Heart,
   Clock,
@@ -34,36 +28,21 @@ import {
   PenTool,
   Headphones
 } from 'lucide-react'
-import { TiltCard, StaggerContainer, StaggerItem } from './AnimationEffects'
-import { Card3D, SmoothCounter } from './EliteEffects'
-import { useInteraction, ProximityAware, ScrollAware } from '@/lib/InteractionIntelligence'
+import { SmoothCounter } from './EliteEffects'
+import { useInteraction } from '@/lib/InteractionIntelligence'
+
 import { 
-  MultiPhaseCard, 
-  ScrollReactiveSection,
-  AmbientMotion 
-} from './AdvancedInteractions'
-import { 
-  AttentionMagnet, 
-  DirectionalReveal,
-  VelocityStagger,
   SectionAwareness,
   AmbientWave
 } from './MotionHierarchy'
 // ⚡ NEW: Psychological Motion & Tactile Systems
 import { 
-  AweReveal, 
   GrandEntrance,
   HeartbeatElement,
-  FocusPull,
-  BreathingContainer
+  FocusPull
 } from '@/lib/PsychologicalMotion'
-import { 
-  TactileCard, 
-  MagneticElement,
-  TactileRipple,
-  TactileButton
-} from '@/lib/TactileSystem'
-import { DramaticReveal, ScrollSpotlight, FocusScroll } from '@/lib/NarrativeScroll'
+
+
 
 const skillCategories = [
   {
@@ -195,7 +174,7 @@ export default function Skills() {
 
   return (
     <SectionAwareness className="relative">
-      {({ visibility, isEntering, isLeaving, position }) => (
+      {({ visibility, isEntering, isLeaving: _isLeaving, position: _position }) => (
         <section id="skills" className="section-padding relative overflow-hidden network-grid">
           {/* Ambient Wave - Tertiary Motion */}
           <AmbientWave intensity={visibility * 0.5} />

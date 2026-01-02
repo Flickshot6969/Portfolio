@@ -3,38 +3,22 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { 
-  Briefcase, 
   Calendar, 
   MapPin, 
   ExternalLink,
   ArrowRight,
   Building,
   Star,
-  Sparkles,
   Award
 } from 'lucide-react'
-import { BlurReveal, TiltCard } from './AnimationEffects'
-import { Card3D, SectionReveal } from './EliteEffects'
 // ⚡ NEW: Psychological Motion & Narrative Systems
 import { 
-  AweReveal, 
   GrandEntrance,
   HeartbeatElement,
   FocusPull,
   BreathingContainer
 } from '@/lib/PsychologicalMotion'
-import { 
-  TactileCard, 
-  MagneticElement,
-  TactileRipple
-} from '@/lib/TactileSystem'
-import { 
-  DramaticReveal, 
-  ScrollTimeline, 
-  ScrollSpotlight,
-  ScrollSequence,
-  FocusScroll
-} from '@/lib/NarrativeScroll'
+import { ScrollSpotlight } from '@/lib/NarrativeScroll'
 
 const experiences = [
   {

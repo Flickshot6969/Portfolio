@@ -6,7 +6,6 @@ import { useState, useRef } from 'react'
 import emailjs from '@emailjs/browser'
 import { 
   Mail, 
-  Phone, 
   MapPin, 
   Send, 
   CheckCircle,
@@ -16,25 +15,15 @@ import {
   Sparkles,
   ArrowRight
 } from 'lucide-react'
-import { MagneticButton, BlurReveal } from './AnimationEffects'
-import { Card3D, SectionReveal } from './EliteEffects'
 // ⚡ NEW: Psychological Motion & Tactile Systems
 import { 
-  AweReveal, 
   GrandEntrance,
   HeartbeatElement,
   FocusPull,
-  BreathingContainer,
-  DopamineHit
+  BreathingContainer
 } from '@/lib/PsychologicalMotion'
-import { 
-  TactileCard, 
-  TactileButton,
-  MagneticElement,
-  TactileRipple,
-  PressureSensitive
-} from '@/lib/TactileSystem'
-import { DramaticReveal, ScrollSpotlight } from '@/lib/NarrativeScroll'
+
+
 
 const contactInfo = [
   {
@@ -101,7 +90,7 @@ export default function Contact() {
         setFormData({ name: '', email: '', subject: '', message: '' })
         setTimeout(() => setStatus('idle'), 5000)
       }
-    } catch (error) {
+    } catch (_error) {
       setStatus('error')
       setErrorMessage('Failed to send message. Please try again or email directly.')
       setTimeout(() => setStatus('idle'), 5000)

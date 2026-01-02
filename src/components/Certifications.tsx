@@ -8,8 +8,6 @@ import {
   ExternalLink, 
   Calendar,
   Building,
-  ChevronLeft,
-  ChevronRight,
   X
 } from 'lucide-react'
 
@@ -220,7 +218,7 @@ export default function Certifications() {
             animate="visible"
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
           >
-            {technicalCertifications.map((cert, index) => (
+            {technicalCertifications.map((cert, _index) => (
               <motion.div
                 key={cert.id}
                 variants={itemVariants}
@@ -307,7 +305,7 @@ export default function Certifications() {
 
             {/* Starbucks Certificates Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
-              {starbucksCertifications.map((cert, index) => (
+              {starbucksCertifications.map((cert, _index) => (
                 <motion.div
                   key={cert.id}
                   variants={itemVariants}

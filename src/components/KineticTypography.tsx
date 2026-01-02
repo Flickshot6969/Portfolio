@@ -165,7 +165,7 @@ export function GradientWaveText({
   text, 
   className = '',
   colors = ['#6366f1', '#8b5cf6', '#d946ef', '#f43f5e', '#6366f1'],
-  speed = 3
+  speed: _speed = 3
 }: GradientWaveTextProps) {
   const time = useMotionValue(0)
   
@@ -251,7 +251,7 @@ export function MagneticText({
 
 function MagneticCharacter({
   char,
-  index,
+  index: _index,
   mousePos,
   isHovering,
   strength,

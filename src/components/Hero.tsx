@@ -1,10 +1,9 @@
 'use client'
 
-import { useEffect, useRef, useState, useCallback } from 'react'
-import { motion, AnimatePresence, useScroll, useTransform, useSpring, useMotionValue } from 'framer-motion'
+import { useEffect, useRef, useState } from 'react'
+import { motion, AnimatePresence, useTransform, useSpring } from 'framer-motion'
 import { TypeAnimation } from 'react-type-animation'
 import { 
-  ChevronDown, 
   Github, 
   Linkedin, 
   Twitter, 
@@ -20,18 +19,11 @@ import {
   GitBranch,
   Zap,
   Server,
-  Shield,
-  MousePointer
+  Shield
 } from 'lucide-react'
-import { MagneticButton, BlurReveal } from './AnimationEffects'
-import { Card3D, SmoothCounter } from './EliteEffects'
-import { useInteraction, ProximityAware } from '@/lib/InteractionIntelligence'
-import { useScrollPhase, PhaseElement, VelocityText, HesitationAware } from '@/lib/ScrollPhaseEngine'
-import { CinematicButton, CinematicCard, AmbientParticles, VelocityGradientText } from '@/lib/CinematicMotion'
+import { SmoothCounter } from './EliteEffects'
+import { useInteraction } from '@/lib/InteractionIntelligence'
 import { 
-  AnticipatoryCTA, 
-  MultiPhaseCard, 
-  AmbientMotion,
   SparkleOnIdle 
 } from './AdvancedInteractions'
 import { 
@@ -44,27 +36,13 @@ import {
 } from './MotionHierarchy'
 // ⚡ NEW: Psychological Motion & Tactile Systems
 import { 
-  useEmotionalState, 
   AweReveal, 
   GrandEntrance, 
-  DopamineHit,
   HeartbeatElement,
   PresenceIndicator,
   FocusPull
 } from '@/lib/PsychologicalMotion'
-import { 
-  TactileButton, 
-  TactileCard, 
-  MagneticElement,
-  TactileRipple
-} from '@/lib/TactileSystem'
-import { 
-  useViewport, 
-  ResponsiveText, 
-  DeviceAwareAnimation,
-  TouchOptimizedButton
-} from '@/lib/UltraResponsive'
-import { DramaticReveal, ScrollSpotlight } from '@/lib/NarrativeScroll'
+import { DramaticReveal } from '@/lib/NarrativeScroll'
 
 // All images with numbers
 const heroImages = [
@@ -111,7 +89,7 @@ const codeSnippets = [
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
-  const [isLoaded, setIsLoaded] = useState(false)
+  const [_isLoaded, setIsLoaded] = useState(false)
   const { state } = useInteraction()
   
   // Interaction-aware state

@@ -2,11 +2,10 @@
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, Download, ChevronRight, FileText } from 'lucide-react'
+import { Menu, X, Download, ChevronRight } from 'lucide-react'
 import { ActiveSection } from '@/app/page'
 // ⚡ NEW: Tactile Systems for Premium Navigation
 import { 
-  TactileButton,
   MagneticElement,
   TactileRipple
 } from '@/lib/TactileSystem'

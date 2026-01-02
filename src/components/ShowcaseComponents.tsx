@@ -1,8 +1,8 @@
 'use client'
 
-import React, { useEffect, useRef, useState, useCallback } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { motion, useSpring, useMotionValue, useTransform, AnimatePresence, useAnimationFrame } from 'framer-motion'
-import { useScrollPhase, PhaseElement, HesitationAware } from '@/lib/ScrollPhaseEngine'
+
 import { 
   GestureReactiveSection, 
   MobileReveal, 
@@ -10,7 +10,7 @@ import {
   TapRipple,
   InertiaScroll 
 } from '@/lib/TouchGestureSystem'
-import { CinematicButton, CinematicCard, CinematicSection } from '@/lib/CinematicMotion'
+
 
 // ═══════════════════════════════════════════════════════════════════════════════
 // 🚀 SHOWCASE COMPONENTS
