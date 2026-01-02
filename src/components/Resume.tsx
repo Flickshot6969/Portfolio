@@ -167,6 +167,7 @@ const skills = {
 }
 
 const certifications = [
+  { name: 'Cybersecurity Fundamentals', issuer: 'IBM SkillsBuild', year: '2026', credentialUrl: 'https://www.credly.com/badges/24a99885-68ed-404c-bfcc-63c042974559/public_url', image: '/media/Certifications/Technical and soft skill certificates/IBM Cyber security.pdf', category: 'technical' },
   { name: 'Cloud Computing Fundamentals', issuer: 'IBM', year: '2025', credentialId: 'IBMDesign20251216', image: '/media/Certifications/Technical and soft skill certificates/cloud computing fundamentals ibm.pdf', category: 'technical' },
   { name: 'Digital Marketing Certification', issuer: 'HubSpot Academy', year: '2025', credentialId: '8268d9048f3b4ff5a4705726ea0376bd', image: '/media/Certifications/Technical and soft skill certificates/digital marketing hubspot.png', category: 'technical' },
   { name: 'AWS Solutions Architecture Job Simulation', issuer: 'Forage', year: '2025', credentialId: 'ftTNijFvh63WZw3CY', image: '/media/Certifications/Technical and soft skill certificates/AWS.pdf', category: 'technical' },
@@ -184,7 +185,7 @@ const achievements = [
   'Concurrently heading Event Production, Campaign & Marketing divisions',
   'Led Jazba (Annual Cultural Fest) with 50+ events and 100+ volunteer team',
   'Served as Cultural Secretary for 1+ year, organizing 20+ cultural programs',
-  'Earned 5+ professional certifications from IBM, HubSpot, AWS, and Deloitte',
+  'Earned 6+ professional certifications from IBM, HubSpot, AWS, and Deloitte',
   'Completed comprehensive Starbucks barista training including Food Safety, Espresso, and Customer Excellence',
   'Built full-stack portfolio website using Next.js, React, and modern web technologies',
   'Recognized for exceptional customer service and operational excellence at Starbucks India'

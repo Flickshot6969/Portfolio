@@ -55,7 +55,7 @@ const skillCategories = [
       { name: 'Python', level: 85, icon: Code2 },
       { name: 'C/C++', level: 80, icon: Server },
       { name: 'AWS Cloud', level: 82, icon: Cloud },
-      { name: 'Cybersecurity', level: 78, icon: Shield },
+      { name: 'Cybersecurity', level: 85, icon: Shield },
       { name: 'Data Analysis', level: 80, icon: LineChart },
       { name: 'MS Office Suite', level: 95, icon: FileSpreadsheet },
       { name: 'Google Workspace', level: 92, icon: Layers },

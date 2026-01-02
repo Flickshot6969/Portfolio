@@ -14,6 +14,17 @@ import {
 const technicalCertifications = [
   {
     id: 1,
+    title: 'Cybersecurity Fundamentals',
+    issuer: 'IBM SkillsBuild',
+    date: 'January 2026',
+    category: 'Cybersecurity',
+    credentialUrl: 'https://www.credly.com/badges/24a99885-68ed-404c-bfcc-63c042974559/public_url',
+    image: '/media/Certifications/Technical and soft skill certificates/IBM Cyber security.pdf',
+    description: 'Foundational understanding of cybersecurity concepts, threat analysis, social engineering, cryptography, and security strategies from IBM.',
+    skills: ['Cybersecurity', 'Cryptography', 'Threat Analysis', 'Incident Response', 'Risk Management', 'Information Security']
+  },
+  {
+    id: 2,
     title: 'Cloud Computing Fundamentals',
     issuer: 'IBM',
     date: 'December 2025',
@@ -23,7 +34,7 @@ const technicalCertifications = [
     skills: ['Cloud Services', 'IBM Cloud', 'Virtualization', 'Cloud Architecture']
   },
   {
-    id: 2,
+    id: 3,
     title: 'Digital Marketing Certification',
     issuer: 'HubSpot Academy',
     date: 'December 2025',
@@ -34,7 +45,7 @@ const technicalCertifications = [
     skills: ['SEO', 'Content Marketing', 'Social Media Marketing', 'Analytics', 'Campaign Management']
   },
   {
-    id: 3,
+    id: 4,
     title: 'AWS Solutions Architecture Job Simulation',
     issuer: 'Forage',
     date: 'July 2025',
@@ -45,7 +56,7 @@ const technicalCertifications = [
     skills: ['AWS', 'Cloud Architecture', 'Solutions Design', 'Infrastructure']
   },
   {
-    id: 4,
+    id: 5,
     title: 'Deloitte Cyber Security Job Simulation',
     issuer: 'Forage (Deloitte Australia)',
     date: 'July 2025',
@@ -56,7 +67,7 @@ const technicalCertifications = [
     skills: ['Cyber Security', 'Threat Analysis', 'Security Compliance', 'Risk Assessment']
   },
   {
-    id: 5,
+    id: 6,
     title: 'Deloitte Technology Job Simulation',
     issuer: 'Forage (Deloitte Australia)',
     date: 'July 2025',
