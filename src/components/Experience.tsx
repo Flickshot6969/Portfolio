@@ -233,7 +233,7 @@ export default function Experience() {
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.5 }}
               >
-                Each portfolio item demonstrates high-class execution, from IBM Cloud Computing deployment 
+                Each portfolio item demonstrates high-class execution, from IBM Cybersecurity & Cloud Computing deployment 
                 to organizational leadership excellence as General Secretary and Starbucks barista professional experience.
               </motion.p>
             </motion.div>

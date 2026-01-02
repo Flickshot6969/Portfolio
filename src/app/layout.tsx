@@ -8,15 +8,16 @@ import { ScrollPhaseProvider } from '@/lib/ScrollPhaseEngine'
 export const metadata: Metadata = {
   metadataBase: new URL('https://devpatel.dev'),
   title: {
-    default: 'Dev Patel – Elite Portfolio | Leadership, IBM Cloud, Professional Excellence',
+    default: 'Dev Patel – Elite Portfolio | Leadership, IBM Cybersecurity & Cloud, Professional Excellence',
     template: '%s | Dev Patel Portfolio'
   },
-  description: 'Explore Dev Patel\'s elite portfolio showcasing leadership as General Secretary, IBM Cloud Computing expertise, Starbucks barista experience, and unmatched professional skills. Student leadership meets technical mastery.',
+  description: 'Explore Dev Patel\'s elite portfolio showcasing leadership as General Secretary, IBM Cybersecurity & Cloud Computing expertise, Starbucks barista experience, and unmatched professional skills. Student leadership meets technical mastery.',
   keywords: [
     'Dev Patel',
     'Dev Patel Portfolio',
     'General Secretary',
     'Student Leadership',
+    'IBM Cybersecurity',
     'IBM Cloud Computing',
     'IBM Cloud Projects',
     'Cloud Computing Expert',
@@ -50,21 +51,21 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://devpatel.dev',
     siteName: 'Dev Patel Elite Portfolio',
-    title: 'Dev Patel – Elite Portfolio | Leadership, IBM Cloud, Professional Excellence',
-    description: 'Explore Dev Patel\'s elite portfolio showcasing leadership as General Secretary, IBM Cloud Computing expertise, Starbucks barista experience, and unmatched professional skills.',
+    title: 'Dev Patel – Elite Portfolio | Leadership, IBM Cybersecurity & Cloud, Professional Excellence',
+    description: 'Explore Dev Patel\'s elite portfolio showcasing leadership as General Secretary, IBM Cybersecurity & Cloud Computing expertise, Starbucks barista experience, and unmatched professional skills.',
     images: [
       {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Dev Patel - General Secretary, IBM Cloud Expert, Leadership Portfolio',
+        alt: 'Dev Patel - General Secretary, IBM Cybersecurity & Cloud Expert, Leadership Portfolio',
       }
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Dev Patel – Elite Portfolio | Leadership, IBM Cloud, Professional Excellence',
-    description: 'Student leadership, IBM Cloud Computing projects, and Starbucks barista experience. Explore Dev Patel\'s elite professional portfolio.',
+    title: 'Dev Patel – Elite Portfolio | Leadership, IBM Cybersecurity & Cloud, Professional Excellence',
+    description: 'Student leadership, IBM Cybersecurity & Cloud Computing projects, and Starbucks barista experience. Explore Dev Patel\'s elite professional portfolio.',
     images: ['/og-image.jpg'],
     creator: '@devpatel',
   },
@@ -100,7 +101,7 @@ const jsonLd = {
     'https://twitter.com/devpatel',
     'https://instagram.com/devpatel',
   ],
-  jobTitle: 'General Secretary & IBM Cloud Computing Specialist',
+  jobTitle: 'General Secretary & IBM Cybersecurity & Cloud Computing Specialist',
   worksFor: {
     '@type': 'Organization',
     name: 'Gandhinagar Institute of Technology'
@@ -108,6 +109,7 @@ const jsonLd = {
   knowsAbout: [
     'Student Leadership',
     'General Secretary Responsibilities',
+    'IBM Cybersecurity',
     'IBM Cloud Computing',
     'Cloud Architecture',
     'AWS Cloud Services',
@@ -134,10 +136,25 @@ const jsonLd = {
     {
       '@type': 'EducationalOccupationalCredential',
       credentialCategory: 'certification',
-      name: 'IBM Cloud Computing Certification'
+      name: 'IBM Cybersecurity Fundamentals'
+    },
+    {
+      '@type': 'EducationalOccupationalCredential',
+      credentialCategory: 'certification',
+      name: 'IBM Cloud Computing Fundamentals'
+    },
+    {
+      '@type': 'EducationalOccupationalCredential',
+      credentialCategory: 'certification',
+      name: 'HubSpot Digital Marketing Certification'
+    },
+    {
+      '@type': 'EducationalOccupationalCredential',
+      credentialCategory: 'certification',
+      name: 'AWS Solutions Architecture (Forage)'
     }
   ],
-  description: 'Dev Patel is the General Secretary at Gandhinagar Institute of Technology, combining student leadership excellence with IBM Cloud Computing expertise and professional experience as a Starbucks barista. Bridging organizational leadership with technical mastery.'
+  description: 'Dev Patel is the General Secretary at Gandhinagar Institute of Technology, combining student leadership excellence with IBM Cybersecurity, Cloud Computing expertise and professional experience as a Starbucks barista. Bridging organizational leadership with technical mastery.'
 }
 
 // Portfolio structured data for projects
@@ -145,13 +162,13 @@ const portfolioJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'ItemList',
   name: 'Dev Patel\'s Portfolio Projects',
-  description: 'Elite portfolio showcasing IBM Cloud Computing projects, student leadership initiatives, and professional work',
+  description: 'Elite portfolio showcasing IBM Cybersecurity, Cloud Computing projects, student leadership initiatives, and professional work',
   itemListElement: [
     {
       '@type': 'CreativeWork',
       position: 1,
-      name: 'IBM Cloud Architecture Solutions',
-      description: 'Enterprise-grade cloud infrastructure using IBM Cloud and AWS best practices'
+      name: 'IBM Cybersecurity & Cloud Architecture Solutions',
+      description: 'Enterprise-grade cloud infrastructure and cybersecurity using IBM Cloud and AWS best practices'
     },
     {
       '@type': 'CreativeWork',

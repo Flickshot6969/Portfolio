@@ -134,7 +134,7 @@ export default function About() {
               transition={{ delay: 0.7 }}
             >
               Combining strategic leadership with hands-on technical skills, Dev Patel bridges the gap between 
-              organizational excellence and IBM cloud computing expertise. From student governance as General Secretary 
+              organizational excellence and IBM cybersecurity & cloud computing expertise. From student governance as General Secretary 
               to professional barista experience at Starbucks.
             </motion.p>
           </motion.div>

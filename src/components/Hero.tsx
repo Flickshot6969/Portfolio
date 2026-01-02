@@ -421,7 +421,7 @@ export default function Hero() {
               transition={{ delay: 0.65 }}
               className="text-sm text-dark-400 max-w-xl mx-auto lg:mx-0 mb-8"
             >
-              With hands-on experience in <span className="text-primary-300">IBM Cloud Computing</span> and leadership roles, 
+              With hands-on experience in <span className="text-primary-300">IBM Cybersecurity & Cloud Computing</span> and leadership roles, 
               Dev Patel demonstrates skills from strategic decision-making to technical mastery. 
               Former <span className="text-accent-300">Starbucks barista</span> bringing customer excellence to every project.
             </motion.p>
@@ -614,7 +614,7 @@ export default function Hero() {
                       <motion.img
                         key={currentImageIndex}
                         src={heroImages[currentImageIndex]}
-                        alt="Dev Patel - General Secretary at Gandhinagar Institute of Technology showcasing student leadership and IBM Cloud Computing expertise"
+                        alt="Dev Patel - General Secretary at Gandhinagar Institute of Technology showcasing student leadership and IBM Cybersecurity & Cloud Computing expertise"
                         className="w-full h-full object-cover object-top"
                         loading="eager"
                         fetchPriority="high"
