@@ -52,6 +52,7 @@ export function AttentionMagnet({
   const { state } = useInteraction()
   const ref = useRef<HTMLDivElement>(null)
   const [isInView, setIsInView] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
 
   const scale = useSpring(1, MOTION_CONFIG.primary)
   const glow = useSpring(0, MOTION_CONFIG.primary)
@@ -59,6 +60,10 @@ export function AttentionMagnet({
 
   const priorityScale = { critical: 1.05, high: 1.03, normal: 1.02 }
   const priorityGlow = { critical: 0.8, high: 0.5, normal: 0.3 }
+
+  useEffect(() => {
+    setIsMobile(window.innerWidth < 768)
+  }, [])
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -69,8 +74,10 @@ export function AttentionMagnet({
     return () => observer.disconnect()
   }, [])
 
-  // Entrance animation
+  // Entrance animation - disabled on mobile
   useEffect(() => {
+    if (isMobile) return
+    
     if (isInView) {
       scale.set(priorityScale[priority])
       glow.set(priorityGlow[priority])
@@ -80,10 +87,12 @@ export function AttentionMagnet({
         glow.set(0)
       }, 600)
     }
-  }, [isInView, priority, scale, glow])
+  }, [isInView, priority, scale, glow, isMobile])
 
-  // Idle pulse
+  // Idle pulse - disabled on mobile
   useEffect(() => {
+    if (isMobile) return // No pulsing on mobile
+    
     if (pulseOnIdle && state.isIdle && state.idleTime > 3 && isInView) {
       const pulse = () => {
         scale.set(1.02)
@@ -97,10 +106,12 @@ export function AttentionMagnet({
       const interval = setInterval(pulse, 4000)
       return () => clearInterval(interval)
     }
-  }, [pulseOnIdle, state.isIdle, state.idleTime, isInView, scale, glow])
+  }, [pulseOnIdle, state.isIdle, state.idleTime, isInView, scale, glow, isMobile])
 
-  // React to scroll hesitation
+  // React to scroll hesitation - disabled on mobile
   useEffect(() => {
+    if (isMobile) return
+    
     if (state.scroll.hesitation && isInView) {
       y.set(-5)
       glow.set(0.4)

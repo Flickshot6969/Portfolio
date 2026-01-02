@@ -295,6 +295,12 @@ export function TheatricalLoader({
 }: TheatricalLoaderProps) {
   const [phase, setPhase] = useState<'loading' | 'brand' | 'name' | 'tagline' | 'reveal' | 'complete'>('loading')
   const [progress, setProgress] = useState(0)
+  const [isMobile, setIsMobile] = useState(false)
+
+  // Check if mobile on mount
+  useEffect(() => {
+    setIsMobile(window.innerWidth < 768)
+  }, [])
 
   useEffect(() => {
     // Simulated loading progress
@@ -308,23 +314,27 @@ export function TheatricalLoader({
       })
     }, 150)
 
-    // Phase progression
+    // Phase progression - faster on mobile
+    const mobileTimings = [200, 600, 1000, 1400, 2000]
+    const desktopTimings = [300, 1200, 2400, 3800, 5200]
+    const timings = isMobile ? mobileTimings : desktopTimings
+
     const timers = [
-      setTimeout(() => setPhase('brand'), 300),
-      setTimeout(() => setPhase('name'), 1200),
-      setTimeout(() => setPhase('tagline'), 2400),
-      setTimeout(() => setPhase('reveal'), 3800),
+      setTimeout(() => setPhase('brand'), timings[0]),
+      setTimeout(() => setPhase('name'), timings[1]),
+      setTimeout(() => setPhase('tagline'), timings[2]),
+      setTimeout(() => setPhase('reveal'), timings[3]),
       setTimeout(() => {
         setPhase('complete')
         onComplete()
-      }, 5200),
+      }, timings[4]),
     ]
 
     return () => {
       clearInterval(progressInterval)
       timers.forEach(clearTimeout)
     }
-  }, [onComplete])
+  }, [onComplete, isMobile])
 
   const nameLetters = brandName.split('')
   const taglineWords = tagline.split(' ')
@@ -341,13 +351,13 @@ export function TheatricalLoader({
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
           >
-            {/* Background gradient */}
+            {/* Background gradient - static on mobile */}
             <motion.div
               className="absolute inset-0"
               style={{
                 background: 'radial-gradient(ellipse at 50% 50%, rgba(99, 102, 241, 0.15) 0%, transparent 50%)',
               }}
-              animate={{
+              animate={isMobile ? {} : {
                 scale: [1, 1.2, 1],
                 opacity: [0.5, 0.8, 0.5],
               }}
@@ -358,7 +368,8 @@ export function TheatricalLoader({
               }}
             />
 
-            <LoaderParticles />
+            {/* Particles only on desktop */}
+            {!isMobile && <LoaderParticles />}
 
             {/* Brand mark */}
             {phase !== 'loading' && <BrandMark />}

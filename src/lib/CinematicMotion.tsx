@@ -645,6 +645,7 @@ export function CinematicSection({
 // ═══════════════════════════════════════════════════════════════════════════════
 // ✨ AMBIENT PARTICLES
 // Background particles that respond to scroll velocity
+// Disabled on mobile for performance
 // ═══════════════════════════════════════════════════════════════════════════════
 
 interface AmbientParticlesProps {
@@ -658,6 +659,12 @@ export function AmbientParticles({
   color = 'rgba(139, 92, 246, 0.3)',
   className = ''
 }: AmbientParticlesProps) {
+  const [isMobile, setIsMobile] = useState(false)
+  
+  useEffect(() => {
+    setIsMobile(window.innerWidth < 768)
+  }, [])
+  
   const [particles] = useState(() => 
     Array.from({ length: count }, (_, i) => ({
       id: i,
@@ -668,6 +675,9 @@ export function AmbientParticles({
       delay: Math.random() * 10
     }))
   )
+
+  // Don't render particles on mobile
+  if (isMobile) return null
 
   return (
     <div className={`absolute inset-0 overflow-hidden pointer-events-none ${className}`}>

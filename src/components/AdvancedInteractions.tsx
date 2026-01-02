@@ -612,13 +612,22 @@ export function AmbientMotion({ children, className = '', intensity = 'medium' }
 // ═══════════════════════════════════════════════════════════════════════════════
 // ✨ SPARKLE ON IDLE
 // Shows subtle sparkles when user is idle (rewards attention)
+// Disabled on mobile for clean look
 // ═══════════════════════════════════════════════════════════════════════════════
 
 export function SparkleOnIdle({ className = '' }: { className?: string }) {
   const { state } = useInteraction()
   const [sparkles, setSparkles] = useState<Array<{ id: number; x: number; y: number }>>([])
+  const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
+    setIsMobile(window.innerWidth < 768)
+  }, [])
+
+  useEffect(() => {
+    // Disable sparkles on mobile
+    if (isMobile) return
+    
     if (state.isIdle && state.idleTime > 2 && state.idleTime < 30) {
       const interval = setInterval(() => {
         setSparkles(prev => [
@@ -635,7 +644,10 @@ export function SparkleOnIdle({ className = '' }: { className?: string }) {
     } else {
       setSparkles([])
     }
-  }, [state.isIdle, state.idleTime])
+  }, [state.isIdle, state.idleTime, isMobile])
+
+  // Don't render on mobile
+  if (isMobile) return null
 
   return (
     <div className={`absolute inset-0 pointer-events-none overflow-hidden ${className}`}>

@@ -243,6 +243,7 @@ export function AweReveal({
 
 // ───────────────────────────────────────────────────────────────────────────────
 // 💓 HEARTBEAT ELEMENT - Pulsing that syncs with emotional state
+// Disabled on mobile for clean look
 // ───────────────────────────────────────────────────────────────────────────────
 
 interface HeartbeatElementProps {
@@ -260,14 +261,21 @@ export function HeartbeatElement({
   pulseScale = 1.02,
   intensity = 0.5
 }: HeartbeatElementProps) {
+  const [isMobile, setIsMobile] = useState(false)
   const emotional = useEmotionalState()
   const scale = useSpring(baseScale, { stiffness: 300, damping: 20 })
+  
+  useEffect(() => {
+    setIsMobile(window.innerWidth < 768)
+  }, [])
   
   // Apply intensity to pulse scale
   const effectivePulseScale = baseScale + ((pulseScale - baseScale) * (1 + intensity))
   
-  // Pulse rate based on emotional intensity
+  // Pulse rate based on emotional intensity - disabled on mobile
   useEffect(() => {
+    if (isMobile) return // No pulsing on mobile
+    
     const emotionalIntensity = emotional?.intensity ?? 0.5
     const combinedIntensity = (emotionalIntensity + intensity) / 2
     const interval = 2000 - (combinedIntensity * 1000) // Faster when more engaged
@@ -278,7 +286,12 @@ export function HeartbeatElement({
     }, interval)
     
     return () => clearInterval(pulse)
-  }, [emotional?.intensity, scale, baseScale, effectivePulseScale, intensity])
+  }, [emotional?.intensity, scale, baseScale, effectivePulseScale, intensity, isMobile])
+
+  // On mobile, just return children without animation
+  if (isMobile) {
+    return <div className={className}>{children}</div>
+  }
 
   return (
     <motion.div className={className} style={{ scale }}>

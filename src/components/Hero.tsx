@@ -193,20 +193,23 @@ export default function Hero() {
       {/* Ambient Wave Layer - Tertiary Motion */}
       <AmbientWave intensity={0.5} />
       
-      {/* Sparkle Reward for Idle Users */}
-      <SparkleOnIdle />
+      {/* Sparkle Reward for Idle Users - Desktop only */}
+      <div className="hidden md:block">
+        <SparkleOnIdle />
+      </div>
 
-      {/* Aurora Glow Orbs - React to Scroll */}
+      {/* Aurora Glow Orbs - Simplified on mobile via CSS */}
       <MomentumCarry sensitivity={0.3}>
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary-500/20 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary-500/20 rounded-full blur-3xl hidden md:block" />
       </MomentumCarry>
       <MomentumCarry sensitivity={0.5}>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent-500/20 rounded-full blur-3xl hidden md:block" />
       </MomentumCarry>
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-500/10 rounded-full blur-3xl vegas-glow" />
+      {/* Static glow for mobile, animated for desktop */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] md:w-[600px] h-[400px] md:h-[600px] bg-cyan-500/10 rounded-full blur-3xl md:vegas-glow" />
       
-      {/* Matrix-like Code Rain Background */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-10">
+      {/* Matrix-like Code Rain Background - Desktop only */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-10 hidden md:block">
         {codeSnippets.map((snippet, i) => (
           <motion.div
             key={i}
@@ -231,11 +234,11 @@ export default function Hero() {
         ))}
       </div>
 
-      {/* Tech Grid Background */}
-      <div className="absolute inset-0 tech-grid-bg pointer-events-none" />
+      {/* Tech Grid Background - Desktop only */}
+      <div className="absolute inset-0 tech-grid-bg pointer-events-none hidden md:block" />
 
-      {/* Floating Tech Icons */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+      {/* Floating Tech Icons - Desktop only */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden hidden md:block">
         {techIcons.map((tech, i) => (
           <motion.div
             key={i}
@@ -260,8 +263,8 @@ export default function Hero() {
         ))}
       </div>
 
-      {/* Floating Particles */}
-      <div className="absolute inset-0 pointer-events-none">
+      {/* Floating Particles - Desktop only */}
+      <div className="absolute inset-0 pointer-events-none hidden md:block">
         {[...Array(30)].map((_, i) => (
           <motion.div
             key={i}
@@ -303,22 +306,28 @@ export default function Hero() {
             className="text-center lg:text-left order-2 lg:order-1"
             style={{ opacity: contentOpacity }}
           >
-            {/* Badge - Attention Magnet with Grand Entrance */}
+            {/* Badge - Simplified on mobile, fancy on desktop */}
             <GrandEntrance delay={0.2}>
               <AttentionMagnet priority="high" pulseOnIdle>
                 <DirectionalReveal>
                   <motion.div
-                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-ultra electric-border mb-6 hover-glow-intense breathing-glow"
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-ultra md:electric-border mb-6 md:breathing-glow"
                   >
-                    <HeartbeatElement intensity={0.8}>
-                      <Sparkles className="w-4 h-4 text-primary-400" />
-                    </HeartbeatElement>
+                    {/* HeartbeatElement only on desktop */}
+                    <div className="hidden md:block">
+                      <HeartbeatElement intensity={0.8}>
+                        <Sparkles className="w-4 h-4 text-primary-400" />
+                      </HeartbeatElement>
+                    </div>
+                    <Sparkles className="w-4 h-4 text-primary-400 md:hidden" />
                     <span className="text-sm font-medium text-dark-200">
                       Gandhinagar Institute of Technology | General Secretary
                     </span>
                     <PresenceIndicator importance="high">
+                      {/* Static dot on mobile, animated on desktop */}
+                      <span className="w-2 h-2 rounded-full bg-green-500 md:hidden" />
                       <motion.span 
-                        className="w-2 h-2 rounded-full bg-green-500"
+                        className="w-2 h-2 rounded-full bg-green-500 hidden md:block"
                         animate={{ 
                           scale: [1, 1.3, 1],
                           opacity: [1, 0.7, 1]
