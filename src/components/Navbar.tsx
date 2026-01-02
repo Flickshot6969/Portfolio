@@ -124,7 +124,7 @@ export default function Navbar({ activeSection, setActiveSection }: NavbarProps)
               <TactileRipple rippleColor="rgba(139, 92, 246, 0.4)">
                 <motion.button
                   onClick={() => handleNavClick('contact')}
-                  className="flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium text-white bg-gradient-to-r from-primary-600 to-accent-600 hover:from-primary-500 hover:to-accent-500 shadow-lg shadow-primary-500/25 transition-all duration-300 electric-border glow-pulse btn-premium pulse-ring tactile-press"
+                  className="flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium text-white bg-gradient-to-r from-primary-600 to-accent-600 hover:from-primary-500 hover:to-accent-500 shadow-lg shadow-primary-500/25 transition-all duration-300 btn-premium tactile-press"
                   whileHover={{ scale: 1.05, rotate: 1 }}
                   whileTap={{ scale: 0.95 }}
                 >

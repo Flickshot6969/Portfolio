@@ -115,12 +115,14 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="section-padding relative overflow-hidden aurora-bg">
-      {/* Background Effects with Breathing */}
-      <BreathingContainer breathIntensity={0.4}>
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-gradient-to-r from-primary-500/15 to-accent-500/15 rounded-full blur-3xl opacity-50 vegas-glow" />
-      </BreathingContainer>
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl animate-pulse" />
+    <section id="contact" className="section-padding relative overflow-hidden md:aurora-bg">
+      {/* Background Effects with Breathing - Desktop only */}
+      <div className="hidden md:block">
+        <BreathingContainer breathIntensity={0.4}>
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-gradient-to-r from-primary-500/15 to-accent-500/15 rounded-full blur-3xl opacity-50 vegas-glow" />
+        </BreathingContainer>
+      </div>
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl hidden md:block md:animate-pulse" />
       
       <div className="container-custom relative z-10" ref={ref}>
         {/* Section Header - Elite with Grand Entrance */}
@@ -133,7 +135,7 @@ export default function Contact() {
           >
             <HeartbeatElement intensity={0.6}>
               <motion.span 
-                className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full glass-elite text-primary-400 text-xs sm:text-sm font-medium mb-3 sm:mb-4 magnetic-glow breathing-glow"
+                className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full glass-elite text-primary-400 text-xs sm:text-sm font-medium mb-3 sm:mb-4 md:magnetic-glow md:breathing-glow"
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={inView ? { scale: 1, opacity: 1 } : {}}
                 transition={{ delay: 0.2, type: 'spring' }}

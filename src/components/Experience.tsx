@@ -176,14 +176,16 @@ export default function Experience() {
   return (
     <>
       {/* Experience Section */}
-      <section id="experience" className="section-padding relative overflow-hidden aurora-bg">
-        {/* Floating Orbs with Breathing */}
-        <BreathingContainer breathIntensity={0.3}>
-          <div className="absolute top-1/4 right-1/4 w-72 h-72 bg-primary-500/15 rounded-full blur-3xl animate-pulse" />
-        </BreathingContainer>
-        <BreathingContainer breathIntensity={0.4}>
-          <div className="absolute bottom-1/4 left-1/4 w-72 h-72 bg-accent-500/15 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
-        </BreathingContainer>
+      <section id="experience" className="section-padding relative overflow-hidden md:aurora-bg">
+        {/* Floating Orbs with Breathing - Desktop only */}
+        <div className="hidden md:block">
+          <BreathingContainer breathIntensity={0.3}>
+            <div className="absolute top-1/4 right-1/4 w-72 h-72 bg-primary-500/15 rounded-full blur-3xl animate-pulse" />
+          </BreathingContainer>
+          <BreathingContainer breathIntensity={0.4}>
+            <div className="absolute bottom-1/4 left-1/4 w-72 h-72 bg-accent-500/15 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
+          </BreathingContainer>
+        </div>
         
         <div className="container-custom relative z-10" ref={ref}>
           {/* Section Header - Elite with Grand Entrance */}
@@ -196,7 +198,7 @@ export default function Experience() {
             >
               <HeartbeatElement intensity={0.6}>
                 <motion.span 
-                  className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full glass-elite text-primary-400 text-xs sm:text-sm font-medium mb-3 sm:mb-4 magnetic-glow breathing-glow"
+                  className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full glass-elite text-primary-400 text-xs sm:text-sm font-medium mb-3 sm:mb-4 md:magnetic-glow md:breathing-glow"
                   initial={{ scale: 0.8, opacity: 0 }}
                   animate={inView ? { scale: 1, opacity: 1 } : {}}
                   transition={{ delay: 0.2, type: 'spring' }}

@@ -85,8 +85,9 @@ export default function About() {
     <section id="about" className="section-padding relative overflow-hidden gradient-mesh">
       {/* Section Background Effect */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary-950/5 to-transparent pointer-events-none" />
-      <div className="absolute top-0 right-0 w-96 h-96 bg-primary-500/10 rounded-full blur-3xl animate-pulse" />
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-accent-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
+      {/* Desktop-only animated orbs */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-primary-500/10 rounded-full blur-3xl hidden md:block md:animate-pulse" />
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-accent-500/10 rounded-full blur-3xl hidden md:block md:animate-pulse" style={{ animationDelay: '2s' }} />
       
       <div className="container-custom relative z-10" ref={ref}>
         {/* Section Header - Elite Reveal with Awe */}
@@ -98,7 +99,7 @@ export default function About() {
             className="text-center mb-8 md:mb-16"
           >
             <motion.span 
-              className="inline-block px-3 py-1.5 sm:px-4 sm:py-2 rounded-full glass-elite text-primary-400 text-xs sm:text-sm font-medium mb-3 sm:mb-4 magnetic-glow breathing-glow"
+              className="inline-block px-3 py-1.5 sm:px-4 sm:py-2 rounded-full glass-elite text-primary-400 text-xs sm:text-sm font-medium mb-3 sm:mb-4 md:magnetic-glow md:breathing-glow"
               initial={{ scale: 0.8, opacity: 0 }}
               animate={inView ? { scale: 1, opacity: 1 } : {}}
               transition={{ delay: 0.2 }}

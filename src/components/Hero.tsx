@@ -591,8 +591,8 @@ export default function Hero() {
                 </svg>
               </div>
 
-              {/* Glow Effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-primary-500/30 via-accent-500/20 to-cyan-500/30 rounded-full blur-3xl scale-125 animate-pulse" />
+              {/* Glow Effect - Desktop only */}
+              <div className="absolute inset-0 bg-gradient-to-r from-primary-500/30 via-accent-500/20 to-cyan-500/30 rounded-full blur-3xl scale-125 hidden md:block md:animate-pulse" />
               
               {/* Main Image Container */}
               <motion.div
@@ -669,7 +669,7 @@ export default function Hero() {
                 transition={{ duration: 2.5, repeat: Infinity, delay: 1 }}
               >
                 <div className="flex items-center gap-1.5">
-                  <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                  <div className="w-2 h-2 rounded-full bg-green-500 md:animate-pulse" />
                   <span className="text-xs font-mono text-cyan-400">Online</span>
                 </div>
               </motion.div>

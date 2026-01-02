@@ -167,8 +167,9 @@ export default function Certifications() {
     <section id="certifications" className="section-padding relative overflow-hidden gradient-mesh network-grid">
       {/* Background Effect */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-accent-950/5 to-transparent pointer-events-none" />
-      <div className="absolute top-1/4 left-0 w-72 h-72 bg-primary-500/10 rounded-full blur-3xl animate-pulse" />
-      <div className="absolute bottom-1/4 right-0 w-72 h-72 bg-accent-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1.5s' }} />
+      {/* Desktop-only animated orbs */}
+      <div className="absolute top-1/4 left-0 w-72 h-72 bg-primary-500/10 rounded-full blur-3xl hidden md:block md:animate-pulse" />
+      <div className="absolute bottom-1/4 right-0 w-72 h-72 bg-accent-500/10 rounded-full blur-3xl hidden md:block md:animate-pulse" style={{ animationDelay: '1.5s' }} />
 
       <div className="container-custom relative z-10" ref={ref}>
         {/* Section Header */}

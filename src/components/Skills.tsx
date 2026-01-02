@@ -196,7 +196,7 @@ export default function Skills() {
             }}
             transition={{ duration: 1, delay: 0.2 }}
           />
-          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-3xl vegas-glow" />
+          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-3xl hidden md:block md:vegas-glow" />
 
           <motion.div 
             className="container-custom relative z-10" 
@@ -213,7 +213,7 @@ export default function Skills() {
           >
             <HeartbeatElement intensity={0.5}>
               <motion.span 
-                className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full glass-elite text-primary-400 text-xs sm:text-sm font-medium mb-3 sm:mb-4 magnetic-glow breathing-glow"
+                  className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full glass-elite text-primary-400 text-xs sm:text-sm font-medium mb-3 sm:mb-4 md:magnetic-glow md:breathing-glow"
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={inView ? { scale: 1, opacity: 1 } : {}}
                 transition={{ delay: 0.2, type: 'spring' }}
@@ -268,7 +268,7 @@ export default function Skills() {
               onClick={() => setActiveCategory(category.id)}
               className={`relative flex items-center gap-2 sm:gap-3 px-3 py-2 sm:px-6 sm:py-4 rounded-xl sm:rounded-2xl transition-all duration-500 bouncy-click ${
                 activeCategory === category.id
-                  ? 'glass-premium border-primary-500/50 shadow-lg shadow-primary-500/20 vegas-glow neumorphic'
+                  ? 'glass-premium border-primary-500/50 shadow-lg shadow-primary-500/20 md:vegas-glow neumorphic'
                   : 'glass-frost hover:border-white/20 hover-lift jelly-hover'
               }`}
               whileHover={{ scale: 1.03 }}

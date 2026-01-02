@@ -3967,176 +3967,166 @@ body {
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════════
-   📱 MOBILE PROFESSIONAL MODE
-   Disables flashy/blinking effects for a clean, professional look on mobile
-   No more "chapri" effects - pure elegance
+   📱 MOBILE PROFESSIONAL MODE - SENIOR DEVELOPER LEVEL UX
+   Ultimate clean, professional mobile experience
+   No flashy effects - pure elegance and performance
 ═══════════════════════════════════════════════════════════════════════════════ */
 
 @media (max-width: 768px) {
   /* ───────────────────────────────────────────────────────────────────────────
-     🚫 DISABLE BLINKING/FLASHING ANIMATIONS
+     🚫 ABSOLUTE DISABLE - ALL BLINKING/FLASHING/PULSING ANIMATIONS
   ─────────────────────────────────────────────────────────────────────────── */
   
-  /* Disable all pulse animations */
+  /* Nuclear option - disable ALL CSS animations on decorative elements */
   .animate-pulse,
+  .animate-ping,
+  .animate-bounce,
+  .animate-spin,
+  .animate-spin-slow,
   [class*="pulse"],
+  [class*="glow"],
+  [class*="breathing"],
+  [class*="vegas"],
+  [class*="aurora"],
+  [class*="sparkle"],
+  [class*="twinkle"],
+  [class*="float"],
+  [class*="orbit"],
+  [class*="neon"],
+  [class*="electric"],
   .glow-pulse,
   .timeline-pulse,
   .breathing-glow,
   .heartbeat,
-  .HeartbeatElement {
+  .HeartbeatElement,
+  .vegas-glow,
+  .aurora-bg,
+  .aurora-orb,
+  .aurora-orb-delayed,
+  .sparkle-particle,
+  .sparkle-trail,
+  .electric-border,
+  .electric-border::before,
+  .electric-border::after,
+  .pulse-ring,
+  .pulse-ring::before,
+  .pulse-ring::after {
     animation: none !important;
+    animation-name: none !important;
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
+    animation-iteration-count: 1 !important;
+    animation-timing-function: linear !important;
+    animation-fill-mode: forwards !important;
+  }
+
+  /* Hide pulse ring pseudo-elements completely */
+  .pulse-ring::before,
+  .pulse-ring::after,
+  .electric-border::before,
+  .electric-border::after,
+  [class*="glow"]::before,
+  [class*="glow"]::after {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
   }
   
-  /* Disable vegas-style color shifting glows */
-  .vegas-glow {
-    animation: none !important;
-    box-shadow: 0 0 30px rgba(99, 102, 241, 0.2) !important;
+  /* Force static box shadows - no animated glows */
+  .vegas-glow,
+  .breathing-glow,
+  .glow-pulse,
+  .magnetic-glow,
+  .neon-glow,
+  .neon-glow-accent {
+    box-shadow: 0 4px 20px rgba(99, 102, 241, 0.15) !important;
   }
   
-  /* Disable aurora/northern lights effects */
+  /* Aurora backgrounds - static subtle gradient */
   .aurora-bg,
   .aurora-orb,
   .aurora-orb-delayed {
-    animation: none !important;
-    background: radial-gradient(ellipse at 50% 0%, rgba(99, 102, 241, 0.1), transparent 60%) !important;
+    background: radial-gradient(ellipse at 50% 0%, rgba(99, 102, 241, 0.08), transparent 60%) !important;
   }
   
-  /* Disable sparkle/twinkle effects */
+  /* Hide ALL sparkle/particle elements */
   .sparkle-particle,
   .sparkle-trail,
+  .particle,
+  .particles,
   [class*="sparkle"],
-  [class*="twinkle"] {
-    animation: none !important;
-    display: none !important;
-  }
-  
-  /* Disable gradient text animations - static gradient instead */
-  .gradient-text-animated,
-  .text-magic,
-  .holographic {
-    animation: none !important;
-    background-size: 100% 100% !important;
-  }
-  
-  /* Disable electric border animations */
-  .electric-border::before {
-    animation: none !important;
-    opacity: 0 !important;
-  }
-  
-  /* Disable floating/drifting animations */
-  .float-smooth,
-  .float-gentle,
-  [class*="float"] {
-    animation: none !important;
-    transform: none !important;
-  }
-  
-  /* Disable orbit animations */
-  .orb,
-  .orb-1,
-  .orb-2,
-  .orb-3 {
-    animation: none !important;
-    opacity: 0.3 !important;
-  }
-  
-  /* Disable morphing animations */
-  .morph-bg,
-  .liquid-btn,
-  [class*="morph"] {
-    animation: none !important;
-    border-radius: 16px !important;
-  }
-  
-  /* Disable neon/glow pulsing */
-  .neon-glow,
-  .neon-glow-accent,
-  .neon-text,
-  .stat-glow,
-  .elite-glow::before {
-    animation: none !important;
-  }
-  
-  /* Disable gradient border animations */
-  .gradient-border::before,
-  .border-beam {
-    animation: none !important;
-    background-position: 0% 50% !important;
-  }
-  
-  /* Disable rotate/spin animations on decorative elements */
-  .animate-spin-slow,
-  .animate-scan,
-  .rotate-glow,
-  .stat-rotate {
-    animation: none !important;
-  }
-  
-  /* Disable code rain / matrix effects */
+  [class*="particle"],
+  [class*="twinkle"],
+  [class*="star-"],
   .code-rain,
   [class*="code-rain"] {
     display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+  }
+  
+  /* Static gradients - absolutely no animation */
+  .gradient-text-animated,
+  .text-magic,
+  .holographic,
+  .gradient-mesh,
+  .gradient-border::before,
+  .border-beam {
+    animation: none !important;
+    background-size: 100% 100% !important;
+    background-position: 50% 50% !important;
+  }
+  
+  /* Disable ALL floating/orbit animations */
+  .float-smooth,
+  .float-gentle,
+  .orb,
+  .orb-1,
+  .orb-2,
+  .orb-3,
+  [class*="float"],
+  [class*="orbit"],
+  [class*="morph"] {
+    animation: none !important;
+    transform: none !important;
+  }
+
+  /* Reduce blur orbs opacity - they're background decoration */
+  .blur-3xl,
+  .blur-2xl,
+  [class*="blur-3xl"],
+  [class*="blur-2xl"] {
+    opacity: 0.4 !important;
   }
   
   /* ───────────────────────────────────────────────────────────────────────────
-     ✨ SIMPLIFIED VISUAL EFFECTS FOR MOBILE
+     ✨ PROFESSIONAL GLASS EFFECTS - OPTIMIZED FOR MOBILE
   ─────────────────────────────────────────────────────────────────────────── */
   
-  /* Simplified glass effects - less blur for performance */
   .glass,
   .glass-card,
   .glass-ultra,
   .glass-love,
   .glass-premium,
-  .glass-frost {
-    backdrop-filter: blur(10px) !important;
-    -webkit-backdrop-filter: blur(10px) !important;
-  }
-  
-  /* Static gradients - no animation */
-  .gradient-mesh {
-    animation: none !important;
-    background-position: 50% 50% !important;
-  }
-  
-  /* Disable parallax on mobile */
-  .parallax,
-  [data-parallax] {
-    transform: none !important;
-  }
-  
-  /* Simpler shadows */
-  .shadow-glow,
-  [class*="shadow-glow"] {
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3) !important;
+  .glass-frost,
+  .glass-elite {
+    backdrop-filter: blur(12px) saturate(150%) !important;
+    -webkit-backdrop-filter: blur(12px) saturate(150%) !important;
+    background: rgba(15, 23, 42, 0.8) !important;
+    border: 1px solid rgba(99, 102, 241, 0.1) !important;
   }
   
   /* ───────────────────────────────────────────────────────────────────────────
-     🎯 PROFESSIONAL HOVER/ACTIVE STATES
+     🎯 PROFESSIONAL TOUCH INTERACTIONS - SENIOR LEVEL UX
   ─────────────────────────────────────────────────────────────────────────── */
   
-  /* Disable hover transforms - use active states instead */
+  /* No hover transforms - use touch feedback instead */
   .hover-lift:hover,
   .morph-hover:hover,
   .card-3d:hover,
   .depth-card:hover,
   .card-love:hover,
-  .glass-card-hover:hover {
-    transform: none !important;
-    box-shadow: inherit !important;
-  }
-  
-  /* Professional active states */
-  .hover-lift:active,
-  .morph-hover:active,
-  .card-love:active {
-    transform: scale(0.98) !important;
-    transition: transform 0.1s ease !important;
-  }
-  
-  /* Button active states */
+  .glass-card-hover:hover,
   .btn-primary:hover,
   .btn-outline:hover,
   .btn-love:hover,
@@ -4145,27 +4135,34 @@ body {
     box-shadow: inherit !important;
   }
   
+  /* Premium active states - subtle, fast, professional */
+  .hover-lift:active,
+  .morph-hover:active,
+  .card-love:active,
+  .glass-card:active,
   .btn-primary:active,
   .btn-outline:active,
   .btn-love:active,
   .btn-premium:active {
-    transform: scale(0.95) !important;
-    opacity: 0.9 !important;
+    transform: scale(0.97) !important;
+    transition: transform 0.1s ease-out !important;
+    opacity: 0.95 !important;
   }
   
-  /* Disable magnetic effects */
+  /* Disable magnetic/parallax effects completely */
   .magnetic-btn,
   .magnetic-element,
   .magnetic-pull,
-  .magnetic-hover {
+  .magnetic-hover,
+  .parallax,
+  [data-parallax] {
     transform: none !important;
   }
   
   /* ───────────────────────────────────────────────────────────────────────────
-     📊 STATIC DECORATIVE ELEMENTS
+     📊 CLEAN TIMELINE & DECORATIVE ELEMENTS
   ─────────────────────────────────────────────────────────────────────────── */
   
-  /* Timeline dots - static, no pulse */
   .timeline-dot,
   .timeline-dot-love,
   .timeline-dot-resume {
@@ -4174,81 +4171,59 @@ body {
   
   .timeline-dot::before,
   .timeline-dot-love::before,
-  .pulse-ring::before {
-    animation: none !important;
+  .timeline-dot-resume::before {
     display: none !important;
   }
   
-  /* Disable presence indicators pulsing */
-  .PresenceIndicator span,
-  [class*="presence"] span {
-    animation: none !important;
-  }
-  
-  /* Static badges */
-  .badge-love:hover {
-    transform: none !important;
-  }
-  
   /* ───────────────────────────────────────────────────────────────────────────
-     🖼️ IMAGE & MEDIA OPTIMIZATIONS
+     ⚡ MAXIMUM PERFORMANCE OPTIMIZATIONS
   ─────────────────────────────────────────────────────────────────────────── */
   
-  /* Disable image hover effects */
-  .image-hover-zoom:hover img,
-  .ParallaxImage img {
-    transform: none !important;
-  }
-  
-  /* Static image borders */
-  .image-love::before {
-    animation: none !important;
-  }
-  
-  /* ───────────────────────────────────────────────────────────────────────────
-     ⚡ PERFORMANCE OPTIMIZATIONS
-  ─────────────────────────────────────────────────────────────────────────── */
-  
-  /* Reduce blur intensity for better performance */
-  [class*="blur-3xl"] {
-    filter: blur(40px) !important;
-  }
-  
-  [class*="blur-2xl"] {
-    filter: blur(30px) !important;
-  }
-  
-  /* Disable will-change on mobile (saves memory) */
+  /* Force hardware acceleration off for static elements */
   * {
     will-change: auto !important;
   }
   
-  /* Smoother scrolling */
+  /* Optimized blur for mobile GPUs */
+  [class*="blur-3xl"] {
+    filter: blur(32px) !important;
+  }
+  
+  [class*="blur-2xl"] {
+    filter: blur(24px) !important;
+  }
+  
+  /* Clean shadows - no animated glows */
+  .shadow-glow,
+  [class*="shadow-glow"] {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25) !important;
+  }
+  
+  /* Smooth scrolling with momentum */
   html {
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
   }
   
   /* ───────────────────────────────────────────────────────────────────────────
-     🎬 SIMPLIFIED ENTRANCE ANIMATIONS
+     🎬 REFINED ENTRANCE ANIMATIONS - FAST & SUBTLE
   ─────────────────────────────────────────────────────────────────────────── */
   
-  /* Keep entrance animations but make them simpler and faster */
   .reveal-on-scroll,
   .scroll-reveal,
   .cinematic-fade,
   .epic-reveal,
   .awe-reveal,
   .grand-entrance {
-    animation-duration: 0.4s !important;
-    animation-timing-function: ease-out !important;
+    animation-duration: 0.35s !important;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
   }
   
-  /* Simpler reveal - just fade */
+  /* Clean reveal - just opacity */
   .reveal-on-scroll,
   .scroll-reveal {
     opacity: 0;
-    transition: opacity 0.4s ease-out !important;
+    transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
   }
   
   .reveal-on-scroll.revealed,
@@ -4256,21 +4231,21 @@ body {
     opacity: 1;
   }
   
-  /* Reduce stagger delays on mobile */
-  .stagger-1, .reveal-stagger-1 { transition-delay: 0.05s !important; }
-  .stagger-2, .reveal-stagger-2 { transition-delay: 0.1s !important; }
-  .stagger-3, .reveal-stagger-3 { transition-delay: 0.15s !important; }
-  .stagger-4, .reveal-stagger-4 { transition-delay: 0.2s !important; }
-  .stagger-5, .reveal-stagger-5 { transition-delay: 0.25s !important; }
-  .stagger-6, .reveal-stagger-6 { transition-delay: 0.3s !important; }
+  /* Tight stagger delays */
+  .stagger-1, .reveal-stagger-1 { transition-delay: 0.04s !important; }
+  .stagger-2, .reveal-stagger-2 { transition-delay: 0.08s !important; }
+  .stagger-3, .reveal-stagger-3 { transition-delay: 0.12s !important; }
+  .stagger-4, .reveal-stagger-4 { transition-delay: 0.16s !important; }
+  .stagger-5, .reveal-stagger-5 { transition-delay: 0.20s !important; }
+  .stagger-6, .reveal-stagger-6 { transition-delay: 0.24s !important; }
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════════
-   📱 EXTRA SMALL SCREENS (< 480px) - Even simpler
+   📱 EXTRA SMALL SCREENS (< 480px) - Maximum Simplicity
 ═══════════════════════════════════════════════════════════════════════════════ */
 
 @media (max-width: 480px) {
-  /* Hide all decorative background elements */
+  /* Hide ALL decorative background elements */
   .orb,
   .orb-1,
   .orb-2,
@@ -4279,27 +4254,54 @@ body {
   .particle,
   .aurora-orb,
   .tech-grid-bg,
-  .grid-bg {
+  .grid-bg,
+  [class*="blur-3xl"],
+  [class*="blur-2xl"] {
     display: none !important;
+    visibility: hidden !important;
   }
   
-  /* Simpler background */
+  /* Clean dark background */
   .aurora-bg {
-    background: var(--bg-deep) !important;
+    background: linear-gradient(180deg, rgba(15, 23, 42, 1) 0%, rgba(15, 23, 42, 0.98) 100%) !important;
   }
   
-  /* No backdrop blur for better performance */
+  /* Solid glass for max performance */
   .glass,
   .glass-card,
-  .glass-ultra {
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-    background: rgba(15, 23, 42, 0.95) !important;
+  .glass-ultra,
+  .glass-elite {
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    background: rgba(15, 23, 42, 0.92) !important;
+    border: 1px solid rgba(99, 102, 241, 0.08) !important;
   }
   
-  /* Faster animations */
+  /* Fastest animations */
   * {
     animation-duration: 0.2s !important;
-    transition-duration: 0.2s !important;
+    transition-duration: 0.15s !important;
+  }
+  
+  /* Remove decorative pseudo-elements */
+  *::before,
+  *::after {
+    animation: none !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   🎯 REDUCED MOTION - ACCESSIBILITY
+═══════════════════════════════════════════════════════════════════════════════ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
