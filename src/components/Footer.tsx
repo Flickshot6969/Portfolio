@@ -123,8 +123,8 @@ export default function Footer() {
             Follow me on social media to stay updated with my latest projects and insights.
           </p>
           
-          {/* Social Icons Grid */}
-          <div className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-6 sm:mb-8">
+          {/* Social Icons Grid - Uniform & Animated */}
+          <div className="flex flex-wrap justify-center gap-3 sm:gap-4 mb-8 sm:mb-10">
             {socialLinks.map((social, index) => {
               const Icon = social.icon
               return (
@@ -133,19 +133,27 @@ export default function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className={`group relative p-3 sm:p-4 rounded-xl sm:rounded-2xl glass-card transition-all duration-300 ${social.color}`}
-                  whileHover={{ scale: 1.1, y: -5 }}
+                  transition={{ delay: index * 0.08, type: 'spring', stiffness: 150 }}
+                  className="group relative w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center rounded-xl sm:rounded-2xl bg-dark-800/50 border border-dark-700 hover:border-primary-500/50 transition-all duration-300"
+                  whileHover={{ 
+                    scale: 1.1, 
+                    y: -8,
+                    boxShadow: '0 20px 40px -15px rgba(99, 102, 241, 0.4)'
+                  }}
                   whileTap={{ scale: 0.95 }}
                   aria-label={social.name}
                 >
-                  <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-dark-300 group-hover:text-white transition-colors" />
+                  {/* Background glow on hover */}
+                  <motion.div 
+                    className={`absolute inset-0 rounded-xl sm:rounded-2xl ${social.color.replace('hover:', '')} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
+                  />
+                  <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-dark-300 group-hover:text-white transition-colors relative z-10" />
                   
                   {/* Tooltip */}
-                  <div className="absolute -top-10 sm:-top-12 left-1/2 -translate-x-1/2 px-2 py-0.5 sm:px-3 sm:py-1 rounded-md sm:rounded-lg bg-dark-800 text-white text-[10px] sm:text-xs whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none hidden sm:block">
+                  <div className="absolute -top-12 sm:-top-14 left-1/2 -translate-x-1/2 px-3 py-1.5 rounded-lg bg-dark-800 text-white text-xs font-medium whitespace-nowrap opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none shadow-xl">
                     {social.name}
                     <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-dark-800 rotate-45" />
                   </div>
@@ -154,14 +162,18 @@ export default function Footer() {
             })}
           </div>
 
-          {/* Email CTA */}
+          {/* Email CTA - Premium Style */}
           <motion.a
             href="mailto:devpatel170521@gmail.com"
-            className="inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-2 sm:py-3 rounded-full glass-card hover:border-primary-500/50 transition-all duration-300 group"
-            whileHover={{ scale: 1.05 }}
+            className="group inline-flex items-center gap-3 px-6 sm:px-8 py-3 sm:py-4 rounded-2xl bg-gradient-to-r from-primary-600/20 to-accent-600/20 border border-primary-500/30 hover:border-primary-500/60 transition-all duration-300"
+            whileHover={{ 
+              scale: 1.05,
+              boxShadow: '0 15px 30px -10px rgba(99, 102, 241, 0.3)'
+            }}
+            whileTap={{ scale: 0.98 }}
           >
-            <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-primary-400" />
-            <span className="text-dark-200 group-hover:text-white transition-colors text-xs sm:text-sm md:text-base">devpatel170521@gmail.com</span>
+            <Mail className="w-5 h-5 sm:w-6 sm:h-6 text-primary-400 group-hover:text-primary-300 transition-colors" />
+            <span className="text-dark-200 group-hover:text-white transition-colors text-sm sm:text-base font-medium">devpatel170521@gmail.com</span>
           </motion.a>
         </motion.div>
 

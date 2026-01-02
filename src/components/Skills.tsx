@@ -319,54 +319,96 @@ export default function Skills() {
           ))}
         </motion.div>
 
-        {/* Skills Grid - Elite 3D Cards */}
+        {/* Skills Grid - Elite Cards with Progress Bars */}
         <motion.div
           key={activeCategory}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6 mb-12 md:mb-20"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 md:gap-6 mb-12 md:mb-20"
         >
           {activeSkills?.skills.map((skill, index) => (
             <motion.div
               key={skill.name}
               initial={{ opacity: 0, y: 30, scale: 0.9 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ delay: index * 0.1, type: 'spring', stiffness: 100 }}
+              transition={{ delay: index * 0.08, type: 'spring', stiffness: 120 }}
+              className="group"
             >
-              <Card3D 
-                className="glass-elite rounded-xl sm:rounded-2xl p-4 sm:p-6 group premium-card-hover h-full"
-                intensity={12}
+              <motion.div 
+                className="relative glass-elite rounded-2xl p-5 sm:p-6 h-full overflow-hidden"
+                whileHover={{ 
+                  scale: 1.03,
+                  boxShadow: '0 25px 50px -12px rgba(99, 102, 241, 0.25), 0 0 40px -15px rgba(139, 92, 246, 0.3)'
+                }}
+                transition={{ duration: 0.3 }}
               >
-                <div className="flex items-center justify-between mb-3 sm:mb-4">
-                  <div className="flex items-center gap-2 sm:gap-3">
-                    <motion.div 
-                      className={`p-1.5 sm:p-2 rounded-lg sm:rounded-xl bg-gradient-to-r ${activeSkills.color} opacity-80 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110`}
-                      whileHover={{ rotate: 360 }}
-                      transition={{ duration: 0.5 }}
-                    >
-                      <skill.icon className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
-                    </motion.div>
-                    <h4 className="font-semibold text-white text-sm sm:text-base group-hover:text-primary-300 transition-colors">{skill.name}</h4>
-                  </div>
-                  <span className="text-lg sm:text-2xl font-bold gradient-shimmer">
-                    <SmoothCounter target={skill.level} suffix="%" duration={1.5} />
-                  </span>
-                </div>
+                {/* Background Glow on Hover */}
+                <motion.div 
+                  className={`absolute inset-0 bg-gradient-to-br ${activeSkills.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}
+                />
                 
-                {/* Progress Bar - Elite */}
-                <div className="h-1.5 sm:h-2 bg-dark-800/80 rounded-full overflow-hidden relative">
-                  <motion.div
-                    initial={{ width: 0, opacity: 0 }}
-                    animate={{ width: `${skill.level}%`, opacity: 1 }}
-                    transition={{ duration: 1.2, delay: index * 0.1 + 0.3, ease: [0.16, 1, 0.3, 1] }}
-                    className={`h-full rounded-full bg-gradient-to-r ${activeSkills.color} relative overflow-hidden`}
+                {/* Skill Icon & Level Badge */}
+                <div className="flex items-start justify-between mb-4">
+                  <motion.div 
+                    className={`p-3 rounded-xl bg-gradient-to-br ${activeSkills.color} shadow-lg`}
+                    whileHover={{ rotate: 10, scale: 1.1 }}
+                    transition={{ type: 'spring', stiffness: 400 }}
                   >
-                    {/* Shine effect on progress bar */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-shine" />
+                    <skill.icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                  </motion.div>
+                  
+                  {/* Level Badge */}
+                  <motion.div 
+                    className="relative"
+                    initial={{ scale: 0.8, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ delay: index * 0.1 + 0.5 }}
+                  >
+                    <div className={`px-3 py-1.5 rounded-lg bg-gradient-to-r ${activeSkills.color} bg-opacity-20`}>
+                      <span className="text-lg sm:text-xl font-bold text-white">
+                        <SmoothCounter target={skill.level} suffix="%" duration={1.5} />
+                      </span>
+                    </div>
                   </motion.div>
                 </div>
-              </Card3D>
+                
+                {/* Skill Name */}
+                <h4 className="font-bold text-white text-base sm:text-lg mb-3 group-hover:text-primary-300 transition-colors leading-tight">
+                  {skill.name}
+                </h4>
+                
+                {/* Progress Bar - Premium Style */}
+                <div className="relative">
+                  <div className="h-2.5 bg-dark-800/80 rounded-full overflow-hidden">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      animate={{ width: `${skill.level}%` }}
+                      transition={{ duration: 1.2, delay: index * 0.1 + 0.3, ease: [0.16, 1, 0.3, 1] }}
+                      className={`h-full rounded-full bg-gradient-to-r ${activeSkills.color} relative`}
+                    >
+                      {/* Animated Shine */}
+                      <motion.div 
+                        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent"
+                        animate={{ x: ['-100%', '200%'] }}
+                        transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
+                      />
+                    </motion.div>
+                  </div>
+                  
+                  {/* Level Indicator Dots */}
+                  <div className="flex justify-between mt-2 px-0.5">
+                    {[0, 25, 50, 75, 100].map((mark) => (
+                      <div 
+                        key={mark}
+                        className={`w-1 h-1 rounded-full transition-colors ${
+                          skill.level >= mark ? 'bg-primary-400' : 'bg-dark-700'
+                        }`}
+                      />
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
             </motion.div>
           ))}
         </motion.div>

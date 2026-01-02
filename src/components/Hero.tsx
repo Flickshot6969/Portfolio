@@ -334,19 +334,30 @@ export default function Hero() {
             {/* Main Heading - Elite Text Reveal with Awe */}
             <AweReveal delay={0.3} intensity="dramatic">
               <motion.h1
-                className="heading-xl mb-6 rocket-launch"
+                className="mb-8"
+                style={{ 
+                  fontSize: 'clamp(2.5rem, 8vw, 5rem)',
+                  fontWeight: 800,
+                  lineHeight: 1.05,
+                  letterSpacing: '-0.03em',
+                  fontFamily: "'Poppins', sans-serif"
+                }}
               >
                 <motion.span 
-                  className="text-dark-100 inline-block text-xl md:text-2xl font-medium mb-2"
+                  className="text-dark-100 block sm:inline"
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.4, duration: 0.6 }}
                 >
-                  I'm{' '}
+                  Hi, I&apos;m{' '}
                 </motion.span>
                 <FocusPull intensity={1.2}>
                   <motion.span 
-                    className="gradient-shimmer inline-block focus-pull"
+                    className="inline-block bg-gradient-to-r from-primary-400 via-accent-400 to-cyan-400 bg-clip-text text-transparent"
+                    style={{ 
+                      textShadow: '0 0 80px rgba(99, 102, 241, 0.5)',
+                      filter: 'drop-shadow(0 0 30px rgba(139, 92, 246, 0.3))'
+                    }}
                     initial={{ opacity: 0, scale: 0.8, rotateX: -40 }}
                     animate={{ opacity: 1, scale: 1, rotateX: 0 }}
                     transition={{ delay: 0.6, duration: 0.8, type: 'spring', stiffness: 100 }}
@@ -357,70 +368,99 @@ export default function Hero() {
               </motion.h1>
             </AweReveal>
 
-            {/* Value Proposition - NOT just typing animation */}
+            {/* Typing Animation - Larger, more prominent */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
-              className="mb-6"
+              className="mb-8 h-14"
+              style={{
+                fontSize: 'clamp(1.25rem, 3vw, 1.75rem)',
+                fontWeight: 500,
+                letterSpacing: '-0.01em'
+              }}
             >
-              <p className="text-2xl md:text-3xl lg:text-4xl font-semibold text-white mb-4">
-                I turn <span className="text-primary-400">chaos into clarity</span>
-              </p>
-              <p className="text-lg md:text-xl text-dark-300">
-                Whether it's leading <span className="text-accent-400 font-medium">5,000+ students</span> or 
-                orchestrating <span className="text-cyan-400 font-medium">50+ events</span>, I deliver results.
-              </p>
-            </motion.div>
-            
-            {/* Quick Proof - SHOW DON'T TELL */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
-              className="flex flex-wrap justify-center lg:justify-start gap-6 mb-8 py-4 border-y border-dark-700/50"
-            >
-              <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-white">5,000+</div>
-                <div className="text-sm text-dark-400">Students Led</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-primary-400">50+</div>
-                <div className="text-sm text-dark-400">Events Delivered</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-accent-400">4.9/5</div>
-                <div className="text-sm text-dark-400">Service Rating</div>
-              </div>
-            </motion.div>
-
-            {/* Typing Animation - Now Secondary */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.7 }}
-              className="text-lg md:text-xl font-medium text-dark-300 mb-6 h-8"
-            >
-              <span className="text-dark-500">Currently: </span>
               <TypeAnimation
                 sequence={[
-                  'General Secretary @ Gandhinagar University',
+                  'General Secretary @ GU',
                   2000,
-                  'Event Production Head @ GIT',
+                  'Event Production Head',
                   2000,
-                  'Marketing & Campaign Strategist',
+                  'Campaign & Marketing Head',
                   2000,
                   'Jazba Festival Head',
+                  2000,
+                  'Cultural Secretary',
+                  2000,
+                  'Starbucks Barista',
+                  2000,
+                  'Full Stack Developer',
                   2000,
                 ]}
                 wrapper="span"
                 speed={50}
                 repeat={Infinity}
-                className="text-primary-400"
+                className="bg-gradient-to-r from-primary-300 to-accent-300 bg-clip-text text-transparent"
               />
             </motion.div>
 
-            {/* CTA Buttons - Tactile with Dopamine Hit */}
+            {/* Description - Better contrast and spacing */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 }}
+              className="text-lg text-dark-200 max-w-xl mx-auto lg:mx-0 mb-6 leading-relaxed"
+            >
+              Results-driven{' '}
+              <span className="text-primary-400 font-semibold">Student Leader</span>{' '}
+              at Gandhinagar University with 1+ years of progressive leadership. Currently serving as{' '}
+              <span className="text-accent-400 font-semibold">General Secretary</span>{' '}
+              while heading{' '}
+              <span className="text-cyan-400 font-semibold">Event Production & Marketing</span>. 
+              Pursuing B.Tech at GIT with expertise in governance, digital marketing, and web development.
+            </motion.p>
+            
+            {/* SEO H2/H3 Subheadings */}
+            <motion.h2 
+              className="sr-only"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+            >
+              Leadership & Professional Excellence
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.65 }}
+              className="text-sm text-dark-400 max-w-xl mx-auto lg:mx-0 mb-8"
+            >
+              With hands-on experience in <span className="text-primary-300">IBM Cloud Computing</span> and leadership roles, 
+              Dev Patel demonstrates skills from strategic decision-making to technical mastery. 
+              Former <span className="text-accent-300">Starbucks barista</span> bringing customer excellence to every project.
+            </motion.p>
+
+            {/* Role Tags */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.7 }}
+              className="flex flex-wrap justify-center lg:justify-start gap-3 mb-8"
+            >
+              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-500/10 border border-primary-500/20 text-primary-300 text-sm">
+                <Code2 size={14} />
+                General Secretary
+              </span>
+              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent-500/10 border border-accent-500/20 text-accent-300 text-sm">
+                <Briefcase size={14} />
+                Event Production Head
+              </span>
+              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-300 text-sm">
+                <Sparkles size={14} />
+                Marketing Strategist
+              </span>
+            </motion.div>
+
+            {/* CTA Buttons - Premium with depth */}
             <DramaticReveal direction="up" intensity="normal">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -428,45 +468,50 @@ export default function Hero() {
                 transition={{ delay: 0.8 }}
                 className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12"
               >
-                <ProximityAware id="hero-cta-primary" approachThreshold={150}>
-                  {({ phase, proximity }) => (
-                    <DopamineHit trigger={phase === 'hovering'}>
-                      <TactileRipple rippleColor="rgba(139, 92, 246, 0.4)">
-                        <TactileButton
-                          variant="floating"
-                          haptic="medium"
-                          onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
-                          className={`px-8 py-4 bg-gradient-to-r from-violet-600 to-purple-600 text-white rounded-xl font-semibold transition-all duration-300 ${phase === 'approaching' ? 'shadow-lg shadow-primary/30' : ''}`}
-                        >
-                          <span className="flex items-center justify-center gap-2">
-                            View My Work
-                            <motion.span
-                              animate={{ x: phase === 'hovering' ? 5 : 0 }}
-                              transition={{ type: 'spring', stiffness: 400 }}
-                            >
-                              <ArrowRight size={18} />
-                            </motion.span>
-                          </span>
-                        </TactileButton>
-                      </TactileRipple>
-                    </DopamineHit>
-                  )}
-                </ProximityAware>
+                {/* Primary CTA */}
+                <motion.button
+                  onClick={() => document.getElementById('experience')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="group relative px-8 py-4 bg-gradient-to-r from-primary-600 via-accent-600 to-primary-600 bg-[length:200%_100%] text-white rounded-2xl font-semibold text-lg overflow-hidden"
+                  whileHover={{ 
+                    scale: 1.02, 
+                    backgroundPosition: '100% 0',
+                    boxShadow: '0 20px 40px -15px rgba(99, 102, 241, 0.5), 0 0 60px -20px rgba(139, 92, 246, 0.4)'
+                  }}
+                  whileTap={{ scale: 0.98 }}
+                  transition={{ duration: 0.3 }}
+                  style={{ boxShadow: '0 10px 30px -10px rgba(99, 102, 241, 0.4)' }}
+                >
+                  <span className="relative z-10 flex items-center justify-center gap-2">
+                    View My Work
+                    <motion.span
+                      className="inline-block"
+                      whileHover={{ x: 5 }}
+                      transition={{ type: 'spring', stiffness: 400 }}
+                    >
+                      <ArrowRight size={20} />
+                    </motion.span>
+                  </span>
+                  <motion.div 
+                    className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0"
+                    initial={{ x: '-100%' }}
+                    whileHover={{ x: '100%' }}
+                    transition={{ duration: 0.6 }}
+                  />
+                </motion.button>
                 
-                <ProximityAware id="hero-cta-secondary" approachThreshold={150}>
-                  {({ phase }) => (
-                    <MagneticElement strength={0.2} radius={80}>
-                      <TactileButton
-                        variant="glass"
-                        haptic="light"
-                        onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                        className={`px-8 py-4 glass-ultra border border-white/20 rounded-xl font-semibold transition-all duration-300 ${phase === 'approaching' ? 'border-primary/40' : ''}`}
-                      >
-                        Get In Touch
-                      </TactileButton>
-                    </MagneticElement>
-                  )}
-                </ProximityAware>
+                {/* Secondary CTA */}
+                <motion.button
+                  onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="group relative px-8 py-4 bg-dark-800/50 border-2 border-dark-600 hover:border-primary-500/50 rounded-2xl font-semibold text-lg text-dark-200 hover:text-white overflow-hidden backdrop-blur-sm"
+                  whileHover={{ 
+                    scale: 1.02,
+                    boxShadow: '0 15px 30px -10px rgba(0, 0, 0, 0.3), inset 0 0 30px rgba(99, 102, 241, 0.1)'
+                  }}
+                  whileTap={{ scale: 0.98 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <span className="relative z-10">Get In Touch</span>
+                </motion.button>
               </motion.div>
             </DramaticReveal>
 

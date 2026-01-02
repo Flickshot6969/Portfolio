@@ -273,45 +273,57 @@ export default function About() {
             animate={inView ? 'visible' : 'hidden'}
             className="space-y-8"
           >
-            {/* Story Section */}
+            {/* Story Section - Enhanced with Pull Quote */}
             <motion.div variants={itemVariants}>
-              <h3 className="heading-md mb-4">
+              <h3 className="text-2xl sm:text-3xl font-bold mb-6 tracking-tight">
                 My <span className="gradient-text">Journey</span>
               </h3>
-              <div className="space-y-4 text-body">
+              
+              {/* Pull Quote - Visual Emphasis */}
+              <motion.blockquote 
+                className="relative pl-6 py-4 mb-6 border-l-4 border-primary-500 bg-gradient-to-r from-primary-500/10 to-transparent rounded-r-xl"
+                initial={{ opacity: 0, x: -20 }}
+                animate={inView ? { opacity: 1, x: 0 } : {}}
+                transition={{ delay: 0.5 }}
+              >
+                <p className="text-lg sm:text-xl font-medium text-white/90 italic leading-relaxed">
+                  "Bridging the gap between <span className="text-primary-400">strategic leadership</span> and <span className="text-accent-400">technical innovation</span> — that's where I thrive."
+                </p>
+              </motion.blockquote>
+              
+              <div className="space-y-5 text-dark-200 text-base leading-relaxed">
                 <p>
-                  I&apos;m Dev Patel — a{' '}
-                  <span className="text-primary-400 font-medium">visionary student leader</span> and{' '}
-                  <span className="text-accent-400 font-medium">aspiring technologist</span> who believes 
+                  I&apos;m <span className="font-bold text-white">Dev Patel</span> — a{' '}
+                  <span className="text-primary-400 font-semibold bg-primary-500/10 px-1.5 py-0.5 rounded">visionary student leader</span> and{' '}
+                  <span className="text-accent-400 font-semibold bg-accent-500/10 px-1.5 py-0.5 rounded">aspiring technologist</span> who believes 
                   in the transformative power of combining cutting-edge development skills with strategic 
-                  leadership abilities. My journey began with a deep curiosity for technology that evolved 
-                  into a passion for creating real impact.
+                  leadership abilities.
                 </p>
                 <p>
                   Currently serving as{' '}
-                  <span className="text-primary-400 font-medium">General Secretary</span> at Gandhinagar University, 
+                  <span className="font-bold text-white">General Secretary</span> at Gandhinagar University, 
                   I spearhead student governance while concurrently leading{' '}
-                  <span className="text-accent-400 font-medium">Event Production</span> and{' '}
-                  <span className="text-cyan-400 font-medium">Campaign & Marketing</span> divisions. 
-                  As Jazba Head, I orchestrated our flagship cultural festival with 50+ events and 100+ volunteers — 
-                  proving that meticulous planning meets creative execution.
+                  <span className="text-accent-400 font-semibold">Event Production</span> and{' '}
+                  <span className="text-cyan-400 font-semibold">Campaign & Marketing</span> divisions. 
+                  As <span className="font-bold text-white">Jazba Head</span>, I orchestrated our flagship cultural festival with <span className="text-primary-400 font-semibold">50+ events</span> and <span className="text-primary-400 font-semibold">100+ volunteers</span>.
                 </p>
                 <p>
                   My stint as a{' '}
-                  <span className="text-green-400 font-medium">Starbucks Barista</span> wasn&apos;t just about 
-                  crafting beverages — it was a masterclass in customer experience, operational excellence, 
-                  and thriving under pressure. These skills now fuel my approach to both code and leadership.
+                  <span className="text-green-400 font-semibold bg-green-500/10 px-1.5 py-0.5 rounded">Starbucks Barista</span> was a masterclass in <span className="text-white font-medium">customer experience</span>, <span className="text-white font-medium">operational excellence</span>, 
+                  and thriving under pressure.
                 </p>
                 <p>
-                  Pursuing <span className="text-primary-400 font-medium">B.Tech in Computer Science</span> at 
-                  Gandhinagar Institute of Technology (2023-2027), I bridge technical expertise with strategic 
-                  thinking. Certified in <span className="text-cyan-400 font-medium">Cloud Computing (IBM)</span>,{' '}
-                  <span className="text-accent-400 font-medium">Digital Marketing (HubSpot)</span>, and{' '}
-                  <span className="text-primary-400 font-medium">AWS Solutions Architecture</span> — I lead projects 
-                  from conception to delivery, ensuring innovative solutions meet real-world needs.
+                  Pursuing <span className="font-bold text-white">B.Tech in Computer Science</span> at 
+                  Gandhinagar Institute of Technology (2023-2027). Certified in{' '}
+                  <span className="text-cyan-400 font-semibold">Cloud Computing (IBM)</span>,{' '}
+                  <span className="text-accent-400 font-semibold">Digital Marketing (HubSpot)</span>, and{' '}
+                  <span className="text-primary-400 font-semibold">AWS Solutions Architecture</span>.
                 </p>
               </div>
             </motion.div>
+            
+            {/* Section Divider */}
+            <div className="w-full h-px bg-gradient-to-r from-transparent via-dark-600 to-transparent my-4" />
 
             {/* Value Propositions */}
             <motion.div variants={itemVariants}>

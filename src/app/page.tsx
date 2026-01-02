@@ -1,48 +1,70 @@
 'use client'
 
 import { useState, useEffect, useCallback } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from 'framer-motion'
 import Navbar from '@/components/Navbar'
-import HeroSection from '@/components/HeroSection'
-import CaseStudies from '@/components/CaseStudies'
-import HowIThink from '@/components/HowIThink'
-import AuthoritySection from '@/components/AuthoritySection'
-import SkillsProof from '@/components/SkillsProof'
-import ContactCTA from '@/components/ContactCTA'
+import Hero from '@/components/Hero'
+import About from '@/components/About'
+import Skills from '@/components/Skills'
+import Experience from '@/components/Experience'
+import Resume from '@/components/Resume'
+import Certifications from '@/components/Certifications'
+import Contact from '@/components/Contact'
 import Footer from '@/components/Footer'
 import { TheatricalLoader } from '@/components/TheatricalLoader'
 import { EliteCursorProvider } from '@/components/EliteCursor'
 import { AmbientBackground } from '@/components/AmbientParticles'
+import { ScrollDramaProvider } from '@/lib/ScrollDramaEngine'
+import { ViewportProvider } from '@/lib/UltraResponsive'
+import { NarrativeProvider, ScrollIndicator } from '@/lib/NarrativeScroll'
+import { EmotionalProvider } from '@/lib/PsychologicalMotion'
 
-export type ActiveSection = 'home' | 'projects' | 'process' | 'authority' | 'skills' | 'contact'
+export type ActiveSection = 'home' | 'about' | 'skills' | 'experience' | 'resume' | 'projects' | 'certifications' | 'contact'
 
-/*
- * ══════════════════════════════════════════════════════════════════════════════
- * PORTFOLIO FLOW - Psychological Journey (DO NOT CHANGE ORDER)
- * ══════════════════════════════════════════════════════════════════════════════
- * 
- * 1. HERO → Instant credibility (What I do, For whom, Why it matters)
- * 2. CASE STUDIES → Proof of competence (Problem → Approach → Outcome → Learning)
- * 3. HOW I THINK → Depth of thinking (Decision-making transparency)
- * 4. AUTHORITY → Trust signals (Testimonials, metrics, validation)
- * 5. SKILLS → Technical proof (With receipts, not lists)
- * 6. CONTACT → Clear next step (Earned CTA)
- * 
- * This flow is designed for 15-second scan clarity:
- * - First scroll: PROOF (metrics, outcomes)
- * - Second scroll: DEPTH (thinking, decisions)
- * - Third scroll: TRUST (testimonials, authority)
- * - Final scroll: ACTION (contact)
- * 
- * ══════════════════════════════════════════════════════════════════════════════
- */
+// ═══════════════════════════════════════════════════════════════════════════════
+// 🎬 CINEMATIC SECTION TRANSITIONS
+// Over-engineered transitions that make visitors freeze
+// ═══════════════════════════════════════════════════════════════════════════════
+
+const cinematicVariants = {
+  hidden: { 
+    opacity: 0, 
+    y: 80,
+    scale: 0.92,
+    filter: 'blur(20px)',
+    rotateX: 10
+  },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    scale: 1,
+    filter: 'blur(0px)',
+    rotateX: 0,
+    transition: {
+      duration: 0.9,
+      ease: [0.16, 1, 0.3, 1], // Dramatic ease-out
+      staggerChildren: 0.1
+    }
+  },
+  exit: { 
+    opacity: 0, 
+    y: -60,
+    scale: 0.95,
+    filter: 'blur(15px)',
+    rotateX: -5,
+    transition: {
+      duration: 0.5,
+      ease: [0.4, 0, 0.2, 1]
+    }
+  }
+}
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState<ActiveSection>('home')
   const [isLoading, setIsLoading] = useState(true)
   const [hasLoaded, setHasLoaded] = useState(false)
 
-  // Skip loader if already visited
+  // Skip loader if already visited in this session
   useEffect(() => {
     const hasVisited = sessionStorage.getItem('portfolio-loaded')
     if (hasVisited) {
@@ -57,99 +79,113 @@ export default function Home() {
     sessionStorage.setItem('portfolio-loaded', 'true')
   }, [])
 
-  // Track active section on scroll
+  // Handle hash changes for direct linking
   useEffect(() => {
-    const handleScroll = () => {
-      const sections = ['home', 'projects', 'process', 'authority', 'skills', 'contact']
-      const scrollPosition = window.scrollY + window.innerHeight / 3
-
-      for (const section of sections) {
-        const element = document.getElementById(section)
-        if (element) {
-          const { offsetTop, offsetHeight } = element
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-            setActiveSection(section as ActiveSection)
-            break
-          }
-        }
+    const handleHashChange = () => {
+      const hash = window.location.hash.slice(1) as ActiveSection
+      if (hash && ['home', 'about', 'skills', 'experience', 'resume', 'projects', 'certifications', 'contact'].includes(hash)) {
+        setActiveSection(hash)
       }
     }
 
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
+    handleHashChange()
+    window.addEventListener('hashchange', handleHashChange)
+    return () => window.removeEventListener('hashchange', handleHashChange)
   }, [])
 
+  // Update URL hash when section changes
+  useEffect(() => {
+    window.history.replaceState(null, '', `#${activeSection}`)
+  }, [activeSection])
+
+  const renderSection = () => {
+    switch (activeSection) {
+      case 'home':
+        return <Hero key="hero" />
+      case 'about':
+        return <About key="about" />
+      case 'skills':
+        return <Skills key="skills" />
+      case 'experience':
+        return <Experience key="experience" />
+      case 'resume':
+        return <Resume key="resume" />
+      case 'certifications':
+        return <Certifications key="certifications" />
+      case 'contact':
+        return <Contact key="contact" />
+      default:
+        return <Hero key="hero" />
+    }
+  }
+
   return (
-    <EliteCursorProvider enableParticles={false} enableMagnetic={true}>
-      {/* Theatrical Loader */}
-      <AnimatePresence>
-        {isLoading && (
-          <TheatricalLoader 
-            onComplete={handleLoaderComplete}
-            brandName="Dev Patel"
-            tagline="Problem Solver. System Builder."
-          />
-        )}
-      </AnimatePresence>
+    <ViewportProvider>
+      <EmotionalProvider>
+        <EliteCursorProvider enableParticles={true} enableMagnetic={true}>
+          <ScrollDramaProvider>
+            <NarrativeProvider chapters={['prologue', 'introduction', 'rising', 'climax', 'falling', 'resolution', 'epilogue']}>
+              {/* Theatrical Loader - Only shows on first visit */}
+              <AnimatePresence>
+                {isLoading && (
+                  <TheatricalLoader 
+                    onComplete={handleLoaderComplete}
+                    brandName="Dev Patel"
+                    tagline="Crafting Digital Excellence"
+                  />
+                )}
+              </AnimatePresence>
 
-      {/* Main Content */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: hasLoaded ? 1 : 0 }}
-        transition={{ duration: 0.6, delay: 0.1 }}
-      >
-        {/* Subtle Background */}
-        <div className="fixed inset-0 z-0 pointer-events-none">
-          <AmbientBackground 
-            particles={false}
-            aurora={true}
-            noise={true}
-            orbs={false}
-            constellation={false}
-          />
-        </div>
+              {/* Main Content - Fades in after loader */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: hasLoaded ? 1 : 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+              >
+                {/* Scroll Progress Indicator */}
+                {hasLoaded && (
+                  <ScrollIndicator 
+                    position="right"
+                    showPercentage={false}
+                    showChapters={true}
+                    chapters={['Hero', 'About', 'Skills', 'Experience', 'Certifications', 'Contact']}
+                  />
+                )}
 
-        {/* Navigation */}
-        <Navbar activeSection={activeSection} setActiveSection={setActiveSection} />
-        
-        {/* 
-         * PSYCHOLOGICAL FLOW - Each section earns the next
-         * ─────────────────────────────────────────────────
-         */}
-        <main className="relative z-10">
-          {/* 1. INSTANT CREDIBILITY */}
-          <section id="home">
-            <HeroSection />
-          </section>
-          
-          {/* 2. PROOF OF COMPETENCE */}
-          <section id="projects">
-            <CaseStudies />
-          </section>
-          
-          {/* 3. DEPTH OF THINKING */}
-          <section id="process">
-            <HowIThink />
-          </section>
-          
-          {/* 4. AUTHORITY & TRUST */}
-          <section id="authority">
-            <AuthoritySection />
-          </section>
-          
-          {/* 5. TECHNICAL PROOF */}
-          <section id="skills">
-            <SkillsProof />
-          </section>
-          
-          {/* 6. CLEAR NEXT STEP */}
-          <section id="contact">
-            <ContactCTA />
-          </section>
-        </main>
-        
-        <Footer />
-      </motion.div>
-    </EliteCursorProvider>
+                {/* Global Ambient Background */}
+                <div className="fixed inset-0 z-0 pointer-events-none">
+                  <AmbientBackground 
+                    particles={true}
+                    aurora={true}
+                    noise={true}
+                    orbs={true}
+                    constellation={false}
+                  />
+                </div>
+
+                <Navbar activeSection={activeSection} setActiveSection={setActiveSection} />
+                
+                <main className="min-h-screen relative z-10" style={{ perspective: '1200px' }}>
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={activeSection}
+                      variants={cinematicVariants}
+                      initial="hidden"
+                      animate="visible"
+                      exit="exit"
+                      style={{ transformStyle: 'preserve-3d' }}
+                    >
+                      {renderSection()}
+                    </motion.div>
+                  </AnimatePresence>
+                </main>
+                
+                <Footer />
+              </motion.div>
+            </NarrativeProvider>
+          </ScrollDramaProvider>
+        </EliteCursorProvider>
+      </EmotionalProvider>
+    </ViewportProvider>
   )
 }

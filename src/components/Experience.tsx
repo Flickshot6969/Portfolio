@@ -296,42 +296,58 @@ export default function Experience() {
                     className="glass-elite rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 premium-card-hover"
                     intensity={8}
                   >
-                    {/* Header */}
-                    <div className="flex flex-wrap items-start justify-between gap-2 sm:gap-4 mb-3 sm:mb-4">
-                      <div>
-                        <h3 className="text-base sm:text-xl font-bold text-white mb-1">{exp.role}</h3>
-                        <div className="flex items-center gap-2 text-primary-400">
-                          <Building size={14} className="sm:w-4 sm:h-4" />
-                          <span className="font-medium text-sm sm:text-base">{exp.company}</span>
+                    {/* Header - Enhanced Visual Hierarchy */}
+                    <div className="flex flex-wrap items-start justify-between gap-2 sm:gap-4 mb-4 sm:mb-5">
+                      <div className="flex-1">
+                        {/* Role - Bold & Prominent */}
+                        <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-2 leading-tight tracking-tight">{exp.role}</h3>
+                        {/* Company - Styled differently */}
+                        <div className="flex items-center gap-2 text-primary-400 mb-2">
+                          <Building size={16} className="sm:w-5 sm:h-5 opacity-80" />
+                          <span className="font-semibold text-sm sm:text-base italic">{exp.company}</span>
+                        </div>
+                        {/* Date & Location - Right-aligned style with clear separation */}
+                        <div className="flex flex-wrap items-center gap-3 sm:gap-4 text-xs sm:text-sm text-dark-400">
+                          <span className="flex items-center gap-1.5 bg-dark-800/60 px-2.5 py-1 rounded-lg">
+                            <Calendar size={13} className="text-accent-400" />
+                            <span className="font-medium">{exp.period}</span>
+                          </span>
+                          <span className="flex items-center gap-1.5">
+                            <MapPin size={13} className="text-dark-500" />
+                            <span>{exp.location}</span>
+                          </span>
                         </div>
                       </div>
-                      <span className="px-2 py-1 sm:px-3 rounded-full text-[10px] sm:text-xs font-medium bg-primary-500/10 text-primary-400 border border-primary-500/20">
+                      {/* Type Badge */}
+                      <motion.span 
+                        className="px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl text-[10px] sm:text-xs font-semibold bg-gradient-to-r from-primary-500/20 to-accent-500/20 text-primary-300 border border-primary-500/30 shadow-lg shadow-primary-500/10"
+                        whileHover={{ scale: 1.05 }}
+                      >
                         {exp.type}
-                      </span>
+                      </motion.span>
                     </div>
 
-                    {/* Meta Info */}
-                    <div className="flex flex-wrap gap-2 sm:gap-4 text-xs sm:text-sm text-dark-400 mb-3 sm:mb-4">
-                      <span className="flex items-center gap-1">
-                        <Calendar size={12} className="sm:w-[14px] sm:h-[14px]" />
-                        {exp.period}
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <MapPin size={12} className="sm:w-[14px] sm:h-[14px]" />
-                        {exp.location}
-                      </span>
-                    </div>
+                    {/* Divider */}
+                    <div className="w-full h-px bg-gradient-to-r from-transparent via-dark-600 to-transparent mb-4" />
 
-                    {/* Description */}
-                    <p className="text-dark-300 mb-3 sm:mb-4 text-sm sm:text-base">{exp.description}</p>
+                    {/* Description - Emphasized */}
+                    <p className="text-dark-200 mb-4 sm:mb-5 text-sm sm:text-base leading-relaxed font-medium">{exp.description}</p>
 
-                    {/* Achievements */}
-                    <div className="space-y-1.5 sm:space-y-2 mb-3 sm:mb-4">
+                    {/* Achievements - Better visual hierarchy */}
+                    <div className="space-y-2.5 sm:space-y-3 mb-4 sm:mb-5">
                       {exp.achievements.map((achievement, i) => (
-                        <div key={i} className="flex items-start gap-2">
-                          <Star size={12} className="sm:w-[14px] sm:h-[14px] text-accent-400 mt-0.5 sm:mt-1 flex-shrink-0" />
-                          <span className="text-xs sm:text-sm text-dark-300">{achievement}</span>
-                        </div>
+                        <motion.div 
+                          key={i} 
+                          className="flex items-start gap-3 group/achievement"
+                          initial={{ opacity: 0, x: -10 }}
+                          animate={inView ? { opacity: 1, x: 0 } : {}}
+                          transition={{ delay: 0.6 + i * 0.1 }}
+                        >
+                          <div className="mt-1 p-1 rounded-md bg-accent-500/10 group-hover/achievement:bg-accent-500/20 transition-colors">
+                            <Star size={12} className="text-accent-400" />
+                          </div>
+                          <span className="text-xs sm:text-sm text-dark-300 leading-relaxed group-hover/achievement:text-dark-200 transition-colors">{achievement}</span>
+                        </motion.div>
                       ))}
                     </div>
 
