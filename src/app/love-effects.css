@@ -1,0 +1,725 @@
+/* ═══════════════════════════════════════════════════════════════════════════════
+   💖 LOVE AT FIRST SIGHT - Premium Visual Effects
+   Viewer ko pyar mein gira dene wale effects
+═══════════════════════════════════════════════════════════════════════════════ */
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   🌟 AURORA GLOW SYSTEM - Mesmerizing Background Effects
+═══════════════════════════════════════════════════════════════════════════════ */
+
+@keyframes aurora-drift {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+    opacity: 0.4;
+  }
+  25% {
+    transform: translate(50px, -30px) rotate(45deg) scale(1.1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translate(-30px, 50px) rotate(90deg) scale(0.95);
+    opacity: 0.5;
+  }
+  75% {
+    transform: translate(-50px, -20px) rotate(135deg) scale(1.05);
+    opacity: 0.55;
+  }
+}
+
+.aurora-orb {
+  animation: aurora-drift 20s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.aurora-orb-delayed {
+  animation: aurora-drift 25s ease-in-out infinite reverse;
+  animation-delay: -5s;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   ✨ SPARKLE RAIN - Magical Particle Effects
+═══════════════════════════════════════════════════════════════════════════════ */
+
+@keyframes sparkle-fall {
+  0% {
+    transform: translateY(-10vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+@keyframes sparkle-twinkle {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 1;
+  }
+}
+
+.sparkle-particle {
+  animation: sparkle-fall 8s linear infinite, sparkle-twinkle 2s ease-in-out infinite;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   💫 PREMIUM CARD EFFECTS - Cards That Feel Alive
+═══════════════════════════════════════════════════════════════════════════════ */
+
+.card-love {
+  position: relative;
+  background: linear-gradient(
+    135deg,
+    rgba(99, 102, 241, 0.1) 0%,
+    rgba(139, 92, 246, 0.05) 50%,
+    rgba(6, 182, 212, 0.1) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-love::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(139, 92, 246, 0.15),
+    transparent 40%
+  );
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.card-love:hover::before {
+  opacity: 1;
+}
+
+.card-love::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.03) 50%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+.card-love:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: rgba(139, 92, 246, 0.3);
+  box-shadow: 
+    0 25px 50px -12px rgba(0, 0, 0, 0.5),
+    0 0 60px -15px rgba(139, 92, 246, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   🎭 GLASS MORPHISM SUPREME - Ultra Premium Glass
+═══════════════════════════════════════════════════════════════════════════════ */
+
+.glass-love {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(255, 255, 255, 0.02) 100%
+  );
+  backdrop-filter: blur(40px) saturate(200%);
+  -webkit-backdrop-filter: blur(40px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+}
+
+.glass-love:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(255, 255, 255, 0.04) 100%
+  );
+  border-color: rgba(139, 92, 246, 0.3);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   🌈 GRADIENT TEXT MAGIC - Text That Captivates
+═══════════════════════════════════════════════════════════════════════════════ */
+
+@keyframes gradient-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.text-magic {
+  background: linear-gradient(
+    90deg,
+    #6366f1 0%,
+    #8b5cf6 20%,
+    #d946ef 40%,
+    #06b6d4 60%,
+    #8b5cf6 80%,
+    #6366f1 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-flow 4s ease infinite;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   💎 BUTTON MAGIC - Buttons That Demand Attention
+═══════════════════════════════════════════════════════════════════════════════ */
+
+.btn-love {
+  position: relative;
+  padding: 16px 32px;
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #d946ef 100%);
+  border: none;
+  border-radius: 16px;
+  color: white;
+  font-weight: 600;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 
+    0 10px 40px -10px rgba(99, 102, 241, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.btn-love::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.btn-love:hover::before {
+  left: 100%;
+}
+
+.btn-love:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 
+    0 20px 50px -15px rgba(99, 102, 241, 0.6),
+    0 0 60px -20px rgba(139, 92, 246, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.btn-love:active {
+  transform: translateY(-2px) scale(0.98);
+}
+
+/* Secondary Button */
+.btn-love-ghost {
+  position: relative;
+  padding: 16px 32px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  color: white;
+  font-weight: 600;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-love-ghost::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6, #d946ef);
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.btn-love-ghost::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 15, 26, 0.95);
+  border-radius: inherit;
+  z-index: -1;
+}
+
+.btn-love-ghost:hover {
+  border-color: transparent;
+  transform: translateY(-4px);
+  box-shadow: 0 15px 40px -10px rgba(139, 92, 246, 0.3);
+}
+
+.btn-love-ghost:hover::before {
+  opacity: 1;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   🎪 SECTION REVEAL - Dramatic Section Entrances
+═══════════════════════════════════════════════════════════════════════════════ */
+
+@keyframes section-reveal {
+  0% {
+    opacity: 0;
+    transform: translateY(80px);
+    filter: blur(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.reveal-love {
+  animation: section-reveal 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   🔮 IMAGE EFFECTS - Photos That Pop
+═══════════════════════════════════════════════════════════════════════════════ */
+
+.image-love {
+  position: relative;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.image-love::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  background: conic-gradient(
+    from 0deg,
+    #6366f1,
+    #8b5cf6,
+    #d946ef,
+    #06b6d4,
+    #22d3ee,
+    #6366f1
+  );
+  border-radius: inherit;
+  z-index: -1;
+  animation: rotate-glow 4s linear infinite;
+}
+
+@keyframes rotate-glow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.image-love::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(255, 255, 255, 0.2) 0%,
+    transparent 50%
+  );
+  pointer-events: none;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   📊 STATS CARD EFFECT - Numbers That Impress
+═══════════════════════════════════════════════════════════════════════════════ */
+
+.stat-love {
+  position: relative;
+  padding: 24px;
+  background: linear-gradient(
+    135deg,
+    rgba(99, 102, 241, 0.1) 0%,
+    rgba(139, 92, 246, 0.05) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.stat-love::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    rgba(139, 92, 246, 0.1) 60deg,
+    transparent 120deg
+  );
+  animation: stat-rotate 8s linear infinite;
+}
+
+@keyframes stat-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.stat-love:hover {
+  transform: translateY(-10px) scale(1.03);
+  border-color: rgba(139, 92, 246, 0.4);
+  box-shadow: 
+    0 30px 60px -15px rgba(0, 0, 0, 0.5),
+    0 0 40px -10px rgba(139, 92, 246, 0.3);
+}
+
+.stat-love .stat-value {
+  font-size: 2.5rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   🎨 BADGE EFFECTS - Tags That Shine
+═══════════════════════════════════════════════════════════════════════════════ */
+
+.badge-love {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: linear-gradient(
+    135deg,
+    rgba(99, 102, 241, 0.15) 0%,
+    rgba(139, 92, 246, 0.1) 100%
+  );
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  border-radius: 100px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #a5b4fc;
+  transition: all 0.3s ease;
+}
+
+.badge-love:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(99, 102, 241, 0.25) 0%,
+    rgba(139, 92, 246, 0.2) 100%
+  );
+  border-color: rgba(99, 102, 241, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px -10px rgba(99, 102, 241, 0.4);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   🌊 RIPPLE EFFECT - Touch Feedback
+═══════════════════════════════════════════════════════════════════════════════ */
+
+@keyframes ripple-love {
+  0% {
+    transform: scale(0);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+.ripple-love {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple-love::after {
+  content: '';
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent);
+  border-radius: 50%;
+  transform: scale(0);
+  pointer-events: none;
+}
+
+.ripple-love:active::after {
+  animation: ripple-love 0.6s ease-out;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   🎭 SECTION DIVIDER - Beautiful Transitions Between Sections
+═══════════════════════════════════════════════════════════════════════════════ */
+
+.section-divider {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.section-divider::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(99, 102, 241, 0.05) 50%,
+    transparent 100%
+  );
+}
+
+.section-divider::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 1px;
+  height: 100px;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(139, 92, 246, 0.5) 50%,
+    transparent 100%
+  );
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   🖼️ TIMELINE ENHANCEMENT - Experience Section Magic
+═══════════════════════════════════════════════════════════════════════════════ */
+
+.timeline-dot-love {
+  position: relative;
+  width: 16px;
+  height: 16px;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  border-radius: 50%;
+  box-shadow: 
+    0 0 20px rgba(99, 102, 241, 0.5),
+    0 0 40px rgba(139, 92, 246, 0.3);
+}
+
+.timeline-dot-love::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border: 2px solid rgba(99, 102, 241, 0.3);
+  border-radius: 50%;
+  animation: timeline-pulse 2s ease-in-out infinite;
+}
+
+@keyframes timeline-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+.timeline-line-love {
+  width: 2px;
+  background: linear-gradient(
+    180deg,
+    #6366f1 0%,
+    #8b5cf6 50%,
+    #d946ef 100%
+  );
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   📱 MOBILE LOVE - Touch-Optimized Interactions
+═══════════════════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+  .card-love:hover {
+    transform: none;
+  }
+  
+  .card-love:active {
+    transform: scale(0.98);
+    border-color: rgba(139, 92, 246, 0.4);
+  }
+  
+  .btn-love:hover {
+    transform: none;
+  }
+  
+  .btn-love:active {
+    transform: scale(0.95);
+  }
+  
+  .stat-love:hover {
+    transform: none;
+  }
+  
+  .stat-love:active {
+    transform: scale(0.97);
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   🎬 SCROLL REVEAL ANIMATIONS
+═══════════════════════════════════════════════════════════════════════════════ */
+
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(60px);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scroll-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scroll-reveal-left {
+  opacity: 0;
+  transform: translateX(-60px);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scroll-reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.scroll-reveal-right {
+  opacity: 0;
+  transform: translateX(60px);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scroll-reveal-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Staggered reveal for children */
+.stagger-reveal > * {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.stagger-reveal.visible > *:nth-child(1) { transition-delay: 0.1s; opacity: 1; transform: translateY(0); }
+.stagger-reveal.visible > *:nth-child(2) { transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
+.stagger-reveal.visible > *:nth-child(3) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
+.stagger-reveal.visible > *:nth-child(4) { transition-delay: 0.4s; opacity: 1; transform: translateY(0); }
+.stagger-reveal.visible > *:nth-child(5) { transition-delay: 0.5s; opacity: 1; transform: translateY(0); }
+.stagger-reveal.visible > *:nth-child(6) { transition-delay: 0.6s; opacity: 1; transform: translateY(0); }
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   ✨ CURSOR GLOW - Custom Cursor Effects
+═══════════════════════════════════════════════════════════════════════════════ */
+
+.cursor-glow-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+.cursor-glow {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(
+    circle,
+    rgba(139, 92, 246, 0.15) 0%,
+    rgba(99, 102, 241, 0.05) 30%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   🎯 FOCUS STATES - Accessibility with Style
+═══════════════════════════════════════════════════════════════════════════════ */
+
+.focus-love:focus {
+  outline: none;
+  box-shadow: 
+    0 0 0 3px rgba(99, 102, 241, 0.3),
+    0 0 20px rgba(139, 92, 246, 0.2);
+}
+
+.focus-love:focus-visible {
+  outline: 2px solid rgba(139, 92, 246, 0.5);
+  outline-offset: 3px;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   🏆 PREMIUM SCROLLBAR
+═══════════════════════════════════════════════════════════════════════════════ */
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(10, 15, 26, 0.8);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #6366f1, #8b5cf6);
+  border-radius: 10px;
+  border: 2px solid rgba(10, 15, 26, 0.8);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #818cf8, #a78bfa);
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #6366f1 rgba(10, 15, 26, 0.8);
+}

@@ -336,20 +336,18 @@ export default function Skills() {
               className="group"
             >
               <motion.div 
-                className="relative glass-elite rounded-2xl p-5 sm:p-6 h-full overflow-hidden"
-                whileHover={{ 
-                  scale: 1.03,
-                  boxShadow: '0 25px 50px -12px rgba(99, 102, 241, 0.25), 0 0 40px -15px rgba(139, 92, 246, 0.3)'
-                }}
+                className="card-love relative p-5 sm:p-6 h-full"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 transition={{ duration: 0.3 }}
               >
                 {/* Background Glow on Hover */}
                 <motion.div 
-                  className={`absolute inset-0 bg-gradient-to-br ${activeSkills.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}
+                  className={`absolute inset-0 bg-gradient-to-br ${activeSkills.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500 rounded-3xl`}
                 />
                 
                 {/* Skill Icon & Level Badge */}
-                <div className="flex items-start justify-between mb-4">
+                <div className="flex items-start justify-between mb-4 relative z-10">
                   <motion.div 
                     className={`p-3 rounded-xl bg-gradient-to-br ${activeSkills.color} shadow-lg`}
                     whileHover={{ rotate: 10, scale: 1.1 }}

@@ -439,25 +439,39 @@ export default function Hero() {
               Former <span className="text-accent-300">Starbucks barista</span> bringing customer excellence to every project.
             </motion.p>
 
-            {/* Role Tags */}
+            {/* Role Tags - Premium Badges */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7 }}
               className="flex flex-wrap justify-center lg:justify-start gap-3 mb-8"
             >
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-500/10 border border-primary-500/20 text-primary-300 text-sm">
-                <Code2 size={14} />
+              <motion.span 
+                className="badge-love"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Code2 size={14} className="text-primary-400" />
                 General Secretary
-              </span>
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent-500/10 border border-accent-500/20 text-accent-300 text-sm">
-                <Briefcase size={14} />
+              </motion.span>
+              <motion.span 
+                className="badge-love" 
+                style={{ borderColor: 'rgba(168, 85, 247, 0.3)', background: 'linear-gradient(135deg, rgba(168, 85, 247, 0.15), rgba(139, 92, 246, 0.1))' }}
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Briefcase size={14} className="text-accent-400" />
                 Event Production Head
-              </span>
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-300 text-sm">
-                <Sparkles size={14} />
+              </motion.span>
+              <motion.span 
+                className="badge-love"
+                style={{ borderColor: 'rgba(6, 182, 212, 0.3)', background: 'linear-gradient(135deg, rgba(6, 182, 212, 0.15), rgba(34, 211, 238, 0.1))' }}
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Sparkles size={14} className="text-cyan-400" />
                 Marketing Strategist
-              </span>
+              </motion.span>
             </motion.div>
 
             {/* CTA Buttons - Premium with depth */}
@@ -471,7 +485,7 @@ export default function Hero() {
                 {/* Primary CTA */}
                 <motion.button
                   onClick={() => document.getElementById('experience')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="group relative px-6 py-3.5 sm:px-8 sm:py-4 bg-gradient-to-r from-primary-600 via-accent-600 to-primary-600 bg-[length:200%_100%] text-white rounded-xl sm:rounded-2xl font-semibold text-base sm:text-lg overflow-hidden"
+                  className="btn-love group relative px-6 py-3.5 sm:px-8 sm:py-4 text-base sm:text-lg"
                   whileHover={{ 
                     scale: 1.02, 
                     backgroundPosition: '100% 0',
@@ -502,7 +516,7 @@ export default function Hero() {
                 {/* Secondary CTA */}
                 <motion.button
                   onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="group relative px-6 py-3.5 sm:px-8 sm:py-4 bg-dark-800/50 border-2 border-dark-600 hover:border-primary-500/50 rounded-xl sm:rounded-2xl font-semibold text-base sm:text-lg text-dark-200 hover:text-white overflow-hidden backdrop-blur-sm"
+                  className="btn-love-ghost group relative px-6 py-3.5 sm:px-8 sm:py-4 text-base sm:text-lg"
                   whileHover={{ 
                     scale: 1.02,
                     boxShadow: '0 15px 30px -10px rgba(0, 0, 0, 0.3), inset 0 0 30px rgba(99, 102, 241, 0.1)'
@@ -685,42 +699,35 @@ export default function Hero() {
             className="mt-12 md:mt-20 grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6"
           >
             {stats.map((stat, index) => (
-              <MultiPhaseCard 
+              <motion.div
                 key={stat.label}
-                className="text-center rounded-xl md:rounded-2xl p-4 md:p-6 glass-elite"
-                onPhaseChange={(phase) => {
-                  // Could track analytics here
-                }}
+                className="stat-love text-center group cursor-pointer"
+                initial={{ opacity: 0, y: 30, scale: 0.9 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ delay: 1.3 + index * 0.15, type: 'spring', stiffness: 100 }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
-                <motion.div
-                  initial={{ opacity: 0, y: 30, scale: 0.9 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  transition={{ delay: 1.3 + index * 0.15, type: 'spring', stiffness: 100 }}
-                  className="relative overflow-hidden"
-                >
+                <div className="relative z-10">
                   {/* Background Icon */}
-                  <AmbientMotion intensity="low">
-                    <div className="absolute -right-2 -top-2 opacity-10 group-hover:opacity-30 transition-opacity duration-500">
-                      <stat.icon size={60} className="text-primary-500" />
-                    </div>
-                  </AmbientMotion>
-                  
-                  <div className="relative z-10">
-                    <div className="flex items-center justify-center gap-2 mb-2">
-                      <motion.div
-                        whileHover={{ rotate: 360, scale: 1.2 }}
-                        transition={{ duration: 0.5 }}
-                      >
-                        <stat.icon size={18} className="text-primary-400" />
-                      </motion.div>
-                      <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold gradient-shimmer font-mono">
-                        <SmoothCounter target={parseInt(stat.value)} suffix="+" />
-                      </h3>
-                    </div>
-                    <p className="text-dark-400 text-xs md:text-sm group-hover:text-dark-300 transition-colors">{stat.label}</p>
+                  <div className="absolute -right-2 -top-2 opacity-10 group-hover:opacity-30 transition-opacity duration-500">
+                    <stat.icon size={50} className="text-primary-500" />
                   </div>
-                </motion.div>
-              </MultiPhaseCard>
+                  
+                  <div className="flex items-center justify-center gap-2 mb-2">
+                    <motion.div
+                      whileHover={{ rotate: 360, scale: 1.2 }}
+                      transition={{ duration: 0.5 }}
+                    >
+                      <stat.icon size={18} className="text-primary-400" />
+                    </motion.div>
+                    <h3 className="stat-value font-mono text-2xl md:text-3xl lg:text-4xl">
+                      <SmoothCounter target={parseInt(stat.value)} suffix="+" />
+                    </h3>
+                  </div>
+                  <p className="text-dark-400 text-xs md:text-sm group-hover:text-dark-300 transition-colors">{stat.label}</p>
+                </div>
+              </motion.div>
             ))}
           </motion.div>
         </VelocityStagger>

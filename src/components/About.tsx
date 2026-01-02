@@ -335,11 +335,11 @@ export default function About() {
                   <motion.div
                     key={item.title}
                     variants={itemVariants}
-                    className="glass-premium rounded-lg sm:rounded-xl p-3 sm:p-4 group hover:border-primary-500/30 transition-all duration-300 neumorphic shine-effect"
-                    whileHover={{ scale: 1.03, y: -3 }}
+                    className="card-love p-3 sm:p-4 group"
+                    whileHover={{ scale: 1.02, y: -3 }}
                     whileTap={{ scale: 0.98 }}
                   >
-                    <div className="flex items-start gap-2 sm:gap-3">
+                    <div className="flex items-start gap-2 sm:gap-3 relative z-10">
                       <div className="p-1.5 sm:p-2 rounded-md sm:rounded-lg bg-gradient-to-r from-primary-500/10 to-accent-500/10 group-hover:from-primary-500/20 group-hover:to-accent-500/20 transition-colors">
                         <item.icon className="w-4 h-4 sm:w-5 sm:h-5 text-primary-400" />
                       </div>
@@ -353,29 +353,28 @@ export default function About() {
               </div>
             </motion.div>
 
-            {/* CTA - Elite Buttons */}
+            {/* CTA - Love Buttons */}
             <motion.div variants={itemVariants} className="flex flex-wrap gap-3 sm:gap-4">
               <motion.a
                 href="#skills"
-                className="group relative overflow-hidden px-6 py-3 rounded-full bg-gradient-to-r from-primary-500 to-accent-500 text-white font-semibold text-sm sm:text-base elite-button magnetic-glow"
-                whileHover={{ scale: 1.05, boxShadow: '0 20px 40px rgba(99, 102, 241, 0.4)' }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <span className="relative z-10 flex items-center gap-2">
-                  Explore My Skills
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </span>
-                <div className="absolute inset-0 bg-gradient-to-r from-accent-500 to-primary-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </motion.a>
-              <motion.a
-                href="/Dev_Patel_Resume.pdf"
-                download
-                className="group relative px-6 py-3 rounded-full glass-elite border border-primary-500/30 text-white font-semibold text-sm sm:text-base hover:border-primary-500/60 transition-all duration-300"
+                className="btn-love text-sm sm:text-base"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
                 <span className="flex items-center gap-2">
-                  <Download className="w-4 h-4 group-hover:animate-bounce" />
+                  Explore My Skills
+                  <ArrowRight className="w-4 h-4" />
+                </span>
+              </motion.a>
+              <motion.a
+                href="/Dev_Patel_Resume.pdf"
+                download
+                className="btn-love-ghost text-sm sm:text-base"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <span className="flex items-center gap-2">
+                  <Download className="w-4 h-4" />
                   Download Resume
                 </span>
               </motion.a>

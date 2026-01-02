@@ -263,16 +263,14 @@ export default function Experience() {
               animate={inView ? 'visible' : 'hidden'}
               className="relative max-w-4xl mx-auto"
             >
-            {/* Timeline Line - Elite Gradient */}
+            {/* Timeline Line - Love Gradient */}
             <motion.div 
-              className="absolute left-6 sm:left-8 md:left-1/2 top-0 bottom-0 w-1 transform md:-translate-x-1/2"
+              className="absolute left-6 sm:left-8 md:left-1/2 top-0 bottom-0 w-0.5 md:w-1 transform md:-translate-x-1/2 timeline-line-love"
               initial={{ scaleY: 0, opacity: 0 }}
               animate={inView ? { scaleY: 1, opacity: 1 } : {}}
               transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
               style={{ transformOrigin: 'top' }}
-            >
-              <div className="w-full h-full bg-gradient-to-b from-primary-500 via-accent-500 to-cyan-500 rounded-full shadow-lg shadow-primary-500/30" />
-            </motion.div>
+            />
 
             {experiences.map((exp, index) => (
               <motion.div
@@ -282,19 +280,20 @@ export default function Experience() {
                   index % 2 === 0 ? 'md:flex-row-reverse' : ''
                 }`}
               >
-                {/* Timeline Dot - Elite Glow */}
+                {/* Timeline Dot - Love Glow */}
                 <motion.div 
-                  className="absolute left-6 sm:left-8 md:left-1/2 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-gradient-to-r from-primary-500 to-accent-500 transform -translate-x-1/2 mt-8 z-10 supreme-glow"
+                  className="absolute left-6 sm:left-8 md:left-1/2 transform -translate-x-1/2 mt-8 z-10 timeline-dot-love"
                   initial={{ scale: 0 }}
                   animate={inView ? { scale: 1 } : {}}
                   transition={{ delay: 0.5 + index * 0.2, type: 'spring' }}
                 />
 
-                {/* Content Card - Elite 3D */}
+                {/* Content Card - Love Effect */}
                 <div className={`flex-1 ml-12 sm:ml-16 md:ml-0 ${index % 2 === 0 ? 'md:pr-12' : 'md:pl-12'}`}>
-                  <Card3D 
-                    className="glass-elite rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 premium-card-hover"
-                    intensity={8}
+                  <motion.div 
+                    className="card-love p-4 sm:p-6 md:p-8"
+                    whileHover={{ y: -5 }}
+                    transition={{ duration: 0.3 }}
                   >
                     {/* Header - Enhanced Visual Hierarchy */}
                     <div className="flex flex-wrap items-start justify-between gap-2 sm:gap-4 mb-4 sm:mb-5">
@@ -366,7 +365,7 @@ export default function Experience() {
                         </motion.span>
                       ))}
                     </div>
-                  </Card3D>
+                  </motion.div>
                 </div>
 
                 {/* Empty space for timeline alignment */}

@@ -223,18 +223,18 @@ export default function Contact() {
               ))}
             </div>
 
-            {/* Quick Message */}
+            {/* Quick Message - Love Card */}
             <motion.div
               variants={itemVariants}
-              className="glass-premium rounded-xl sm:rounded-2xl p-4 sm:p-6 neumorphic shine-effect"
+              className="card-love p-4 sm:p-6"
             >
-              <h4 className="font-semibold text-white mb-2 sm:mb-3 text-sm sm:text-base">Prefer Quick Communication?</h4>
-              <p className="text-dark-400 text-xs sm:text-sm mb-3 sm:mb-4">
+              <h4 className="font-semibold text-white mb-2 sm:mb-3 text-sm sm:text-base relative z-10">Prefer Quick Communication?</h4>
+              <p className="text-dark-400 text-xs sm:text-sm mb-3 sm:mb-4 relative z-10">
                 Feel free to reach out directly via email or connect with me on social media platforms.
               </p>
               <motion.a
                 href="mailto:devpatel170521@gmail.com"
-                className="inline-flex items-center gap-1.5 sm:gap-2 text-primary-400 font-medium text-xs sm:text-sm btn-premium"
+                className="inline-flex items-center gap-1.5 sm:gap-2 text-primary-400 font-medium text-xs sm:text-sm relative z-10"
                 whileHover={{ x: 5, scale: 1.05 }}
               >
                 Send Direct Email
