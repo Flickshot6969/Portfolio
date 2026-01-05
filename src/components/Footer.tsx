@@ -15,6 +15,7 @@ import {
   Mail,
   Phone
 } from 'lucide-react'
+import { downloadResumePDF } from '@/lib/generateResumePDF'
 
 interface SocialLink {
   name: string
@@ -94,7 +95,7 @@ const footerLinks = {
     { name: 'Projects', href: '#projects' },
     { name: 'Certifications', href: '#certifications' },
     { name: 'Contact', href: '#contact' },
-    { name: 'Resume', href: '/Dev_Patel_Resume.pdf' },
+    { name: 'Resume', href: '#download-resume', isDownload: true },
   ]
 }
 
@@ -220,12 +221,21 @@ export default function Footer() {
             <ul className="space-y-2 sm:space-y-3">
               {footerLinks.resources.map((link) => (
                 <li key={link.name}>
-                  <a 
-                    href={link.href}
-                    className="text-dark-400 hover:text-white transition-colors text-xs sm:text-sm"
-                  >
-                    {link.name}
-                  </a>
+                  {'isDownload' in link && link.isDownload ? (
+                    <button 
+                      onClick={downloadResumePDF}
+                      className="text-dark-400 hover:text-white transition-colors text-xs sm:text-sm cursor-pointer"
+                    >
+                      {link.name}
+                    </button>
+                  ) : (
+                    <a 
+                      href={link.href}
+                      className="text-dark-400 hover:text-white transition-colors text-xs sm:text-sm"
+                    >
+                      {link.name}
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>

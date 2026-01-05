@@ -18,6 +18,7 @@ import {
   ArrowRight
 } from 'lucide-react'
 import { Card3D } from './EliteEffects'
+import { downloadResumePDF } from '@/lib/generateResumePDF'
 // ⚡ NEW: Psychological Motion & Tactile Systems
 import { 
   GrandEntrance,
@@ -154,9 +155,52 @@ export default function About() {
               variants={itemVariants}
               className="relative max-w-xs sm:max-w-md mx-auto"
             >
-              {/* Decorative Elements */}
-              <div className="absolute -top-2 -left-2 sm:-top-4 sm:-left-4 w-16 h-16 sm:w-24 sm:h-24 border-l-2 border-t-2 border-primary-500/30 rounded-tl-2xl sm:rounded-tl-3xl" />
-              <div className="absolute -bottom-2 -right-2 sm:-bottom-4 sm:-right-4 w-16 h-16 sm:w-24 sm:h-24 border-r-2 border-b-2 border-accent-500/30 rounded-br-2xl sm:rounded-br-3xl" />
+              {/* Decorative Elements - Animated on all devices */}
+              <motion.div 
+                className="absolute -top-2 -left-2 sm:-top-4 sm:-left-4 w-16 h-16 sm:w-24 sm:h-24 border-l-2 border-t-2 border-primary-500/30 rounded-tl-2xl sm:rounded-tl-3xl"
+                animate={{ 
+                  opacity: [0.3, 0.7, 0.3],
+                  scale: [1, 1.02, 1]
+                }}
+                transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+              />
+              <motion.div 
+                className="absolute -bottom-2 -right-2 sm:-bottom-4 sm:-right-4 w-16 h-16 sm:w-24 sm:h-24 border-r-2 border-b-2 border-accent-500/30 rounded-br-2xl sm:rounded-br-3xl"
+                animate={{ 
+                  opacity: [0.3, 0.7, 0.3],
+                  scale: [1, 1.02, 1]
+                }}
+                transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut', delay: 1.5 }}
+              />
+              
+              {/* Mobile-visible floating particles around image */}
+              <motion.div 
+                className="absolute -top-4 left-1/4 w-2 h-2 rounded-full bg-primary-500/60"
+                animate={{ 
+                  y: [0, -10, 0],
+                  x: [0, 5, 0],
+                  opacity: [0.4, 0.8, 0.4]
+                }}
+                transition={{ duration: 2.5, repeat: Infinity }}
+              />
+              <motion.div 
+                className="absolute top-1/2 -right-4 w-1.5 h-1.5 rounded-full bg-accent-500/60"
+                animate={{ 
+                  y: [0, 8, 0],
+                  x: [0, -3, 0],
+                  opacity: [0.4, 0.8, 0.4]
+                }}
+                transition={{ duration: 3, repeat: Infinity, delay: 0.5 }}
+              />
+              <motion.div 
+                className="absolute bottom-1/4 -left-3 w-1.5 h-1.5 rounded-full bg-cyan-500/60"
+                animate={{ 
+                  y: [0, -6, 0],
+                  x: [0, 4, 0],
+                  opacity: [0.4, 0.8, 0.4]
+                }}
+                transition={{ duration: 2.8, repeat: Infinity, delay: 1 }}
+              />
               
               {/* Main Image - Elite 3D Card */}
               <Card3D className="relative rounded-2xl sm:rounded-3xl overflow-hidden p-1.5 sm:p-2 bg-dark-900/50 border border-white/10" intensity={15}>
@@ -208,28 +252,59 @@ export default function About() {
                 </motion.div>
               </Card3D>
 
-              {/* Floating Badge - Strategic Leader - Visible on Mobile */}
+              {/* Floating Badge - Strategic Leader - Enhanced Mobile */}
               <motion.div
                 className="absolute -right-1 sm:-right-4 -top-3 sm:top-1/4 glass-card px-2 py-1.5 sm:px-4 sm:py-2 rounded-lg sm:rounded-xl z-20"
-                animate={{ y: [0, -6, 0] }}
-                transition={{ duration: 3, repeat: Infinity }}
-                style={{ boxShadow: '0 8px 32px rgba(239, 68, 68, 0.2)' }}
+                animate={{ 
+                  y: [0, -8, 0], 
+                  x: [0, 3, 0],
+                  rotate: [0, 2, 0],
+                  scale: [1, 1.05, 1] 
+                }}
+                transition={{ 
+                  duration: 3, 
+                  repeat: Infinity,
+                  ease: 'easeInOut'
+                }}
+                whileHover={{ scale: 1.1, rotate: 5 }}
+                style={{ boxShadow: '0 8px 32px rgba(239, 68, 68, 0.3)' }}
               >
                 <div className="flex items-center gap-1.5 sm:gap-2">
-                  <Heart className="w-3.5 h-3.5 sm:w-5 sm:h-5 text-red-500" />
+                  <motion.div
+                    animate={{ scale: [1, 1.2, 1] }}
+                    transition={{ duration: 1.5, repeat: Infinity }}
+                  >
+                    <Heart className="w-3.5 h-3.5 sm:w-5 sm:h-5 text-red-500" />
+                  </motion.div>
                   <span className="text-[10px] sm:text-sm font-semibold text-white">Strategic Leader</span>
                 </div>
               </motion.div>
 
-              {/* Floating Badge - Passionate Coder - Visible on Mobile */}
+              {/* Floating Badge - Passionate Coder - Enhanced Mobile */}
               <motion.div
                 className="absolute -left-1 sm:-left-4 -top-3 sm:bottom-1/3 sm:top-auto glass-card px-2 py-1.5 sm:px-4 sm:py-2 rounded-lg sm:rounded-xl z-20"
-                animate={{ y: [0, 6, 0] }}
-                transition={{ duration: 3.5, repeat: Infinity, delay: 0.5 }}
-                style={{ boxShadow: '0 8px 32px rgba(34, 211, 238, 0.2)' }}
+                animate={{ 
+                  y: [0, 8, 0], 
+                  x: [0, -3, 0],
+                  rotate: [0, -2, 0],
+                  scale: [1, 1.05, 1] 
+                }}
+                transition={{ 
+                  duration: 3.5, 
+                  repeat: Infinity, 
+                  delay: 0.5,
+                  ease: 'easeInOut'
+                }}
+                whileHover={{ scale: 1.1, rotate: -5 }}
+                style={{ boxShadow: '0 8px 32px rgba(34, 211, 238, 0.3)' }}
               >
                 <div className="flex items-center gap-1.5 sm:gap-2">
-                  <Code2 className="w-3.5 h-3.5 sm:w-5 sm:h-5 text-cyan-400" />
+                  <motion.div
+                    animate={{ rotate: [0, 10, -10, 0] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                  >
+                    <Code2 className="w-3.5 h-3.5 sm:w-5 sm:h-5 text-cyan-400" />
+                  </motion.div>
                   <span className="text-[10px] sm:text-sm font-semibold text-white">Passionate Coder</span>
                 </div>
               </motion.div>
@@ -359,9 +434,8 @@ export default function About() {
                   <ArrowRight className="w-4 h-4" />
                 </span>
               </motion.a>
-              <motion.a
-                href="/Dev_Patel_Resume.pdf"
-                download
+              <motion.button
+                onClick={downloadResumePDF}
                 className="btn-love-ghost text-sm sm:text-base"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -370,7 +444,7 @@ export default function About() {
                   <Download className="w-4 h-4" />
                   Download Resume
                 </span>
-              </motion.a>
+              </motion.button>
             </motion.div>
           </motion.div>
         </div>

@@ -628,49 +628,57 @@ export default function Hero() {
                 </div>
               </motion.div>
 
-              {/* Floating Cards - Developer Badge */}
+              {/* Floating Cards - Developer Badge - MOBILE VISIBLE */}
               <motion.div
-                className="absolute -right-4 top-10 glass-card px-3 py-2 md:px-4 md:py-3 rounded-xl hidden sm:block border border-primary-500/30"
-                animate={{ y: [0, -10, 0], rotate: [0, 2, 0] }}
-                transition={{ duration: 3, repeat: Infinity }}
+                className="absolute -right-2 sm:-right-4 top-4 sm:top-10 glass-card px-2 py-1.5 sm:px-3 sm:py-2 md:px-4 md:py-3 rounded-lg sm:rounded-xl border border-primary-500/30 z-20"
+                animate={{ y: [0, -8, 0], rotate: [0, 2, 0], scale: [1, 1.02, 1] }}
+                transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+                whileHover={{ scale: 1.1 }}
               >
-                <div className="flex items-center gap-2">
-                  <div className="w-7 h-7 md:w-8 md:h-8 rounded-lg bg-gradient-to-r from-primary-500 to-cyan-500 flex items-center justify-center">
-                    <Terminal size={14} className="text-white" />
+                <div className="flex items-center gap-1.5 sm:gap-2">
+                  <div className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 rounded-md sm:rounded-lg bg-gradient-to-r from-primary-500 to-cyan-500 flex items-center justify-center">
+                    <Terminal size={12} className="text-white sm:hidden" />
+                    <Terminal size={14} className="text-white hidden sm:block" />
                   </div>
                   <div>
-                    <p className="text-xs text-dark-400">Developer</p>
-                    <p className="text-xs md:text-sm font-semibold text-white font-mono">Full Stack</p>
+                    <p className="text-[10px] sm:text-xs text-dark-400">Developer</p>
+                    <p className="text-[10px] sm:text-xs md:text-sm font-semibold text-white font-mono">Full Stack</p>
                   </div>
                 </div>
               </motion.div>
 
-              {/* Floating Cards - Manager Badge */}
+              {/* Floating Cards - Manager Badge - MOBILE VISIBLE */}
               <motion.div
-                className="absolute -left-4 bottom-20 glass-card px-3 py-2 md:px-4 md:py-3 rounded-xl hidden sm:block border border-accent-500/30"
-                animate={{ y: [0, 10, 0], rotate: [0, -2, 0] }}
-                transition={{ duration: 4, repeat: Infinity, delay: 0.5 }}
+                className="absolute -left-2 sm:-left-4 bottom-16 sm:bottom-20 glass-card px-2 py-1.5 sm:px-3 sm:py-2 md:px-4 md:py-3 rounded-lg sm:rounded-xl border border-accent-500/30 z-20"
+                animate={{ y: [0, 8, 0], rotate: [0, -2, 0], scale: [1, 1.02, 1] }}
+                transition={{ duration: 4, repeat: Infinity, delay: 0.5, ease: 'easeInOut' }}
+                whileHover={{ scale: 1.1 }}
               >
-                <div className="flex items-center gap-2">
-                  <div className="w-7 h-7 md:w-8 md:h-8 rounded-lg bg-gradient-to-r from-accent-500 to-pink-500 flex items-center justify-center">
-                    <Briefcase size={14} className="text-white" />
+                <div className="flex items-center gap-1.5 sm:gap-2">
+                  <div className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 rounded-md sm:rounded-lg bg-gradient-to-r from-accent-500 to-pink-500 flex items-center justify-center">
+                    <Briefcase size={12} className="text-white sm:hidden" />
+                    <Briefcase size={14} className="text-white hidden sm:block" />
                   </div>
                   <div>
-                    <p className="text-xs text-dark-400">Leader</p>
-                    <p className="text-xs md:text-sm font-semibold text-white">Tech Lead</p>
+                    <p className="text-[10px] sm:text-xs text-dark-400">Leader</p>
+                    <p className="text-[10px] sm:text-xs md:text-sm font-semibold text-white">Tech Lead</p>
                   </div>
                 </div>
               </motion.div>
 
-              {/* Tech Stats Badge */}
+              {/* Tech Stats Badge - MOBILE VISIBLE */}
               <motion.div
-                className="absolute -right-2 bottom-10 glass-card px-2 py-1.5 md:px-3 md:py-2 rounded-lg hidden sm:block border border-cyan-500/30"
-                animate={{ y: [0, 5, 0] }}
-                transition={{ duration: 2.5, repeat: Infinity, delay: 1 }}
+                className="absolute right-0 sm:-right-2 bottom-6 sm:bottom-10 glass-card px-1.5 py-1 sm:px-2 sm:py-1.5 md:px-3 md:py-2 rounded-md sm:rounded-lg border border-cyan-500/30 z-20"
+                animate={{ y: [0, 5, 0], opacity: [0.9, 1, 0.9] }}
+                transition={{ duration: 2.5, repeat: Infinity, delay: 1, ease: 'easeInOut' }}
               >
-                <div className="flex items-center gap-1.5">
-                  <div className="w-2 h-2 rounded-full bg-green-500 md:animate-pulse" />
-                  <span className="text-xs font-mono text-cyan-400">Online</span>
+                <div className="flex items-center gap-1 sm:gap-1.5">
+                  <motion.div 
+                    className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-green-500"
+                    animate={{ scale: [1, 1.3, 1], opacity: [1, 0.7, 1] }}
+                    transition={{ duration: 1.5, repeat: Infinity }}
+                  />
+                  <span className="text-[10px] sm:text-xs font-mono text-cyan-400">Online</span>
                 </div>
               </motion.div>
             </div>

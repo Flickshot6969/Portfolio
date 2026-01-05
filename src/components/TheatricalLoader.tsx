@@ -126,7 +126,7 @@ function BrandMark() {
 
   return (
     <motion.div
-      className="relative w-24 h-24 mb-8"
+      className="relative w-20 h-20 sm:w-24 sm:h-24 mb-6 sm:mb-8 mx-auto"
       initial={{ scale: 0, opacity: 0, rotateY: -180 }}
       animate={{ scale: 1, opacity: 1, rotateY: 0 }}
       transition={{
@@ -157,13 +157,13 @@ function BrandMark() {
       
       {/* Inner mark */}
       <motion.div
-        className="absolute inset-2 rounded-full bg-slate-950 flex items-center justify-center"
+        className="absolute inset-1.5 sm:inset-2 rounded-full bg-slate-950 flex items-center justify-center"
         style={{ 
           boxShadow: '0 0 40px rgba(99, 102, 241, 0.5), inset 0 0 30px rgba(99, 102, 241, 0.2)'
         }}
       >
         <motion.span
-          className="text-4xl font-bold bg-gradient-to-r from-violet-400 via-purple-400 to-fuchsia-400 bg-clip-text text-transparent"
+          className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-violet-400 via-purple-400 to-fuchsia-400 bg-clip-text text-transparent"
           animate={{
             backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
           }}
@@ -264,7 +264,7 @@ function CurtainReveal({ isRevealing }: { isRevealing: boolean }) {
 function LoadingProgress({ progress }: { progress: number }) {
   return (
     <motion.div
-      className="absolute bottom-20 left-1/2 -translate-x-1/2 w-48"
+      className="absolute bottom-16 sm:bottom-20 left-1/2 -translate-x-1/2 w-36 sm:w-48"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.5 }}
@@ -346,10 +346,17 @@ export function TheatricalLoader({
           <CurtainReveal isRevealing={phase === 'reveal'} />
           
           <motion.div
-            className="fixed inset-0 z-40 flex flex-col items-center justify-center bg-slate-950"
+            className="fixed inset-0 z-40 flex flex-col items-center justify-center bg-slate-950 px-4 sm:px-6"
             initial={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              minHeight: '100vh',
+              minWidth: '100vw',
+            }}
           >
             {/* Background gradient - static on mobile */}
             <motion.div
@@ -378,7 +385,7 @@ export function TheatricalLoader({
             <AnimatePresence>
               {(phase === 'name' || phase === 'tagline' || phase === 'reveal') && (
                 <motion.h1
-                  className="text-5xl md:text-7xl font-bold text-white mb-4 perspective-1000"
+                  className="text-3xl sm:text-5xl md:text-7xl font-bold text-white mb-3 sm:mb-4 perspective-1000 text-center"
                   style={{ fontFamily: 'Poppins, sans-serif' }}
                 >
                   {nameLetters.map((letter, i) => (
@@ -398,7 +405,7 @@ export function TheatricalLoader({
             <AnimatePresence>
               {(phase === 'tagline' || phase === 'reveal') && (
                 <motion.div
-                  className="flex gap-2 text-lg md:text-xl text-slate-400"
+                  className="flex flex-wrap justify-center gap-1.5 sm:gap-2 text-sm sm:text-lg md:text-xl text-slate-400 text-center px-4"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.3 }}

@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Download, ChevronRight } from 'lucide-react'
 import { ActiveSection } from '@/app/page'
+import { downloadResumePDF } from '@/lib/generateResumePDF'
 // ⚡ NEW: Tactile Systems for Premium Navigation
 import { 
   MagneticElement,
@@ -108,16 +109,15 @@ export default function Navbar({ activeSection, setActiveSection }: NavbarProps)
           <div className="hidden lg:flex items-center gap-4">
             <MagneticElement strength={0.2} radius={50}>
               <TactileRipple rippleColor="rgba(139, 92, 246, 0.3)">
-                <motion.a
-                  href="/Dev_Patel_Resume.pdf"
-                  download
+                <motion.button
+                  onClick={downloadResumePDF}
                   className="flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium text-white border border-white/10 hover:border-primary-500/50 hover:bg-primary-500/10 transition-all duration-300 btn-premium jelly-hover tactile-hover"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   <Download size={16} />
                   Download CV
-                </motion.a>
+                </motion.button>
               </TactileRipple>
             </MagneticElement>
             <MagneticElement strength={0.25} radius={60}>
@@ -185,15 +185,14 @@ export default function Navbar({ activeSection, setActiveSection }: NavbarProps)
               </div>
 
               <div className="mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-white/10 space-y-3 sm:space-y-4">
-                <motion.a
-                  href="/Dev_Patel_Resume.pdf"
-                  download
+                <motion.button
+                  onClick={downloadResumePDF}
                   className="flex items-center justify-center gap-2 w-full px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg sm:rounded-xl text-white text-sm sm:text-base border border-white/10 hover:border-primary-500/50 hover:bg-primary-500/10 transition-all duration-300"
                   whileTap={{ scale: 0.95 }}
                 >
                   <Download size={16} className="sm:w-[18px] sm:h-[18px]" />
                   Download Resume
-                </motion.a>
+                </motion.button>
                 <motion.button
                   onClick={() => handleNavClick('contact')}
                   className="flex items-center justify-center gap-2 w-full px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg sm:rounded-xl text-white text-sm sm:text-base bg-gradient-to-r from-primary-600 to-accent-600 shadow-lg shadow-primary-500/25"
