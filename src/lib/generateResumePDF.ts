@@ -1,9 +1,33 @@
 'use client'
 
-// Professional Resume PDF Generator
-// Clean, ATS-friendly, recruiter-approved design
+import QRCode from 'qrcode';
 
-const generateResumeHTML = (): string => {
+// Professional Resume PDF Generator
+// Clean, ATS-friendly, recruiter-approved design with QR Code
+
+// Portfolio URL for QR Code
+const PORTFOLIO_URL = 'https://devpatel-portfolio.vercel.app';
+
+// Generate QR Code as Base64 Data URL
+const generateQRCode = async (): Promise<string> => {
+  try {
+    const qrDataURL = await QRCode.toDataURL(PORTFOLIO_URL, {
+      width: 80,
+      margin: 1,
+      color: {
+        dark: '#4f46e5',
+        light: '#ffffff'
+      },
+      errorCorrectionLevel: 'H'
+    });
+    return qrDataURL;
+  } catch (error) {
+    console.error('QR Code generation failed:', error);
+    return '';
+  }
+};
+
+const generateResumeHTML = (qrCodeDataURL: string): string => {
   const currentDate = new Date().toLocaleDateString('en-US', { 
     year: 'numeric', 
     month: 'long', 
@@ -93,6 +117,14 @@ body{font-family:'Inter',system-ui,-apple-system,sans-serif;font-size:10.5px;lin
 .footer{text-align:center;margin-top:24px;padding-top:16px;border-top:1px solid #e5e7eb;color:#9ca3af;font-size:8.5px}
 .footer p{margin:2px 0}
 
+/* QR Code Section - Professional Portfolio Link */
+.qr-section{position:absolute;top:30px;right:40px;text-align:center}
+.qr-container{background:linear-gradient(135deg,#f8fafc 0%,#fff 100%);padding:8px;border-radius:10px;border:2px solid #e5e7eb;box-shadow:0 2px 8px rgba(79,70,229,0.1)}
+.qr-container img{width:70px;height:70px;display:block}
+.qr-label{font-size:7px;color:#4f46e5;font-weight:600;margin-top:4px;text-transform:uppercase;letter-spacing:0.5px}
+.qr-sublabel{font-size:6px;color:#6b7280;margin-top:1px}
+@media print{.qr-section{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}}
+
 /* Print Optimization */
 @media print{
   body{padding:0;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
@@ -120,6 +152,17 @@ body{font-family:'Inter',system-ui,-apple-system,sans-serif;font-size:10.5px;lin
     <span class="contact-item">💻 <a href="https://github.com/devpatel170521">github.com/devpatel170521</a></span>
   </div>
 </header>
+
+<!-- QR Code for Portfolio -->
+${qrCodeDataURL ? `
+<div class="qr-section">
+  <div class="qr-container">
+    <img src="${qrCodeDataURL}" alt="Portfolio QR Code" />
+    <div class="qr-label">📱 Scan Me</div>
+    <div class="qr-sublabel">View Full Portfolio</div>
+  </div>
+</div>
+` : ''}
 
 <!-- PROFESSIONAL SUMMARY -->
 <section class="section">
@@ -411,11 +454,14 @@ body{font-family:'Inter',system-ui,-apple-system,sans-serif;font-size:10.5px;lin
 </html>`;
 };
 
-// Download resume as highly compressed PDF via print dialog
-export const downloadResumePDF = (): void => {
+// Download resume as highly compressed PDF via print dialog (with QR Code)
+export const downloadResumePDF = async (): Promise<void> => {
+  // Generate QR Code first
+  const qrCodeDataURL = await generateQRCode();
+  
   const printWindow = window.open('', '_blank', 'width=800,height=600');
   if (printWindow) {
-    printWindow.document.write(generateResumeHTML());
+    printWindow.document.write(generateResumeHTML(qrCodeDataURL));
     printWindow.document.close();
     
     // Wait for content to load, then trigger print
@@ -430,9 +476,12 @@ export const downloadResumePDF = (): void => {
   }
 };
 
-// Generate and download as HTML file (ultra-compressed alternative)
-export const downloadResumeHTML = (): void => {
-  const htmlContent = generateResumeHTML();
+// Generate and download as HTML file (ultra-compressed alternative with QR Code)
+export const downloadResumeHTML = async (): Promise<void> => {
+  // Generate QR Code first
+  const qrCodeDataURL = await generateQRCode();
+  
+  const htmlContent = generateResumeHTML(qrCodeDataURL);
   const blob = new Blob([htmlContent], { type: 'text/html' });
   const url = URL.createObjectURL(blob);
   
