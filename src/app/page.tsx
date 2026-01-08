@@ -165,7 +165,7 @@ export default function Home() {
 
                 <Navbar activeSection={activeSection} setActiveSection={setActiveSection} />
                 
-                <main className="min-h-screen relative z-10" style={{ perspective: '1200px' }}>
+                <main className="relative z-10" style={{ perspective: '1200px', minHeight: 'calc(100vh - 200px)' }}>
                   <AnimatePresence mode="wait">
                     <motion.div
                       key={activeSection}
